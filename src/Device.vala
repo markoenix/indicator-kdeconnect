@@ -37,7 +37,7 @@ namespace KDEConnectIndicator {
         }
         public string icon_name {
             get {
-                Variant return_variant=device_proxy.get_cached_property ("iconName");
+                Variant return_variant=device_proxy.get_cached_property ("statusIconName");
                 if (return_variant!=null && return_variant.get_string () != "")
                     return return_variant.get_string ();
                 return "smartphone"; // default to smartphone as KDC 0.5 doens't have icon name props
@@ -99,22 +99,11 @@ namespace KDEConnectIndicator {
             id = conn.signal_subscribe (
                     "org.kde.kdeconnect",
                     "org.kde.kdeconnect.device",
-                    "pairingFailed",
+                    "pairingError",
                     path,
                     null,
                     DBusSignalFlags.NONE,
                     string_signal_cb
-                    );
-            subs_identifier.append (id);
-
-            id = conn.signal_subscribe (
-                    "org.kde.kdeconnect",
-                    "org.kde.kdeconnect.device",
-                    "pairingSuccesful",
-                    path,
-                    null,
-                    DBusSignalFlags.NONE,
-                    void_signal_cb
                     );
             subs_identifier.append (id);
 
@@ -143,11 +132,11 @@ namespace KDEConnectIndicator {
             id = conn.signal_subscribe (
                     "org.kde.kdeconnect",
                     "org.kde.kdeconnect.device",
-                    "unpaired",
+                    "trustedChanged",
                     path,
                     null,
                     DBusSignalFlags.NONE,
-                    void_signal_cb
+                    boolean_signal_cb
                     );
             subs_identifier.append (id);
 
@@ -222,47 +211,21 @@ namespace KDEConnectIndicator {
                 message (e.message);
             }
         }
-        public bool is_paired () {
-            try {
-                var return_variant = conn.call_sync (
-                        "org.kde.kdeconnect",
-                        path,
-                        "org.kde.kdeconnect.device",
-                        "isPaired",
-                        null,
-                        null,
-                        DBusCallFlags.NONE,
-                        -1,
-                        null
-                        );
-                Variant i = return_variant.get_child_value (0);
-                if (i!=null)
-                    return i.get_boolean ();
-            } catch (Error e) {
-                message (e.message);
+        public bool is_trusted {
+            get {
+                Variant return_variant=device_proxy.get_cached_property ("isTrusted");
+                if (return_variant!=null)
+                    return return_variant.get_boolean ();
+                return false; // default to false if something went wrong
             }
-            return false;
         }
-        public bool is_reachable () {
-            try {
-                var return_variant = conn.call_sync (
-                        "org.kde.kdeconnect",
-                        path,
-                        "org.kde.kdeconnect.device",
-                        "isReachable",
-                        null,
-                        null,
-                        DBusCallFlags.NONE,
-                        -1,
-                        null
-                        );
-                Variant i = return_variant.get_child_value (0);
-                if (i!=null)
-                    return i.get_boolean ();
-            } catch (Error e) {
-                message (e.message);
+        public bool is_reachable {
+            get {
+                Variant return_variant=device_proxy.get_cached_property ("isReachable");
+                if (return_variant!=null)
+                    return return_variant.get_boolean ();
+                return false; // default to false if something went wrong
             }
-            return false;
         }
         public bool is_charging () {
             if (!has_plugin ("kdeconnect_battery"))
@@ -450,17 +413,11 @@ namespace KDEConnectIndicator {
         public void void_signal_cb (DBusConnection con, string sender, string object,
                 string interface, string signal_name, Variant parameter) {
             switch (signal_name) {
-                case "pairingSuccesful" :
-                    pairing_successful ();
-                    break;
                 case "pluginsChanged" :
                     plugins_changed ();
                     break;
                 case "reachableStatusChanged" :
-                    pairing_successful ();
-                    break;
-                case "unpaired" :
-                    unpaired ();
+                    trusted_changed (true);
                     break;
                 case "mounted" :
                     mounted ();
@@ -477,14 +434,17 @@ namespace KDEConnectIndicator {
                 case "stateChanged" :
                     state_changed (param);
                     break;
+                case "trustedChanged" :
+                    trusted_changed (param);
+                    break;
             }
         }
         public void string_signal_cb (DBusConnection con, string sender, string object,
                 string interface, string signal_name, Variant parameter) {
             string param = parameter.get_child_value (0).get_string ();
             switch (signal_name) {
-                case "pairingFailed" :
-                    pairing_failed (param);
+                case "pairingError" :
+                    pairing_error (param);
                     break;
             }
         }
@@ -501,11 +461,10 @@ namespace KDEConnectIndicator {
             return false;
         }
         public signal void charge_changed (int charge);
-        public signal void pairing_failed (string error);
-        public signal void pairing_successful ();
+        public signal void pairing_error (string error);
+        public signal void trusted_changed (bool paired);
         public signal void plugins_changed ();
         public signal void reachable_status_changed ();
-        public signal void unpaired ();
         public signal void mounted ();
         public signal void unmounted ();
         public signal void state_changed (bool state);
