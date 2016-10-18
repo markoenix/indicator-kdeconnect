@@ -212,19 +212,54 @@ namespace KDEConnectIndicator {
             }
         }
         public bool is_trusted {
-            get {
-                Variant return_variant=device_proxy.get_cached_property ("isTrusted");
-                if (return_variant!=null)
-                    return return_variant.get_boolean ();
-                return false; // default to false if something went wrong
-            }
+			get {
+				try {
+					var return_variant = conn.call_sync (
+							"org.kde.kdeconnect",
+							path,
+							"org.kde.kdeconnect.device",
+							"isTrusted",
+							null,
+							null,
+							DBusCallFlags.NONE,
+							-1,
+							null
+							);   
+					
+					Variant i = return_variant.get_child_value (0);
+					if (i!=null)
+						return i.get_boolean ();
+				}
+				catch (Error e) {
+					message (e.message);
+				}
+            return false; // default to false if something went wrong 
+			}
         }
         public bool is_reachable {
             get {
-                Variant return_variant=device_proxy.get_cached_property ("isReachable");
-                if (return_variant!=null)
-                    return return_variant.get_boolean ();
-                return false; // default to false if something went wrong
+				try {
+					Variant return_variant = conn.call_sync (
+							"org.kde.kdeconnect",
+							path,
+							"org.freedesktop.DBus.Properties",
+							"Get",
+							new Variant("(ss)","org.kde.kdeconnect.device","isReachable"),
+							null,
+							DBusCallFlags.NONE,
+							-1,
+							null
+							);
+					Variant rtn_var = return_variant.get_child_value (0);
+					Variant v = rtn_var.get_variant ();
+                if(v!=null)
+					return v.get_boolean ();
+					
+				} 
+				catch (Error e) {
+                message (e.message);
+				}	     
+            return false; // default to false if something went wrong    
             }
         }
         public bool is_charging () {
@@ -417,7 +452,7 @@ namespace KDEConnectIndicator {
                     plugins_changed ();
                     break;
                 case "reachableStatusChanged" :
-                    trusted_changed (true);
+					reachable_status_changed ();
                     break;
                 case "mounted" :
                     mounted ();
@@ -462,7 +497,7 @@ namespace KDEConnectIndicator {
         }
         public signal void charge_changed (int charge);
         public signal void pairing_error (string error);
-        public signal void trusted_changed (bool paired);
+        public signal void trusted_changed (bool trusted);
         public signal void plugins_changed ();
         public signal void reachable_status_changed ();
         public signal void mounted ();

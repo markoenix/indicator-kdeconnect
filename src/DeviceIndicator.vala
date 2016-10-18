@@ -98,8 +98,8 @@ namespace KDEConnectIndicator {
                 update_pair_item ();
                 update_status_item ();
             });
-            device.trusted_changed.connect ((paired)=>{
-                if (!paired)
+            device.trusted_changed.connect ((trusted)=>{
+                if (!trusted)
                     update_visibility ();
 
                 update_pair_item ();
@@ -137,26 +137,26 @@ namespace KDEConnectIndicator {
 
             if (device.is_reachable) {
                 if (device.is_trusted)
-                    this.status_item.label = "Device Reachable and Paired";
+                    this.status_item.label = "Device Reachable and Trusted";
                 else
-                    this.status_item.label = "Device Reachable but Not Paired";
+                    this.status_item.label = "Device Reachable but Not Trusted";
             } else {
                 if (device.is_trusted)
-                    this.status_item.label = "Device Paired but not Reachable";
+                    this.status_item.label = "Device Trusted but not Reachable";
                 else
+					this.status_item.label = "Device Not Reachable and Not Trusted";
                     // is this even posible?
-                    this.status_item.label = "Device Not Reachable and Not Paired";
             }
         }
         private void update_pair_item () {
-            var paired = device.is_trusted;
+            var trusted = device.is_trusted;
             var reachable = device.is_reachable;
-            pair_item.visible = !paired;
-            unpair_item.visible = paired;
+            pair_item.visible = !trusted;
+            unpair_item.visible = trusted;
 
-            browse_item.visible = paired && device.has_plugin ("kdeconnect_sftp");
+            browse_item.visible = trusted && device.has_plugin ("kdeconnect_sftp");
             browse_item.sensitive = reachable;
-            send_item.visible = paired && device.has_plugin ("kdeconnect_share");
+            send_item.visible = trusted && device.has_plugin ("kdeconnect_share");
             send_item.sensitive = reachable;
             separator.visible = browse_item.visible || send_item.visible;
         }
