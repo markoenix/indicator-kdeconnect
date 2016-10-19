@@ -11,12 +11,12 @@ Features:
  3. menu to start sftp and open file browser
  4. a small program, `kdeconnect-send` to help sending file and choosing device
  5. a .contractor file, so you can send file from any of elementary OS's applications
+ 6. menu to ring and find your phone
 
 Limitation
 -------
 Currently this is have some limitation:
- 1. As Ubuntu and Pantheon notification doesn't (yet) support applying or rejecting pair request, you can only request to pair from desktop to your phone.
- 2. Will work better in KDE Connect 0.7.1 and up
+ 1. After changes on KDE Connect this will work only in KDE Connect 1.0.0 and up
 
 Usage Suggestions
 -------
@@ -27,4 +27,3 @@ Usage Suggestions
 
 Please report issues and suggestion here:
 https://github.com/vikoadi/indicator-kdeconnect
-
