@@ -17,6 +17,7 @@ namespace KDEConnectIndicator {
         private Gtk.SeparatorMenuItem separator;
         private Gtk.MenuItem pair_item;
         private Gtk.MenuItem unpair_item;
+
         public DeviceIndicator (string path) {
             this.path = path;
             device = new Device (path);
@@ -64,11 +65,14 @@ namespace KDEConnectIndicator {
                 "Cancel", Gtk.ResponseType.CANCEL,
                 "Select", Gtk.ResponseType.OK
                 );
-                // TODO:don't know whether kdeconnect support multiple file
-                chooser.select_multiple = false;
+                
+                chooser.select_multiple = true;
                 if (chooser.run () == Gtk.ResponseType.OK) {
-                var url = chooser.get_uri ();
-                device.send_file (url);
+                    SList<string> urls = chooser.get_uris ();
+
+                    foreach (var url in urls) {
+                        device.send_file (url);
+                    }
                 }
                 chooser.close ();
             });
