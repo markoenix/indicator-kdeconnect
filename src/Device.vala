@@ -495,6 +495,24 @@ namespace KDEConnectIndicator {
             }
             return false;
         }
+        public void find_my_phone (){
+			try{
+				var return_variant = conn.call_sync (
+                        "org.kde.kdeconnect",
+                        path+"/findmyphone",
+                        "org.kde.kdeconnect.device.findmyphone",
+                        "ring",
+                        null,
+                        null,
+                        DBusCallFlags.NONE,
+                        -1,
+                        null
+                        );
+			}
+			catch (Error e) {
+				message (e.message);
+			}
+		}
         public signal void charge_changed (int charge);
         public signal void pairing_error (string error);
         public signal void trusted_changed (bool trusted);

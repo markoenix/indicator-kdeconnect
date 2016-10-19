@@ -15,6 +15,8 @@ namespace KDEConnectIndicator {
         private Gtk.MenuItem browse_item;
         private Gtk.MenuItem send_item;
         private Gtk.SeparatorMenuItem separator;
+        private Gtk.MenuItem ring_item;
+        private Gtk.SeparatorMenuItem separator2;
         private Gtk.MenuItem pair_item;
         private Gtk.MenuItem unpair_item;
 
@@ -29,22 +31,26 @@ namespace KDEConnectIndicator {
                     AppIndicator.IndicatorCategory.HARDWARE);
 
             name_item = new Gtk.MenuItem ();
-            menu.append(name_item);
+            menu.append (name_item);
             battery_item = new Gtk.MenuItem();
-            menu.append(battery_item);
+            menu.append (battery_item);
             status_item = new Gtk.MenuItem ();
-            menu.append(status_item);
+            menu.append (status_item);
             menu.append (new Gtk.SeparatorMenuItem ());
             browse_item = new Gtk.MenuItem.with_label ("Browse device");
-            menu.append(browse_item);
+            menu.append (browse_item);
             send_item = new Gtk.MenuItem.with_label ("Send file");
-            menu.append(send_item);
+            menu.append (send_item);
             separator = new Gtk.SeparatorMenuItem ();
             menu.append (separator);
+            ring_item = new Gtk.MenuItem.with_label ("Find my phone");
+            menu.append (ring_item);
+            separator2 = new Gtk.SeparatorMenuItem ();
+            menu.append (separator2);
             pair_item = new Gtk.MenuItem.with_label ("Request pairing");
-            menu.append(pair_item);
+            menu.append (pair_item);
             unpair_item = new Gtk.MenuItem.with_label ("Unpair");
-            menu.append(unpair_item);
+            menu.append (unpair_item);
 
             menu.show_all ();
 
@@ -76,6 +82,9 @@ namespace KDEConnectIndicator {
                 }
                 chooser.close ();
             });
+            ring_item.activate.connect (() => {
+				device.find_my_phone ();
+			});
             pair_item.activate.connect (() => {
                 device.request_pair ();
             });
@@ -155,6 +164,7 @@ namespace KDEConnectIndicator {
         private void update_pair_item () {
             var trusted = device.is_trusted;
             var reachable = device.is_reachable;
+            
             pair_item.visible = !trusted;
             unpair_item.visible = trusted;
 
@@ -162,7 +172,11 @@ namespace KDEConnectIndicator {
             browse_item.sensitive = reachable;
             send_item.visible = trusted && device.has_plugin ("kdeconnect_share");
             send_item.sensitive = reachable;
+            ring_item.visible = trusted && device.has_plugin ("kdeconnect_findmyphone");
+            ring_item.sensitive = reachable;
+            
             separator.visible = browse_item.visible || send_item.visible;
+            separator2.visible = ring_item.visible;
         }
     }
 }
