@@ -7,6 +7,7 @@ namespace KDEConnectIndicator {
     public class FirstTimeWizard : Gtk.Window {
         private KDEConnectManager manager;
         private SList<Device> list;
+        
         public FirstTimeWizard (KDEConnectManager manager) {
             this.default_width = 600;
             this.default_height = 500;
@@ -28,6 +29,7 @@ namespace KDEConnectIndicator {
             this.show_all ();
 
             list = new SList<Device> ();
+            
             manager.device_added.connect ((id)=>{
                 if (stack.visible_child_name == "connect"){
                     stack.visible_child_name = "pair";
@@ -38,7 +40,8 @@ namespace KDEConnectIndicator {
                     });
                     list.append (d);
                 }
-            }); }
+            }); 
+        }
 
         private Gtk.Widget create_connect_page () {
             return create_box (
@@ -53,7 +56,6 @@ namespace KDEConnectIndicator {
                     "Google Play</a>",
 
                     Constants.DATADIR+"/icons/hicolor/256x256/apps/kdeconnect.png");
-
         }
 
         private Gtk.Widget create_pair_page () {
@@ -78,6 +80,7 @@ namespace KDEConnectIndicator {
 
                     Constants.PKGDATADIR+"/startup.jpg");
         }
+        
         private Gtk.Box create_box (Gtk.Orientation orientation, string markup, string image_path) {
             var box = new Gtk.Box (orientation, 10);
 

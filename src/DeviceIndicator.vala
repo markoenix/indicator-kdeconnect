@@ -65,6 +65,7 @@ namespace KDEConnectIndicator {
             browse_item.activate.connect (() => {
                 device.browse ();
             });
+            
             send_item.activate.connect (() => {
                 Gtk.FileChooserDialog chooser = new Gtk.FileChooserDialog (
                 "Select file", null, Gtk.FileChooserAction.OPEN,
@@ -82,12 +83,15 @@ namespace KDEConnectIndicator {
                 }
                 chooser.close ();
             });
+            
             ring_item.activate.connect (() => {
 				device.find_my_phone ();
 			});
+			
             pair_item.activate.connect (() => {
                 device.request_pair ();
             });
+            
             unpair_item.activate.connect (() => {
                 device.unpair ();
             });
@@ -95,22 +99,27 @@ namespace KDEConnectIndicator {
             device.charge_changed.connect ((charge) => {
                 update_battery_item ();
             });
+            
             device.state_changed.connect ((charge) => {
                 update_battery_item ();
             });
+            
             device.pairing_error.connect (()=>{
                 update_pair_item ();
                 update_status_item ();
             });
+            
             device.plugins_changed.connect (()=>{
                 update_battery_item ();
                 update_pair_item ();
             });
+            
             device.reachable_status_changed.connect (()=>{
                 update_visibility ();
                 update_pair_item ();
                 update_status_item ();
             });
+            
             device.trusted_changed.connect ((trusted)=>{
                 if (!trusted)
                     update_visibility ();
@@ -120,6 +129,7 @@ namespace KDEConnectIndicator {
                 update_battery_item ();
             });
         }
+        
         public void device_visibility_changed (bool visible) {
             message ("%s visibilitiy changed to %s", device.name, visible?"true":"false");
             update_visibility ();
@@ -135,9 +145,11 @@ namespace KDEConnectIndicator {
             else
                 indicator.set_status (AppIndicator.IndicatorStatus.ACTIVE);
         }
+        
         private void update_name_item () {
             name_item.label = device.name;
         }
+        
         private void update_battery_item () {
             battery_item.visible = device.is_trusted
                 && device.is_reachable
@@ -146,6 +158,7 @@ namespace KDEConnectIndicator {
             if (device.is_charging ())
                 this.battery_item.label += " (charging)";
         }
+        
         private void update_status_item () {
 
             if (device.is_reachable) {
@@ -161,6 +174,7 @@ namespace KDEConnectIndicator {
                     // is this even posible?
             }
         }
+        
         private void update_pair_item () {
             var trusted = device.is_trusted;
             var reachable = device.is_reachable;

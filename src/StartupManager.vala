@@ -9,14 +9,17 @@ namespace KDEConnectIndicator {
         private string prefix_dir;
         private string autostart_folder;
         private File startup_file;
+        
         public StartupManager () {
             autostart_folder = Environment.get_user_config_dir ()+"/autostart/";
             startup_file = File.new_for_path (autostart_folder+desktop_file);
             prefix_dir = "/usr/share"; // TODO: get prefix dir from CMAKE
         }
+        
         public bool is_installed () {
             return startup_file.query_exists ();
         }
+        
         public void install () {
             var desktop_file = File.new_for_path (
                     Constants.DATADIR +

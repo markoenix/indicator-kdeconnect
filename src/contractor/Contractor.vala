@@ -7,6 +7,7 @@ namespace KDEConnectIndicator {
     public class DeviceDialog : Gtk.Dialog {
         private Gtk.TreeView tv;
         private Gtk.Widget select_button;
+        
         public DeviceDialog (string filename) {
             this.title = "Send to";
             this.border_width = 10;
@@ -34,14 +35,15 @@ namespace KDEConnectIndicator {
                 this.response (Gtk.ResponseType.OK);
             });
         }
+        
         public void set_list (Gtk.ListStore l) {
             tv.set_model (l);
 
             // select first item
             var path = new Gtk.TreePath.from_indices (0, -1);
             tv.set_cursor (path, null, false);
-
         }
+        
         public int get_selected () {
             Gtk.TreePath path;
             Gtk.TreeViewColumn column;
@@ -50,11 +52,13 @@ namespace KDEConnectIndicator {
                 return -1;
             return int.parse (path.to_string ());
         }
+        
         private void on_response (Gtk.Dialog source, int id) {
             if (id==Gtk.ResponseType.CANCEL)
                 destroy ();
         }
     }
+    
     int main (string[] args) {
         Gtk.init (ref args);
 

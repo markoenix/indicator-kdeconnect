@@ -35,6 +35,7 @@ namespace KDEConnectIndicator {
                 return _name;
             }
         }
+        
         public string icon_name {
             get {
                 Variant return_variant=device_proxy.get_cached_property ("statusIconName");
@@ -43,6 +44,7 @@ namespace KDEConnectIndicator {
                 return "smartphone"; // default to smartphone as KDC 0.5 doens't have icon name props
             }
         }
+        
         public int battery {
             get {
                 if (!has_plugin ("kdeconnect_battery"))
@@ -192,6 +194,7 @@ namespace KDEConnectIndicator {
                 conn.signal_unsubscribe (i);
             }
         }
+        
         public void send_file (string url) {
             try {
                 if (!has_plugin ("kdeconnect_share"))
@@ -211,6 +214,7 @@ namespace KDEConnectIndicator {
                 message (e.message);
             }
         }
+        
         public bool is_trusted {
 			get {
 				try {
@@ -236,6 +240,7 @@ namespace KDEConnectIndicator {
             return false; // default to false if something went wrong 
 			}
         }
+        
         public bool is_reachable {
             get {
 				try {
@@ -262,6 +267,7 @@ namespace KDEConnectIndicator {
             return false; // default to false if something went wrong    
             }
         }
+        
         public bool is_charging () {
             if (!has_plugin ("kdeconnect_battery"))
                 return false;
@@ -285,6 +291,7 @@ namespace KDEConnectIndicator {
             }
             return false;
         }
+        
         public bool has_plugin (string plugin) {
             try {
                 var return_variant = conn.call_sync (
@@ -306,6 +313,7 @@ namespace KDEConnectIndicator {
             }
             return false;
         }
+        
         public void request_pair () {
             try {
                 conn.call_sync (
@@ -323,6 +331,7 @@ namespace KDEConnectIndicator {
                 message (e.message);
             }
         }
+        
         public void unpair () {
             try {
                 conn.call_sync (
@@ -340,6 +349,7 @@ namespace KDEConnectIndicator {
                 message (e.message);
             }
         }
+        
         public void browse () {
             if (!has_plugin ("kdeconnect_sftp"))
                 return;
@@ -353,6 +363,7 @@ namespace KDEConnectIndicator {
                 });
             }
         }
+        
         public bool is_mounted () {
             try {
                 var return_variant = conn.call_sync (
@@ -374,6 +385,7 @@ namespace KDEConnectIndicator {
             }
             return false;
         }
+        
         private string _mount_point;
         private string mount_point {
             get {
@@ -398,6 +410,7 @@ namespace KDEConnectIndicator {
                 return ""; //TODO : maybe return /home/vikoadi/.kde/share/apps/kdeconnect/
             }
         }
+        
         public void mount () {
             try {
                 if (!has_plugin ("kdeconnect_sftp"))
@@ -417,6 +430,7 @@ namespace KDEConnectIndicator {
                 message (e.message);
             }
         }
+        
         public void unmount () {
             try {
                 if (!has_plugin ("kdeconnect_sftp"))
@@ -436,6 +450,7 @@ namespace KDEConnectIndicator {
                 message (e.message);
             }
         }
+        
         public void int32_signal_cb (DBusConnection con, string sender, string object,
                 string interface, string signal_name, Variant parameter) {
             int param = (int)parameter.get_child_value (0).get_int32 ();
@@ -445,6 +460,7 @@ namespace KDEConnectIndicator {
                     break;
             }
         }
+        
         public void void_signal_cb (DBusConnection con, string sender, string object,
                 string interface, string signal_name, Variant parameter) {
             switch (signal_name) {
@@ -462,6 +478,7 @@ namespace KDEConnectIndicator {
                     break;
             }
         }
+        
         public void boolean_signal_cb (DBusConnection con, string sender, string object,
                 string interface, string signal_name, Variant parameter) {
             bool param = parameter.get_child_value (0).get_boolean ();
@@ -474,6 +491,7 @@ namespace KDEConnectIndicator {
                     break;
             }
         }
+        
         public void string_signal_cb (DBusConnection con, string sender, string object,
                 string interface, string signal_name, Variant parameter) {
             string param = parameter.get_child_value (0).get_string ();
@@ -483,6 +501,7 @@ namespace KDEConnectIndicator {
                     break;
             }
         }
+        
         private bool open_file (string path) {
             var file = File.new_for_path (path);
             try {
@@ -495,6 +514,7 @@ namespace KDEConnectIndicator {
             }
             return false;
         }
+        
         public void find_my_phone (){
 			try{
 				var return_variant = conn.call_sync (
@@ -513,6 +533,7 @@ namespace KDEConnectIndicator {
 				message (e.message);
 			}
 		}
+		
         public signal void charge_changed (int charge);
         public signal void pairing_error (string error);
         public signal void trusted_changed (bool trusted);

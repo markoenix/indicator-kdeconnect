@@ -111,7 +111,6 @@ namespace KDEConnectIndicator {
             return (int) device_list.length ();
         }
 
-
         private void show_no_service_daemon () {
             var msg = new Gtk.MessageDialog (
                     null, Gtk.DialogFlags.MODAL,
@@ -127,6 +126,7 @@ namespace KDEConnectIndicator {
             msg.show_all ();
             msg.run ();
         }
+        
         private void run_kdeconnect_binary () {
             //TODO: shouldn't hardcode the path
             File f = File.new_for_path ("/usr/lib/libexec/kdeconnectd");
@@ -138,6 +138,7 @@ namespace KDEConnectIndicator {
                 }
             }
         }
+        
         private bool is_daemon_running () {
             try {
                 var device_proxy = new DBusProxy.sync (
@@ -156,6 +157,7 @@ namespace KDEConnectIndicator {
 
             return false;
         }
+        
         private void populate_devices () {
             string[] devs = devices ();
 
@@ -168,10 +170,12 @@ namespace KDEConnectIndicator {
             if (device_list.length () == 0)
                 message ("no trusted device found, open KDE Connect in your phone to start pairing");
         }
+        
         private void add_device (string path) {
             var d = new DeviceIndicator (path);
             device_list.append (d);
         }
+        
         private void remove_device (string path) {
             foreach (DeviceIndicator d in device_list) {
                 if (d.path == path) {
@@ -180,6 +184,7 @@ namespace KDEConnectIndicator {
                 }
             }
         }
+        
         private void distribute_visibility_changes (string id, bool visible) {
             foreach (DeviceIndicator d in device_list) {
                 if (d.path.has_suffix (id)) {
@@ -189,6 +194,7 @@ namespace KDEConnectIndicator {
                 message (d.path);
             }
         }
+        
         private string[] devices (bool only_reachable = false) {
             string[] list = {};
             try {
@@ -218,6 +224,7 @@ namespace KDEConnectIndicator {
             add_device (path);
             device_added (path);
         }
+
         private void device_removed_cb (DBusConnection con, string sender, string object,
                 string interface, string signal_name, Variant parameter) {
             string param = parameter.get_child_value (0).get_string ();
@@ -225,6 +232,7 @@ namespace KDEConnectIndicator {
             remove_device (path);
             device_added (path);
         }
+
         private void device_visibility_changed_cb (DBusConnection con, string sender, string object,
                 string interface, string signal_name, Variant parameter) {
             string param = parameter.get_child_value (0).get_string ();
