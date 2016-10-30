@@ -68,7 +68,7 @@ namespace KDEConnectIndicator {
             
             send_item.activate.connect (() => {
                 Gtk.FileChooserDialog chooser = new Gtk.FileChooserDialog (
-                "Select file", null, Gtk.FileChooserAction.OPEN,
+                "Select file(s)", null, Gtk.FileChooserAction.OPEN,
                 "Cancel", Gtk.ResponseType.CANCEL,
                 "Select", Gtk.ResponseType.OK
                 );
@@ -170,7 +170,7 @@ namespace KDEConnectIndicator {
                 if (device.is_trusted)
                     this.status_item.label = "Device Trusted but not Reachable";
                 else
-					this.status_item.label = "Device Not Reachable and Not Trusted";
+		    this.status_item.label = "Device Not Reachable and Not Trusted";
                     // is this even posible?
             }
         }
