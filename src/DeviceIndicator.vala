@@ -170,7 +170,7 @@ namespace KDEConnectIndicator {
                 if (device.is_trusted)
                     this.status_item.label = "Device Trusted but not Reachable";
                 else
-		    this.status_item.label = "Device Not Reachable and Not Trusted";
+		            this.status_item.label = "Device Not Reachable and Not Trusted";
                     // is this even posible?
             }
         }

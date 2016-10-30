@@ -517,17 +517,17 @@ namespace KDEConnectIndicator {
         
         public void find_my_phone (){
 			try{
-				var return_variant = conn.call_sync (
-                        "org.kde.kdeconnect",
-                        path+"/findmyphone",
-                        "org.kde.kdeconnect.device.findmyphone",
-                        "ring",
-                        null,
-                        null,
-                        DBusCallFlags.NONE,
-                        -1,
-                        null
-                        );
+			    conn.call_sync (
+                    "org.kde.kdeconnect",
+                     path+"/findmyphone",
+                     "org.kde.kdeconnect.device.findmyphone",
+                     "ring",
+                     null,
+                     null,
+                     DBusCallFlags.NONE,
+                     -1,
+                     null
+                     );
 			}
 			catch (Error e) {
 				message (e.message);
