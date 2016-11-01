@@ -10,6 +10,7 @@ namespace KDEConnectIndicator {
         private string path;
         private SList<uint> subs_identifier;
         private string _name;
+        private string _icon;
 
         public string name {
             get {
@@ -28,7 +29,7 @@ namespace KDEConnectIndicator {
                     Variant s=return_variant.get_child_value (0);
                     Variant v = s.get_variant ();
                     string d= v.get_string ();
-                    _name ="%s".printf( Uri.unescape_string (d, null));
+                    _name ="%s".printf(Uri.unescape_string (d, null));
                 } catch (Error e) {
                     message (e.message);
                 }
@@ -37,12 +38,30 @@ namespace KDEConnectIndicator {
         }
         
         public string icon_name {
-            get {
-                Variant return_variant=device_proxy.get_cached_property ("statusIconName");
-                if (return_variant!=null && return_variant.get_string () != "")
-                    return return_variant.get_string ();
-                return "smartphone"; // default to smartphone as KDC 0.5 doens't have icon name props
-            }
+			get {
+				try {
+					var return_variant = conn.call_sync (
+							"org.kde.kdeconnect",
+							path,
+							"org.freedesktop.DBus.Properties",
+							"Get",
+							new Variant("(ss)","org.kde.kdeconnect.device","statusIconName"),
+							null,
+							DBusCallFlags.NONE,
+							-1,
+							null
+							);
+
+                    Variant s = return_variant.get_child_value (0);
+                    Variant v = s.get_variant ();
+                    string d = v.get_string ();
+                    _icon = "%s".printf(Uri.unescape_string (d, null));
+				}
+				catch (Error e) {
+					message (e.message);
+				}
+				return _icon;
+			}
         }
         
         public int battery {

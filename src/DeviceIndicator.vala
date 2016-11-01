@@ -118,6 +118,7 @@ namespace KDEConnectIndicator {
                 update_visibility ();
                 update_pair_item ();
                 update_status_item ();
+                update_icon_item ();
             });
             
             device.trusted_changed.connect ((trusted)=>{
@@ -127,6 +128,7 @@ namespace KDEConnectIndicator {
                 update_pair_item ();
                 update_status_item ();
                 update_battery_item ();
+                update_icon_item ();
             });
         }
         
@@ -137,6 +139,7 @@ namespace KDEConnectIndicator {
             update_battery_item ();
             update_status_item ();
             update_pair_item ();
+            update_icon_item ();
         }
 
         private void update_visibility () {
@@ -149,6 +152,10 @@ namespace KDEConnectIndicator {
         private void update_name_item () {
             name_item.label = device.name;
         }
+
+        private void update_icon_item(){
+			indicator.set_icon_full (device.icon_name, "");
+		}
         
         private void update_battery_item () {
             battery_item.visible = device.is_trusted
