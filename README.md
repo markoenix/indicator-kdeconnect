@@ -26,4 +26,4 @@ Usage Suggestions
  2. for Nautilus or Thunar user, create a Nautilus-actions or Thunar-actions entry with  `kdeconnect-send %f`as  command
 
 Please report issues and suggestion here:
-https://github.com/vikoadi/indicator-kdeconnect
+https://github.com/Bajoja/indicator-kdeconnect
