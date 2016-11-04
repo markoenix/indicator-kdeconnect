@@ -1,17 +1,20 @@
 KDE Connect Indicator
 =====================
 
-This Indicator is written to make [KDE Connect](https://community.kde.org/KDEConnect) usable in Ubuntu and Pantheon DE.
+This Indicator is written to make [KDE Connect](https://community.kde.org/KDEConnect) usable in Ubuntu and Pantheon DE, but it can work on another distros that
+supporting Gtk 3 and libindicator3.
 It's started as an [AppIndicator](https://unity.ubuntu.com/projects/appindicators/) but later i add a binary file to send file and url easily through KDE Connect.
 
 Features: 
 -------
  1. Indicator in the panel which show your devices, with its name, status, and battery.
- 2. menu to request for pairing and unpairing
- 3. menu to start sftp and open file browser
- 4. a small program, `kdeconnect-send` to help sending file and choosing device
- 5. a .contractor file, so you can send file from any of elementary OS's applications
- 6. menu to ring and find your phone
+ 2. Menu to request for pairing and unpairing.
+ 3. Menu to start sftp and open file browser.
+ 4. Menu to send files.
+ 5. A small program, `kdeconnect-send` to help sending file and choosing device.
+ 6. A .contractor file, so you can send file from any of elementary OS's applications.
+ 7. Menu to ring and find your phone.
+ 8. From the device name menu item you can open kdeconnect settings. 
 
 Limitation
 -------

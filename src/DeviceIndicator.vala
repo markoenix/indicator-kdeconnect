@@ -61,6 +61,14 @@ namespace KDEConnectIndicator {
             update_pair_item ();
 
             indicator.set_menu (menu);
+            
+            name_item.activate.connect (() => {
+				try {
+                    Process.spawn_command_line_sync ("kcmshell5 kcm_kdeconnect");
+                } catch (Error e) {
+                    message (e.message);
+                }
+			});
 
             browse_item.activate.connect (() => {
                 device.browse ();
