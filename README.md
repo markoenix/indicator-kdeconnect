@@ -13,8 +13,8 @@ Features:
  5. A small program, `kdeconnect-send` to help sending file and choosing device.
  6. A .contractor file, so you can send file from any of elementary OS's applications.
  7. Menu to ring and find your phone.
- 8. From the device status menu you can get encryption information.
- 9. From the device name menu item you can open kdeconnect settings.
+ 8. From the device name menu you can get encryption information.
+ 9. From the device status menu item you can open kdeconnect settings.
 
 Limitation
 -------
