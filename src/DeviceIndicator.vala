@@ -63,6 +63,16 @@ namespace KDEConnectIndicator {
             indicator.set_menu (menu);
             
             name_item.activate.connect (() => {
+				var msg = new Gtk.MessageDialog (null, Gtk.DialogFlags.MODAL,
+                    Gtk.MessageType.INFO, Gtk.ButtonsType.CLOSE, device.encryption_info);
+                
+                //msg.destroy.connect (Gtk.main_quit);
+				msg.show ();
+				msg.run ();
+				msg.destroy();
+			});
+			
+			status_item.activate.connect(() => {
 				try {
                     Process.spawn_command_line_sync ("kcmshell5 kcm_kdeconnect");
                 } catch (Error e) {

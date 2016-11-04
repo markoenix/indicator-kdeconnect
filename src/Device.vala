@@ -10,7 +10,6 @@ namespace KDEConnectIndicator {
         private string path;
         private SList<uint> subs_identifier;
         private string _name;
-        private string _icon;
 
         public string name {
             get {
@@ -37,6 +36,7 @@ namespace KDEConnectIndicator {
             }
         }
         
+        private string _icon;
         public string icon_name {
 			get {
 				try {
@@ -551,6 +551,31 @@ namespace KDEConnectIndicator {
 			catch (Error e) {
 				message (e.message);
 			}
+		}
+		
+		private string _encryption_info;
+		public string encryption_info {
+			get {
+                try {
+                    var return_variant = conn.call_sync (
+                            "org.kde.kdeconnect",
+                            path,
+                            "org.kde.kdeconnect.device",
+                            "encryptionInfo",
+                            null,
+                            null,
+                            DBusCallFlags.NONE,
+                            -1,
+                            null
+                            );
+                    Variant i = return_variant.get_child_value (0);
+                    _encryption_info = i.dup_string ();
+                    return _encryption_info;
+                } catch (Error e) {
+                    message (e.message);
+                }
+                return "Encryption information not found";
+            }
 		}
 		
         public signal void charge_changed (int charge);
