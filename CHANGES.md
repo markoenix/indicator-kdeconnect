@@ -2,6 +2,7 @@
  * Bugs Fix
  * Multiple files send from the indicator
  * Menu to ring and find your phone
+ * Icons can low and higth color case device is paired or unpaired
  * From the device name menu you can get encryption information
  * From the device status menu item you can open kdeconnect settings
  
