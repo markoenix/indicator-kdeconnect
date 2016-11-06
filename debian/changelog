@@ -1,3 +1,16 @@
+indicator-kdeconnect (0.2) beta; urgency=low
+
+  * Bug Fixes.
+  
+  * Features:
+	Multiple files send from the indicator
+	Menu to ring and find your phone
+	Icons can low and higth color case device is paired or unpaired
+	From the device name menu you can get encryption information
+	From the device status menu item you can open kdeconnect settings.
+  
+ -- Bajoja <steevenlopes@outlook.com>  Sun,  06 Nov 2016 21:00:12 -0000
+ 
 indicator-kdeconnect (0.1) precise; urgency=low
 
   * Initial Release.

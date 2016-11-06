@@ -17,12 +17,12 @@
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 Name:           indicator-kdeconnect
-Version:        0.1
+Version:        0.2
 Release:        0%{?dist}
 Summary:        App Indicator for KDE Connect
 Group:          Applications/System
 License:        LGPL-2.1+
-URL:            https://github.com/vikoadi/indicator-kdeconnect
+URL:            https://github.com/Bajoja/indicator-kdeconnect
 
 # For this spec file to work, the sources must be located in a directory
 # named indicator-kdeconnect-1.2.2 (with "1.2.2" being the version
