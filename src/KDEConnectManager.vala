@@ -128,8 +128,14 @@ namespace KDEConnectIndicator {
         }
         
         private void run_kdeconnect_binary () {
-            //TODO: shouldn't hardcode the path
-            File f = File.new_for_path ("/usr/lib/libexec/kdeconnectd");
+            //TODO: path depends from operating system, for now this will be the way to find it
+            
+            string std_out;
+								
+		    Process.spawn_sync (null, new string[]{"grep", "Exec", "/etc/xdg/autostart/kdeconnectd.desktop"}, 
+						    	null, SpawnFlags.SEARCH_PATH, null, out std_out, null, null); 
+			
+            File f = File.new_for_path (std_out.substring (5));
             if (f.query_exists ()) {
                 try {
                     Process.spawn_command_line_sync (f.get_path ());
