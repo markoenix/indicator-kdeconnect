@@ -63,11 +63,10 @@ namespace KDEConnectIndicator {
             indicator.set_menu (menu);
             
             name_item.activate.connect (() => {
-				var msg = new Gtk.MessageDialog (null, Gtk.DialogFlags.MODAL,
-                    Gtk.MessageType.INFO, Gtk.ButtonsType.CLOSE, device.encryption_info);
-                
-                //msg.destroy.connect (Gtk.main_quit);
-				msg.show ();
+				var msg = new Gtk.MessageDialog.with_markup (null, Gtk.DialogFlags.MODAL,
+                    Gtk.MessageType.INFO, Gtk.ButtonsType.OK, "");
+                    
+                msg.set_markup (device.encryption_info);
 				msg.run ();
 				msg.destroy();
 			});
@@ -179,23 +178,23 @@ namespace KDEConnectIndicator {
             battery_item.visible = device.is_trusted
                 && device.is_reachable
                 && device.has_plugin ("kdeconnect_battery");
-            this.battery_item.label = "Battery : %d%%".printf(device.battery);
+            battery_item.label = "Battery : %d%%".printf(device.battery);
             if (device.is_charging ())
-                this.battery_item.label += " (charging)";
+                battery_item.label += " (charging)";
         }
         
         private void update_status_item () {
 
             if (device.is_reachable) {
                 if (device.is_trusted)
-                    this.status_item.label = "Device Reachable and Trusted";
+                    status_item.label = "Device Reachable and Trusted";
                 else
-                    this.status_item.label = "Device Reachable but Not Trusted";
+                    status_item.label = "Device Reachable but Not Trusted";
             } else {
                 if (device.is_trusted)
-                    this.status_item.label = "Device Trusted but not Reachable";
+                    status_item.label = "Device Trusted but not Reachable";
                 else
-		            this.status_item.label = "Device Not Reachable and Not Trusted";
+		            status_item.label = "Device Not Reachable and Not Trusted";
                     // is this even posible?
             }
         }

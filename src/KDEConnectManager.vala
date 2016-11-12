@@ -131,9 +131,13 @@ namespace KDEConnectIndicator {
             //TODO: path depends from operating system, for now this will be the way to find it
             
             string std_out;
-								
+							
+			try{	
 		    Process.spawn_sync (null, new string[]{"grep", "Exec", "/etc/xdg/autostart/kdeconnectd.desktop"}, 
 						    	null, SpawnFlags.SEARCH_PATH, null, out std_out, null, null); 
+			} catch (Error e){
+				message (e.message);
+			}
 			
             File f = File.new_for_path (std_out.substring (5));
             if (f.query_exists ()) {

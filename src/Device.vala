@@ -9,8 +9,8 @@ namespace KDEConnectIndicator {
         private DBusProxy device_proxy;
         private string path;
         private SList<uint> subs_identifier;
+        
         private string _name;
-
         public string name {
             get {
                 try {
@@ -25,10 +25,10 @@ namespace KDEConnectIndicator {
                             -1,
                             null
                             );
-                    Variant s=return_variant.get_child_value (0);
+                    Variant s = return_variant.get_child_value (0);
                     Variant v = s.get_variant ();
-                    string d= v.get_string ();
-                    _name ="%s".printf(Uri.unescape_string (d, null));
+                    string d = v.get_string ();
+                    _name = "%s".printf(Uri.unescape_string (d, null));
                 } catch (Error e) {
                     message (e.message);
                 }
@@ -568,13 +568,13 @@ namespace KDEConnectIndicator {
                             -1,
                             null
                             );
+                    
                     Variant i = return_variant.get_child_value (0);
-                    _encryption_info = i.dup_string ();
-                    return _encryption_info;
+                    return _encryption_info = i.dup_string ();
                 } catch (Error e) {
                     message (e.message);
                 }
-                return "Encryption information not found";
+                return _encryption_info = "Encryption information not found";
             }
 		}
 		
