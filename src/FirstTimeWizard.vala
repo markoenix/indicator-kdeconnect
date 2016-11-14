@@ -74,8 +74,7 @@ namespace KDEConnectIndicator {
                     Gtk.Orientation.VERTICAL,
 
                     "<b>Great! your device is all set</b>\n\n"+
-                    "Finally you can enable KDEConnect Indicator "+
-                    "as startup application from your Autostart setting.\n\n"+
+                    "Finally you can enable or disable modules on KDE Connect Setting"+
                     "Enjoy!",
 
                     Constants.PKGDATADIR+"/startup.jpg");
