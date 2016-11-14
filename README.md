@@ -23,18 +23,18 @@ Currently this is have some limitation:
 
 Installation
 -------
-- Arch Linux\n
-There is a package available in the AUR (https://aur.archlinux.org/packages/indicator-kdeconnect-git)
+- Arch Linux
+ There is a package available in the AUR (https://aur.archlinux.org/packages/indicator-kdeconnect-git)
 
-- Ubuntu\n
-Ubuntu users can use this ppa:
+- Ubuntu
+ Ubuntu users can use this ppa:
 ```
 sudo add-apt-repository ppa:varlesh-l/indicator-kdeconnect
 sudo apt update
 sudo apt install kdeconnect indicator-kdeconnect
 ```
-- From the Source\n
-check the INSTALL file
+- From the Source
+ Check the INSTALL file
 
 Usage Suggestions
 -------
