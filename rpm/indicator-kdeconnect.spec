@@ -17,7 +17,7 @@
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 Name:           indicator-kdeconnect
-Version:        0.2
+Version:        0.3
 Release:        0%{?dist}
 Summary:        App Indicator for KDE Connect
 Group:          Applications/System
@@ -51,7 +51,7 @@ Requires:       kdeconnect-kde
 %endif
 
 %description
-Indicator to make KDE Connect usable in desktops such as Ubuntu Unity and Pantheon.
+Indicator to make KDE Connect usable in desktops without KDE.
 A small program, kdeconnect-send, to help sending files from PC to Android is included.
 
 %prep

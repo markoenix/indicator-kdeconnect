@@ -1,8 +1,8 @@
 KDE Connect Indicator
 =====================
 
-This Indicator is written to make [KDE Connect](https://community.kde.org/KDEConnect) usable in Ubuntu and Pantheon DE, but it can work on another distros that supporting Gtk 3 and libindicator3.
-It's started as an [AppIndicator](https://unity.ubuntu.com/projects/appindicators/) but later i add a binary file to send file and url easily through KDE Connect.
+This Indicator is written to make [KDE Connect](https://community.kde.org/KDEConnect) usable in desktops without KDE.
+It's started as an [AppIndicator](https://unity.ubuntu.com/projects/appindicators/), but you can send files and url easily through KDE Connect with kdeconnect-send.
 
 Features: 
 -------

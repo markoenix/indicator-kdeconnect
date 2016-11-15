@@ -10,7 +10,7 @@ set (DATADIR "${CMAKE_INSTALL_PREFIX}/share")
 set (PKGDATADIR "${DATADIR}/indicator-kdeconnect")
 set (RELEASE_NAME "beta")
 set (VERSION_INFO "Indicator for KDE Connect daemon")
-set (VERSION "0.2")
+set (VERSION "0.3")
 
 set (CONSTANTS_FILE ${CMAKE_CURRENT_SOURCE_DIR}/src/Constants.vala)
 configure_file (${CMAKE_CURRENT_SOURCE_DIR}/src/Constants.vala.cmake ${CONSTANTS_FILE})

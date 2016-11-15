@@ -1,3 +1,9 @@
+# Version 0.3.0
+ * Bug Fixes.
+ * New default icons
+ * New Icons for ubuntu based desktops.
+ * New Images for First time you wizard.
+
 # Version 0.2.0
  * Bugs Fix
  * Multiple files send from the indicator
