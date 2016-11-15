@@ -1,7 +1,7 @@
 Source: indicator-kdeconnect
 Section: net
 Priority: extra
-Maintainer: Viko Adi Rahmawan <vikoadi@gmail.com>
+Maintainer: Alxey Varfolomeev <varlesh@gmail.com>
 Build-Depends: cmake (>= 2.8),
                debhelper (>= 9.0.0),
                libgtk-3-dev (>=3.6),
@@ -9,11 +9,11 @@ Build-Depends: cmake (>= 2.8),
                pkg-config,
                valac (>=0.20)
 Standards-Version: 3.9.3
-Homepage: https://launchpad.net/arrive
+Homepage: https://github.com/Bajoja/indicator-kdeconnect
 
 Package: indicator-kdeconnect
 Architecture: any
-Depends: ${misc:Depends}, ${shlibs:Depends}, kdeconnect
+Depends: ${misc:Depends}, ${shlibs:Depends}, kdeconnect, ubuntu-mono
 Description: Indicator for KDE Connect
  KDE Connect is tool to integrate the KDE Plasma Workspace with your smartphones and
  similar devices.
