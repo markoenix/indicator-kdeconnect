@@ -51,8 +51,6 @@ vala_precompile(INDICATOR_VALA_C ${INDICATOR_EXEC}
 add_executable(${INDICATOR_EXEC} ${INDICATOR_VALA_C})
 # install the binaries we just made
 install (TARGETS ${INDICATOR_EXEC} RUNTIME DESTINATION bin)
-# install our .desktop file so the Applications menu will see it
-install (FILES ${CMAKE_CURRENT_SOURCE_DIR}/data/files/indicator-kdeconnect.desktop DESTINATION ${DATADIR}/applications/)
 
 # contractor binary
 set (CONTRACTOR_EXEC "kdeconnect-send")
@@ -66,28 +64,5 @@ vala_precompile(VALA_C ${CONTRACTOR_EXEC}
 add_executable(${CONTRACTOR_EXEC} ${VALA_C})
 install (TARGETS ${CONTRACTOR_EXEC} RUNTIME DESTINATION bin)
 
-# install .contract file
-install (FILES ${CMAKE_CURRENT_SOURCE_DIR}/data/files/kdeconnect.contract DESTINATION ${DATADIR}/contractor/)
-
-#install icons
-install (FILES ${CMAKE_CURRENT_SOURCE_DIR}/data/icons/default/smartphone-symbolic.svg DESTINATION ${DATADIR}/icons/hicolor/scalable/devices/)
-install (FILES ${CMAKE_CURRENT_SOURCE_DIR}/data/icons/default/tablet-symbolic.svg DESTINATION ${DATADIR}/icons/hicolor/scalable/devices/)
-install (FILES ${CMAKE_CURRENT_SOURCE_DIR}/data/icons/default/computer-symbolic.svg DESTINATION ${DATADIR}/icons/hicolor/scalable/devices/)
-install (FILES ${CMAKE_CURRENT_SOURCE_DIR}/data/icons/default/laptop-symbolic.svg DESTINATION ${DATADIR}/icons/hicolor/scalable/devices/)
-if(EXISTS ${DATADIR}/icons/ubuntu-mono-dark) 
-install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/data/icons/ubuntu-mono-dark DESTINATION ${DATADIR}/icons)
-endif()
-if(EXISTS ${DATADIR}/icons/ubuntu-mono-light)
-install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/data/icons/ubuntu-mono-light DESTINATION ${DATADIR}/icons)
-endif()
-
-#install FTW image
-install (FILES ${CMAKE_CURRENT_SOURCE_DIR}/data/images/indicator.jpg DESTINATION ${DATADIR}/indicator-kdeconnect/)
-install (FILES ${CMAKE_CURRENT_SOURCE_DIR}/data/images/startup.jpg DESTINATION ${DATADIR}/indicator-kdeconnect/)
-
-install(
-	CODE
-	"execute_process (COMMAND gtk-update-icon-cache -t -f ${CMAKE_INSTALL_PREFIX}/share/icons/hicolor)"
-	CODE
-	"message (STATUS \"Updated icon cache in ${CMAKE_INSTALL_PREFIX}/share/icons/hicolor\")"
-	)
+#install data files
+add_subdirectory(data)
