@@ -28,4 +28,7 @@ compile:
 	make
 	sudo make install
 
+uninstall: 
+	sudo make uninstall
+
 enjoy!
