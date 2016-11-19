@@ -73,7 +73,8 @@ namespace KDEConnectIndicator {
 			
 			status_item.activate.connect(() => {
 				try {
-                    Process.spawn_command_line_sync ("kcmshell5 kcm_kdeconnect");
+                    Process.spawn_async (null, new string[]{"kcmshell5", "kcm_kdeconnect"}, 
+					        	         null, SpawnFlags.SEARCH_PATH, null, null); 
                 } catch (Error e) {
                     message (e.message);
                 }
