@@ -7,13 +7,11 @@ to compile you should have
 on Ubuntu:
 -> sudo apt install libgtk-3-dev
 -> sudo apt install libappindicator3-dev
--> sudo apt install libappindicator-dev
 -> sudo apt install cmake
 -> sudo apt install valac 
 
 on Fedora:
 -> sudo dnf install gtk3-devel
--> sudo dnf install libappindicator-devel
 -> sudo dnf install libappindicator-gtk3-devel
 -> sudo dnf install cmake
 -> sudo dnf install vala-devel
