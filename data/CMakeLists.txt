@@ -1,8 +1,11 @@
 # install our .desktop file so the Applications menu will see it
 install (FILES "desktop/indicator-kdeconnect.desktop" DESTINATION ${DATADIR}/applications/)
 
-# install .contract file
+# install extensions
 install (FILES "extensions/kdeconnect.contract" DESTINATION ${DATADIR}/contractor/)
+install (FILES "extensions/kdeconnect-send-nautilus.py" DESTINATION $ENV{HOME}/.local/share/nautilus-python/extensions/)
+install (FILES "extensions/kdeconnect-send-nemo.py" DESTINATION $ENV{HOME}/.local/share/nemo-python/extensions/)
+install (FILES "extensions/kdeconnect-send-caja.py" DESTINATION $ENV{HOME}/.local/share/caja-python/extensions/)
 
 #install icons
 install (FILES "icons/default/smartphone-symbolic.svg" DESTINATION ${DATADIR}/icons/hicolor/scalable/devices/)
@@ -10,10 +13,10 @@ install (FILES "icons/default/tablet-symbolic.svg" DESTINATION ${DATADIR}/icons/
 install (FILES "icons/default/computer-symbolic.svg" DESTINATION ${DATADIR}/icons/hicolor/scalable/devices/)
 install (FILES "icons/default/laptop-symbolic.svg" DESTINATION ${DATADIR}/icons/hicolor/scalable/devices/)
 if(EXISTS ${DATADIR}/icons/ubuntu-mono-dark) 
-install(DIRECTORY "icons/ubuntu-mono-dark" DESTINATION ${DATADIR}/icons)
+install (DIRECTORY "icons/ubuntu-mono-dark" DESTINATION ${DATADIR}/icons)
 endif()
 if(EXISTS ${DATADIR}/icons/ubuntu-mono-light)
-install(DIRECTORY "icons/ubuntu-mono-light" DESTINATION ${DATADIR}/icons)
+install (DIRECTORY "icons/ubuntu-mono-light" DESTINATION ${DATADIR}/icons)
 endif()
 
 #install FTW image
