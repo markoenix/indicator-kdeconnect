@@ -1,11 +1,11 @@
 # Version 0.3.0
- * Bug Fixes.
+ * Bugs Fixes.
  * New default icons
  * New Icons for ubuntu based desktops.
  * New Images for First time you wizard.
 
 # Version 0.2.0
- * Bugs Fix
+ * Bugs Fixes
  * Multiple files send from the indicator
  * Menu to ring and find your phone
  * Icons can low and higth color case device is paired or unpaired
