@@ -1,8 +1,8 @@
 # install our .desktop file so the Applications menu will see it
-install (FILES "files/indicator-kdeconnect.desktop" DESTINATION ${DATADIR}/applications/)
+install (FILES "desktop/indicator-kdeconnect.desktop" DESTINATION ${DATADIR}/applications/)
 
 # install .contract file
-install (FILES "files/kdeconnect.contract" DESTINATION ${DATADIR}/contractor/)
+install (FILES "extensions/kdeconnect.contract" DESTINATION ${DATADIR}/contractor/)
 
 #install icons
 install (FILES "icons/default/smartphone-symbolic.svg" DESTINATION ${DATADIR}/icons/hicolor/scalable/devices/)
