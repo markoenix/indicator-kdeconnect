@@ -66,7 +66,7 @@ namespace KDEConnectIndicator {
 		                                             Gtk.DialogFlags.MODAL,
                 			                     Gtk.MessageType.INFO,
                 			                     Gtk.ButtonsType.OK,
-                			                     "");           			                     );
+                			                     "");
 
                 msg.set_markup (device.encryption_info);
 		msg.run ();
