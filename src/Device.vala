@@ -38,30 +38,29 @@ namespace KDEConnectIndicator {
         
         private string _icon;
         public string icon_name {
-			get {
-				try {
-					var return_variant = conn.call_sync (
-							"org.kde.kdeconnect",
-							path,
-							"org.freedesktop.DBus.Properties",
-							"Get",
-							new Variant("(ss)","org.kde.kdeconnect.device","statusIconName"),
-							null,
-							DBusCallFlags.NONE,
-							-1,
-							null
-							);
+	    get {
+		try {
+		     var return_variant = conn.call_sync (
+			    "org.kde.kdeconnect",
+			    path,
+			    "org.freedesktop.DBus.Properties",
+			    "Get",
+			    new Variant("(ss)","org.kde.kdeconnect.device","statusIconName"),
+			    null,
+			    DBusCallFlags.NONE,
+			    -1,
+			    null
+	                    );
 
-                    Variant s = return_variant.get_child_value (0);
-                    Variant v = s.get_variant ();
-                    string d = v.get_string ();
-                    _icon = "%s".printf(Uri.unescape_string (d, null));
-				}
-				catch (Error e) {
-					message (e.message);
-				}
-				return _icon;
-			}
+                     Variant s = return_variant.get_child_value (0);
+                     Variant v = s.get_variant ();
+                     string d = v.get_string ();
+                     _icon = "%s".printf(Uri.unescape_string (d, null));
+		} catch (Error e) {
+		     message (e.message);
+		}
+		return _icon;
+	    }
         }
         
         public int battery {
@@ -113,7 +112,6 @@ namespace KDEConnectIndicator {
             } catch (Error e) {
                 message (e.message);
             }
-
 
             uint id;
             subs_identifier = new SList<uint> ();
@@ -235,61 +233,62 @@ namespace KDEConnectIndicator {
         }
         
         public bool is_trusted {
-			get {
-				try {
-					var return_variant = conn.call_sync (
-							"org.kde.kdeconnect",
-							path,
-							"org.kde.kdeconnect.device",
-							"isTrusted",
-							null,
-							null,
-							DBusCallFlags.NONE,
-							-1,
-							null
-							);   
-					
-					Variant i = return_variant.get_child_value (0);
-					if (i!=null)
-						return i.get_boolean ();
-				}
-				catch (Error e) {
-					message (e.message);
-				}
-            return false; // default to false if something went wrong 
-			}
+	    get {
+		try {
+		     var return_variant = conn.call_sync (
+		     		"org.kde.kdeconnect",
+				path,
+				"org.kde.kdeconnect.device",
+				"isTrusted",
+				null,
+				null,
+				DBusCallFlags.NONE,
+				-1,
+				null
+				);
+
+		     Variant i = return_variant.get_child_value (0);
+		     if (i!=null)
+			return i.get_boolean ();
+		} catch (Error e) {
+			message (e.message);
+		}
+            	return false; // default to false if something went wrong
+	    }
         }
-        
+
         public bool is_reachable {
             get {
-				try {
-					Variant return_variant = conn.call_sync (
-							"org.kde.kdeconnect",
-							path,
-							"org.freedesktop.DBus.Properties",
-							"Get",
-							new Variant("(ss)","org.kde.kdeconnect.device","isReachable"),
-							null,
-							DBusCallFlags.NONE,
-							-1,
-							null
-							);
-					Variant rtn_var = return_variant.get_child_value (0);
-					Variant v = rtn_var.get_variant ();
-                if(v!=null)
-					return v.get_boolean ();
-					
-				} 
-				catch (Error e) {
-                message (e.message);
-				}	     
-            return false; // default to false if something went wrong    
+		try {
+		    Variant return_variant = conn.call_sync (
+				"org.kde.kdeconnect",
+				path,
+				"org.freedesktop.DBus.Properties",
+				"Get",
+				new Variant("(ss)","org.kde.kdeconnect.device","isReachable"),
+				null,
+				DBusCallFlags.NONE,
+				-1,
+				null
+				);
+
+		    Variant rtn_var = return_variant.get_child_value (0);
+		    Variant v = rtn_var.get_variant ();
+
+                    if(v!=null)
+			return v.get_boolean ();
+
+		} catch (Error e) {
+                	message (e.message);
+		}
+            	return false; // default to false if something went wrong
             }
         }
         
         public bool is_charging () {
             if (!has_plugin ("kdeconnect_battery"))
                 return false;
+
             try {
                 var return_variant = conn.call_sync (
                         "org.kde.kdeconnect",
@@ -487,7 +486,7 @@ namespace KDEConnectIndicator {
                     plugins_changed ();
                     break;
                 case "reachableStatusChanged" :
-					reachable_status_changed ();
+		    reachable_status_changed ();
                     break;
                 case "mounted" :
                     mounted ();
@@ -535,9 +534,9 @@ namespace KDEConnectIndicator {
         }
         
         public void find_my_phone (){
-			try{
-			    conn.call_sync (
-                    "org.kde.kdeconnect",
+	    try{
+ 		conn.call_sync (
+ 	            "org.kde.kdeconnect",
                      path+"/findmyphone",
                      "org.kde.kdeconnect.device.findmyphone",
                      "ring",
@@ -547,17 +546,16 @@ namespace KDEConnectIndicator {
                      -1,
                      null
                      );
-			}
-			catch (Error e) {
-				message (e.message);
-			}
-		}
-		
-		private string _encryption_info;
-		public string encryption_info {
-			get {
+	    } catch (Error e) {
+		message (e.message);
+	    }
+        }
+
+	private string _encryption_info;
+	public string encryption_info {
+	    get {
                 try {
-                    var return_variant = conn.call_sync (
+                     var return_variant = conn.call_sync (
                             "org.kde.kdeconnect",
                             path,
                             "org.kde.kdeconnect.device",
@@ -569,14 +567,14 @@ namespace KDEConnectIndicator {
                             null
                             );
                     
-                    Variant i = return_variant.get_child_value (0);
-                    return _encryption_info = i.dup_string ();
+                      Variant i = return_variant.get_child_value (0);
+                      return _encryption_info = i.dup_string ();
                 } catch (Error e) {
                     message (e.message);
                 }
                 return _encryption_info = "Encryption information not found";
             }
-		}
+	}
 		
         public signal void charge_changed (int charge);
         public signal void pairing_error (string error);

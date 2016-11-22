@@ -25,10 +25,9 @@ namespace KDEConnectIndicator {
             device = new Device (path);
             menu = new Gtk.Menu ();
 
-            indicator = new AppIndicator.Indicator (
-                    path,
-                    device.icon_name,
-                    AppIndicator.IndicatorCategory.HARDWARE);
+            indicator = new AppIndicator.Indicator (path,
+                    				    device.icon_name,
+                                                    AppIndicator.IndicatorCategory.HARDWARE);
 
             name_item = new Gtk.MenuItem ();
             menu.append (name_item);
@@ -63,33 +62,42 @@ namespace KDEConnectIndicator {
             indicator.set_menu (menu);
             
             name_item.activate.connect (() => {
-				var msg = new Gtk.MessageDialog.with_markup (null, Gtk.DialogFlags.MODAL,
-                    Gtk.MessageType.INFO, Gtk.ButtonsType.OK, "");
-                    
+		var msg = new Gtk.MessageDialog.with_markup (null,
+		                                             Gtk.DialogFlags.MODAL,
+                			                     Gtk.MessageType.INFO,
+                			                     Gtk.ButtonsType.OK,
+                			                     "");           			                     );
+
                 msg.set_markup (device.encryption_info);
-				msg.run ();
-				msg.destroy();
-			});
-			
-			status_item.activate.connect(() => {
-				try {
-                    Process.spawn_async (null, new string[]{"kcmshell5", "kcm_kdeconnect"}, 
-					        	         null, SpawnFlags.SEARCH_PATH, null, null); 
+		msg.run ();
+		msg.destroy();
+	    });
+
+	    status_item.activate.connect(() => {
+		try {
+                    Process.spawn_async (null,
+                    			 new string[]{"kcmshell5", "kcm_kdeconnect"},
+					 null,
+					 SpawnFlags.SEARCH_PATH,
+					 null,
+					 null);
                 } catch (Error e) {
                     message (e.message);
                 }
-			});
+	    });
 
             browse_item.activate.connect (() => {
                 device.browse ();
             });
-            
+
             send_item.activate.connect (() => {
-                Gtk.FileChooserDialog chooser = new Gtk.FileChooserDialog (
-                "Select file(s)", null, Gtk.FileChooserAction.OPEN,
-                "Cancel", Gtk.ResponseType.CANCEL,
-                "Select", Gtk.ResponseType.OK
-                );
+                var chooser = new Gtk.FileChooserDialog ("Select file(s)",
+                					 null,
+                					 Gtk.FileChooserAction.OPEN,
+                					 "Cancel",
+                					 Gtk.ResponseType.CANCEL,
+                					 "Select",
+                					 Gtk.ResponseType.OK);
                 
                 chooser.select_multiple = true;
                 if (chooser.run () == Gtk.ResponseType.OK) {
@@ -103,8 +111,8 @@ namespace KDEConnectIndicator {
             });
             
             ring_item.activate.connect (() => {
-				device.find_my_phone ();
-			});
+		device.find_my_phone ();
+	    });
 			
             pair_item.activate.connect (() => {
                 device.request_pair ();
@@ -172,8 +180,8 @@ namespace KDEConnectIndicator {
         }
 
         private void update_icon_item(){
-			indicator.set_icon_full (device.icon_name, "");
-		}
+	    indicator.set_icon_full (device.icon_name, "");
+	}
         
         private void update_battery_item () {
             battery_item.visible = device.is_trusted
@@ -195,7 +203,7 @@ namespace KDEConnectIndicator {
                 if (device.is_trusted)
                     status_item.label = "Device Trusted but not Reachable";
                 else
-		            status_item.label = "Device Not Reachable and Not Trusted";
+	            status_item.label = "Device Not Reachable and Not Trusted";
                     // is this even posible?
             }
         }

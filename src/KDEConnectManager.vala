@@ -72,16 +72,16 @@ namespace KDEConnectIndicator {
 
             try {
                 conn.call_sync (
-                        "org.kde.kdeconnect",
-                        "/modules/kdeconnect",
-                        "org.kde.kdeconnect.daemon",
-                        "acquireDiscoveryMode",
-                        new Variant ("(s)", "Indicator-KDEConnect"),
-                        null,
-                        DBusCallFlags.NONE,
-                        -1,
-                        null
-                        );
+                    "org.kde.kdeconnect",
+                    "/modules/kdeconnect",
+                    "org.kde.kdeconnect.daemon",
+                    "acquireDiscoveryMode",
+                    new Variant ("(s)", "Indicator-KDEConnect"),
+                    null,
+                    DBusCallFlags.NONE,
+                    -1,
+                    null
+                    );
             } catch (Error e) {
                 message (e.message);
             }
@@ -89,16 +89,16 @@ namespace KDEConnectIndicator {
         ~KDEConnectManager () {
             try {
                 conn.call_sync (
-                        "org.kde.kdeconnect",
-                        "/modules/kdeconnect",
-                        "org.kde.kdeconnect.daemon",
-                        "releaseDiscoveryMode",
-                        new Variant ("(s)", "Indicator-KDEConnect"),
-                        null,
-                        DBusCallFlags.NONE,
-                        -1,
-                        null
-                        );
+                    "org.kde.kdeconnect",
+                    "/modules/kdeconnect",
+                    "org.kde.kdeconnect.daemon",
+                    "releaseDiscoveryMode",
+                    new Variant ("(s)", "Indicator-KDEConnect"),
+                    null,
+                    DBusCallFlags.NONE,
+                    -1,
+                    null
+                    );
             } catch (Error e) {
                 message (e.message);
             }
@@ -132,12 +132,12 @@ namespace KDEConnectIndicator {
             
             string std_out;
 							
-			try{	
-		    Process.spawn_sync (null, new string[]{"grep", "Exec", "/etc/xdg/autostart/kdeconnectd.desktop"}, 
-						    	null, SpawnFlags.SEARCH_PATH, null, out std_out, null, null); 
-			} catch (Error e){
-				message (e.message);
-			}
+            try{
+		Process.spawn_sync (null, new string[]{"grep", "Exec", "/etc/xdg/autostart/kdeconnectd.desktop"},
+				                    null, SpawnFlags.SEARCH_PATH, null, out std_out, null, null);
+	    } catch (Error e){
+		message (e.message);
+            }
 			
             File f = File.new_for_path (std_out.substring (5));
             if (f.query_exists ()) {
@@ -228,28 +228,28 @@ namespace KDEConnectIndicator {
         }
 
         private void device_added_cb (DBusConnection con, string sender, string object,
-                string interface, string signal_name, Variant parameter) {
-            string param = parameter.get_child_value (0).get_string ();
-            var path = "/modules/kdeconnect/devices/"+param;
-            add_device (path);
-            device_added (path);
+            string interface, string signal_name, Variant parameter) {
+            	string param = parameter.get_child_value (0).get_string ();
+            	var path = "/modules/kdeconnect/devices/"+param;
+            	add_device (path);
+            	device_added (path);
         }
 
         private void device_removed_cb (DBusConnection con, string sender, string object,
-                string interface, string signal_name, Variant parameter) {
-            string param = parameter.get_child_value (0).get_string ();
-            var path = "/modules/kdeconnect/devices/"+param;
-            remove_device (path);
-            device_added (path);
+            string interface, string signal_name, Variant parameter) {
+            	string param = parameter.get_child_value (0).get_string ();
+            	var path = "/modules/kdeconnect/devices/"+param;
+            	remove_device (path);
+            	device_added (path);
         }
 
         private void device_visibility_changed_cb (DBusConnection con, string sender, string object,
-                string interface, string signal_name, Variant parameter) {
-            string param = parameter.get_child_value (0).get_string ();
-            bool v = parameter.get_child_value (1).get_boolean ();
+            string interface, string signal_name, Variant parameter) {
+            	string param = parameter.get_child_value (0).get_string ();
+            	bool v = parameter.get_child_value (1).get_boolean ();
 
-            distribute_visibility_changes (param, v);
-            device_visibility_changed (param, v);
+            	distribute_visibility_changes (param, v);
+            	device_visibility_changed (param, v);
         }
 
         public signal void device_added (string id);
