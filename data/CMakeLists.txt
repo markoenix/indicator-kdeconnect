@@ -3,9 +3,9 @@ install (FILES "desktop/indicator-kdeconnect.desktop" DESTINATION ${DATADIR}/app
 
 # install extensions
 install (FILES "extensions/kdeconnect.contract" DESTINATION ${DATADIR}/contractor/)
-install (FILES "extensions/kdeconnect-send-nautilus.py" DESTINATION $ENV{HOME}/.local/share/nautilus-python/extensions/)
-install (FILES "extensions/kdeconnect-send-nemo.py" DESTINATION $ENV{HOME}/.local/share/nemo-python/extensions/)
-install (FILES "extensions/kdeconnect-send-caja.py" DESTINATION $ENV{HOME}/.local/share/caja-python/extensions/)
+install (FILES "extensions/kdeconnect-send-nautilus.py" DESTINATION ${DATADIR}/nautilus-python/extensions/)
+install (FILES "extensions/kdeconnect-send-nemo.py" DESTINATION ${DATADIR}/nemo-python/extensions/)
+install (FILES "extensions/kdeconnect-send-caja.py" DESTINATION ${DATADIR}/caja-python/extensions/)
 
 #install icons
 install (FILES "icons/default/smartphone-symbolic.svg" DESTINATION ${DATADIR}/icons/hicolor/scalable/devices/)
