@@ -38,7 +38,7 @@ namespace KDEConnectIndicator {
             menu.append (new Gtk.SeparatorMenuItem ());
             browse_item = new Gtk.MenuItem.with_label (_("Browse device"));
             menu.append (browse_item);
-            send_item = new Gtk.MenuItem.with_label (_("Send file"));
+            send_item = new Gtk.MenuItem.with_label (_("Send file(s)"));
             menu.append (send_item);
             separator = new Gtk.SeparatorMenuItem ();
             menu.append (separator);
