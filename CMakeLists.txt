@@ -6,11 +6,16 @@ cmake_minimum_required (VERSION 2.6)
 list (APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake)
 # where we install data directory (if we have any)
 set (DATADIR "${CMAKE_INSTALL_PREFIX}/share")
+set (LOCALEDIR ${CMAKE_INSTALL_PREFIX}/share/locale)
 # what to call that directory where we install data too
 set (PKGDATADIR "${DATADIR}/indicator-kdeconnect")
 set (RELEASE_NAME "beta")
 set (VERSION_INFO "Indicator for KDE Connect daemon")
 set (VERSION "0.3")
+
+# set gettexttranslate
+set (GettextTranslate_GMO_BINARY TRUE)
+set (GettextTranslate_ALL TRUE)
 
 set (CONSTANTS_FILE ${CMAKE_CURRENT_SOURCE_DIR}/src/Constants.vala)
 configure_file (${CMAKE_CURRENT_SOURCE_DIR}/src/Constants.vala.cmake ${CONSTANTS_FILE})
@@ -29,6 +34,8 @@ include(ValaVersion)
 ensure_vala_version("0.20" MINIMUM)
 # files we want to compile
 include(ValaPrecompile)
+# make sure we use GettextTranslate
+include(GettextTranslate)
 
 #indicator 
 set (INDICATOR_EXEC "indicator-kdeconnect")
@@ -48,6 +55,8 @@ vala_precompile(INDICATOR_VALA_C ${INDICATOR_EXEC}
 	       )
 
 # tell cmake what to call the executable we just made
+add_definitions(-DGETTEXT_PACKAGE="${PROJECT_NAME}")
+add_definitions(-DLOCALEDIR="${LOCALEDIR}")
 add_executable(${INDICATOR_EXEC} ${INDICATOR_VALA_C})
 # install the binaries we just made
 install (TARGETS ${INDICATOR_EXEC} RUNTIME DESTINATION bin)
@@ -64,8 +73,11 @@ vala_precompile(VALA_C ${CONTRACTOR_EXEC}
 add_executable(${CONTRACTOR_EXEC} ${VALA_C})
 install (TARGETS ${CONTRACTOR_EXEC} RUNTIME DESTINATION bin)
 
-#install data files
+# install data files
 add_subdirectory(data)
+
+# Translation files
+add_subdirectory(po)
 
 # Uninstall target
 configure_file(

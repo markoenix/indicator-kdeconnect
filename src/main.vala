@@ -3,6 +3,9 @@
  * This software is licensed under the GNU Lesser General Public License
  * (version 2.1 or later).  See the COPYING file in this distribution.
  */
+[CCode(cname="GETTEXT_PACKAGE")] extern const string GETTEXT_PACKAGE;
+[CCode(cname="LOCALEDIR")] extern const string LOCALEDIR;
+
 namespace KDEConnectIndicator {
     public class Application : Gtk.Application {
         private KDEConnectManager manager;
@@ -37,6 +40,11 @@ namespace KDEConnectIndicator {
     }
     
     int main (string[] args) {
+        GLib.Intl.setlocale(GLib.LocaleCategory.ALL, "");
+  	GLib.Intl.bindtextdomain (GETTEXT_PACKAGE, LOCALEDIR);
+  	GLib.Intl.bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
+  	GLib.Intl.textdomain (GETTEXT_PACKAGE);
+
         Application app = new Application ();
         return app.run (args);
     }

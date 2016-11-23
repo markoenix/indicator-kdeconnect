@@ -3,13 +3,16 @@
  * This software is licensed under the GNU Lesser General Public License
  * (version 2.1 or later).  See the COPYING file in this distribution.
  */
+[CCode(cname="GETTEXT_PACKAGE")] extern const string GETTEXT_PACKAGE;
+[CCode(cname="LOCALEDIR")] extern const string LOCALEDIR;
+
 namespace KDEConnectIndicator {
     public class DeviceDialog : Gtk.Dialog {
         private Gtk.TreeView tv;
         private Gtk.Widget select_button;
         
         public DeviceDialog (string filename) {
-            this.title = "Send to";
+            this.title = _("Send to");
             this.border_width = 10;
             set_default_size (500, 400);
 
@@ -21,8 +24,8 @@ namespace KDEConnectIndicator {
             tv.insert_column_with_attributes (-1,"Device",cell,"text",0);
 
             content.pack_start (tv);
-            add_button ("Cancel", Gtk.ResponseType.CANCEL);
-            select_button = add_button ("Send", Gtk.ResponseType.OK);
+            add_button (_("Cancel"), Gtk.ResponseType.CANCEL);
+            select_button = add_button (_("Send"), Gtk.ResponseType.OK);
 
             show_all ();
             this.response.connect (on_response);
@@ -60,7 +63,13 @@ namespace KDEConnectIndicator {
     }
     
     int main (string[] args) {
+      	GLib.Intl.setlocale(GLib.LocaleCategory.ALL, "");
+  	GLib.Intl.bindtextdomain (GETTEXT_PACKAGE, LOCALEDIR);
+  	GLib.Intl.bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
+  	GLib.Intl.textdomain (GETTEXT_PACKAGE);
+
         Gtk.init (ref args);
+
 
         File f = File.new_for_commandline_arg (args[1]);
 
@@ -69,7 +78,7 @@ namespace KDEConnectIndicator {
             message ("file doesnt exist");
             var msd = new Gtk.MessageDialog (null, Gtk.DialogFlags.MODAL,
                     Gtk.MessageType.WARNING, Gtk.ButtonsType.OK,
-                    "File not found");
+                    _("File not found"));
             msd.destroy.connect (Gtk.main_quit);
             msd.show ();
             msd.run ();

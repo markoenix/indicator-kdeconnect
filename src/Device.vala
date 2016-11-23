@@ -572,7 +572,7 @@ namespace KDEConnectIndicator {
                 } catch (Error e) {
                     message (e.message);
                 }
-                return _encryption_info = "Encryption information not found";
+                return _encryption_info = _("Encryption information not found");
             }
 	}
 		

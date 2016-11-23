@@ -36,19 +36,19 @@ namespace KDEConnectIndicator {
             status_item = new Gtk.MenuItem ();
             menu.append (status_item);
             menu.append (new Gtk.SeparatorMenuItem ());
-            browse_item = new Gtk.MenuItem.with_label ("Browse device");
+            browse_item = new Gtk.MenuItem.with_label (_("Browse device"));
             menu.append (browse_item);
-            send_item = new Gtk.MenuItem.with_label ("Send file");
+            send_item = new Gtk.MenuItem.with_label (_("Send file"));
             menu.append (send_item);
             separator = new Gtk.SeparatorMenuItem ();
             menu.append (separator);
-            ring_item = new Gtk.MenuItem.with_label ("Find my phone");
+            ring_item = new Gtk.MenuItem.with_label (_("Find my phone"));
             menu.append (ring_item);
             separator2 = new Gtk.SeparatorMenuItem ();
             menu.append (separator2);
-            pair_item = new Gtk.MenuItem.with_label ("Request pairing");
+            pair_item = new Gtk.MenuItem.with_label (_("Request pairing"));
             menu.append (pair_item);
-            unpair_item = new Gtk.MenuItem.with_label ("Unpair");
+            unpair_item = new Gtk.MenuItem.with_label (_("Unpair"));
             menu.append (unpair_item);
 
             menu.show_all ();
@@ -66,7 +66,7 @@ namespace KDEConnectIndicator {
 		                                             Gtk.DialogFlags.MODAL,
                 			                     Gtk.MessageType.INFO,
                 			                     Gtk.ButtonsType.OK,
-                			                     "");
+                			                     "msg");
 
                 msg.set_markup (device.encryption_info);
 		msg.run ();
@@ -91,12 +91,12 @@ namespace KDEConnectIndicator {
             });
 
             send_item.activate.connect (() => {
-                var chooser = new Gtk.FileChooserDialog ("Select file(s)",
+                var chooser = new Gtk.FileChooserDialog (_("Select file(s)"),
                 					 null,
                 					 Gtk.FileChooserAction.OPEN,
-                					 "Cancel",
+                					 _("Cancel"),
                 					 Gtk.ResponseType.CANCEL,
-                					 "Select",
+                					 _("Select"),
                 					 Gtk.ResponseType.OK);
                 
                 chooser.select_multiple = true;
@@ -187,23 +187,23 @@ namespace KDEConnectIndicator {
             battery_item.visible = device.is_trusted
                 && device.is_reachable
                 && device.has_plugin ("kdeconnect_battery");
-            battery_item.label = "Battery : %d%%".printf(device.battery);
+            battery_item.label = _("Battery : ") + "%d%%".printf(device.battery);
             if (device.is_charging ())
-                battery_item.label += " (charging)";
+                battery_item.label += _(" (charging)");
         }
         
         private void update_status_item () {
 
             if (device.is_reachable) {
                 if (device.is_trusted)
-                    status_item.label = "Device Reachable and Trusted";
+                    status_item.label = _("Device Reachable and Trusted");
                 else
-                    status_item.label = "Device Reachable but Not Trusted";
+                    status_item.label = _("Device Reachable but Not Trusted");
             } else {
                 if (device.is_trusted)
-                    status_item.label = "Device Trusted but not Reachable";
+                    status_item.label = _("Device Trusted but not Reachable");
                 else
-	            status_item.label = "Device Not Reachable and Not Trusted";
+	            status_item.label = _("Device Not Reachable and Not Trusted");
                     // is this even posible?
             }
         }

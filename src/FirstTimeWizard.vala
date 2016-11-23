@@ -47,13 +47,13 @@ namespace KDEConnectIndicator {
             return create_box (
                     Gtk.Orientation.HORIZONTAL,
 
-                    "<b>Are you ready for your first device pairing?</b>\n\n"+
-                    "Now connect your devices using wifi connection.\n"+
-                    "Tethering should work too!\n"+
-                    "If you have Firewall running, please open port 1714-1764 for TCP and UDP\n\n"+
-                    "Launch KDE Connect in your Android which you can download from "+
+                    _("<b>Are you ready for your first device pairing?</b>\n\n")+
+                    _("Now connect your devices using wifi connection.\n")+
+                    _("Tethering should work too!\n")+
+                    _("If you have Firewall running, please open port 1714-1764 for TCP and UDP\n\n")+
+                    _("Launch KDE Connect in your Android which you can download from ")+
                     """<a href="https://play.google.com/store/apps/details?id=org.kde.kdeconnect_tp">"""+
-                    "Google Play</a>",
+                    _("Google Play</a>"),
 
                     Constants.DATADIR+"/icons/hicolor/256x256/apps/kdeconnect.png");
         }
@@ -62,9 +62,9 @@ namespace KDEConnectIndicator {
             return create_box (
                     Gtk.Orientation.VERTICAL,
 
-                    "Everytime there is a new device connected, a new indicator will appear in your panel.\n"+
-                    "There, you can pair and see its status\n\n"+
-                    "<b>Now try to pair your device</b>",
+                    _("Everytime there is a new device connected, a new indicator will appear in your panel.\n")+
+                    _("There, you can pair and see its status\n\n")+
+                    _("<b>Now try to pair your device</b>"),
 
                     Constants.PKGDATADIR+"/indicator.jpg");
         }
@@ -73,10 +73,10 @@ namespace KDEConnectIndicator {
             return create_box (
                     Gtk.Orientation.VERTICAL,
 
-                    "<b>Great! your device is all set</b>\n\n"+
-                    "Now you can enable or disable modules on KDE Connect settings\n"+
-                    "Indicator already added to autostart\n"+
-                    "Enjoy!",
+                    _("<b>Great! your device is all set</b>\n\n")+
+                    _("Now you can enable or disable modules on KDE Connect settings.\n")+
+                    _("Indicator already added to autostart.\n")+
+                    _("Enjoy!"),
 
                     Constants.PKGDATADIR+"/startup.jpg");
         }
