@@ -1,3 +1,14 @@
+indicator-kdeconnect (0.4) precise; urgency=low
+  * New native extension for Nautilus, Caja and Nemo
+
+  * Now Indicator-kdeconnect provide translations
+
+  * Add Portuguese Portugal and Russian Language
+
+  * Provide CMake uninstall process
+
+ -- Bajoja <steevenlopes@outlook.com> Thu, 24 Nov 2016 17:00 -0000
+
 indicator-kdeconnect (0.3) precise; urgency=low
 
   * Bug Fixes.

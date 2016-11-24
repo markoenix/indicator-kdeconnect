@@ -1,8 +1,14 @@
+# Version 0.4.0
+ * New native extension for Nautilus, Caja and Nemo
+ * Now Indicator-kdeconnect provide translations
+ * Add Portuguese Portugal and Russian Language
+ * Provide CMake uninstall process
+
 # Version 0.3.0
- * Bugs Fixes.
+ * Bugs Fixes
  * New default icons
- * New Icons for ubuntu based desktops.
- * New Images for First time you wizard.
+ * New Icons for ubuntu based desktops
+ * New Images for First time you wizard
 
 # Version 0.2.0
  * Bugs Fixes

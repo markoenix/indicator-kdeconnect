@@ -17,7 +17,7 @@
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 Name:           indicator-kdeconnect
-Version:        0.3
+Version:        0.4
 Release:        0%{?dist}
 Summary:        App Indicator for KDE Connect
 Group:          Applications/System
@@ -78,5 +78,33 @@ popd
 %{_datadir}/contractor/kdeconnect.contract
 %{_datadir}/icons/hicolor/*/*/*
 %{_datadir}/%{name}/*
+%{_datadir}/nautilus-python/extensions/
+%{_datadir}/nemo-python/extensions/
+%{_datadir}/caja-python/extensions/
 
 %changelog
+
+* Thu Nov 24 2016 1700 Bajoja <steevenlopes@outlook.com> 0.4
+- New native extension for Nautilus, Caja and Nemo.
+- Now Indicator-kdeconnect provide translations.
+- Add Portuguese Portugal and Russian Language.
+- Provide CMake uninstall process.
+
+* Mon Nov 15 2016 1644 Bajoja <steevenlopes@outlook.com> 0.3
+- Bug Fixes.
+- New default icons.
+- New Icons for ubuntu based desktops.
+- New Images for First time wizard.
+
+* Sun Nov 06 2016 2100 Bajoja <steevenlopes@outlook.com> 0.2
+- Bug Fixes.
+- Features:
+  - Multiple files send from the indicator.
+  - Menu to ring and find your phone.
+  - Icons can low and higth color case device is paired or unpaired.
+  - From the device name menu you can get encryption information.
+  - From the device status menu item you can open kdeconnect settings.
+
+* Thu Aug 20 2012 0323 Bajoja <steevenlopes@outlook.com> 0.1
+- Initial Release.
+
