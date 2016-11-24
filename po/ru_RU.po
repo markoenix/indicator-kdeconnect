@@ -83,8 +83,7 @@ msgstr "<b>Отлично! Ваше устройство настроено<b>\n
 #: src/FirstTimeWizard.vala:77
 msgid "Now you can enable or disable modules on KDE Connect settings.\n"
 msgstr ""
-"Теперь вы можете включить или отключить необходимые модули в настройках "
-"KDE Connect\n"
+"Теперь вы можете включить или отключить необходимые модули в настройках KDE Connect\n"
 
 #: src/FirstTimeWizard.vala:78
 msgid "Indicator already added to autostart.\n"
@@ -136,11 +135,11 @@ msgstr "Выбрать"
 
 #: src/DeviceIndicator.vala:190
 msgid "Battery : "
-msgstr "Батарея:"
+msgstr "Батарея : "
 
 #: src/DeviceIndicator.vala:192
 msgid " (charging)"
-msgstr "(зарядка)"
+msgstr " (зарядка)"
 
 #: src/DeviceIndicator.vala:199
 msgid "Device Reachable and Trusted"
