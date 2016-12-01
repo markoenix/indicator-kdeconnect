@@ -51,4 +51,4 @@ Please report issues and suggestion here:
 https://github.com/Bajoja/indicator-kdeconnect
 
 And help translate this project here:
-https://www.transifex.com/bajoja/indicator-kdeconnect
+https://hosted.weblate.org/projects/indicator-kde-connect/translations/
