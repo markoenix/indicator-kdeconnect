@@ -469,57 +469,6 @@ namespace KDEConnectIndicator {
             }
         }
         
-        public void int32_signal_cb (DBusConnection con, string sender, string object,
-                string interface, string signal_name, Variant parameter) {
-            int param = (int)parameter.get_child_value (0).get_int32 ();
-            switch (signal_name) {
-                case "chargeChanged" :
-                    charge_changed ((int)param);
-                    break;
-            }
-        }
-        
-        public void void_signal_cb (DBusConnection con, string sender, string object,
-                string interface, string signal_name, Variant parameter) {
-            switch (signal_name) {
-                case "pluginsChanged" :
-                    plugins_changed ();
-                    break;
-                case "reachableStatusChanged" :
-		    reachable_status_changed ();
-                    break;
-                case "mounted" :
-                    mounted ();
-                    break;
-                case "unmounted" :
-                    unmounted ();
-                    break;
-            }
-        }
-        
-        public void boolean_signal_cb (DBusConnection con, string sender, string object,
-                string interface, string signal_name, Variant parameter) {
-            bool param = parameter.get_child_value (0).get_boolean ();
-            switch (signal_name) {
-                case "stateChanged" :
-                    state_changed (param);
-                    break;
-                case "trustedChanged" :
-                    trusted_changed (param);
-                    break;
-            }
-        }
-        
-        public void string_signal_cb (DBusConnection con, string sender, string object,
-                string interface, string signal_name, Variant parameter) {
-            string param = parameter.get_child_value (0).get_string ();
-            switch (signal_name) {
-                case "pairingError" :
-                    pairing_error (param);
-                    break;
-            }
-        }
-        
         private bool open_file (string path) {
             var file = File.new_for_path (path);
             try {
@@ -532,7 +481,7 @@ namespace KDEConnectIndicator {
             }
             return false;
         }
-        
+
         public void find_my_phone (){
 	    try{
  		conn.call_sync (
@@ -566,7 +515,7 @@ namespace KDEConnectIndicator {
                             -1,
                             null
                             );
-                    
+
                       Variant i = return_variant.get_child_value (0);
                       return _encryption_info = i.dup_string ();
                 } catch (Error e) {
@@ -575,6 +524,57 @@ namespace KDEConnectIndicator {
                 return _encryption_info = _("Encryption information not found");
             }
 	}
+
+        public void int32_signal_cb (DBusConnection con, string sender, string object,
+                string interface, string signal_name, Variant parameter) {
+            int param = (int)parameter.get_child_value (0).get_int32 ();
+            switch (signal_name) {
+                case "chargeChanged" :
+                    charge_changed ((int)param);
+                    break;
+            }
+        }
+
+        public void void_signal_cb (DBusConnection con, string sender, string object,
+                string interface, string signal_name, Variant parameter) {
+            switch (signal_name) {
+                case "pluginsChanged" :
+                    plugins_changed ();
+                    break;
+                case "reachableStatusChanged" :
+		    reachable_status_changed ();
+                    break;
+                case "mounted" :
+                    mounted ();
+                    break;
+                case "unmounted" :
+                    unmounted ();
+                    break;
+            }
+        }
+
+        public void boolean_signal_cb (DBusConnection con, string sender, string object,
+                string interface, string signal_name, Variant parameter) {
+            bool param = parameter.get_child_value (0).get_boolean ();
+            switch (signal_name) {
+                case "stateChanged" :
+                    state_changed (param);
+                    break;
+                case "trustedChanged" :
+                    trusted_changed (param);
+                    break;
+            }
+        }
+
+        public void string_signal_cb (DBusConnection con, string sender, string object,
+                string interface, string signal_name, Variant parameter) {
+            string param = parameter.get_child_value (0).get_string ();
+            switch (signal_name) {
+                case "pairingError" :
+                    pairing_error (param);
+                    break;
+            }
+        }
 		
         public signal void charge_changed (int charge);
         public signal void pairing_error (string error);

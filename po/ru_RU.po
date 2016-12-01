@@ -97,7 +97,7 @@ msgstr "Наслаждайтесь!"
 msgid "cannot connect to KDE Connect DBus service"
 msgstr "невозможно подключиться к сервису KDE Connect DBus"
 
-#: src/Device.vala:575
+#: src/Device.vala:524
 msgid "Encryption information not found"
 msgstr "Информация о шифровании не найдена"
 
@@ -165,6 +165,6 @@ msgstr "Отавить в"
 msgid "Send"
 msgstr "Отправить"
 
-#: src/contractor/Contractor.vala:81
+#: src/contractor/Contractor.vala:84
 msgid "File not found"
 msgstr "Файл не найден"

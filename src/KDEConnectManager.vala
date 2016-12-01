@@ -112,12 +112,12 @@ namespace KDEConnectIndicator {
         }
 
         private void show_no_service_daemon () {
-            var msg = new Gtk.MessageDialog (
-                    null, Gtk.DialogFlags.MODAL,
-                    Gtk.MessageType.WARNING,
-                    Gtk.ButtonsType.OK,
-                    "cannot connect to KDE Connect DBus service"
-                    );
+            var msg = new Gtk.MessageDialog (null,
+            				     Gtk.DialogFlags.MODAL,
+                    			     Gtk.MessageType.WARNING,
+                    			     Gtk.ButtonsType.OK,
+                    			     _("cannot connect to KDE Connect DBus service"));
+
             msg.response.connect(()=>{
                     msg.destroy();
                     GLib.Application.get_default ().quit_mainloop ();
@@ -129,12 +129,18 @@ namespace KDEConnectIndicator {
         
         private void run_kdeconnect_binary () {
             //TODO: path depends from operating system, for now this will be the way to find it
-            
             string std_out;
-							
             try{
-		Process.spawn_sync (null, new string[]{"grep", "Exec", "/etc/xdg/autostart/kdeconnectd.desktop"},
-				                    null, SpawnFlags.SEARCH_PATH, null, out std_out, null, null);
+		Process.spawn_sync (null,
+				    new string[]{"grep",
+				    "Exec",
+				    "/etc/xdg/autostart/kdeconnectd.desktop"},
+				    null,
+				    SpawnFlags.SEARCH_PATH,
+				    null,
+				    out std_out,
+				    null,
+				    null);
 	    } catch (Error e){
 		message (e.message);
             }

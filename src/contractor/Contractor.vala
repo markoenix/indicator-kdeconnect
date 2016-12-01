@@ -76,9 +76,13 @@ namespace KDEConnectIndicator {
         if (f.get_path() != null // null path means its remote file
             && !f.query_exists ()) {
             message ("file doesnt exist");
-            var msd = new Gtk.MessageDialog (null, Gtk.DialogFlags.MODAL,
-                    Gtk.MessageType.WARNING, Gtk.ButtonsType.OK,
-                    _("File not found"));
+
+            var msd = new Gtk.MessageDialog (null,
+            				     Gtk.DialogFlags.MODAL,
+                  			     Gtk.MessageType.WARNING,
+                  			     Gtk.ButtonsType.OK,
+                    			     _("File not found"));
+
             msd.destroy.connect (Gtk.main_quit);
             msd.show ();
             msd.run ();
@@ -114,6 +118,7 @@ namespace KDEConnectIndicator {
         } catch (Error e) {
             message (e.message);
         }
+
         list_store = new Gtk.ListStore (1,typeof(string));
         var device_list = new SList<Device> ();
         foreach (string id in id_list) {
