@@ -12,12 +12,15 @@ install (FILES "icons/default/smartphone-symbolic.svg" DESTINATION ${DATADIR}/ic
 install (FILES "icons/default/tablet-symbolic.svg" DESTINATION ${DATADIR}/icons/hicolor/scalable/devices/)
 install (FILES "icons/default/computer-symbolic.svg" DESTINATION ${DATADIR}/icons/hicolor/scalable/devices/)
 install (FILES "icons/default/laptop-symbolic.svg" DESTINATION ${DATADIR}/icons/hicolor/scalable/devices/)
+#-Ubuntu
 if(EXISTS ${DATADIR}/icons/ubuntu-mono-dark) 
 install (DIRECTORY "icons/ubuntu-mono-dark" DESTINATION ${DATADIR}/icons)
 endif()
 if(EXISTS ${DATADIR}/icons/ubuntu-mono-light)
 install (DIRECTORY "icons/ubuntu-mono-light" DESTINATION ${DATADIR}/icons)
 endif()
+#-Elementary OS
+install (DIRECTORY "icons/elementary" DESTINATION ${DATADIR}/icons)
 
 #install FTW image
 install (FILES "images/indicator.jpg" DESTINATION ${DATADIR}/indicator-kdeconnect/)
