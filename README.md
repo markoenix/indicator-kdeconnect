@@ -34,6 +34,15 @@ sudo add-apt-repository ppa:varlesh-l/indicator-kdeconnect
 sudo apt update
 sudo apt install kdeconnect indicator-kdeconnect
 ```
+
+- Fedora  
+ Fedora user's can use this repo:
+```
+sudo dnf config-manager --add-repo http://download.opensuse.org/repositories/home:/Bajoja/Fedora_25/home:Bajoja.repo
+sudo dnf update
+sudo dnf install kdeconnectd indicator-kdeconnect -y
+```
+
 - From the Source  
  Check the INSTALL file
 
