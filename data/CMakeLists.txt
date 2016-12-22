@@ -20,7 +20,9 @@ if(EXISTS ${DATADIR}/icons/ubuntu-mono-light)
 install (DIRECTORY "icons/ubuntu-mono-light" DESTINATION ${DATADIR}/icons)
 endif()
 #-Elementary OS
+if(EXISTS ${DATADIR}/icons/ubuntu-mono*)
 install (DIRECTORY "icons/elementary" DESTINATION ${DATADIR}/icons)
+endif()
 
 #install FTW image
 install (FILES "images/indicator.jpg" DESTINATION ${DATADIR}/indicator-kdeconnect/)

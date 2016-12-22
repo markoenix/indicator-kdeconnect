@@ -74,6 +74,7 @@ popd
 %doc COPYING README.md
 %{_bindir}/%{name}
 %{_bindir}/kdeconnect-send
+%{_datadir}/locale
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/contractor/kdeconnect.contract
 %{_datadir}/icons/hicolor/*/*/*
@@ -90,7 +91,7 @@ popd
 - Add Portuguese Portugal and Russian Language.
 - Provide CMake uninstall process.
 
-* Mon Nov 15 2016 1644 Bajoja <steevenlopes@outlook.com> 0.3
+* Tue Nov 15 2016 1644 Bajoja <steevenlopes@outlook.com> 0.3
 - Bug Fixes.
 - New default icons.
 - New Icons for ubuntu based desktops.
@@ -105,6 +106,6 @@ popd
   - From the device name menu you can get encryption information.
   - From the device status menu item you can open kdeconnect settings.
 
-* Thu Aug 20 2012 0323 Bajoja <steevenlopes@outlook.com> 0.1
+* Mon Aug 20 2012 0323 Bajoja <steevenlopes@outlook.com> 0.1
 - Initial Release.
 
