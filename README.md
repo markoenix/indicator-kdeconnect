@@ -1,21 +1,21 @@
 KDE Connect Indicator
 =====================
 
-This Indicator is written to make [KDE Connect](https://community.kde.org/KDEConnect) usable in desktops without KDE.  
-It's started as an [AppIndicator](https://unity.ubuntu.com/projects/appindicators/), but you can send files and url easily through KDE Connect with kdeconnect-send.
+This Indicator is written to make [KDE Connect](https://community.kde.org/KDEConnect) usable in desktops without KDE Plasma, such as Ubuntu Unity and Pantheon.  
+It started as an [AppIndicator](https://unity.ubuntu.com/projects/appindicators/), but you can send files and URLs easily through KDE Connect with kdeconnect-send.
 
 Features: 
 -------
  1. Indicator in the panel which show your devices, with its name, status, and battery.
  2. Menu to request for pairing and unpairing.
- 3. Menu to start sftp and open file browser.
+ 3. Menu to start SFTP and open a file browser.
  4. Menu to send files.
  5. A small program, `kdeconnect-send` to help sending file and choosing device.
  6. A .contractor file, so you can send file from any of elementary OS's applications.
- 7. A python extensions for Nautilus, Nemo and Caja.
+ 7. A Python extension for Nautilus, Nemo and Caja.
  8. Menu to ring and find your phone.
  9. From the device name menu you can get encryption information.
- 10. From the device status menu item you can open kdeconnect settings.
+ 10. From the device status menu item you can open KDE Connect settings.
 
 Limitation
 -------
