@@ -1,7 +1,13 @@
+# Version 0.5.0
+ * Bugs Fixes
+ * Add Languages: Brazilian Portuguese 
+ * Add icons for Elementary OS
+ * Trusted devices now appear on context menu extension to send files directly
+
 # Version 0.4.0
  * New native extension for Nautilus, Caja and Nemo
  * Now Indicator-kdeconnect provide translations
- * Add Portuguese Portugal and Russian Language
+ * Add Languages: Portuguese Portugal, Russian Language
  * Provide CMake uninstall process
 
 # Version 0.3.0
