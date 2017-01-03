@@ -51,7 +51,7 @@ Requires:       kdeconnect-kde
 %endif
 
 %description
-Indicator to make KDE Connect usable in desktops without KDE.
+Indicator to make KDE Connect usable in desktops without KDE Plasma.
 A small program, kdeconnect-send, to help sending files from PC to Android is included.
 
 %prep
