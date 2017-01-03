@@ -51,6 +51,10 @@ class KDEConnectExtension(GObject.GObject, Caja.MenuProvider):
         except Exception as e:
             raise Exception("Error while getting reachable devices")
 
+        """if there is no reacheable devices don't show this on context menu"""
+        if not devices:
+            return
+
         """Ensure that user only select files"""
         for file in files:
             if file.get_uri_scheme() != 'file' or file.is_directory() and os.path.isfile(file):
