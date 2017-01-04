@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: indicator-kdeconnect\n"
 "Report-Msgid-Bugs-To: steevenlopes@outlook.com\n"
 "POT-Creation-Date: 2016-11-18 18:46+0200\n"
-"PO-Revision-Date: 2017-01-04 13:22+0000\n"
-"Last-Translator: Felix Ahlbrecht <felix.ahlbrecht@gmail.com>\n"
+"PO-Revision-Date: 2017-01-04 15:13+0000\n"
+"Last-Translator: Steeven Lopes <steevenlopes@outlook.com>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/indicator-kde-"
 "connect/translations/de/>\n"
 "Language: de\n"
@@ -56,7 +56,6 @@ msgstr ""
 "Symbol in der Desktop-Leiste.\n"
 
 #: src/FirstTimeWizard.vala:66
-#, fuzzy
 msgid "There, you can pair and see its status\n\n"
 msgstr ""
 "Dort kannst du Verbinden aufbauen und den Status einsehen\n"
