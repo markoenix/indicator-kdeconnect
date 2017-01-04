@@ -19,6 +19,10 @@ endif()
 if(EXISTS ${DATADIR}/icons/ubuntu-mono-light)
 install (DIRECTORY "icons/ubuntu-mono-light" DESTINATION ${DATADIR}/icons)
 endif()
+#-Gnome Monochrome icons
+if(EXISTS ${DATADIR}/icons/hicolor)
+install (DIRECTORY "icons/ubuntu-mono-dark/status/24/" DESTINATION ${DATADIR}/icons/hicolor/24x24/status)
+endif()
 #-Elementary OS
 if(EXISTS ${DATADIR}/icons/ubuntu-mono*)
 install (DIRECTORY "icons/elementary" DESTINATION ${DATADIR}/icons)
