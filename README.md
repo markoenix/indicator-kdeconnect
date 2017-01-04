@@ -40,7 +40,6 @@ sudo apt install kdeconnect indicator-kdeconnect
  Fedora user's can use this repo:
 ```
 sudo dnf config-manager --add-repo http://download.opensuse.org/repositories/home:/Bajoja/Fedora_25/home:Bajoja.repo
-sudo dnf update
 sudo dnf install kdeconnectd indicator-kdeconnect -y
 ```
 
