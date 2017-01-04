@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: indicator-kdeconnect\n"
 "Report-Msgid-Bugs-To: steevenlopes@outlook.com\n"
 "POT-Creation-Date: 2016-11-18 18:46+0200\n"
-"PO-Revision-Date: 2017-01-04 13:13+0000\n"
+"PO-Revision-Date: 2017-01-04 13:22+0000\n"
 "Last-Translator: Felix Ahlbrecht <felix.ahlbrecht@gmail.com>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/indicator-kde-"
 "connect/translations/de/>\n"
@@ -56,8 +56,11 @@ msgstr ""
 "Symbol in der Desktop-Leiste.\n"
 
 #: src/FirstTimeWizard.vala:66
+#, fuzzy
 msgid "There, you can pair and see its status\n\n"
 msgstr ""
+"Dort kannst du Verbinden aufbauen und den Status einsehen\n"
+"\n"
 
 #: src/FirstTimeWizard.vala:67
 msgid "<b>Now try to pair your device</b>"
@@ -66,6 +69,8 @@ msgstr "<b>Versuche jetzt deine Gerät zu verbinden</b>"
 #: src/FirstTimeWizard.vala:76
 msgid "<b>Great! your device is all set</b>\n\n"
 msgstr ""
+"<b>Ihr Gerät ist jetzt vollständig eingerichtet</b>\n"
+"\n"
 
 #: src/FirstTimeWizard.vala:77
 msgid "Now you can enable or disable modules on KDE Connect settings.\n"
@@ -82,12 +87,13 @@ msgid "Enjoy!"
 msgstr "Viel Spaß!"
 
 #: src/KDEConnectManager.vala:119
+#, fuzzy
 msgid "cannot connect to KDE Connect DBus service"
-msgstr ""
+msgstr "kann keine Verbindung zu KDE Connect DBus service aufbauen"
 
 #: src/Device.vala:524
 msgid "Encryption information not found"
-msgstr ""
+msgstr "Verschlüsselungsinformationen konnten nicht gefunden werden"
 
 #: src/DeviceIndicator.vala:39
 msgid "Browse device"
