@@ -7,11 +7,6 @@ install (FILES "extensions/kdeconnect-send-nautilus.py" DESTINATION ${DATADIR}/n
 install (FILES "extensions/kdeconnect-send-nemo.py" DESTINATION ${DATADIR}/nemo-python/extensions/)
 install (FILES "extensions/kdeconnect-send-caja.py" DESTINATION ${DATADIR}/caja-python/extensions/)
 
-#install icons
-install (FILES "icons/default/smartphone-symbolic.svg" DESTINATION ${DATADIR}/icons/hicolor/scalable/devices/)
-install (FILES "icons/default/tablet-symbolic.svg" DESTINATION ${DATADIR}/icons/hicolor/scalable/devices/)
-install (FILES "icons/default/computer-symbolic.svg" DESTINATION ${DATADIR}/icons/hicolor/scalable/devices/)
-install (FILES "icons/default/laptop-symbolic.svg" DESTINATION ${DATADIR}/icons/hicolor/scalable/devices/)
 #-Ubuntu
 if(EXISTS ${DATADIR}/icons/ubuntu-mono-dark) 
 install (DIRECTORY "icons/ubuntu-mono-dark" DESTINATION ${DATADIR}/icons)
@@ -19,12 +14,12 @@ endif()
 if(EXISTS ${DATADIR}/icons/ubuntu-mono-light)
 install (DIRECTORY "icons/ubuntu-mono-light" DESTINATION ${DATADIR}/icons)
 endif()
-#-Gnome Monochrome icons
-if(EXISTS ${DATADIR}/icons/hicolor)
-install (DIRECTORY "icons/ubuntu-mono-dark/status/24/" DESTINATION ${DATADIR}/icons/hicolor/24x24/status)
+#-Adwaita status panel icons
+if(EXISTS ${DATADIR}/icons/Adwaita)
+install (DIRECTORY "icons/Adwaita" DESTINATION ${DATADIR}/icons/)
 endif()
 #-Elementary OS
-if(EXISTS ${DATADIR}/icons/ubuntu-mono*)
+if(EXISTS ${DATADIR}/icons/elementary)
 install (DIRECTORY "icons/elementary" DESTINATION ${DATADIR}/icons)
 endif()
 
