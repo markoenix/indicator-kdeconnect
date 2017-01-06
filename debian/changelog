@@ -1,3 +1,14 @@
+indicator-kdeconnect (0.5) precise; urgency=low
+  * Bugs Fixes
+
+  * Add Brazilian Portuguese Language
+
+  * Add icons for Elementary OS
+
+  * Trusted devices now appear on context menu extension to send files directly
+
+ -- Bajoja <steevenlopes@outlook.com> Tue, 03 Jan 2016 18:00 -0000
+
 indicator-kdeconnect (0.4) precise; urgency=low
   * New native extension for Nautilus, Caja and Nemo
 

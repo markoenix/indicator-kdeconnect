@@ -17,7 +17,7 @@
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 Name:           indicator-kdeconnect
-Version:        0.4
+Version:        0.5
 Release:        0%{?dist}
 Summary:        App Indicator for KDE Connect
 Group:          Applications/System
@@ -51,7 +51,7 @@ Requires:       kdeconnect-kde
 %endif
 
 %description
-Indicator to make KDE Connect usable in desktops without KDE.
+Indicator to make KDE Connect usable in desktops without KDE Plasma.
 A small program, kdeconnect-send, to help sending files from PC to Android is included.
 
 %prep
@@ -74,6 +74,7 @@ popd
 %doc COPYING README.md
 %{_bindir}/%{name}
 %{_bindir}/kdeconnect-send
+%{_datadir}/locale
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/contractor/kdeconnect.contract
 %{_datadir}/icons/hicolor/*/*/*
@@ -83,6 +84,11 @@ popd
 %{_datadir}/caja-python/extensions/
 
 %changelog
+* Tue Jan 03 2017 1800 Bajoja <steevenlopes@outlook.com> 0.5
+- Bugs Fixes.
+- Add Brazilian Portuguese Language
+- Add icons for Elementary OS
+- Trusted devices now appear on context menu extension to send files directly
 
 * Thu Nov 24 2016 1700 Bajoja <steevenlopes@outlook.com> 0.4
 - New native extension for Nautilus, Caja and Nemo.
@@ -90,7 +96,7 @@ popd
 - Add Portuguese Portugal and Russian Language.
 - Provide CMake uninstall process.
 
-* Mon Nov 15 2016 1644 Bajoja <steevenlopes@outlook.com> 0.3
+* Tue Nov 15 2016 1644 Bajoja <steevenlopes@outlook.com> 0.3
 - Bug Fixes.
 - New default icons.
 - New Icons for ubuntu based desktops.
@@ -105,6 +111,6 @@ popd
   - From the device name menu you can get encryption information.
   - From the device status menu item you can open kdeconnect settings.
 
-* Thu Aug 20 2012 0323 Bajoja <steevenlopes@outlook.com> 0.1
+* Mon Aug 20 2012 0323 Bajoja <steevenlopes@outlook.com> 0.1
 - Initial Release.
 
