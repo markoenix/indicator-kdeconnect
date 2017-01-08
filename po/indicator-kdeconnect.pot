@@ -67,7 +67,7 @@ msgstr ""
 msgid "Enjoy!"
 msgstr ""
 
-#: src/KDEConnectManager.vala:119
+#: src/KDEConnectManager.vala:121
 msgid "cannot connect to KDE Connect DBus service"
 msgstr ""
 
@@ -139,6 +139,6 @@ msgstr ""
 msgid "Send"
 msgstr ""
 
-#: src/contractor/Contractor.vala:84
+#: src/contractor/Contractor.vala:86
 msgid "File not found"
 msgstr ""

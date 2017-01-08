@@ -16,7 +16,7 @@ install (DIRECTORY "icons/ubuntu-mono-light" DESTINATION ${DATADIR}/icons)
 endif()
 #-Adwaita status panel icons
 if(EXISTS ${DATADIR}/icons/Adwaita)
-install (DIRECTORY "icons/Adwaita" DESTINATION ${DATADIR}/icons/)
+install (DIRECTORY "icons/Adwaita" DESTINATION ${DATADIR}/icons)
 endif()
 #-Elementary OS
 if(EXISTS ${DATADIR}/icons/elementary)

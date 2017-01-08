@@ -116,7 +116,9 @@ namespace KDEConnectIndicator {
             				     Gtk.DialogFlags.MODAL,
                     			     Gtk.MessageType.WARNING,
                     			     Gtk.ButtonsType.OK,
-                    			     _("cannot connect to KDE Connect DBus service"));
+                    			     "msg");
+
+            msg.set_markup (_("cannot connect to KDE Connect DBus service"));
 
             msg.response.connect(()=>{
                     msg.destroy();
