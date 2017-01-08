@@ -81,7 +81,9 @@ namespace KDEConnectIndicator {
             				     Gtk.DialogFlags.MODAL,
                   			     Gtk.MessageType.WARNING,
                   			     Gtk.ButtonsType.OK,
-                    			     _("File not found"));
+                    			     "msg");
+
+            msd.set_markup (_("File not found"));
 
             msd.destroy.connect (Gtk.main_quit);
             msd.show ();

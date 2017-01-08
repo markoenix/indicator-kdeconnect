@@ -77,7 +77,7 @@ popd
 %{_datadir}/locale
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/contractor/kdeconnect.contract
-%{_datadir}/icons/hicolor/*/*/*
+%{_datadir}/icons/Adwaita/
 %{_datadir}/%{name}/*
 %{_datadir}/nautilus-python/extensions/
 %{_datadir}/nemo-python/extensions/
