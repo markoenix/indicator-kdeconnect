@@ -14,11 +14,13 @@ namespace KDEConnectIndicator {
         private Gtk.MenuItem status_item;
         private Gtk.MenuItem browse_item;
         private Gtk.MenuItem send_item;
-        private Gtk.SeparatorMenuItem separator;
         private Gtk.MenuItem ring_item;
-        private Gtk.SeparatorMenuItem separator2;
         private Gtk.MenuItem pair_item;
         private Gtk.MenuItem unpair_item;
+        private Gtk.MenuItem sms_item;
+        private Gtk.SeparatorMenuItem separator;
+        private Gtk.SeparatorMenuItem separator2;
+        private Gtk.SeparatorMenuItem separator3;
 
         public DeviceIndicator (string path) {
             this.path = path;
@@ -42,10 +44,14 @@ namespace KDEConnectIndicator {
             menu.append (send_item);
             separator = new Gtk.SeparatorMenuItem ();
             menu.append (separator);
-            ring_item = new Gtk.MenuItem.with_label (_("Find my phone"));
-            menu.append (ring_item);
+            sms_item = new Gtk.MenuItem.with_label (_("Send SMS"));
+            menu.append (sms_item);
             separator2 = new Gtk.SeparatorMenuItem ();
             menu.append (separator2);
+            ring_item = new Gtk.MenuItem.with_label (_("Find my phone"));
+            menu.append (ring_item);
+            separator3 = new Gtk.SeparatorMenuItem ();
+            menu.append (separator3);
             pair_item = new Gtk.MenuItem.with_label (_("Request pairing"));
             menu.append (pair_item);
             unpair_item = new Gtk.MenuItem.with_label (_("Unpair"));
@@ -110,6 +116,18 @@ namespace KDEConnectIndicator {
                 chooser.close ();
             });
             
+            sms_item.activate.connect (() => {
+            	var sms_dialog = new SMSDialog ();
+            	if (sms_dialog.run () == Gtk.ResponseType.OK){
+            		SMS sms = sms_dialog.get_sms ();
+            		if(!sms.is_empty ())
+            			device.send_sms (sms.phone_number,
+            					 sms.message_body);
+
+            		sms_dialog.destroy ();
+            	}
+            });
+
             ring_item.activate.connect (() => {
 		device.find_my_phone ();
 	    });
@@ -217,13 +235,19 @@ namespace KDEConnectIndicator {
 
             browse_item.visible = trusted && device.has_plugin ("kdeconnect_sftp");
             browse_item.sensitive = reachable;
+
             send_item.visible = trusted && device.has_plugin ("kdeconnect_share");
             send_item.sensitive = reachable;
+
+            sms_item.visible = trusted && device.has_plugin("kdeconnect_telephony");
+            sms_item.sensitive = reachable;
+
             ring_item.visible = trusted && device.has_plugin ("kdeconnect_findmyphone");
             ring_item.sensitive = reachable;
             
             separator.visible = browse_item.visible || send_item.visible;
-            separator2.visible = ring_item.visible;
+            separator2.visible = sms_item.visible;
+            separator3.visible = ring_item.visible;
         }
     }
 }
