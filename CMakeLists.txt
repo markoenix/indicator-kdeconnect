@@ -49,6 +49,7 @@ vala_precompile(INDICATOR_VALA_C ${INDICATOR_EXEC}
 	src/DeviceIndicator.vala
 	src/FirstTimeWizard.vala
 	src/StartupManager.vala
+	src/Sms.vala
 	PACKAGES
 	gtk+-3.0
 	appindicator3-0.1
