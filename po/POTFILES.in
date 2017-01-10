@@ -3,3 +3,4 @@ src/KDEConnectManager.vala
 src/Device.vala
 src/DeviceIndicator.vala
 src/contractor/Contractor.vala
+src/Sms.vala
