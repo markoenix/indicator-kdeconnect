@@ -525,7 +525,7 @@ namespace KDEConnectIndicator {
             }
 	}
 
-	public void send_sms (string phone_number, string message_boddy){
+	public void send_sms (string phone_number, string message_body){
 	    try {
 		 if (!has_plugin ("kdeconnect_telephony"))
 		     return;
@@ -534,7 +534,7 @@ namespace KDEConnectIndicator {
                              path+"/telephony",
                              "org.kde.kdeconnect.device.telephony",
                              "sendSms",
-                             new Variant ("(ss)",phone_number, message_boddy),
+                             new Variant ("(ss)",phone_number, message_body),
                              null,
                              DBusCallFlags.NONE,
                              -1,

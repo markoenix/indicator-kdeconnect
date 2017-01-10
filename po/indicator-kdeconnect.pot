@@ -67,7 +67,7 @@ msgstr ""
 msgid "Enjoy!"
 msgstr ""
 
-#: src/KDEConnectManager.vala:121
+#: src/KDEConnectManager.vala:119
 msgid "cannot connect to KDE Connect DBus service"
 msgstr ""
 
@@ -75,59 +75,63 @@ msgstr ""
 msgid "Encryption information not found"
 msgstr ""
 
-#: src/DeviceIndicator.vala:39
+#: src/DeviceIndicator.vala:41
 msgid "Browse device"
 msgstr ""
 
-#: src/DeviceIndicator.vala:41
+#: src/DeviceIndicator.vala:43
 msgid "Send file(s)"
 msgstr ""
 
-#: src/DeviceIndicator.vala:45
-msgid "Find my phone"
-msgstr ""
-
-#: src/DeviceIndicator.vala:49
-msgid "Request pairing"
+#: src/DeviceIndicator.vala:47
+msgid "Send SMS"
 msgstr ""
 
 #: src/DeviceIndicator.vala:51
+msgid "Find my phone"
+msgstr ""
+
+#: src/DeviceIndicator.vala:55
+msgid "Request pairing"
+msgstr ""
+
+#: src/DeviceIndicator.vala:58
 msgid "Unpair"
 msgstr ""
 
-#: src/DeviceIndicator.vala:89
+#: src/DeviceIndicator.vala:100
 msgid "Select file(s)"
 msgstr ""
 
-#: src/DeviceIndicator.vala:94 src/contractor/Contractor.vala:24
+#: src/DeviceIndicator.vala:103 src/contractor/Contractor.vala:24 src/Sms.vala:74
 msgid "Cancel"
 msgstr ""
 
-#: src/DeviceIndicator.vala:99 
+#: src/DeviceIndicator.vala:105 
 msgid "Select"
 msgstr ""
 
-#: src/DeviceIndicator.vala:190
+#: src/DeviceIndicator.vala:208
 msgid "Battery : "
 msgstr ""
 
-#: src/DeviceIndicator.vala:192
+#: src/DeviceIndicator.vala:210
 msgid " (charging)"
 msgstr ""
 
-#: src/DeviceIndicator.vala:199
+#: src/DeviceIndicator.vala:217
 msgid "Device Reachable and Trusted"
 msgstr ""
 
-#: src/DeviceIndicator.vala:201
+#: src/DeviceIndicator.vala:219
 msgid "Device Reachable but Not Trusted"
 msgstr ""
 
-#: src/DeviceIndicator.vala:204
+#: src/DeviceIndicator.vala:222
 msgid "Device Trusted but not Reachable"
 msgstr ""
 
-#: src/DeviceIndicator.vala:206
+#: src/DeviceIndicator.vala:224
 msgid "Device Not Reachable and Not Trusted"
 msgstr ""
 
@@ -135,10 +139,22 @@ msgstr ""
 msgid "Send to"
 msgstr ""
 
-#: src/contractor/Contractor.vala:25
+#: src/contractor/Contractor.vala:25 src/Sms.vala:75
 msgid "Send"
 msgstr ""
 
-#: src/contractor/Contractor.vala:86
+#: src/contractor/Contractor.vala:84
 msgid "File not found"
+msgstr ""
+
+#: src/Sms.vala:51
+msgid "Compose SMS"
+msgstr ""
+
+#: src/Sms.vala:51
+msgid "Phone number: "
+msgstr ""
+
+#: src/Sms.vala:51
+msgid "Message body: "
 msgstr ""
