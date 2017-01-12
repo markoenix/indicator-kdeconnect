@@ -32,7 +32,7 @@ class KDEConnectExtension(GObject.GObject, Nautilus.MenuProvider):
             filename = urllib.unquote(file.get_uri()[7:])
             call(["kdeconnect-cli", "-d", device_id, "--share", filename])
 
-        Notify.init("KDEConnect-send")
+        Notify.init("indicator-kdeconnect")
         Notify.Notification.new("Check the device {device_name}".format(device_name=device_name),
                                 "Sending {num_files} file(s)".format(num_files=len(files))
                                 ).show()
