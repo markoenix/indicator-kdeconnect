@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: indicator-kdeconnect\n"
 "Report-Msgid-Bugs-To: steevenlopes@outlook.com\n"
-"POT-Creation-Date: 2016-11-18 18:46+0200\n"
-"PO-Revision-Date: 2017-01-04 22:30+0000\n"
+"POT-Creation-Date: 2017-01-12 01:14+0000\n"
+"PO-Revision-Date: 2017-01-12 01:14+0000\n"
 "Last-Translator: Péter Báthory <bathory86p@gmail.com>\n"
 "Language-Team: Hungarian <https://hosted.weblate.org/projects/indicator-kde-"
 "connect/translations/hu/>\n"
@@ -16,10 +16,12 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.11-dev\n"
+"X-Generator: Poedit 1.8.11\n"
 
 #: src/FirstTimeWizard.vala:50
-msgid "<b>Are you ready for your first device pairing?</b>\n\n"
+msgid ""
+"<b>Are you ready for your first device pairing?</b>\n"
+"\n"
 msgstr ""
 "<b>Készen állsz az első eszközpárosításra?</b>\n"
 "\n"
@@ -33,7 +35,9 @@ msgid "Tethering should work too!\n"
 msgstr "A tetheringnek is működnie kell!\n"
 
 #: src/FirstTimeWizard.vala:53
-msgid "If you have Firewall running, please open port 1714-1764 for TCP and UDP\n\n"
+msgid ""
+"If you have Firewall running, please open port 1714-1764 for TCP and UDP\n"
+"\n"
 msgstr ""
 "Ha tűzfalat használsz, kérlek nyisd meg a 1714-1764 TCP és UDP portokat\n"
 "\n"
@@ -47,13 +51,17 @@ msgid "Google Play</a>"
 msgstr "Google Play</a>-ről tudsz letölteni"
 
 #: src/FirstTimeWizard.vala:65
-msgid "Everytime there is a new device connected, a new indicator will appear in your panel.\n"
+msgid ""
+"Everytime there is a new device connected, a new indicator will appear in "
+"your panel.\n"
 msgstr ""
 "Minden alkalommal, amikor egy új eszköz csatlakozik, egy új indikátor "
 "jelenik meg a panelen.\n"
 
 #: src/FirstTimeWizard.vala:66
-msgid "There, you can pair and see its status\n\n"
+msgid ""
+"There, you can pair and see its status\n"
+"\n"
 msgstr ""
 "Itt kezdeményezheted a párosítását és láthatod az állapotát\n"
 "\n"
@@ -63,7 +71,9 @@ msgid "<b>Now try to pair your device</b>"
 msgstr "<b>Próbáld meg párosítani az eszközöd</b>"
 
 #: src/FirstTimeWizard.vala:76
-msgid "<b>Great! your device is all set</b>\n\n"
+msgid ""
+"<b>Great! your device is all set</b>\n"
+"\n"
 msgstr ""
 "<b>Remek! Az eszközöd készen áll</b>\n"
 "\n"
@@ -89,59 +99,64 @@ msgstr "nem sikerült csatlakozni a KDE Connect DBus szolgáltatáshoz"
 msgid "Encryption information not found"
 msgstr "Titkosítási információ nem található"
 
-#: src/DeviceIndicator.vala:39
+#: src/DeviceIndicator.vala:41
 msgid "Browse device"
 msgstr "Eszköz böngészése"
 
-#: src/DeviceIndicator.vala:41
+#: src/DeviceIndicator.vala:43
 msgid "Send file(s)"
 msgstr "Fájl(ok) küldése"
 
-#: src/DeviceIndicator.vala:45
+#: src/DeviceIndicator.vala:47
+msgid "Send SMS"
+msgstr ""
+
+#: src/DeviceIndicator.vala:51
 msgid "Find my phone"
 msgstr "Keresd meg a telefonom"
 
-#: src/DeviceIndicator.vala:49
+#: src/DeviceIndicator.vala:55
 msgid "Request pairing"
 msgstr "Párosítás kérése"
 
-#: src/DeviceIndicator.vala:51
+#: src/DeviceIndicator.vala:58
 msgid "Unpair"
 msgstr "Párosítás megszűntetése"
 
-#: src/DeviceIndicator.vala:89
+#: src/DeviceIndicator.vala:100
 msgid "Select file(s)"
 msgstr "Válassz fájlt/fájlokat"
 
-#: src/DeviceIndicator.vala:94 src/contractor/Contractor.vala:24
+#: src/DeviceIndicator.vala:103 src/contractor/Contractor.vala:24
+#: src/Sms.vala:74
 msgid "Cancel"
 msgstr "Mégsem"
 
-#: src/DeviceIndicator.vala:99 
+#: src/DeviceIndicator.vala:105
 msgid "Select"
 msgstr "Kiválasztás"
 
-#: src/DeviceIndicator.vala:190
+#: src/DeviceIndicator.vala:208
 msgid "Battery : "
 msgstr "Akkumulátor : "
 
-#: src/DeviceIndicator.vala:192
+#: src/DeviceIndicator.vala:210
 msgid " (charging)"
 msgstr " (töltés)"
 
-#: src/DeviceIndicator.vala:199
+#: src/DeviceIndicator.vala:217
 msgid "Device Reachable and Trusted"
 msgstr "Az eszköz elérhető és biztonságos"
 
-#: src/DeviceIndicator.vala:201
+#: src/DeviceIndicator.vala:219
 msgid "Device Reachable but Not Trusted"
 msgstr "Az eszköz elérhető, de nem biztonságos"
 
-#: src/DeviceIndicator.vala:204
+#: src/DeviceIndicator.vala:222
 msgid "Device Trusted but not Reachable"
 msgstr "Az eszköz biztonságos, de nem érhető el"
 
-#: src/DeviceIndicator.vala:206
+#: src/DeviceIndicator.vala:224
 msgid "Device Not Reachable and Not Trusted"
 msgstr "Az eszköz nem érhető el és nem biztonságos"
 
@@ -149,10 +164,22 @@ msgstr "Az eszköz nem érhető el és nem biztonságos"
 msgid "Send to"
 msgstr "Küldés ide"
 
-#: src/contractor/Contractor.vala:25
+#: src/contractor/Contractor.vala:25 src/Sms.vala:75
 msgid "Send"
 msgstr "Küldés"
 
 #: src/contractor/Contractor.vala:84
 msgid "File not found"
 msgstr "Fájl nem található"
+
+#: src/Sms.vala:51
+msgid "Compose SMS"
+msgstr ""
+
+#: src/Sms.vala:51
+msgid "Phone number: "
+msgstr ""
+
+#: src/Sms.vala:51
+msgid "Message body: "
+msgstr ""

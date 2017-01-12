@@ -6,12 +6,12 @@ msgid ""
 msgstr ""
 "Project-Id-Version: indicator-kdeconnect\n"
 "Report-Msgid-Bugs-To: steevenlopes@outlook.com\n"
-"POT-Creation-Date: 2017-01-12 01:13+0000\n"
-"PO-Revision-Date: 2017-01-12 01:13+0000\n"
-"Last-Translator: Steeven Lopes <steevenlopes@outlook.com>\n"
-"Language-Team: German <https://hosted.weblate.org/projects/indicator-kde-"
-"connect/translations/de/>\n"
-"Language: de\n"
+"POT-Creation-Date: 2017-01-12 01:16+0000\n"
+"PO-Revision-Date: 2017-01-12 01:16+0000\n"
+"Last-Translator: Heimen Stoffels <vistausss@outlook.com>\n"
+"Language-Team: Dutch <https://hosted.weblate.org/projects/indicator-kde-"
+"connect/translations/nl/>\n"
+"Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -23,31 +23,29 @@ msgid ""
 "<b>Are you ready for your first device pairing?</b>\n"
 "\n"
 msgstr ""
-"<b>Sind Sie bereit das erste Gerät zu verbinden?</b>\n"
+"<b>Bent u er klaar voor om uw eerste apparaat te koppelen?</b>\n"
 "\n"
 
 #: src/FirstTimeWizard.vala:51
 msgid "Now connect your devices using wifi connection.\n"
-msgstr "Verbinden Sie beide Geräte mit demselben WLAN.\n"
+msgstr "Verbind nu uw apparaten via Wi-Fi.\n"
 
 #: src/FirstTimeWizard.vala:52
 msgid "Tethering should work too!\n"
-msgstr "Tethering sollte auch funktionieren.\n"
+msgstr "Via tethering zou het ook moeten werken!\n"
 
 #: src/FirstTimeWizard.vala:53
 msgid ""
 "If you have Firewall running, please open port 1714-1764 for TCP and UDP\n"
 "\n"
 msgstr ""
-"Sollte eine Firewall laufen, müssen Sie die Ports 1714-1764 für TCP und UDP "
-"freigeben.\n"
+"Als u een firewall gebruikt, open dan poort 1714-1764 voor zowel TCP als "
+"UDP\n"
 "\n"
 
 #: src/FirstTimeWizard.vala:54
 msgid "Launch KDE Connect in your Android which you can download from "
-msgstr ""
-"Führen Sie KDE Connect auf ihrem Android-Gerät aus, welches Sie "
-"herunterladen können von "
+msgstr "Open KDE Connect op uw Android-apparaat. Deze app is te downloaden in "
 
 #: src/FirstTimeWizard.vala:56
 msgid "Google Play</a>"
@@ -58,59 +56,56 @@ msgid ""
 "Everytime there is a new device connected, a new indicator will appear in "
 "your panel.\n"
 msgstr ""
-"Immer, wenn ein neues Gerät verbunden wird, erscheint ein neues Indicator-"
-"Symbol in der Desktop-Leiste.\n"
+"Er zal telkens een nieuwe indicator verschijnen op uw paneel voor elk nieuw "
+"apparaat dat u verbindt.\n"
 
 #: src/FirstTimeWizard.vala:66
 msgid ""
 "There, you can pair and see its status\n"
 "\n"
 msgstr ""
-"Dort kannst du Verbinden aufbauen und den Status einsehen\n"
+"Daar kunt u de desbetreffende apparaten koppelen en de status weergeven\n"
 "\n"
 
 #: src/FirstTimeWizard.vala:67
 msgid "<b>Now try to pair your device</b>"
-msgstr "<b>Versuche jetzt deine Gerät zu verbinden</b>"
+msgstr "<b>Probeer nu uw apparaat te koppelen</b>"
 
 #: src/FirstTimeWizard.vala:76
 msgid ""
 "<b>Great! your device is all set</b>\n"
 "\n"
 msgstr ""
-"<b>Ihr Gerät ist jetzt vollständig eingerichtet</b>\n"
+"<b>Mooi zo! Uw apparaat is nu gekoppeld</b>\n"
 "\n"
 
 #: src/FirstTimeWizard.vala:77
 msgid "Now you can enable or disable modules on KDE Connect settings.\n"
-msgstr ""
-"Jetzt können Sie Module in den Einstellungen von KDE Connect aktivieren oder "
-"deaktivieren.\n"
+msgstr "Nu kunt u modules in- of uitschakelen in de KDE Connect-instellingen\n"
 
 #: src/FirstTimeWizard.vala:78
 msgid "Indicator already added to autostart.\n"
-msgstr "Der Indicator wurde bereits zum Autostart hinzugefügt.\n"
+msgstr "De indicator is al toegevoegd aan de opstarttoepassingen.\n"
 
 #: src/FirstTimeWizard.vala:79
 msgid "Enjoy!"
-msgstr "Viel Spaß!"
+msgstr "Veel plezier!"
 
 #: src/KDEConnectManager.vala:119
-#, fuzzy
 msgid "cannot connect to KDE Connect DBus service"
-msgstr "kann keine Verbindung zu KDE Connect DBus service aufbauen"
+msgstr "Het verbinden met de KDE Connect DBus-dienst is mislukt"
 
 #: src/Device.vala:524
 msgid "Encryption information not found"
-msgstr "Verschlüsselungsinformationen konnten nicht gefunden werden"
+msgstr "De versleutelingsinformatie kan niet worden gevonden"
 
 #: src/DeviceIndicator.vala:41
 msgid "Browse device"
-msgstr "Durchsuche Gerät"
+msgstr "Apparaat verkennen"
 
 #: src/DeviceIndicator.vala:43
 msgid "Send file(s)"
-msgstr "Sende Datei(en)"
+msgstr "Bestand(en) versturen"
 
 #: src/DeviceIndicator.vala:47
 msgid "Send SMS"
@@ -118,64 +113,64 @@ msgstr ""
 
 #: src/DeviceIndicator.vala:51
 msgid "Find my phone"
-msgstr "Finde mein Telefon"
+msgstr "Mijn telefoon zoeken"
 
 #: src/DeviceIndicator.vala:55
 msgid "Request pairing"
-msgstr "Verbindung anfragen"
+msgstr "Koppeling aanvragen"
 
 #: src/DeviceIndicator.vala:58
 msgid "Unpair"
-msgstr "Verbindung trennen"
+msgstr "Ontkoppelen"
 
 #: src/DeviceIndicator.vala:100
 msgid "Select file(s)"
-msgstr "Wähle Datei(en)"
+msgstr "Bestand(en) selecteren"
 
 #: src/DeviceIndicator.vala:103 src/contractor/Contractor.vala:24
 #: src/Sms.vala:74
 msgid "Cancel"
-msgstr "Abbrechen"
+msgstr "Annuleren"
 
 #: src/DeviceIndicator.vala:105
 msgid "Select"
-msgstr "Auswählen"
+msgstr "Selecteren"
 
 #: src/DeviceIndicator.vala:208
 msgid "Battery : "
-msgstr "Akku: "
+msgstr "Batterij : "
 
 #: src/DeviceIndicator.vala:210
 msgid " (charging)"
-msgstr " (wird aufgeladen)"
+msgstr " (bezig met opladen)"
 
 #: src/DeviceIndicator.vala:217
 msgid "Device Reachable and Trusted"
-msgstr "Gerät in Reichweite und bekannt"
+msgstr "Apparaat is bereikbaar en vertrouwd"
 
 #: src/DeviceIndicator.vala:219
 msgid "Device Reachable but Not Trusted"
-msgstr "Gerät in Reichweite aber nicht bekannt"
+msgstr "Apparaat is bereikbaar maar onvertrouwd"
 
 #: src/DeviceIndicator.vala:222
 msgid "Device Trusted but not Reachable"
-msgstr "Gerät bekannt aber nicht in Reichweite"
+msgstr "Apparaat is vertrouwd maar onbereikbaar"
 
 #: src/DeviceIndicator.vala:224
 msgid "Device Not Reachable and Not Trusted"
-msgstr "Gerät nicht in Reichweite  und nicht bekannt"
+msgstr "Apparaat is onbereikbaar en onvertrouwd"
 
 #: src/contractor/Contractor.vala:15
 msgid "Send to"
-msgstr "Senden an"
+msgstr "Versturen naar"
 
 #: src/contractor/Contractor.vala:25 src/Sms.vala:75
 msgid "Send"
-msgstr "Senden"
+msgstr "Versturen"
 
 #: src/contractor/Contractor.vala:84
 msgid "File not found"
-msgstr "Datei nicht gefunden"
+msgstr "Bestand niet gevonden"
 
 #: src/Sms.vala:51
 msgid "Compose SMS"

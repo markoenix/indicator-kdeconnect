@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: indicator-kdeconnect\n"
 "Report-Msgid-Bugs-To: steevenlopes@outlook.com\n"
-"POT-Creation-Date: 2016-11-24 06:15+0300\n"
-"PO-Revision-Date: 2016-12-13 03:17+0000\n"
+"POT-Creation-Date: 2017-01-12 01:14+0000\n"
+"PO-Revision-Date: 2017-01-12 01:14+0000\n"
 "Last-Translator: Steeven Lopes <steevenlopes@outlook.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/indicator-kde-"
 "connect/translations/ru/>\n"
@@ -17,9 +17,9 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<="
-"4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 2.10-dev\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Poedit 1.8.11\n"
 
 #: src/FirstTimeWizard.vala:50
 msgid ""
@@ -42,8 +42,8 @@ msgid ""
 "If you have Firewall running, please open port 1714-1764 for TCP and UDP\n"
 "\n"
 msgstr ""
-"Если у вас используется файрвол, пожалуйста откройте порты 1714-1764 TCP "
-"и UDP\n"
+"Если у вас используется файрвол, пожалуйста откройте порты 1714-1764 TCP и "
+"UDP\n"
 "\n"
 
 #: src/FirstTimeWizard.vala:54
@@ -86,7 +86,8 @@ msgstr ""
 #: src/FirstTimeWizard.vala:77
 msgid "Now you can enable or disable modules on KDE Connect settings.\n"
 msgstr ""
-"Теперь вы можете включить или отключить необходимые модули в настройках KDE Connect\n"
+"Теперь вы можете включить или отключить необходимые модули в настройках KDE "
+"Connect\n"
 
 #: src/FirstTimeWizard.vala:78
 msgid "Indicator already added to autostart.\n"
@@ -104,59 +105,64 @@ msgstr "невозможно подключиться к сервису KDE Conn
 msgid "Encryption information not found"
 msgstr "Информация о шифровании не найдена"
 
-#: src/DeviceIndicator.vala:39
+#: src/DeviceIndicator.vala:41
 msgid "Browse device"
 msgstr "Просмотр устройства"
 
-#: src/DeviceIndicator.vala:41
+#: src/DeviceIndicator.vala:43
 msgid "Send file(s)"
 msgstr "Отправить файл(ы)"
 
-#: src/DeviceIndicator.vala:45
+#: src/DeviceIndicator.vala:47
+msgid "Send SMS"
+msgstr ""
+
+#: src/DeviceIndicator.vala:51
 msgid "Find my phone"
 msgstr "Найти мой телефон"
 
-#: src/DeviceIndicator.vala:49
+#: src/DeviceIndicator.vala:55
 msgid "Request pairing"
 msgstr "Запрос сопряжения"
 
-#: src/DeviceIndicator.vala:51
+#: src/DeviceIndicator.vala:58
 msgid "Unpair"
 msgstr "Отменить сопряжение"
 
-#: src/DeviceIndicator.vala:89
+#: src/DeviceIndicator.vala:100
 msgid "Select file(s)"
 msgstr "Выбрать файл(ы)"
 
-#: src/DeviceIndicator.vala:94 src/contractor/Contractor.vala:24
+#: src/DeviceIndicator.vala:103 src/contractor/Contractor.vala:24
+#: src/Sms.vala:74
 msgid "Cancel"
 msgstr "Отмена"
 
-#: src/DeviceIndicator.vala:99
+#: src/DeviceIndicator.vala:105
 msgid "Select"
 msgstr "Выбрать"
 
-#: src/DeviceIndicator.vala:190
+#: src/DeviceIndicator.vala:208
 msgid "Battery : "
 msgstr "Батарея : "
 
-#: src/DeviceIndicator.vala:192
+#: src/DeviceIndicator.vala:210
 msgid " (charging)"
 msgstr " (зарядка)"
 
-#: src/DeviceIndicator.vala:199
+#: src/DeviceIndicator.vala:217
 msgid "Device Reachable and Trusted"
 msgstr "Устройство доступно и сопряжено"
 
-#: src/DeviceIndicator.vala:201
+#: src/DeviceIndicator.vala:219
 msgid "Device Reachable but Not Trusted"
 msgstr "Устройство доступно, но не сопряжено"
 
-#: src/DeviceIndicator.vala:204
+#: src/DeviceIndicator.vala:222
 msgid "Device Trusted but not Reachable"
 msgstr "Устройство сопряжено, но недоступно"
 
-#: src/DeviceIndicator.vala:206
+#: src/DeviceIndicator.vala:224
 msgid "Device Not Reachable and Not Trusted"
 msgstr "Устройство недоступно и не сопряжено"
 
@@ -164,10 +170,22 @@ msgstr "Устройство недоступно и не сопряжено"
 msgid "Send to"
 msgstr "Отавить в"
 
-#: src/contractor/Contractor.vala:25
+#: src/contractor/Contractor.vala:25 src/Sms.vala:75
 msgid "Send"
 msgstr "Отправить"
 
 #: src/contractor/Contractor.vala:84
 msgid "File not found"
 msgstr "Файл не найден"
+
+#: src/Sms.vala:51
+msgid "Compose SMS"
+msgstr ""
+
+#: src/Sms.vala:51
+msgid "Phone number: "
+msgstr ""
+
+#: src/Sms.vala:51
+msgid "Message body: "
+msgstr ""
