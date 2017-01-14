@@ -103,7 +103,7 @@ msgstr ""
 msgid "Select file(s)"
 msgstr ""
 
-#: src/DeviceIndicator.vala:103 src/contractor/Contractor.vala:24 src/Sms.vala:74
+#: src/DeviceIndicator.vala:103 src/contractor/Contractor.vala:24 src/Sms.vala:40
 msgid "Cancel"
 msgstr ""
 
@@ -139,7 +139,7 @@ msgstr ""
 msgid "Send to"
 msgstr ""
 
-#: src/contractor/Contractor.vala:25 src/Sms.vala:75
+#: src/contractor/Contractor.vala:25 src/Sms.vala:44
 msgid "Send"
 msgstr ""
 
@@ -147,7 +147,7 @@ msgstr ""
 msgid "File not found"
 msgstr ""
 
-#: src/Sms.vala:51
+#: src/Sms.vala:37
 msgid "Compose SMS"
 msgstr ""
 
@@ -155,6 +155,6 @@ msgstr ""
 msgid "Phone number: "
 msgstr ""
 
-#: src/Sms.vala:51
+#: src/Sms.vala:60
 msgid "Message body: "
 msgstr ""

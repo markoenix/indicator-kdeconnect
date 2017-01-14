@@ -117,15 +117,8 @@ namespace KDEConnectIndicator {
             });
             
             sms_item.activate.connect (() => {
-            	var sms_dialog = new SMSDialog ();
-            	if (sms_dialog.run () == Gtk.ResponseType.OK){
-            		SMS sms = sms_dialog.get_sms ();
-            		if(!sms.is_empty ())
-            			device.send_sms (sms.phone_number,
-            					 sms.message_body);
-
-            		sms_dialog.destroy ();
-            	}
+            	var sms_dialog = new SMSCompose (this.device);
+            	sms_dialog.show ();
             });
 
             ring_item.activate.connect (() => {
