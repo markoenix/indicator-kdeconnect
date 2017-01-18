@@ -7,155 +7,173 @@ msgstr ""
 "Project-Id-Version: indicator-kdeconnect\n"
 "Report-Msgid-Bugs-To: steevenlopes@outlook.com\n"
 "POT-Creation-Date: 2016-11-18 18:46+0200\n"
-"PO-Revision-Date: 2016-11-18 18:46+0200\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2017-01-18 09:13+0000\n"
+"Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>\n"
+"Language-Team: Czech <https://hosted.weblate.org/projects/indicator-kde-"
+"connect/translations/cs/>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"X-Generator: Weblate 2.11-dev\n"
 
 #: src/FirstTimeWizard.vala:50
 msgid "<b>Are you ready for your first device pairing?</b>\n\n"
 msgstr ""
+"<b>Jste připravení na prvotní spárování zařízení?</b>\n"
+"\n"
 
 #: src/FirstTimeWizard.vala:51
 msgid "Now connect your devices using wifi connection.\n"
-msgstr ""
+msgstr "Nyní připojte svá zařízení pomocí WiFi.\n"
 
 #: src/FirstTimeWizard.vala:52
 msgid "Tethering should work too!\n"
-msgstr ""
+msgstr "Tethering by měl fungovat také!\n"
 
 #: src/FirstTimeWizard.vala:53
 msgid "If you have Firewall running, please open port 1714-1764 for TCP and UDP\n\n"
 msgstr ""
+"Pokud na počítači máte bránu firewall, je třeba otevřít porty 1714 až 1764 "
+"pro TCP a UDP\n"
+"\n"
 
 #: src/FirstTimeWizard.vala:54
 msgid "Launch KDE Connect in your Android which you can download from "
 msgstr ""
+"Na svém Android zařízení spusťte aplikaci KDE Connect, která je k dispozici "
+"z "
 
 #: src/FirstTimeWizard.vala:56
 msgid "Google Play</a>"
-msgstr ""
+msgstr "Google Play</a>"
 
 #: src/FirstTimeWizard.vala:65
 msgid "Everytime there is a new device connected, a new indicator will appear in your panel.\n"
 msgstr ""
+"Pro každé z připojených zařízení se v oznamovací oblasti systémového panelu "
+"objeví nový indikátor.\n"
 
 #: src/FirstTimeWizard.vala:66
 msgid "There, you can pair and see its status\n\n"
 msgstr ""
+"A v něm je možné provést spárování a zobrazit jeho stav\n"
+"\n"
 
 #: src/FirstTimeWizard.vala:67
 msgid "<b>Now try to pair your device</b>"
-msgstr ""
+msgstr "<b>Nyní se pokuste spárovat vaše zařízení</b>"
 
 #: src/FirstTimeWizard.vala:76
 msgid "<b>Great! your device is all set</b>\n\n"
 msgstr ""
+"<b>Skvělé! vaše zařízení je nastavené</b>\n"
+"\n"
 
 #: src/FirstTimeWizard.vala:77
 msgid "Now you can enable or disable modules on KDE Connect settings.\n"
 msgstr ""
+"Nyní je možné zapínat nebo vypínat jednotlivé moduly v nastavení KDE Connect."
+"\n"
 
 #: src/FirstTimeWizard.vala:78
 msgid "Indicator already added to autostart.\n"
 msgstr ""
+"Indikátor je už přidaný do aplikací spouštěných při přihlášení do systému.\n"
 
 #: src/FirstTimeWizard.vala:79
 msgid "Enjoy!"
-msgstr ""
+msgstr "Ať vám dobře slouží!"
 
 #: src/KDEConnectManager.vala:119
 msgid "cannot connect to KDE Connect DBus service"
-msgstr ""
+msgstr "nedaří se spojení s DBus službou KDE Connect"
 
 #: src/Device.vala:524
 msgid "Encryption information not found"
-msgstr ""
+msgstr "Informace o šifrování nebyly nalezeny"
 
 #: src/DeviceIndicator.vala:41
 msgid "Browse device"
-msgstr ""
+msgstr "Procházet obsah zařízení"
 
 #: src/DeviceIndicator.vala:43
 msgid "Send file(s)"
-msgstr ""
+msgstr "Odeslat soubory"
 
 #: src/DeviceIndicator.vala:47
 msgid "Send SMS"
-msgstr ""
+msgstr "Odeslat SMS zprávu"
 
 #: src/DeviceIndicator.vala:51
 msgid "Find my phone"
-msgstr ""
+msgstr "Najít můj telefon"
 
 #: src/DeviceIndicator.vala:55
 msgid "Request pairing"
-msgstr ""
+msgstr "Vyžádat si párování"
 
 #: src/DeviceIndicator.vala:58
 msgid "Unpair"
-msgstr ""
+msgstr "Zrušit spárování"
 
 #: src/DeviceIndicator.vala:100
 msgid "Select file(s)"
-msgstr ""
+msgstr "Vyberte soubory"
 
 #: src/DeviceIndicator.vala:103 src/contractor/Contractor.vala:24 src/Sms.vala:74
 msgid "Cancel"
-msgstr ""
+msgstr "Storno"
 
 #: src/DeviceIndicator.vala:105 
 msgid "Select"
-msgstr ""
+msgstr "Vybrat"
 
 #: src/DeviceIndicator.vala:208
 msgid "Battery : "
-msgstr ""
+msgstr "Akumulátor: "
 
 #: src/DeviceIndicator.vala:210
 msgid " (charging)"
-msgstr ""
+msgstr " (nabíjení)"
 
 #: src/DeviceIndicator.vala:217
 msgid "Device Reachable and Trusted"
-msgstr ""
+msgstr "Zařízení je dostupné a spárované"
 
 #: src/DeviceIndicator.vala:219
 msgid "Device Reachable but Not Trusted"
-msgstr ""
+msgstr "Zařízení je dostupné ale není spárované"
 
 #: src/DeviceIndicator.vala:222
 msgid "Device Trusted but not Reachable"
-msgstr ""
+msgstr "Zařízení je spárované ale není dostupné"
 
 #: src/DeviceIndicator.vala:224
 msgid "Device Not Reachable and Not Trusted"
-msgstr ""
+msgstr "Zařízení není dostupné a není spárované"
 
 #: src/contractor/Contractor.vala:15
 msgid "Send to"
-msgstr ""
+msgstr "Odeslat na"
 
 #: src/contractor/Contractor.vala:25 src/Sms.vala:75
 msgid "Send"
-msgstr ""
+msgstr "Odeslat"
 
 #: src/contractor/Contractor.vala:84
 msgid "File not found"
-msgstr ""
+msgstr "Soubor nebyl nalezen"
 
 #: src/Sms.vala:51
 msgid "Compose SMS"
-msgstr ""
+msgstr "Napsat SMS zprávu"
 
 #: src/Sms.vala:51
 msgid "Phone number: "
-msgstr ""
+msgstr "Telefonní číslo: "
 
 #: src/Sms.vala:51
 msgid "Message body: "
-msgstr ""
+msgstr "Text zprávy: "
