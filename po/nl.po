@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: indicator-kdeconnect\n"
 "Report-Msgid-Bugs-To: steevenlopes@outlook.com\n"
 "POT-Creation-Date: 2017-01-19 03:46+0000\n"
-"PO-Revision-Date: 2017-01-19 12:28+0000\n"
+"PO-Revision-Date: 2017-01-21 10:03+0000\n"
 "Last-Translator: Heimen Stoffels <vistausss@outlook.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/indicator-kde-"
 "connect/translations/nl/>\n"
@@ -174,7 +174,7 @@ msgstr "Bestand niet gevonden"
 
 #: src/contractor/Contractor.vala:143
 msgid "There's %u file(s) to be send"
-msgstr ""
+msgstr "Er is/zijn %u bestand(en) om te versturen"
 
 #: src/Sms.vala:51
 msgid "Compose SMS"
