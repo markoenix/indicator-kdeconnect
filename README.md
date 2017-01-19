@@ -35,7 +35,7 @@ sudo add-apt-repository ppa:varlesh-l/indicator-kdeconnect
 sudo apt update
 sudo apt install kdeconnect indicator-kdeconnect
 ```
-Ubuntu 16.10 users can use this ppa:
+ Ubuntu 16.10 users can use this ppa:
 ```
 sudo add-apt-repository ppa:varlesh-l/indicator-kdeconnect
 sudo sed -i 's/yakkety/xenial/g' /etc/apt/sources.list.d/varlesh-l-ubuntu-indicator-kdeconnect-yakkety.list
