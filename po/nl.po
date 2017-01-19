@@ -2,6 +2,8 @@
 # Copyright (C) 2016
 # This file is distributed under the same license as the indicator-kdeconnect package.
 # Bajoja <steevenlopes@outlook.com>, 2016.
+# Translators:
+# Heimen Stoffels <vistausss@outlook.com>, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: indicator-kdeconnect\n"
@@ -16,12 +18,19 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Generator: Poedit 1.8.11\n"
 
 #: src/FirstTimeWizard.vala:50
 msgid ""
 "<b>Are you ready for your first device pairing?</b>\n"
 "\n"
+=======
+"X-Generator: Weblate 2.11-dev\n"
+
+#: src/FirstTimeWizard.vala:50
+msgid "<b>Are you ready for your first device pairing?</b>\n\n"
+>>>>>>> weblate/master
 msgstr ""
 "<b>Bent u er klaar voor om uw eerste apparaat te koppelen?</b>\n"
 "\n"
@@ -35,9 +44,13 @@ msgid "Tethering should work too!\n"
 msgstr "Via tethering zou het ook moeten werken!\n"
 
 #: src/FirstTimeWizard.vala:53
+<<<<<<< HEAD
 msgid ""
 "If you have Firewall running, please open port 1714-1764 for TCP and UDP\n"
 "\n"
+=======
+msgid "If you have Firewall running, please open port 1714-1764 for TCP and UDP\n\n"
+>>>>>>> weblate/master
 msgstr ""
 "Als u een firewall gebruikt, open dan poort 1714-1764 voor zowel TCP als "
 "UDP\n"
@@ -52,17 +65,25 @@ msgid "Google Play</a>"
 msgstr "Google Play</a>"
 
 #: src/FirstTimeWizard.vala:65
+<<<<<<< HEAD
 msgid ""
 "Everytime there is a new device connected, a new indicator will appear in "
 "your panel.\n"
+=======
+msgid "Everytime there is a new device connected, a new indicator will appear in your panel.\n"
+>>>>>>> weblate/master
 msgstr ""
 "Er zal telkens een nieuwe indicator verschijnen op uw paneel voor elk nieuw "
 "apparaat dat u verbindt.\n"
 
 #: src/FirstTimeWizard.vala:66
+<<<<<<< HEAD
 msgid ""
 "There, you can pair and see its status\n"
 "\n"
+=======
+msgid "There, you can pair and see its status\n\n"
+>>>>>>> weblate/master
 msgstr ""
 "Daar kunt u de desbetreffende apparaten koppelen en de status weergeven\n"
 "\n"
@@ -72,9 +93,13 @@ msgid "<b>Now try to pair your device</b>"
 msgstr "<b>Probeer nu uw apparaat te koppelen</b>"
 
 #: src/FirstTimeWizard.vala:76
+<<<<<<< HEAD
 msgid ""
 "<b>Great! your device is all set</b>\n"
 "\n"
+=======
+msgid "<b>Great! your device is all set</b>\n\n"
+>>>>>>> weblate/master
 msgstr ""
 "<b>Mooi zo! Uw apparaat is nu gekoppeld</b>\n"
 "\n"
@@ -91,7 +116,11 @@ msgstr "De indicator is al toegevoegd aan de opstarttoepassingen.\n"
 msgid "Enjoy!"
 msgstr "Veel plezier!"
 
+<<<<<<< HEAD
 #: src/KDEConnectManager.vala:119
+=======
+#: src/KDEConnectManager.vala:121
+>>>>>>> weblate/master
 msgid "cannot connect to KDE Connect DBus service"
 msgstr "Het verbinden met de KDE Connect DBus-dienst is mislukt"
 
@@ -99,6 +128,7 @@ msgstr "Het verbinden met de KDE Connect DBus-dienst is mislukt"
 msgid "Encryption information not found"
 msgstr "De versleutelingsinformatie kan niet worden gevonden"
 
+<<<<<<< HEAD
 #: src/DeviceIndicator.vala:41
 msgid "Browse device"
 msgstr "Apparaat verkennen"
@@ -157,6 +187,61 @@ msgid "Device Trusted but not Reachable"
 msgstr "Apparaat is vertrouwd maar onbereikbaar"
 
 #: src/DeviceIndicator.vala:217
+=======
+#: src/DeviceIndicator.vala:39
+msgid "Browse device"
+msgstr "Apparaat verkennen"
+
+#: src/DeviceIndicator.vala:41
+msgid "Send file(s)"
+msgstr "Bestand(en) versturen"
+
+#: src/DeviceIndicator.vala:45
+msgid "Find my phone"
+msgstr "Mijn telefoon zoeken"
+
+#: src/DeviceIndicator.vala:49
+msgid "Request pairing"
+msgstr "Koppeling aanvragen"
+
+#: src/DeviceIndicator.vala:51
+msgid "Unpair"
+msgstr "Ontkoppelen"
+
+#: src/DeviceIndicator.vala:89
+msgid "Select file(s)"
+msgstr "Bestand(en) selecteren"
+
+#: src/DeviceIndicator.vala:94 src/contractor/Contractor.vala:24
+msgid "Cancel"
+msgstr "Annuleren"
+
+#: src/DeviceIndicator.vala:99 
+msgid "Select"
+msgstr "Selecteren"
+
+#: src/DeviceIndicator.vala:190
+msgid "Battery : "
+msgstr "Batterij : "
+
+#: src/DeviceIndicator.vala:192
+msgid " (charging)"
+msgstr " (bezig met opladen)"
+
+#: src/DeviceIndicator.vala:199
+msgid "Device Reachable and Trusted"
+msgstr "Apparaat is bereikbaar en vertrouwd"
+
+#: src/DeviceIndicator.vala:201
+msgid "Device Reachable but Not Trusted"
+msgstr "Apparaat is bereikbaar maar onvertrouwd"
+
+#: src/DeviceIndicator.vala:204
+msgid "Device Trusted but not Reachable"
+msgstr "Apparaat is vertrouwd maar onbereikbaar"
+
+#: src/DeviceIndicator.vala:206
+>>>>>>> weblate/master
 msgid "Device Not Reachable and Not Trusted"
 msgstr "Apparaat is onbereikbaar en onvertrouwd"
 
@@ -164,6 +249,7 @@ msgstr "Apparaat is onbereikbaar en onvertrouwd"
 msgid "Send to"
 msgstr "Versturen naar"
 
+<<<<<<< HEAD
 #: src/contractor/Contractor.vala:25 src/Sms.vala:44
 msgid "Send"
 msgstr "Versturen"
@@ -183,3 +269,12 @@ msgstr ""
 #: src/Sms.vala:60
 msgid "Message body: "
 msgstr ""
+=======
+#: src/contractor/Contractor.vala:25
+msgid "Send"
+msgstr "Versturen"
+
+#: src/contractor/Contractor.vala:86
+msgid "File not found"
+msgstr "Bestand niet gevonden"
+>>>>>>> weblate/master
