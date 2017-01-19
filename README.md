@@ -28,13 +28,15 @@ Installation
 - Arch Linux  
  There is a package available in the [AUR](https://aur.archlinux.org/packages/indicator-kdeconnect-git)
 
-- Ubuntu  
+- Ubuntu 16.04 
  Ubuntu 16.04 users can use this ppa:
 ```
 sudo add-apt-repository ppa:varlesh-l/indicator-kdeconnect
 sudo apt update
 sudo apt install kdeconnect indicator-kdeconnect
 ```
+
+- Ubuntu 16.10
  Ubuntu 16.10 users can use this ppa:
 ```
 sudo add-apt-repository ppa:varlesh-l/indicator-kdeconnect
