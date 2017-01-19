@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: indicator-kdeconnect\n"
 "Report-Msgid-Bugs-To: steevenlopes@outlook.com\n"
 "POT-Creation-Date: 2017-01-19 02:09+0000\n"
-"PO-Revision-Date: 2017-01-19 03:32+0000\n"
+"PO-Revision-Date: 2017-01-19 03:33+0000\n"
 "Last-Translator: Steeven Lopes <steevenlopes@outlook.com>\n"
 "Language-Team: Portuguese (Portugal) <https://hosted.weblate.org/projects"
 "/indicator-kde-connect/translations/pt_PT/>\n"
@@ -52,7 +52,7 @@ msgstr "Executa KDE Connect no seu Android pelo qual podes fazer download de "
 
 #: src/FirstTimeWizard.vala:56
 msgid "Google Play</a>"
-msgstr "Google Play</a>"
+msgstr "Google Play Store</a>"
 
 #: src/FirstTimeWizard.vala:65
 msgid ""
