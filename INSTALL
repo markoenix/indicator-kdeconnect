@@ -29,4 +29,7 @@ compile:
 uninstall: 
 	sudo make uninstall
 
+to use kdeconnect-send-extension on your file manager you should have
+	python-nautilus, python-nemo or python caja
+
 enjoy!
