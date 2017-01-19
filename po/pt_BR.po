@@ -7,16 +7,16 @@ msgstr ""
 "Project-Id-Version: indicator-kdeconnect\n"
 "Report-Msgid-Bugs-To: steevenlopes@outlook.com\n"
 "POT-Creation-Date: 2017-01-19 02:09+0000\n"
-"PO-Revision-Date: 2017-01-19 02:09+0000\n"
+"PO-Revision-Date: 2017-01-19 03:33+0000\n"
 "Last-Translator: Steeven Lopes <steevenlopes@outlook.com>\n"
-"Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
-"indicator-kde-connect/translations/pt_BR/>\n"
+"Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects"
+"/indicator-kde-connect/translations/pt_BR/>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Poedit 1.8.11\n"
+"X-Generator: Weblate 2.11-dev\n"
 
 #: src/FirstTimeWizard.vala:50
 msgid ""
@@ -50,7 +50,7 @@ msgstr ""
 
 #: src/FirstTimeWizard.vala:56
 msgid "Google Play</a>"
-msgstr "Google Play</a>"
+msgstr "Google Play Store</a>"
 
 #: src/FirstTimeWizard.vala:65
 msgid ""
@@ -100,150 +100,3 @@ msgstr "Não foi possível connectar ao serviço DBus do KDE Connect"
 #: src/Device.vala:524
 msgid "Encryption information not found"
 msgstr "Informações de encriptação não encontrada"
-
-<<<<<<< HEAD
-=======
-#: src/DeviceIndicator.vala:39
->>>>>>> weblate/master
-#: src/DeviceIndicator.vala:41
-msgid "Browse device"
-msgstr "Navegar no dispositivo"
-
-<<<<<<< HEAD
-=======
-#: src/DeviceIndicator.vala:41
->>>>>>> weblate/master
-#: src/DeviceIndicator.vala:43
-msgid "Send file(s)"
-msgstr "Enviar ficheiro(s)"
-
-<<<<<<< HEAD
-#: src/DeviceIndicator.vala:47
-msgid "Send SMS"
-msgstr ""
-
-=======
-#: src/DeviceIndicator.vala:45
->>>>>>> weblate/master
-#: src/DeviceIndicator.vala:51
-msgid "Find my phone"
-msgstr "Encontrar meu telefone"
-
-<<<<<<< HEAD
-=======
-#: src/DeviceIndicator.vala:49
->>>>>>> weblate/master
-#: src/DeviceIndicator.vala:55
-msgid "Request pairing"
-msgstr "Pedir emparelhamento"
-
-<<<<<<< HEAD
-=======
-#: src/DeviceIndicator.vala:51
->>>>>>> weblate/master
-#: src/DeviceIndicator.vala:58
-msgid "Unpair"
-msgstr "Desemparelhar"
-
-<<<<<<< HEAD
-=======
-#: src/DeviceIndicator.vala:89
->>>>>>> weblate/master
-#: src/DeviceIndicator.vala:100
-msgid "Select file(s)"
-msgstr "Selecionar ficheiro(s)"
-
-<<<<<<< HEAD
-#: src/DeviceIndicator.vala:103 src/contractor/Contractor.vala:24
-=======
-#: src/DeviceIndicator.vala:94 src/contractor/Contractor.vala:24
-#: src/DeviceIndicator.vala:103
->>>>>>> weblate/master
-#: src/Sms.vala:40
-msgid "Cancel"
-msgstr "Cancelar"
-
-<<<<<<< HEAD
-=======
-#: src/DeviceIndicator.vala:99 
->>>>>>> weblate/master
-#: src/DeviceIndicator.vala:105
-msgid "Select"
-msgstr "Selecionar"
-
-<<<<<<< HEAD
-=======
-#: src/DeviceIndicator.vala:190
->>>>>>> weblate/master
-#: src/DeviceIndicator.vala:201
-msgid "Battery : "
-msgstr "Bateria : "
-
-<<<<<<< HEAD
-=======
-#: src/DeviceIndicator.vala:192
->>>>>>> weblate/master
-#: src/DeviceIndicator.vala:203
-msgid " (charging)"
-msgstr " (carregando)"
-
-<<<<<<< HEAD
-=======
-#: src/DeviceIndicator.vala:199
->>>>>>> weblate/master
-#: src/DeviceIndicator.vala:210
-msgid "Device Reachable and Trusted"
-msgstr "Dispositivo Alcançável e Confiável"
-
-<<<<<<< HEAD
-=======
-#: src/DeviceIndicator.vala:201
->>>>>>> weblate/master
-#: src/DeviceIndicator.vala:210
-msgid "Device Reachable but Not Trusted"
-msgstr "Dispositivo Alcançável mas não Confiável"
-
-<<<<<<< HEAD
-=======
-#: src/DeviceIndicator.vala:204
->>>>>>> weblate/master
-#: src/DeviceIndicator.vala:215
-msgid "Device Trusted but not Reachable"
-msgstr "Dispositivo Confiável mas não  Alcançável"
-
-<<<<<<< HEAD
-=======
-#: src/DeviceIndicator.vala:206
->>>>>>> weblate/master
-#: src/DeviceIndicator.vala:217
-msgid "Device Not Reachable and Not Trusted"
-msgstr "Dispositivo Não Alcançável e não Confiável"
-
-#: src/contractor/Contractor.vala:15
-msgid "Send to"
-msgstr "Enviar para"
-
-<<<<<<< HEAD
-#: src/contractor/Contractor.vala:25 src/Sms.vala:44
-=======
-#: src/contractor/Contractor.vala:25
-#: src/Sms.vala:44
->>>>>>> weblate/master
-msgid "Send"
-msgstr "Enviar"
-
-#: src/contractor/Contractor.vala:84
-msgid "File not found"
-msgstr "Ficheiro não encontrado"
-
-#: src/Sms.vala:37
-msgid "Compose SMS"
-msgstr ""
-
-#: src/Sms.vala:51
-msgid "Phone number: "
-msgstr ""
-
-#: src/Sms.vala:60
-msgid "Message body: "
-msgstr ""
