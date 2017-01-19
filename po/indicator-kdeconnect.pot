@@ -111,27 +111,27 @@ msgstr ""
 msgid "Select"
 msgstr ""
 
-#: src/DeviceIndicator.vala:208
+#: src/DeviceIndicator.vala:201
 msgid "Battery : "
 msgstr ""
 
-#: src/DeviceIndicator.vala:210
+#: src/DeviceIndicator.vala:203
 msgid " (charging)"
 msgstr ""
 
-#: src/DeviceIndicator.vala:217
+#: src/DeviceIndicator.vala:210
 msgid "Device Reachable and Trusted"
 msgstr ""
 
-#: src/DeviceIndicator.vala:219
+#: src/DeviceIndicator.vala:212
 msgid "Device Reachable but Not Trusted"
 msgstr ""
 
-#: src/DeviceIndicator.vala:222
+#: src/DeviceIndicator.vala:215
 msgid "Device Trusted but not Reachable"
 msgstr ""
 
-#: src/DeviceIndicator.vala:224
+#: src/DeviceIndicator.vala:217
 msgid "Device Not Reachable and Not Trusted"
 msgstr ""
 

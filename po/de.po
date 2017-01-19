@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: indicator-kdeconnect\n"
 "Report-Msgid-Bugs-To: steevenlopes@outlook.com\n"
-"POT-Creation-Date: 2017-01-12 01:13+0000\n"
-"PO-Revision-Date: 2017-01-12 01:13+0000\n"
+"POT-Creation-Date: 2017-01-19 02:07+0000\n"
+"PO-Revision-Date: 2017-01-19 02:07+0000\n"
 "Last-Translator: Steeven Lopes <steevenlopes@outlook.com>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/indicator-kde-"
 "connect/translations/de/>\n"
@@ -133,7 +133,7 @@ msgid "Select file(s)"
 msgstr "Wähle Datei(en)"
 
 #: src/DeviceIndicator.vala:103 src/contractor/Contractor.vala:24
-#: src/Sms.vala:74
+#: src/Sms.vala:40
 msgid "Cancel"
 msgstr "Abbrechen"
 
@@ -141,27 +141,27 @@ msgstr "Abbrechen"
 msgid "Select"
 msgstr "Auswählen"
 
-#: src/DeviceIndicator.vala:208
+#: src/DeviceIndicator.vala:201
 msgid "Battery : "
 msgstr "Akku: "
 
-#: src/DeviceIndicator.vala:210
+#: src/DeviceIndicator.vala:203
 msgid " (charging)"
 msgstr " (wird aufgeladen)"
 
-#: src/DeviceIndicator.vala:217
+#: src/DeviceIndicator.vala:210
 msgid "Device Reachable and Trusted"
 msgstr "Gerät in Reichweite und bekannt"
 
-#: src/DeviceIndicator.vala:219
+#: src/DeviceIndicator.vala:210
 msgid "Device Reachable but Not Trusted"
 msgstr "Gerät in Reichweite aber nicht bekannt"
 
-#: src/DeviceIndicator.vala:222
+#: src/DeviceIndicator.vala:215
 msgid "Device Trusted but not Reachable"
 msgstr "Gerät bekannt aber nicht in Reichweite"
 
-#: src/DeviceIndicator.vala:224
+#: src/DeviceIndicator.vala:217
 msgid "Device Not Reachable and Not Trusted"
 msgstr "Gerät nicht in Reichweite  und nicht bekannt"
 
@@ -169,7 +169,7 @@ msgstr "Gerät nicht in Reichweite  und nicht bekannt"
 msgid "Send to"
 msgstr "Senden an"
 
-#: src/contractor/Contractor.vala:25 src/Sms.vala:75
+#: src/contractor/Contractor.vala:25 src/Sms.vala:44
 msgid "Send"
 msgstr "Senden"
 
@@ -177,7 +177,7 @@ msgstr "Senden"
 msgid "File not found"
 msgstr "Datei nicht gefunden"
 
-#: src/Sms.vala:51
+#: src/Sms.vala:37
 msgid "Compose SMS"
 msgstr ""
 
@@ -185,6 +185,6 @@ msgstr ""
 msgid "Phone number: "
 msgstr ""
 
-#: src/Sms.vala:51
+#: src/Sms.vala:60
 msgid "Message body: "
 msgstr ""
