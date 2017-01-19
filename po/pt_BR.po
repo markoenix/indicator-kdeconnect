@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: indicator-kdeconnect\n"
 "Report-Msgid-Bugs-To: steevenlopes@outlook.com\n"
-"POT-Creation-Date: 2016-11-18 18:46+0200\n"
-"PO-Revision-Date: 2016-12-07 21:22+0000\n"
+"POT-Creation-Date: 2017-01-19 02:09+0000\n"
+"PO-Revision-Date: 2017-01-19 02:09+0000\n"
 "Last-Translator: Steeven Lopes <steevenlopes@outlook.com>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects"
 "/indicator-kde-connect/translations/pt_BR/>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 2.10-dev\n"
+"X-Generator: Poedit 1.8.11\n"
 
 #: src/FirstTimeWizard.vala:50
 msgid "<b>Are you ready for your first device pairing?</b>\n\n"
@@ -90,58 +90,73 @@ msgid "Encryption information not found"
 msgstr "Informações de encriptação não encontrada"
 
 #: src/DeviceIndicator.vala:39
+#: src/DeviceIndicator.vala:41
 msgid "Browse device"
 msgstr "Navegar no dispositivo"
 
 #: src/DeviceIndicator.vala:41
+#: src/DeviceIndicator.vala:43
 msgid "Send file(s)"
 msgstr "Enviar ficheiro(s)"
 
 #: src/DeviceIndicator.vala:45
+#: src/DeviceIndicator.vala:51
 msgid "Find my phone"
 msgstr "Encontrar meu telefone"
 
 #: src/DeviceIndicator.vala:49
+#: src/DeviceIndicator.vala:55
 msgid "Request pairing"
 msgstr "Pedir emparelhamento"
 
 #: src/DeviceIndicator.vala:51
+#: src/DeviceIndicator.vala:58
 msgid "Unpair"
 msgstr "Desemparelhar"
 
 #: src/DeviceIndicator.vala:89
+#: src/DeviceIndicator.vala:100
 msgid "Select file(s)"
 msgstr "Selecionar ficheiro(s)"
 
 #: src/DeviceIndicator.vala:94 src/contractor/Contractor.vala:24
+#: src/DeviceIndicator.vala:103
+#: src/Sms.vala:40
 msgid "Cancel"
 msgstr "Cancelar"
 
 #: src/DeviceIndicator.vala:99 
+#: src/DeviceIndicator.vala:105
 msgid "Select"
 msgstr "Selecionar"
 
 #: src/DeviceIndicator.vala:190
+#: src/DeviceIndicator.vala:201
 msgid "Battery : "
 msgstr "Bateria : "
 
 #: src/DeviceIndicator.vala:192
+#: src/DeviceIndicator.vala:203
 msgid " (charging)"
 msgstr " (carregando)"
 
 #: src/DeviceIndicator.vala:199
+#: src/DeviceIndicator.vala:210
 msgid "Device Reachable and Trusted"
 msgstr "Dispositivo Alcançável e Confiável"
 
 #: src/DeviceIndicator.vala:201
+#: src/DeviceIndicator.vala:210
 msgid "Device Reachable but Not Trusted"
 msgstr "Dispositivo Alcançável mas não Confiável"
 
 #: src/DeviceIndicator.vala:204
+#: src/DeviceIndicator.vala:215
 msgid "Device Trusted but not Reachable"
 msgstr "Dispositivo Confiável mas não  Alcançável"
 
 #: src/DeviceIndicator.vala:206
+#: src/DeviceIndicator.vala:217
 msgid "Device Not Reachable and Not Trusted"
 msgstr "Dispositivo Não Alcançável e não Confiável"
 
@@ -150,6 +165,7 @@ msgid "Send to"
 msgstr "Enviar para"
 
 #: src/contractor/Contractor.vala:25
+#: src/Sms.vala:44
 msgid "Send"
 msgstr "Enviar"
 
