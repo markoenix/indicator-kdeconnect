@@ -1,5 +1,5 @@
 [Contractor Entry]
-Name=KDEConnect-send
+Name=KDEConnect Send To
 Icon=kdeconnect
 Description=Send files with kdeconnect-send
 MimeType=!inode;
