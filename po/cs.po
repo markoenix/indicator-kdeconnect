@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: indicator-kdeconnect\n"
 "Report-Msgid-Bugs-To: steevenlopes@outlook.com\n"
 "POT-Creation-Date: 2017-01-19 03:45+0000\n"
-"PO-Revision-Date: 2017-01-21 09:42+0000\n"
+"PO-Revision-Date: 2017-01-21 09:59+0000\n"
 "Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/indicator-kde-"
 "connect/translations/cs/>\n"
@@ -23,24 +23,24 @@ msgid ""
 "<b>Are you ready for your first device pairing?</b>\n"
 "\n"
 msgstr ""
-"<b>Jste připravení na prvotní spárování zařízení?</b>\n"
+"<b>Připravení na prvotní spárování zařízení?</b>\n"
 "\n"
 
 #: src/FirstTimeWizard.vala:51
 msgid "Now connect your devices using wifi connection.\n"
-msgstr "Nyní připojte svá zařízení pomocí WiFi.\n"
+msgstr "Připojte svá zařízení pomocí WiFi.\n"
 
 #: src/FirstTimeWizard.vala:52
 msgid "Tethering should work too!\n"
-msgstr "Tethering by měl fungovat také!\n"
+msgstr "Zafungovat by měl i režim sdíleného připojení (tethering)!\n"
 
 #: src/FirstTimeWizard.vala:53
 msgid ""
 "If you have Firewall running, please open port 1714-1764 for TCP and UDP\n"
 "\n"
 msgstr ""
-"Pokud na počítači máte bránu firewall, je třeba otevřít porty 1714 až 1764 "
-"pro TCP a UDP\n"
+"Pokud používáte bránu firewall na počítači, je třeba otevřít porty 1714 až "
+"1764 pro TCP a UDP\n"
 "\n"
 
 #: src/FirstTimeWizard.vala:54
@@ -71,14 +71,14 @@ msgstr ""
 
 #: src/FirstTimeWizard.vala:67
 msgid "<b>Now try to pair your device</b>"
-msgstr "<b>Nyní se pokuste spárovat vaše zařízení</b>"
+msgstr "<b>Nyní se pokuste spárovat své zařízení</b>"
 
 #: src/FirstTimeWizard.vala:76
 msgid ""
 "<b>Great! your device is all set</b>\n"
 "\n"
 msgstr ""
-"<b>Skvělé! vaše zařízení je nastavené</b>\n"
+"<b>Skvělé! Zařízení je nastaveno</b>\n"
 "\n"
 
 #: src/FirstTimeWizard.vala:77
@@ -90,7 +90,7 @@ msgstr ""
 #: src/FirstTimeWizard.vala:78
 msgid "Indicator already added to autostart.\n"
 msgstr ""
-"Indikátor je už přidaný do aplikací spouštěných při přihlášení do systému.\n"
+"Indikátor už je mezi aplikacemi spouštěnými při přihlášení do systému.\n"
 
 #: src/FirstTimeWizard.vala:79
 msgid "Enjoy!"
@@ -98,7 +98,7 @@ msgstr "Ať vám dobře slouží!"
 
 #: src/KDEConnectManager.vala:119
 msgid "cannot connect to KDE Connect DBus service"
-msgstr "nedaří se spojení s DBus službou KDE Connect"
+msgstr "nedaří se spojit s DBus službou KDE Connect"
 
 #: src/Device.vala:524
 msgid "Encryption information not found"
@@ -159,11 +159,11 @@ msgstr "Zařízení je dostupné ale není spárované"
 
 #: src/DeviceIndicator.vala:215
 msgid "Device Trusted but not Reachable"
-msgstr "Zařízení je spárované ale není dostupné"
+msgstr "Zařízení je označeno jako důvěryhodné, ale není dostupné"
 
 #: src/DeviceIndicator.vala:217
 msgid "Device Not Reachable and Not Trusted"
-msgstr "Zařízení není dostupné a není spárované"
+msgstr "Zařízení není dostupné a není označeno jako důvěryhodné"
 
 #: src/contractor/Contractor.vala:15
 msgid "Send to"
