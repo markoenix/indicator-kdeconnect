@@ -175,8 +175,12 @@ msgid "Send"
 msgstr "Отправить"
 
 #: src/contractor/Contractor.vala:84
-msgid "File not found"
+msgid "File(s) not found"
 msgstr "Файл не найден"
+
+#: src/contractor/Contractor.vala:143
+msgid "There's %u file(s) to be send"
+msgstr ""
 
 #: src/Sms.vala:37
 msgid "Compose SMS"

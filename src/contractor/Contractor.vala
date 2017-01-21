@@ -70,20 +70,26 @@ namespace KDEConnectIndicator {
 
         Gtk.init (ref args);
 
+	SList<File> files = new SList<File>();
 
-        File f = File.new_for_commandline_arg (args[1]);
+	for (int i=1; i<args.length; i++){ //int i=1 descart first arg (program name)
+		File file = File.new_for_commandline_arg (args[i]);
 
-        if (f.get_path() != null // null path means its remote file
-            && !f.query_exists ()) {
-            message ("file doesnt exist");
+		if (file.get_path() != null && // null path means its remote file
+		    file.query_exists ())
+		    	files.append (file);
+	}
+
+        if (files.length () == 0) {
+            message ("file(s) doesnt exist(s) or not found");
 
             var msd = new Gtk.MessageDialog (null,
-            				     Gtk.DialogFlags.MODAL,
+                 			     Gtk.DialogFlags.MODAL,
                   			     Gtk.MessageType.WARNING,
                   			     Gtk.ButtonsType.OK,
                     			     "msg");
 
-            msd.set_markup (_("File not found"));
+            msd.set_markup (_("File(s) not found"));
 
             msd.destroy.connect (Gtk.main_quit);
             msd.show ();
@@ -134,12 +140,14 @@ namespace KDEConnectIndicator {
             }
         }
 
-        var d = new DeviceDialog (f.get_basename ());
+	string files_number = "There's %u file(s) to be send".printf(files.length ());
+        var d = new DeviceDialog (files_number);
         d.set_list (list_store);
         if (d.run () == Gtk.ResponseType.OK) {
             var selected = d.get_selected ();
             var selected_dev = device_list.nth_data (selected);
-            selected_dev.send_file (f.get_uri ());
+            foreach (File file in files)
+            	selected_dev.send_file (file.get_uri ());
         }
         d.destroy.connect (Gtk.main_quit);
         d.show_all ();

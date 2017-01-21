@@ -144,7 +144,11 @@ msgid "Send"
 msgstr ""
 
 #: src/contractor/Contractor.vala:84
-msgid "File not found"
+msgid "File(s) not found"
+msgstr ""
+
+#: src/contractor/Contractor.vala:143
+msgid "There's %u file(s) to be send"
 msgstr ""
 
 #: src/Sms.vala:37

@@ -100,3 +100,94 @@ msgstr "Não foi possível connectar ao serviço DBus do KDE Connect"
 #: src/Device.vala:524
 msgid "Encryption information not found"
 msgstr "Informações de encriptação não encontrada"
+
+#: src/DeviceIndicator.vala:41
+msgid "Browse device"
+msgstr "Navegar no dispositivo"
+
+#: src/DeviceIndicator.vala:43
+msgid "Send file(s)"
+msgstr "Enviar ficheiro(s)"
+
+#: src/DeviceIndicator.vala:47
+msgid "Send SMS"
+msgstr "Enviar SMS"
+
+#: src/DeviceIndicator.vala:51
+msgid "Find my phone"
+msgstr "Encontrar meu telefone"
+
+#: src/DeviceIndicator.vala:55
+msgid "Request pairing"
+msgstr "Pedir emparelhamento"
+
+#: src/DeviceIndicator.vala:58
+msgid "Unpair"
+msgstr "Desemparelhar"
+
+#: src/DeviceIndicator.vala:100
+msgid "Select file(s)"
+msgstr "Seleccionar ficheiro(s)"
+
+#: src/DeviceIndicator.vala:103 src/contractor/Contractor.vala:24
+#: src/Sms.vala:40
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: src/DeviceIndicator.vala:105
+msgid "Select"
+msgstr "Selecionar"
+
+#: src/DeviceIndicator.vala:201
+msgid "Battery : "
+msgstr "Bateria : "
+
+#: src/DeviceIndicator.vala:203
+msgid " (charging)"
+msgstr " (carregando)"
+
+#: src/DeviceIndicator.vala:210
+msgid "Device Reachable and Trusted"
+msgstr "Dispositivo Alcançável e Confiável"
+
+#: src/DeviceIndicator.vala:210
+msgid "Device Reachable but Not Trusted"
+msgstr "Dispositivo Alcançável mas não Confiável"
+
+#: src/DeviceIndicator.vala:215
+msgid "Device Trusted but not Reachable"
+msgstr "Dispositivo Confiável mas não  Alcançável"
+
+#: src/DeviceIndicator.vala:217
+msgid "Device Not Reachable and Not Trusted"
+msgstr "Dispositivo Não Alcançável e não Confiável"
+
+#: src/contractor/Contractor.vala:15
+msgid "Send to"
+msgstr "Enviar para"
+
+#: src/contractor/Contractor.vala:25 src/Sms.vala:44
+msgid "Send"
+msgstr "Enviar"
+
+#: src/contractor/Contractor.vala:84
+msgid "File(s) not found"
+msgstr "Ficheiro(s) não encontrado"
+
+#: src/contractor/Contractor.vala:143
+msgid "There's %u file(s) to be send"
+msgstr ""
+
+#: src/Sms.vala:37
+msgid "Compose SMS"
+msgstr "Escrever SMS"
+
+#: src/Sms.vala:51
+msgid "Phone number: "
+msgstr "Telefone: "
+
+#: src/Sms.vala:60
+msgid "Message body: "
+msgstr "Mensagem: "
+
+
