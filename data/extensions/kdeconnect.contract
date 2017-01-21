@@ -1,7 +1,7 @@
 [Contractor Entry]
-Name=Send files via KDE Connect
-Icon=share
-Description=Send files to device...
+Name=KDEConnect-send
+Icon=kdeconnect
+Description=Send files with kdeconnect-send
 MimeType=!inode;
-Exec=kdeconnect-send %f
+Exec=kdeconnect-send %F
 Gettext-Domain=gnome-bluetooth2
