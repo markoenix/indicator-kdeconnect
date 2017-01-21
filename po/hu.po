@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: indicator-kdeconnect\n"
 "Report-Msgid-Bugs-To: steevenlopes@outlook.com\n"
 "POT-Creation-Date: 2017-01-19 02:08+0000\n"
-"PO-Revision-Date: 2017-01-19 02:08+0000\n"
+"PO-Revision-Date: 2017-01-21 00:47+0000\n"
 "Last-Translator: Péter Báthory <bathory86p@gmail.com>\n"
 "Language-Team: Hungarian <https://hosted.weblate.org/projects/indicator-kde-"
 "connect/translations/hu/>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Poedit 1.8.11\n"
+"X-Generator: Weblate 2.11-dev\n"
 
 #: src/FirstTimeWizard.vala:50
 msgid ""
@@ -109,7 +109,7 @@ msgstr "Fájl(ok) küldése"
 
 #: src/DeviceIndicator.vala:47
 msgid "Send SMS"
-msgstr ""
+msgstr "SMS küldés"
 
 #: src/DeviceIndicator.vala:51
 msgid "Find my phone"
@@ -174,12 +174,12 @@ msgstr "Fájl nem található"
 
 #: src/Sms.vala:37
 msgid "Compose SMS"
-msgstr ""
+msgstr "SMS írás"
 
 #: src/Sms.vala:51
 msgid "Phone number: "
-msgstr ""
+msgstr "Telefonszám: "
 
 #: src/Sms.vala:60
 msgid "Message body: "
-msgstr ""
+msgstr "Üzenet: "
