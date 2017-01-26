@@ -1,3 +1,14 @@
+indicator-kdeconnect (0.6) precise; urgency=low
+  * Monochrome icons for Gnome
+  
+  * Add German, Dutch, Czech, Croatian and Hungarian Language
+  
+  * KDEConnect-send and Elementary OS can send multiple files
+  
+  * Now you can Send SMS as a Beta Feature
+
+ -- Bajoja <steevenlopes@outlook.com> Thu, 26 Jan 2017 02:00 -0000
+
 indicator-kdeconnect (0.5) precise; urgency=low
   * Bugs Fixes
 
@@ -7,7 +18,7 @@ indicator-kdeconnect (0.5) precise; urgency=low
 
   * Trusted devices now appear on context menu extension to send files directly
 
- -- Bajoja <steevenlopes@outlook.com> Tue, 03 Jan 2016 18:00 -0000
+ -- Bajoja <steevenlopes@outlook.com> Tue, 03 Jan 2017 18:00 -0000
 
 indicator-kdeconnect (0.4) precise; urgency=low
   * New native extension for Nautilus, Caja and Nemo

@@ -1,3 +1,9 @@
+# Version 0.6.0
+ * Monochrome icons for Gnome
+ * Add German, Dutch, Czech, Croatian and Hungarian Language
+ * KDEConnect-send and Elementary OS can send multiple files
+ * Now you can Send SMS as a Beta Feature
+
 # Version 0.5.0
  * Bugs Fixes
  * Add Languages: Brazilian Portuguese 

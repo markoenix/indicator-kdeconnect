@@ -17,7 +17,7 @@
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 Name:           indicator-kdeconnect
-Version:        0.5
+Version:        0.6
 Release:        0%{?dist}
 Summary:        App Indicator for KDE Connect
 Group:          Applications/System
@@ -84,11 +84,17 @@ popd
 %{_datadir}/caja-python/extensions/
 
 %changelog
+* Thu Jan 26 2017 0200 Bajoja <steevenlopes@outlook.com> 0.6
+- Monochrome icons for Gnome.
+- KDEConnect-send and Elementary OS can send multiple files.
+- Add German, Dutch, Czech, Croatian and Hungarian Language.
+- Now you can Send SMS as a Beta Feature.
+
 * Tue Jan 03 2017 1800 Bajoja <steevenlopes@outlook.com> 0.5
 - Bugs Fixes.
-- Add Brazilian Portuguese Language
-- Add icons for Elementary OS
-- Trusted devices now appear on context menu extension to send files directly
+- Add Brazilian Portuguese Language.
+- Add icons for Elementary OS.
+- Trusted devices now appear on context menu extension to send files directly-
 
 * Thu Nov 24 2016 1700 Bajoja <steevenlopes@outlook.com> 0.4
 - New native extension for Nautilus, Caja and Nemo.
