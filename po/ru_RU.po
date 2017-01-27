@@ -115,7 +115,7 @@ msgstr "Отправить файл(ы)"
 
 #: src/DeviceIndicator.vala:47
 msgid "Send SMS"
-msgstr ""
+msgstr "Отправить SMS"
 
 #: src/DeviceIndicator.vala:51
 msgid "Find my phone"
@@ -180,16 +180,16 @@ msgstr "Файл не найден"
 
 #: src/contractor/Contractor.vala:143
 msgid "There's %u file(s) to be send"
-msgstr ""
+msgstr "Эти файлы %u будут отправлены"
 
 #: src/Sms.vala:37
 msgid "Compose SMS"
-msgstr ""
+msgstr "Написать SMS"
 
 #: src/Sms.vala:51
 msgid "Phone number: "
-msgstr ""
+msgstr "Номер телефона"
 
 #: src/Sms.vala:60
 msgid "Message body: "
-msgstr ""
+msgstr "Текст сообщения"
