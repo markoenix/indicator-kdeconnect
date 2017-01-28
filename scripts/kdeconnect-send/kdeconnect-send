@@ -1,6 +1,4 @@
 #!/bin/bash
 
-for url in "$@"
-do
-kdeconnect-send "$url"
-done
+kdeconnect-send $@
+
