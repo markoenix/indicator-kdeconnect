@@ -1,0 +1,15 @@
+language: c
+compiler: gcc
+sudo: required
+dist: xenial
+cache:
+  - apt
+before_install:
+  - sudo apt install -y cmake valac libgtk-3-dev libappindicator3-dev gettext
+before_script:
+  - sleep 3
+script:
+  - mkdir build
+  - cd build  
+  - cmake .. -DCMAKE_INSTALL_PREFIX=/usr
+  - make
