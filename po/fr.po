@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: indicator-kdeconnect\n"
 "Report-Msgid-Bugs-To: steevenlopes@outlook.com\n"
 "POT-Creation-Date: 2016-11-18 18:46+0200\n"
-"PO-Revision-Date: 2017-01-29 13:40+0000\n"
+"PO-Revision-Date: 2017-01-29 13:44+0000\n"
 "Last-Translator: Detobel <detobel36@hotmail.fr>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/indicator-kde-"
 "connect/translations/fr/>\n"
@@ -49,123 +49,130 @@ msgstr "Google Play</a>"
 #: src/FirstTimeWizard.vala:65
 msgid "Everytime there is a new device connected, a new indicator will appear in your panel.\n"
 msgstr ""
+"Chaque fois qu'un nouvel appareil se connecte, une indication apparaît sur\n"
 
 #: src/FirstTimeWizard.vala:66
 msgid "There, you can pair and see its status\n\n"
 msgstr ""
+"Ici, vous pouvez appareiller et voir le statut\n"
+"\n"
 
 #: src/FirstTimeWizard.vala:67
 msgid "<b>Now try to pair your device</b>"
-msgstr ""
+msgstr "<b>Essayer d'appareiller votre appareil</b>"
 
 #: src/FirstTimeWizard.vala:76
 msgid "<b>Great! your device is all set</b>\n\n"
 msgstr ""
+"<b>Super! Votre appareil est pret</b>\n"
+"\n"
 
 #: src/FirstTimeWizard.vala:77
 msgid "Now you can enable or disable modules on KDE Connect settings.\n"
 msgstr ""
+"Vous pouvez maintenant activer ou désactiver les modules via les paramètres "
+"de KDE Connect.\n"
 
 #: src/FirstTimeWizard.vala:78
 msgid "Indicator already added to autostart.\n"
-msgstr ""
+msgstr "L'indicateur à déjà été ajouté lors du démarrage automatique.\n"
 
 #: src/FirstTimeWizard.vala:79
 msgid "Enjoy!"
-msgstr ""
+msgstr "Enjoy!"
 
 #: src/KDEConnectManager.vala:119
 msgid "cannot connect to KDE Connect DBus service"
-msgstr ""
+msgstr "ne peut pas se connecter au service KDE Connect DBus"
 
 #: src/Device.vala:524
 msgid "Encryption information not found"
-msgstr ""
+msgstr "Informations de criptage non trouvées"
 
 #: src/DeviceIndicator.vala:41
 msgid "Browse device"
-msgstr ""
+msgstr "Liste des appareils"
 
 #: src/DeviceIndicator.vala:43
 msgid "Send file(s)"
-msgstr ""
+msgstr "Envoyer un/des fichier(s)"
 
 #: src/DeviceIndicator.vala:47
 msgid "Send SMS"
-msgstr ""
+msgstr "Envoyer un SMS"
 
 #: src/DeviceIndicator.vala:51
 msgid "Find my phone"
-msgstr ""
+msgstr "Trouver mon téléphone"
 
 #: src/DeviceIndicator.vala:55
 msgid "Request pairing"
-msgstr ""
+msgstr "Demande d'appariement"
 
 #: src/DeviceIndicator.vala:58
 msgid "Unpair"
-msgstr ""
+msgstr "Dissocier"
 
 #: src/DeviceIndicator.vala:100
 msgid "Select file(s)"
-msgstr ""
+msgstr "Sélectionner un/des fichier(s)"
 
 #: src/DeviceIndicator.vala:103 src/contractor/Contractor.vala:24 src/Sms.vala:40
 msgid "Cancel"
-msgstr ""
+msgstr "Annuler"
 
 #: src/DeviceIndicator.vala:105 
 msgid "Select"
-msgstr ""
+msgstr "Sélectionner"
 
 #: src/DeviceIndicator.vala:201
 msgid "Battery : "
-msgstr ""
+msgstr "Batterie : "
 
 #: src/DeviceIndicator.vala:203
 msgid " (charging)"
-msgstr ""
+msgstr " (en charge)"
 
 #: src/DeviceIndicator.vala:210
 msgid "Device Reachable and Trusted"
-msgstr ""
+msgstr "Appareil accèssible et sécurisé"
 
 #: src/DeviceIndicator.vala:212
 msgid "Device Reachable but Not Trusted"
-msgstr ""
+msgstr "Appareil accèssible mais non sécurisé"
 
 #: src/DeviceIndicator.vala:215
 msgid "Device Trusted but not Reachable"
-msgstr ""
+msgstr "Appareil sécurisé mais non accèssible"
 
 #: src/DeviceIndicator.vala:217
 msgid "Device Not Reachable and Not Trusted"
-msgstr ""
+msgstr "Appareil non accèssible et non sécurisé"
 
 #: src/contractor/Contractor.vala:15
 msgid "Send to"
-msgstr ""
+msgstr "Envoyer vers"
 
 #: src/contractor/Contractor.vala:25 src/Sms.vala:44
 msgid "Send"
-msgstr ""
+msgstr "Envoyer"
 
 #: src/contractor/Contractor.vala:84
 msgid "File(s) not found"
-msgstr ""
+msgstr "Fichier(s) non trouvé"
 
 #: src/contractor/Contractor.vala:143
 msgid "There's %u file(s) to be send"
-msgstr ""
+msgstr "Il y a %u fichier(s) à envoyer"
 
 #: src/Sms.vala:37
 msgid "Compose SMS"
-msgstr ""
+msgstr "Ecrire un SMS"
 
 #: src/Sms.vala:51
 msgid "Phone number: "
-msgstr ""
+msgstr "Numéro de téléphone: "
 
 #: src/Sms.vala:60
 msgid "Message body: "
-msgstr ""
+msgstr "Message: "
