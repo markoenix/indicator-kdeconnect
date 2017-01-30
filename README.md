@@ -11,12 +11,14 @@ Features:
  2. Menu to request for pairing and unpairing.
  3. Menu to start SFTP and open a file browser.
  4. Menu to send files.
- 5. A small program, `kdeconnect-send` to help sending file and choosing device.
- 6. A .contractor file, so you can send file from any of elementary OS's applications.
- 7. A Python extension for Nautilus, Nemo and Caja.
- 8. Menu to ring and find your phone.
- 9. From the device name menu you can get encryption information.
- 10. From the device status menu item you can open KDE Connect settings.
+ 5. Menu to send SMS.
+ 6. A small program, `kdeconnect-send` to help sending files and choosing device.
+ 7. A .contractor file, so you can send files from any of elementary OS's applications.
+ 8. A Python extension for Nautilus, Nemo and Caja.
+ 9. Menu to ring and find your phone.
+ 10. From the device name menu you can get encryption information.
+ 11. From the device status menu item you can open KDE Connect settings.
+ 12. Custom device icons for Ubuntu, Gnome and Elementary OS.
 
 Limitation
 -------
@@ -60,10 +62,10 @@ Usage Suggestions
  To make life better you can try to apply this:
 
  1. Add KDE Connect Indicator to your startup applications, on your System Setting if is not.
- 2. Nautilus, Nemo and Caja users have native extensions installed by default, make sure you have,
+ 2. Nautilus, Nemo, Caja and Pantheon-files users have native extensions installed by default, make sure you have,
     python-nautilus, python-nemo or python-caja instelled to use it.
- 3. If your files manager is not supported by extensions create a action entry with  `kdeconnect-send %f`as  command.
-    Or you can use the script present on the scripts folder.
+ 3. If your files manager is not supported by extensions create a action entry with  `kdeconnect-send %F`as  command.
+    Or you can use the script present on the scripts folder, adding it to your file manager script folder.
 
 Please report issues and suggestion [here](https://github.com/Bajoja/indicator-kdeconnect/issues)
 
