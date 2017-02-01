@@ -9,11 +9,23 @@
 
 from gi.repository import Nemo, GObject, Notify
 from subprocess import call, check_output
-import urllib, os.path, re
+import urllib, os.path, re, gettext, locale
 
-class KDEConnectExtension(GObject.GObject, Nemo.MenuProvider):
+# use of _ to set messages to be translated
+_ = gettext.gettext
+
+class KDEConnectSendExtension(GObject.GObject, Nemo.MenuProvider):
     def __init__(self):
         pass
+
+    """Inicialize translations to a domain"""
+    def setup_gettext(self):
+        try:
+            locale.setlocale(locale.LC_ALL, "")
+        except:
+            pass
+        gettext.bindtextdomain("indicator-kdeconnect", "/usr/share/locale")
+        gettext.textdomain("indicator-kdeconnect")
 
     """Get a list of reachable devices"""
     def get_reachable_devices(self):
@@ -32,9 +44,10 @@ class KDEConnectExtension(GObject.GObject, Nemo.MenuProvider):
             filename = urllib.unquote(file.get_uri()[7:])
             call(["kdeconnect-cli", "-d", device_id, "--share", filename])
 
-        Notify.init("indicator-kdeconnect")
-        Notify.Notification.new("Check the device {device_name}".format(device_name=device_name),
-                                "Sending {num_files} file(s)".format(num_files=len(files))
+        self.setup_gettext()
+        Notify.init("KDEConnect-send")
+        Notify.Notification.new(_("Check the device {device_name}").format(device_name=device_name),
+                                _("Sending {num_files} file(s)").format(num_files=len(files))
                                 ).show()
 
 
@@ -60,19 +73,20 @@ class KDEConnectExtension(GObject.GObject, Nemo.MenuProvider):
             if file.get_uri_scheme() != 'file' or file.is_directory() and os.path.isfile(file):
                 return
 
+        self.setup_gettext()
         """If user only select file(s) create menu and sub menu"""
         menu = Nemo.MenuItem(name='KdeConnectSendExtension::KDEConnect_Send',
-                                 label='KDEConnect Send To',
-                                 tip='send file(s) with kdeconnect',
-                                 icon='kdeconnect')
+                             label=_('KDEConnect - Send To'),
+                             tip=_('send file(s) with kdeconnect'),
+                             icon='kdeconnect')
 
         sub_menu = Nemo.Menu()
 
         menu.set_submenu(sub_menu)
 
         for device in devices:
-            item = Nemo.MenuItem(name="KDEConnectExtension::Send_File_To",
-                                     label=device["name"])
+            item = Nemo.MenuItem(name="KDEConnectSendExtension::Send_File_To",
+                                 label=device["name"])
             item.connect('activate', self.menu_activate_cb, files, device["id"], device["name"])
             sub_menu.append_item(item)
 
