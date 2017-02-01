@@ -177,3 +177,19 @@ msgstr "N.º telefónico: "
 #: src/Sms.vala:60
 msgid "Message body: "
 msgstr "Cuerpo del mensaje: "
+
+#: data/extensions/kdeconnect-send-nautilus.py:47 data/extensions/kdeconncet-send-nemo.py:47 data/extensions/kdeconnect-send-caja.py:47
+msgid "Check the device {device_name}"
+msgstr ""
+
+#: data/extensions/kdeconnect-send-nautilus.py:48 data/extensions/kdeconncet-send-nemo.py:48 data/extensions/kdeconnect-send-caja.py:48
+msgid "Sending {num_files} file(s)"
+msgstr ""
+
+#: data/extensions/kdeconnect-send-nautilus.py:79 data/extensions/kdeconncet-send-nemo.py:79 data/extensions/kdeconnect-send-caja.py:79
+msgid "KDEConnect Send To"
+msgstr ""
+
+#: data/extensions/kdeconnect-send-nautilus.py:80 data/extensions/kdeconncet-send-nemo.py:80 data/extensions/kdeconnect-send-caja.py:80
+msgid "send file(s) with kdeconnect"
+msgstr ""
