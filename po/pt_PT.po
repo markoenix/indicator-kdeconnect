@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: indicator-kdeconnect\n"
 "Report-Msgid-Bugs-To: steevenlopes@outlook.com\n"
 "POT-Creation-Date: 2017-01-19 02:09+0000\n"
-"PO-Revision-Date: 2017-01-23 22:19+0000\n"
+"PO-Revision-Date: 2017-02-01 01:47+0000\n"
 "Last-Translator: Steeven Lopes <steevenlopes@outlook.com>\n"
 "Language-Team: Portuguese (Portugal) <https://hosted.weblate.org/projects"
 "/indicator-kde-connect/translations/pt_PT/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 2.11-dev\n"
+"X-Generator: Weblate 2.11\n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1: 2;\n"
 
 #: src/FirstTimeWizard.vala:50
@@ -194,16 +194,16 @@ msgstr "Mensagem: "
 
 #: data/extensions/kdeconnect-send-nautilus.py:47 data/extensions/kdeconncet-send-nemo.py:47 data/extensions/kdeconnect-send-caja.py:47
 msgid "Check the device {device_name}"
-msgstr ""
+msgstr "Verifique o dispositivo {device_name}"
 
 #: data/extensions/kdeconnect-send-nautilus.py:48 data/extensions/kdeconncet-send-nemo.py:48 data/extensions/kdeconnect-send-caja.py:48
 msgid "Sending {num_files} file(s)"
-msgstr ""
+msgstr "Enviando {num_files} ficheiros(s)"
 
 #: data/extensions/kdeconnect-send-nautilus.py:79 data/extensions/kdeconncet-send-nemo.py:79 data/extensions/kdeconnect-send-caja.py:79
 msgid "KDEConnect Send To"
-msgstr ""
+msgstr "KDEConnect Enviar Para"
 
 #: data/extensions/kdeconnect-send-nautilus.py:80 data/extensions/kdeconncet-send-nemo.py:80 data/extensions/kdeconnect-send-caja.py:80
 msgid "send file(s) with kdeconnect"
-msgstr ""
+msgstr "enviar ficheiro(s) com kdeconnect"
