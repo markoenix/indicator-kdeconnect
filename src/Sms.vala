@@ -49,7 +49,7 @@ namespace KDEConnectIndicator {
 
 		//Phone Label and Entry
         	this.phone_number_label = new Gtk.Label.with_mnemonic (_("Phone number: "));
-        	this.phone_number_buffer = new Gtk.EntryBuffer (null);
+        	this.phone_number_buffer = new Gtk.EntryBuffer ();
         	this.phone_number_entry = new Gtk.Entry.with_buffer (phone_number_buffer);
 
         	var hbox_phone_number = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
