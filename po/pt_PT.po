@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: indicator-kdeconnect\n"
 "Report-Msgid-Bugs-To: steevenlopes@outlook.com\n"
 "POT-Creation-Date: 2017-01-19 02:09+0000\n"
-"PO-Revision-Date: 2017-02-01 01:47+0000\n"
-"Last-Translator: Steeven Lopes <steevenlopes@outlook.com>\n"
+"PO-Revision-Date: 2017-02-02 17:44+0000\n"
+"Last-Translator: Bruno Guerreiro <american.jesus.pt@gmail.com>\n"
 "Language-Team: Portuguese (Portugal) <https://hosted.weblate.org/projects"
 "/indicator-kde-connect/translations/pt_PT/>\n"
 "Language: pt_PT\n"
@@ -67,7 +67,7 @@ msgid ""
 "There, you can pair and see its status\n"
 "\n"
 msgstr ""
-"Ali, podes emparelhar e ver o seu estado\n"
+"Pronto, podes emparelhar e ver o seu estado\n"
 "\n"
 
 #: src/FirstTimeWizard.vala:67
@@ -84,8 +84,7 @@ msgstr ""
 
 #: src/FirstTimeWizard.vala:77
 msgid "Now you can enable or disable modules on KDE Connect settings.\n"
-msgstr ""
-"Agora podes habilitar ou desabilitar módulos no KDE Connect settings\n"
+msgstr "Agora podes habilitar ou desabilitar módulos no KDE Connect settings.\n"
 
 #: src/FirstTimeWizard.vala:78
 msgid "Indicator already added to autostart.\n"
@@ -146,7 +145,7 @@ msgstr "Bateria : "
 
 #: src/DeviceIndicator.vala:203
 msgid " (charging)"
-msgstr " (carregando)"
+msgstr " (a carregar)"
 
 #: src/DeviceIndicator.vala:210
 msgid "Device Reachable and Trusted"
@@ -158,7 +157,7 @@ msgstr "Dispositivo Alcançável mas não Confiável"
 
 #: src/DeviceIndicator.vala:215
 msgid "Device Trusted but not Reachable"
-msgstr "Dispositivo Confiável mas não  Alcançável"
+msgstr "Dispositivo Confiável mas não Alcançável"
 
 #: src/DeviceIndicator.vala:217
 msgid "Device Not Reachable and Not Trusted"
