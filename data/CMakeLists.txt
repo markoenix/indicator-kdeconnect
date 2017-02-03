@@ -30,7 +30,7 @@ install (FILES "images/startup.jpg" DESTINATION ${DATADIR}/indicator-kdeconnect/
 #update icons cache
 install(
 	CODE
-	"execute_process (COMMAND gtk-update-icon-cache -t -f ${CMAKE_INSTALL_PREFIX}/share/icons/hicolor)"
+	"execute_process (COMMAND gtk-update-icon-cache -t -f ${CMAKE_INSTALL_PREFIX}/share/icons)"
 	CODE
-	"message (STATUS \"Updated icon cache in ${CMAKE_INSTALL_PREFIX}/share/icons/hicolor\")"
+	"message (STATUS \"Updated icon cache in ${CMAKE_INSTALL_PREFIX}/share/icons\")"
 	)
