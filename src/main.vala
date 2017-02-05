@@ -12,7 +12,7 @@ namespace KDEConnectIndicator {
         private FirstTimeWizard ftw;
 
         public Application () {
-            Object (application_id: "com.vikoadi.kdeconnectindicator",
+            Object (application_id: "com.bajoja.kdeconnectindicator",
                     flags: ApplicationFlags.FLAGS_NONE);
 
         }
