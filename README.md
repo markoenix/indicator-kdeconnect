@@ -63,8 +63,8 @@ Usage Suggestions
 
  1. Add KDE Connect Indicator to your startup applications, on your System Setting if is not.
  2. Nautilus, Nemo, Caja and Pantheon-files users have native extensions installed by default, make sure you have,
-    python-nautilus, python-nemo or python-caja instelled to use it.
- 3. If your files manager is not supported by extensions create a action entry with  `kdeconnect-send %F`as  command.
+    `python-nautilus`, `python-nemo` or `python-caja` instelled to use it.
+ 3. If your files manager is not supported by extensions create a action entry with `kdeconnect-send %F` as command.
     Or you can use the script present on the scripts folder, adding it to your file manager script folder.
 
 Please report issues and suggestion [here](https://github.com/Bajoja/indicator-kdeconnect/issues)
