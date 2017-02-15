@@ -6,6 +6,7 @@ install (FILES "extensions/kdeconnect.contract" DESTINATION ${DATADIR}/contracto
 install (FILES "extensions/kdeconnect-send-nautilus.py" DESTINATION ${DATADIR}/nautilus-python/extensions/)
 install (FILES "extensions/kdeconnect-send-nemo.py" DESTINATION ${DATADIR}/nemo-python/extensions/)
 install (FILES "extensions/kdeconnect-send-caja.py" DESTINATION ${DATADIR}/caja-python/extensions/)
+install (FILES "extensions/kdeconnect-send-thunar.desktop" DESTINATION ${DATADIR}/Thunar/sendto/)
 
 #-Ubuntu
 if(EXISTS ${DATADIR}/icons/ubuntu-mono-dark) 
