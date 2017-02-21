@@ -6,202 +6,177 @@ msgid ""
 msgstr ""
 "Project-Id-Version: indicator-kdeconnect\n"
 "Report-Msgid-Bugs-To: steevenlopes@outlook.com\n"
-"POT-Creation-Date: 2017-01-19 02:09+0000\n"
-"PO-Revision-Date: 2017-02-16 15:57+0000\n"
-"Last-Translator: Steeven Lopes <steevenlopes@outlook.com>\n"
-"Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects"
-"/indicator-kde-connect/translations/pt_BR/>\n"
-"Language: pt_BR\n"
+"POT-Creation-Date: 2016-11-18 18:46+0200\n"
+"PO-Revision-Date: 2016-11-18 18:46+0200\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: lt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 2.12-dev\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"(n%100<10 || n%100>=20) ? 1 : 2;\n"
 
 #: src/FirstTimeWizard.vala:50
-msgid ""
-"<b>Are you ready for your first device pairing?</b>\n"
-"\n"
+msgid "<b>Are you ready for your first device pairing?</b>\n\n"
 msgstr ""
-"<b>Você está preparado para o primeiro emparelhamento?</b>\n"
-"\n"
 
 #: src/FirstTimeWizard.vala:51
 msgid "Now connect your devices using wifi connection.\n"
-msgstr "Agora conecta seus dispositivos usando uma conexão wifi.\n"
+msgstr ""
 
 #: src/FirstTimeWizard.vala:52
 msgid "Tethering should work too!\n"
-msgstr "Ancoragem deve funcionar também!\n"
+msgstr ""
 
 #: src/FirstTimeWizard.vala:53
-msgid ""
-"If you have Firewall running, please open port 1714-1764 for TCP and UDP\n"
-"\n"
+msgid "If you have Firewall running, please open port 1714-1764 for TCP and UDP\n\n"
 msgstr ""
-"Se você tem uma Firewall ativa, por favor abra as portas 1714-1764 para TCP "
-"e UDP\n"
-"\n"
 
 #: src/FirstTimeWizard.vala:54
 msgid "Launch KDE Connect in your Android which you can download from "
 msgstr ""
-"Execute o KDE Connect no seu Android pelo qual podes fazer download de "
 
 #: src/FirstTimeWizard.vala:56
 msgid "Google Play</a>"
-msgstr "Google Play Store</a>"
+msgstr ""
 
 #: src/FirstTimeWizard.vala:65
-msgid ""
-"Everytime there is a new device connected, a new indicator will appear in "
-"your panel.\n"
+msgid "Everytime there is a new device connected, a new indicator will appear in your panel.\n"
 msgstr ""
-"Toda as vezes que há um novo dispositivo conectado, um novo indicador vai "
-"aparecer no seu painel.\n"
 
 #: src/FirstTimeWizard.vala:66
-msgid ""
-"There, you can pair and see its status\n"
-"\n"
+msgid "There, you can pair and see its status\n\n"
 msgstr ""
-"Ali, podes emparelhar e ver o seu estado\n"
-"\n"
 
 #: src/FirstTimeWizard.vala:67
 msgid "<b>Now try to pair your device</b>"
-msgstr "<b>Agora tente emparelhar seu dispositivo</b>"
+msgstr ""
 
 #: src/FirstTimeWizard.vala:76
-msgid ""
-"<b>Great! your device is all set</b>\n"
-"\n"
+msgid "<b>Great! your device is all set</b>\n\n"
 msgstr ""
-"<b>Ótimo! Seu dispositivo está pronto</b>\n"
-"\n"
 
 #: src/FirstTimeWizard.vala:77
 msgid "Now you can enable or disable modules on KDE Connect settings.\n"
 msgstr ""
-"Agora podes habilitar ou desabilitar módulos no KDE Connect settings.\n"
 
 #: src/FirstTimeWizard.vala:78
 msgid "Indicator already added to autostart.\n"
-msgstr "O indicador já foi adicionado às aplicações de arranque.\n"
+msgstr ""
 
 #: src/FirstTimeWizard.vala:79
 msgid "Enjoy!"
-msgstr "Desfruta!"
+msgstr ""
 
 #: src/KDEConnectManager.vala:119
 msgid "cannot connect to KDE Connect DBus service"
-msgstr "Não foi possível connectar ao serviço DBus do KDE Connect"
+msgstr ""
 
 #: src/Device.vala:524
 msgid "Encryption information not found"
-msgstr "Informações de encriptação não encontrada"
+msgstr ""
 
 #: src/DeviceIndicator.vala:41
 msgid "Browse device"
-msgstr "Navegar no dispositivo"
+msgstr ""
 
 #: src/DeviceIndicator.vala:43
 msgid "Send file(s)"
-msgstr "Enviar ficheiro(s)"
+msgstr ""
 
 #: src/DeviceIndicator.vala:47
 msgid "Send SMS"
-msgstr "Enviar SMS"
+msgstr ""
 
 #: src/DeviceIndicator.vala:51
 msgid "Find my phone"
-msgstr "Encontrar meu telefone"
+msgstr ""
 
 #: src/DeviceIndicator.vala:55
 msgid "Request pairing"
-msgstr "Pedir emparelhamento"
+msgstr ""
 
 #: src/DeviceIndicator.vala:58
 msgid "Unpair"
-msgstr "Desemparelhar"
+msgstr ""
 
 #: src/DeviceIndicator.vala:100
 msgid "Select file(s)"
-msgstr "Seleccionar ficheiro(s)"
+msgstr ""
 
-#: src/DeviceIndicator.vala:103 src/contractor/Contractor.vala:24
-#: src/Sms.vala:40
+#: src/DeviceIndicator.vala:103 src/contractor/Contractor.vala:24 src/Sms.vala:40
 msgid "Cancel"
-msgstr "Cancelar"
+msgstr ""
 
-#: src/DeviceIndicator.vala:105
+#: src/DeviceIndicator.vala:105 
 msgid "Select"
-msgstr "Selecionar"
+msgstr ""
 
 #: src/DeviceIndicator.vala:201
 msgid "Battery : "
-msgstr "Bateria : "
+msgstr ""
 
 #: src/DeviceIndicator.vala:203
 msgid " (charging)"
-msgstr " (carregando)"
+msgstr ""
 
 #: src/DeviceIndicator.vala:210
 msgid "Device Reachable and Trusted"
-msgstr "Dispositivo Alcançável e Confiável"
+msgstr ""
 
-#: src/DeviceIndicator.vala:210
+#: src/DeviceIndicator.vala:212
 msgid "Device Reachable but Not Trusted"
-msgstr "Dispositivo Alcançável mas não Confiável"
+msgstr ""
 
 #: src/DeviceIndicator.vala:215
 msgid "Device Trusted but not Reachable"
-msgstr "Dispositivo Confiável mas não  Alcançável"
+msgstr ""
 
 #: src/DeviceIndicator.vala:217
 msgid "Device Not Reachable and Not Trusted"
-msgstr "Dispositivo Não Alcançável e não Confiável"
+msgstr ""
 
 #: src/contractor/Contractor.vala:15
 msgid "Send to"
-msgstr "Enviar para"
+msgstr ""
 
 #: src/contractor/Contractor.vala:25 src/Sms.vala:44
 msgid "Send"
-msgstr "Enviar"
+msgstr ""
 
 #: src/contractor/Contractor.vala:84
 msgid "File(s) not found"
-msgstr "Ficheiro(s) não encontrado"
+msgstr ""
 
 #: src/contractor/Contractor.vala:143
 msgid "There's %u file(s) to be send"
-msgstr "Há %u ficheiro(s) a ser(em) enviado(s)"
+msgstr ""
 
 #: src/Sms.vala:37
 msgid "Compose SMS"
-msgstr "Escrever SMS"
+msgstr ""
 
 #: src/Sms.vala:51
 msgid "Phone number: "
-msgstr "Telefone: "
+msgstr ""
 
 #: src/Sms.vala:60
 msgid "Message body: "
-msgstr "Mensagem: "
+msgstr ""
 
 #: data/extensions/kdeconnect-send-nautilus.py:47 data/extensions/kdeconncet-send-nemo.py:47 data/extensions/kdeconnect-send-caja.py:47
 msgid "Check the device {device_name}"
-msgstr "Verifique o dispositivo {device_name}"
+msgstr ""
 
 #: data/extensions/kdeconnect-send-nautilus.py:48 data/extensions/kdeconncet-send-nemo.py:48 data/extensions/kdeconnect-send-caja.py:48
 msgid "Sending {num_files} file(s)"
-msgstr "Enviando {num_files} ficheiro(s)"
+msgstr ""
 
 #: data/extensions/kdeconnect-send-nautilus.py:79 data/extensions/kdeconncet-send-nemo.py:79 data/extensions/kdeconnect-send-caja.py:79
 msgid "KDEConnect Send To"
-msgstr "KDEConnect Enviar Para"
+msgstr ""
 
 #: data/extensions/kdeconnect-send-nautilus.py:80 data/extensions/kdeconncet-send-nemo.py:80 data/extensions/kdeconnect-send-caja.py:80
 msgid "send file(s) with kdeconnect"
-msgstr "enviar ficheiro(s) com kdeconnect"
+msgstr ""
