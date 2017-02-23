@@ -5,6 +5,8 @@ dist: xenial
 cache:
   - apt
 before_install:
+  - sudo add-apt-repository ppa:vala-team -y
+  - sudo apt -qq update
   - sudo apt install -y cmake valac libgtk-3-dev libappindicator3-dev gettext
 before_script:
   - sleep 3
