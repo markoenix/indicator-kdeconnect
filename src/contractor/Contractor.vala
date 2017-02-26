@@ -3,35 +3,77 @@
  * This software is licensed under the GNU Lesser General Public License
  * (version 2.1 or later).  See the COPYING file in this distribution.
  */
+using Gtk;
+
 [CCode(cname="GETTEXT_PACKAGE")] extern const string GETTEXT_PACKAGE;
 [CCode(cname="LOCALEDIR")] extern const string LOCALEDIR;
 
-namespace KDEConnectIndicator {
-	public class DeviceDialog : Gtk.Application{
-		private Gtk.ApplicationWindow window;
-		private Gtk.HeaderBar headerBar;
-		private Gtk.Button cancel_button;
-		private Gtk.Button send_button;
-		private Gtk.Button reload_button;
-		private Gtk.TreeView tv;
-		private Gtk.StyleContext style_context;
-		private SList<Device> device_list;
-		private SList<File> files;
+namespace KDEConnectIndicator{
+	private SList<File> files;
+
+	class SendDialog : Gtk.Application {
+		private ApplicationWindow window;
+		private HeaderBar headerBar;
+		private Button cancel_button;
+		private Button send_button;
+		private Button reload_button;
+		private StyleContext style_context;
+		private TreeView tv;
+		private Gtk.ListStore list_store;
 		private DBusConnection conn;
+		private SList<Device> device_list;
 
-		public DeviceDialog (SList<File> files, DBusConnection conn){
-			Object (application_id: "com.bajoja.kdeconnectindicator",
-				flags: ApplicationFlags.FLAGS_NONE);
-
-			this.files = files.copy ();
-			this.conn = conn;
+		public SendDialog () {
+			Object (application_id: "org.bajoja.kdeconnect-send",
+				flags: ApplicationFlags.HANDLES_OPEN);
 		}
 
 		protected override void activate () {
+			if (files.length () == 0){
+				message ("file(s) doesnt exist(s) or not found");
+
+            			var msg = new Gtk.MessageDialog (null,
+                  						 Gtk.DialogFlags.MODAL,
+                   			                 	 Gtk.MessageType.WARNING,
+                   			                	 Gtk.ButtonsType.OK,
+                     			                 	 "msg");
+
+            			msg.set_markup (_("File(s) not found"));
+
+            			msg.destroy.connect (Gtk.main_quit);
+            			msg.run ();
+			}
+			else{
+				create_window ();
+				create_signals ();
+				reload_device_list ();
+			}
+		}
+
+		protected override void open (File[] _files, string hint) {
+			files = new SList<File>();
+
+			foreach (File file in _files){
+				message ("%s".printf(file.get_uri ()));
+				if (file.get_path() != null && // null path means its remote file
+		    	    	    file.query_exists ())
+		    			files.append (file);
+			}
+
+			if (files.length () == 0){
+
+			}
+			else{
+				activate ();
+			}
+
+			//this.hold ();
+		}
+
+		private void create_window (){
 			this.window = new Gtk.ApplicationWindow (this);
-			this.window.set_icon_name ("kdeconnect");
-			window.set_default_size (500, 350);
-			window.border_width = 10;
+			this.window.set_default_size (500, 350);
+			this.window.border_width = 10;
 
 			this.headerBar = new Gtk.HeaderBar ();
 			this.headerBar.set_title ("KDEConnect-Send");
@@ -46,34 +88,29 @@ namespace KDEConnectIndicator {
 			this.send_button.sensitive = false;
 			this.headerBar.pack_end (send_button);
 
-			this.reload_button = new Gtk.Button.from_icon_name ("reload", 
+			this.reload_button = new Gtk.Button.from_icon_name ("reload",
 									    Gtk.IconSize.LARGE_TOOLBAR);
 			this.headerBar.pack_end (reload_button);
 
-			window.set_titlebar (headerBar);
+			Box content = new Box (Gtk.Orientation.VERTICAL, 0);
 
-			Gtk.Box content = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
-			content.pack_start (new Gtk.Label (_("There's %u file(s) to be send")
-							   .printf(this.files.length ())),
-							   false, true, 10);
+			content.pack_start (new Label (_("There's %u file(s) to be send")
+						       .printf (files.length ())),
+						       false, true, 10);
 
-			this.tv = new Gtk.TreeView ();
+			this.tv = new TreeView ();
 			this.tv.headers_visible = false;
-           		Gtk.CellRendererText cell = new Gtk.CellRendererText ();
+           		CellRendererText cell = new CellRendererText ();
                         this.tv.insert_column_with_attributes (-1,"Device",cell,"text",0);
-                        content.pack_start (tv);
+			content.pack_start (tv);
 
-			connect_signals ();
+                        this.window.set_titlebar (headerBar);
+                        this.window.add (content);
 
-                        reload_device_list ();
-
-                        window.add (content);
-
-			window.show_all ();
-
+			this.window.show_all ();
 		}
 
-		private void connect_signals (){
+		private void create_signals (){
 			this.tv.cursor_changed.connect (() => {
 				this.send_button.sensitive = (get_selected()>=0);
 			});
@@ -82,6 +119,7 @@ namespace KDEConnectIndicator {
                 		tv.set_cursor (path, null, false);
                		 	send_items ();
            		 });
+
 
 			this.cancel_button.clicked.connect (() => {
 				this.window.close ();
@@ -94,11 +132,12 @@ namespace KDEConnectIndicator {
 			this.reload_button.clicked.connect (() => {
 				reload_device_list ();
 			});
+
 		}
 
 		private int get_selected (){
-			Gtk.TreePath path;
-            		Gtk.TreeViewColumn column;
+			TreePath path;
+            		TreeViewColumn column;
             		this.tv.get_cursor (out path, out column);
             		if (path == null)
                 		return -1;
@@ -114,98 +153,64 @@ namespace KDEConnectIndicator {
 		}
 
 		private void reload_device_list (){
+			try{
+				conn = Bus.get_sync (BusType.SESSION);
+
+			} catch (Error e){
+				message (e.message);
+				this.window.close ();
+			}
+
 			string[] id_list = {};
         		try {
-            		     var return_variant = conn.call_sync (
-                    			"org.kde.kdeconnect",
-                    			"/modules/kdeconnect",
-                    			"org.kde.kdeconnect.daemon",
-                    			"devices",
-                    			new Variant ("(b)", true),
-                    			null,
-                    			DBusCallFlags.NONE,
-                    			-1,
-                    			null
-                    			);
+            			var return_variant = conn.call_sync (
+                    		"org.kde.kdeconnect",
+                    		"/modules/kdeconnect",
+                    		"org.kde.kdeconnect.daemon",
+                    		"devices",
+                    		new Variant ("(b)", true),
+                   		null,
+                    		DBusCallFlags.NONE,
+                    		-1,
+                    		null
+                    		);
+
             			Variant i = return_variant.get_child_value (0);
             			id_list = i.dup_strv ();
-        		} catch (Error e) {
+
+       			} catch (Error e) {
             			message (e.message);
-        		}
+       	 		}
 
-        		Gtk.ListStore list_store = new Gtk.ListStore (1,typeof(string));
+			this.list_store = new Gtk.ListStore (1,typeof(string));
+       			this.device_list = new SList<Device> ();
 
-        		this.device_list = new SList<Device> ();
         		foreach (string id in id_list) {
             			var d = new Device ("/modules/kdeconnect/devices/"+id);
-           			if (d.is_reachable && d.is_trusted) {
+            			if (d.is_reachable && d.is_trusted) {
                 			device_list.append (d);
                 			Gtk.TreeIter iter;
-                			list_store.append (out iter);
+                			this.list_store.append (out iter);
                 			message (d.name);
-                			list_store.set (iter, 0, d.name);
+                			this.list_store.set (iter, 0, d.name);
             			}
         		}
 
-        		set_device_list (list_store);
+        		set_device_list (this.list_store);
+
 		}
 
 		private void send_items (){
 			var selected = get_selected ();
             		var selected_dev = this.device_list.nth_data (selected);
-           		foreach (File file in this.files)
+           		foreach (File file in files)
             			selected_dev.send_file (file.get_uri ());
 
-            		//After send files close this window
             		this.window.close ();
 		}
 	}
 
 	int main (string[] args) {
-		
-		//Parse arguments (File to be send)
-		SList<File> files = new SList<File>();
-
-		for (int i=1; i<args.length; i++){ //int i=1 descart first arg (program name)
-			File file = File.new_for_commandline_arg (args[i]);
-
-			if (file.get_path() != null && // null path means its remote file
-		    	    file.query_exists ())
-		    		files.append (file);
-		}
-
-		//If there's no file to be send, show a msg and close this program
-		if (files.length () == 0) {
-			Gtk.init(ref args);
-
-            		message ("file(s) doesnt exist(s) or not found");
-
-            		var msg = new Gtk.MessageDialog (null,
-                  					 Gtk.DialogFlags.MODAL,
-                   			                 Gtk.MessageType.WARNING,
-                   			                 Gtk.ButtonsType.OK,
-                     			                 "msg");
-
-            		msg.set_markup (_("File(s) not found"));
-
-            		msg.destroy.connect (Gtk.main_quit);
-            		//msd.show ();
-            		return msg.run ();
-        	}
-		else{
-
-			//Ensure there is connection to dbus
-        		DBusConnection conn;
-
-			try {
-            	     	     conn = Bus.get_sync (BusType.SESSION);
-        		} catch (Error e) {
-            		     message (e.message);
-            		     return -1;
-        	 	}
-
-			//If everthing is Ok execute this
-			return new DeviceDialog (files, conn).run ();
-		}
+		return new SendDialog ().run (args);
 	}
 }
