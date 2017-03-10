@@ -72,6 +72,7 @@ namespace KDEConnectIndicator{
 
 		private void create_window (){
 			this.window = new Gtk.ApplicationWindow (this);
+			this.window.set_icon_name ("kdeconnect");
 			this.window.set_default_size (500, 350);
 			this.window.border_width = 10;
 
