@@ -16,7 +16,15 @@ _ = gettext.gettext
 
 class KDEConnectSendExtension(GObject.GObject, Nemo.MenuProvider):
     def __init__(self):
-        pass
+	"""Ensure there are reachable devices"""
+        try:
+            self.devices = self.get_reachable_devices()
+        except Exception as e:
+            raise Exception("Error while getting reachable devices")
+
+        """if there is no reacheable devices don't show this on context menu"""
+        if not self.devices:
+            return
 
     """Inicialize translations to a domain"""
     def setup_gettext(self):
@@ -58,16 +66,6 @@ class KDEConnectSendExtension(GObject.GObject, Nemo.MenuProvider):
     """Get files that user selected"""
     def get_file_items(self, window, files):
 
-        """Ensure there are reachable devices"""
-        try:
-            devices = self.get_reachable_devices()
-        except Exception as e:
-            raise Exception("Error while getting reachable devices")
-
-        """if there is no reacheable devices don't show this on context menu"""
-        if not devices:
-            return
-
         """Ensure that user only select files"""
         for file in files:
             if file.get_uri_scheme() != 'file' or file.is_directory() and os.path.isfile(file):
@@ -84,7 +82,7 @@ class KDEConnectSendExtension(GObject.GObject, Nemo.MenuProvider):
 
         menu.set_submenu(sub_menu)
 
-        for device in devices:
+        for device in self.devices:
             item = Nemo.MenuItem(name="KDEConnectSendExtension::Send_File_To",
                                  label=device["name"])
             item.connect('activate', self.menu_activate_cb, files, device["id"], device["name"])
