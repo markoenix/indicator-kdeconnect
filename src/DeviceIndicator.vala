@@ -21,7 +21,7 @@ namespace KDEConnectIndicator {
         private Gtk.SeparatorMenuItem separator;
         private Gtk.SeparatorMenuItem separator2;
         private Gtk.SeparatorMenuItem separator3;
-        private string visible_devices = "/.config/indicator-kdeconnect/devices";
+        private string visible_devices = "/tmp/devices";
 
         public DeviceIndicator (string path) {
             this.path = path;
@@ -249,8 +249,7 @@ namespace KDEConnectIndicator {
         }
 
         private int write_status (){
-	    var file = File.new_for_path (Environment.get_home_dir ()
-			           	  +visible_devices);
+	    var file = File.new_for_path (visible_devices);
 
             if (!file.query_exists ()) {
         	message ("File '%s' doesn't exist.\n", file.get_path ());
@@ -308,8 +307,7 @@ namespace KDEConnectIndicator {
         }
 
         private int delete_status(){
-	    var file = File.new_for_path (Environment.get_home_dir ()
-			           	  +visible_devices);
+	    var file = File.new_for_path (visible_devices);
 
             if (!file.query_exists ())
         	message ("File '%s' doesn't exist.\n", file.get_path ());

@@ -9,7 +9,7 @@
 
 from gi.repository import Nautilus, GObject, Notify
 from subprocess import call
-from os.path import expanduser, isfile
+from os.path import isfile
 import urllib, re, gettext, locale
 
 # use of _ to set messages to be translated
@@ -18,8 +18,7 @@ _ = gettext.gettext
 class KDEConnectSendExtension(GObject.GObject, Nautilus.MenuProvider):
 
     def __init__(self):
-        homedir = expanduser("~")
-        self.devices_file = homedir+"/.config/indicator-kdeconnect/devices"
+        self.devices_file = "/tmp/devices"
 	pass
 
     """Inicialize translations to a domain"""
