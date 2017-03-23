@@ -53,7 +53,7 @@ sudo apt install indicator-kdeconnect kdeconnect
 sudo dnf config-manager --add-repo http://download.opensuse.org/repositories/home:/Bajoja/Fedora_25/home:Bajoja.repo
 sudo dnf install kdeconnectd indicator-kdeconnect -y
 ```
-- OpenSuSe
+- OpenSuSe  
  OpenSuSe Leap 42.2 user's can use this repo:
 ```
 http://download.opensuse.org/repositories/home:/Bajoja/openSUSE_Leap_42.2/

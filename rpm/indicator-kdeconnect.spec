@@ -104,6 +104,17 @@ popd
 
 
 %changelog
+* Thu Mar 23 2017 2300 Bajoja <steevenlopes@outlook.com> 0.7
+- Fix bug #46 - Nautilus freeze on copy/paste - URGENT
+- New UI for kdeconnect-send (move controls to header bar)
+  and a button to reload devices
+- Add kdeconnect-send to Thunar 'send to' context menu
+- File manager extensions now is translated
+- Add Languages: French, Spanish, Catalan, Italian
+- Kdeconnect-send script for file manger not supported
+  by extension can send multiple files
+- Provide OpenSuse repo - Thanks to Raúl García
+
 * Thu Jan 26 2017 0200 Bajoja <steevenlopes@outlook.com> 0.6
 - Monochrome icons for Gnome.
 - KDEConnect-send and Elementary OS can send multiple files.

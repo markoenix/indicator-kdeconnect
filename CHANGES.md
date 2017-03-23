@@ -1,3 +1,14 @@
+# Version 0.7.0
+ * Fix bug #46 - Nautilus freeze on copy/paste - URGENT
+ * New UI for kdeconnect-send (move controls to header bar)
+   and a button to reload devices
+ * Add kdeconnect-send to Thunar 'send to' context menu
+ * File manager extensions now is translated
+ * Add Languages: French, Spanish, Catalan, Italian
+ * Kdeconnect-send script for file manger not supported
+   by extension can send multiple files
+ * Provide OpenSuse repo - Thanks to Raúl García
+
 # Version 0.6.0
  * Monochrome icons for Gnome
  * Add German, Dutch, Czech, Croatian and Hungarian Language
