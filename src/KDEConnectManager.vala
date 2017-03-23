@@ -8,6 +8,7 @@ namespace KDEConnectIndicator {
         private DBusConnection conn;
         private SList<DeviceIndicator> device_list;
         private SList<uint> subs_identifier;
+        private string visible_devices = "/.config/indicator-kdeconnect/devices";
 
         public KDEConnectManager () {
             try {
@@ -30,6 +31,22 @@ namespace KDEConnectIndicator {
                 max_trying--;
             }
             message ("KDE Connect daemon found");
+
+
+	    var file = File.new_for_path (Environment.get_home_dir ()
+			           	  +visible_devices);
+
+            try{
+		file.create (FileCreateFlags.NONE);
+
+        	if (!file.query_exists())
+                   message("Devices file not creates");
+                else
+        	   message("New devices file created sucessfully");
+	    }
+	    catch (Error e){
+		message("%s",e.message);
+	    }
 
             device_list = new SList<DeviceIndicator> ();
             populate_devices ();
@@ -105,6 +122,23 @@ namespace KDEConnectIndicator {
 
             foreach (uint i in subs_identifier)
                 conn.signal_unsubscribe (i);
+
+	    //Delete trusted devices file
+            try {
+                 var file = File.new_for_path (Environment.get_home_dir ()
+	        	           	       +visible_devices);
+	         if (!file.query_exists ()) {
+        	     message ("File '%s' doesn't exist.\n", file.get_path ());
+    	    	 }
+    	    	 else{
+    	    	     message("File path exist '%s'\n", file.get_path());
+		     file.delete();
+    	    	 }
+            }
+            catch (Error e) {
+        	message ("%s\n", e.message);
+    	    }
+
         }
 
         public int get_devices_number () {

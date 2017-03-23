@@ -21,6 +21,7 @@ namespace KDEConnectIndicator {
         private Gtk.SeparatorMenuItem separator;
         private Gtk.SeparatorMenuItem separator2;
         private Gtk.SeparatorMenuItem separator3;
+        private string visible_devices = "/.config/indicator-kdeconnect/devices";
 
         public DeviceIndicator (string path) {
             this.path = path;
@@ -180,10 +181,14 @@ namespace KDEConnectIndicator {
         }
 
         private void update_visibility () {
-            if (!device.is_reachable)
+            if (!device.is_reachable){
                 indicator.set_status (AppIndicator.IndicatorStatus.PASSIVE);
-            else
+		delete_status();
+            }
+            else{
                 indicator.set_status (AppIndicator.IndicatorStatus.ACTIVE);
+                write_status();
+            }
         }
         
         private void update_name_item () {
@@ -241,6 +246,114 @@ namespace KDEConnectIndicator {
             separator.visible = browse_item.visible || send_item.visible;
             separator2.visible = sms_item.visible;
             separator3.visible = ring_item.visible;
+        }
+
+        private int write_status (){
+	    var file = File.new_for_path (Environment.get_home_dir ()
+			           	  +visible_devices);
+
+            if (!file.query_exists ()) {
+        	message ("File '%s' doesn't exist.\n", file.get_path ());
+        	return 1;
+    	    }
+    	    else{
+    	    	message("File path exist '%s'\n", file.get_path());
+    	    }
+
+    	    var sb = new StringBuilder();
+
+    	    string device_path = "/modules/kdeconnect/devices/";
+            string device_id = this.path.replace(device_path, "");
+            string name_id = "- "+device.name+" : "+device_id;
+
+    	    try {
+        	var dis = new DataInputStream (file.read ());
+
+        	string line;
+
+		//If the file contains one reference to this device just igone
+        	while ((line = dis.read_line (null)) != null) {
+            	      stdout.printf ("%s\n", line);
+            	      if (name_id != line)
+            	      	sb.append(line+"\n");
+            	      else
+            	        return 1;
+        	}
+
+		//If the file don't have any reference to this write it
+        	sb.append (name_id+"\n");
+
+    	    } catch (Error e) {
+       		error ("%s", e.message);
+    	    }
+
+    	    try {
+                if (file.query_exists ()) {
+                   file.delete ();
+                }
+
+                var dos = new DataOutputStream (file.create (FileCreateFlags.REPLACE_DESTINATION));
+
+                uint8[] data = sb.str.data;
+                long written = 0;
+                while (written < data.length) {
+                   written += dos.write (data[written:data.length]);
+                }
+            } catch (Error e) {
+        	message ("%s\n", e.message);
+        	return 1;
+    	    }
+
+	    return 0;
+        }
+
+        private int delete_status(){
+	    var file = File.new_for_path (Environment.get_home_dir ()
+			           	  +visible_devices);
+
+            if (!file.query_exists ())
+        	message ("File '%s' doesn't exist.\n", file.get_path ());
+    	    else
+    	    	message("File path exist '%s'\n", file.get_path());
+
+    	    var sb = new StringBuilder();
+
+    	    string device_path = "/modules/kdeconnect/devices/";
+            string device_id = this.path.replace(device_path, "");
+            string name_id = "- "+device.name+" : "+device_id;
+
+    	    try {
+        	var dis = new DataInputStream (file.read ());
+
+        	string line;
+
+        	while ((line = dis.read_line (null)) != null) {
+            	      stdout.printf ("%s\n", line);
+            	      if (line != name_id)
+		      	sb.append (line+"\n");
+        	}
+
+    	    } catch (Error e) {
+       		error ("%s", e.message);
+    	    }
+
+    	    try {
+                if (file.query_exists ()) {
+                   file.delete ();
+                }
+
+                var dos = new DataOutputStream (file.create (FileCreateFlags.REPLACE_DESTINATION));
+
+                uint8[] data = sb.str.data;
+                long written = 0;
+                while (written < data.length) {
+                   written += dos.write (data[written:data.length]);
+                }
+            } catch (Error e) {
+        	message ("%s\n", e.message);
+    	    }
+
+	    return 0;
         }
     }
 }

@@ -8,8 +8,9 @@
 """
 
 from gi.repository import Nautilus, GObject, Notify
-from subprocess import call, check_output
-import urllib, os.path, re, gettext, locale
+from subprocess import call
+from os.path import expanduser, isfile
+import urllib, re, gettext, locale
 
 # use of _ to set messages to be translated
 _ = gettext.gettext
@@ -17,15 +18,9 @@ _ = gettext.gettext
 class KDEConnectSendExtension(GObject.GObject, Nautilus.MenuProvider):
 
     def __init__(self):
-        """Ensure there are reachable devices"""
-        try:
-            self.devices = self.get_reachable_devices()
-        except Exception as e:
-            raise Exception("Error while getting reachable devices")
-
-        """if there is no reacheable devices don't show this on context menu"""
-        if not self.devices:
-            return
+        homedir = expanduser("~")
+        self.devices_file = homedir+"/.config/indicator-kdeconnect/devices"
+	pass
 
     """Inicialize translations to a domain"""
     def setup_gettext(self):
@@ -38,12 +33,21 @@ class KDEConnectSendExtension(GObject.GObject, Nautilus.MenuProvider):
 
     """Get a list of reachable devices"""
     def get_reachable_devices(self):
-        devices = check_output(["kdeconnect-cli", "-a"]).strip().split("\n")
-        devices.pop()
+        if not isfile(self.devices_file):
+            return
+
+        devices = []
+        with open(self.devices_file, 'r') as file:
+            data = file.readline()
+            while data:
+            	print "Found: "+data
+            	devices.append(data)
+             	data = file.readline()
+
         devices_a=[]
         for device in devices:
             device_name=re.search("(?<=-\s).+(?=:\s)", device).group(0)
-            device_id=re.search("(?<=:\s)[a-z0-9]+(?=\s\()", device).group(0).strip()
+            device_id=re.search("(?<=:\s)[_a-z0-9]+", device).group(0).strip()
             devices_a.append({ "name": device_name, "id": device_id })
         return devices_a
 
@@ -66,6 +70,15 @@ class KDEConnectSendExtension(GObject.GObject, Nautilus.MenuProvider):
 
     """Get files that user selected"""
     def get_file_items(self, window, files):
+	"""Ensure there are reachable devices"""
+        try:
+            self.devices = self.get_reachable_devices()
+        except Exception as e:
+            raise Exception("Error while getting reachable devices")
+
+        """if there is no reacheable devices don't show this on context menu"""
+        if not self.devices:
+            return
 
         """Ensure that user only select files"""
         for file in files:

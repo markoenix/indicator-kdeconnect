@@ -16,16 +16,7 @@ _ = gettext.gettext
 
 class KDEConnectSendExtension(GObject.GObject, Caja.MenuProvider):
     def __init__(self):
-        """Ensure there are reachable devices"""
-        try:
-            self.devices = self.get_reachable_devices()
-        except Exception as e:
-            raise Exception("Error while getting reachable devices")
-
-        """if there is no reacheable devices don't show this on context menu"""
-        if not self.devices:
-            return
-
+        pass
 
     """Inicialize translations to a domain"""
     def setup_gettext(self):
@@ -43,7 +34,7 @@ class KDEConnectSendExtension(GObject.GObject, Caja.MenuProvider):
         devices_a=[]
         for device in devices:
             device_name=re.search("(?<=-\s).+(?=:\s)", device).group(0)
-            device_id=re.search("(?<=:\s)[a-z0-9]+(?=\s\()", device).group(0).strip()
+            device_id=re.search("(?<=:\s)[_a-z0-9]+(?=\s\()", device).group(0).strip()
             devices_a.append({ "name": device_name, "id": device_id })
         return devices_a
 
@@ -67,9 +58,19 @@ class KDEConnectSendExtension(GObject.GObject, Caja.MenuProvider):
     """Get files that user selected"""
     def get_file_items(self, window, files):
 
+        """Ensure there are reachable devices"""
+        try:
+            devices = self.get_reachable_devices()
+        except Exception as e:
+            raise Exception("Error while getting reachable devices")
+
+        """if there is no reacheable devices don't show this on context menu"""
+        if not devices:
+            return
+
         """Ensure that user only select files"""
         for file in files:
-            if file.get_uri_scheme() != 'file' or file.is_directory() and os.path.isfile(file):
+            if file.get_uri_scheme() != 'file' or file.is_directory():
                 return
 
         self.setup_gettext()
@@ -83,7 +84,7 @@ class KDEConnectSendExtension(GObject.GObject, Caja.MenuProvider):
 
         menu.set_submenu(sub_menu)
 
-        for device in self.devices:
+        for device in devices:
             item = Caja.MenuItem(name="KDEConnectSendExtension::Send_File_To",
                                  label=device["name"])
             item.connect('activate', self.menu_activate_cb, files, device["id"], device["name"])
