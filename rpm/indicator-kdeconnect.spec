@@ -1,7 +1,9 @@
 #
 # spec file for package indicator-kdeconnect
 #
-# Copyright (c) 2014 Markus S. <kamikazow@web.de>
+# Copyright © 2014–2017 Markus S. <kamikazow@web.de>
+# Copyright © 2016–2017 Bajoja <steevenlopes@outlook.com>
+# Copyright © 2017 Raúl García <raul@bgta.net>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Lesser General Public License as
@@ -30,23 +32,27 @@ URL:            https://github.com/Bajoja/indicator-kdeconnect
 # If the sources are compressed in another format than .tar.xz, change the
 # file extension accordingly.
 Source0:        %{name}-%{version}.tar.xz
+%if 0%{?suse_version}
+Source1:        kdeconnect.png
+%endif
 
 # Package names only verified with Fedora.
 # Should the packages in your distro be named dirrerently,
 # see http://en.opensuse.org/openSUSE:Build_Service_cross_distribution_howto
-%if 0%{?fedora} || 0%{?rhel_version} || 0%{?centos_version}
 BuildRequires:  cmake
+BuildRequires:  gcc-c++
 BuildRequires:  gtk3-devel
-BuildRequires:  libappindicator-gtk3-devel
 BuildRequires:  vala
+BuildRequires:  vala-devel
+
+%if 0%{?fedora} || 0%{?rhel_version} || 0%{?centos_version}
+BuildRequires:  libappindicator-gtk3-devel
 Requires:       kde-connect-libs
 %endif
 
 %if 0%{?suse_version}
-BuildRequires:  cmake
-BuildRequires:  gtk3-devel
+BuildRequires:  update-desktop-files
 BuildRequires:  libappindicator3-devel
-BuildRequires:  vala
 Requires:       kdeconnect-kde
 %endif
 
@@ -60,41 +66,55 @@ A small program, kdeconnect-send, to help sending files from PC to Android is in
 %build
 mkdir build
 pushd build
-%cmake .. -DCMAKE_INSTALL_PREFIX_PATH=%{_prefix}
-make PREFIX=%{_prefix} %{?_smp_mflags}
+cmake .. -DCMAKE_INSTALL_PREFIX="%_prefix"
+make PREFIX="%_prefix" %{?_smp_mflags}
 popd
 
 %install
 pushd build
 %{make_install}
+%if 0%{?suse_version}
+%suse_update_desktop_file -r -i %name Network Telephony
+%endif
 popd
 
 %files
 %defattr(-,root,root,-)
 %doc COPYING README.md
+%dir %{_datadir}/caja-python
+%dir %{_datadir}/contractor
+%dir %{_datadir}/indicator-kdeconnect
+%dir %{_datadir}/nautilus-python
+%dir %{_datadir}/nemo-python
 %{_bindir}/%{name}
 %{_bindir}/kdeconnect-send
-%{_datadir}/locale
+%{_datadir}/locale/*/LC_MESSAGES/indicator-kdeconnect.mo
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/contractor/kdeconnect.contract
-%{_datadir}/icons/Adwaita/
 %{_datadir}/%{name}/*
 %{_datadir}/nautilus-python/extensions/
 %{_datadir}/nemo-python/extensions/
 %{_datadir}/caja-python/extensions/
+%if 0%{?suse_version}
+%{_datadir}/pixmaps/kdeconnect.png
+%endif
+%if 0%{?fedora} || 0%{?rhel_version} || 0%{?centos_version}
+%{_datadir}/icons/Adwaita/*/*/*
+%endif
+
 
 %changelog
 * Thu Jan 26 2017 0200 Bajoja <steevenlopes@outlook.com> 0.6
 - Monochrome icons for Gnome.
 - KDEConnect-send and Elementary OS can send multiple files.
-- Add German, Dutch, Czech, Croatian and Hungarian Language.
+- Add German, Dutch, Czech, Croatian and Hungarian languages.
 - Now you can Send SMS as a Beta Feature.
 
 * Tue Jan 03 2017 1800 Bajoja <steevenlopes@outlook.com> 0.5
 - Bugs Fixes.
 - Add Brazilian Portuguese Language.
 - Add icons for Elementary OS.
-- Trusted devices now appear on context menu extension to send files directly-
+- Trusted devices now appear on context menu extension to send files directly.
 
 * Thu Nov 24 2016 1700 Bajoja <steevenlopes@outlook.com> 0.4
 - New native extension for Nautilus, Caja and Nemo.
@@ -105,7 +125,7 @@ popd
 * Tue Nov 15 2016 1644 Bajoja <steevenlopes@outlook.com> 0.3
 - Bug Fixes.
 - New default icons.
-- New Icons for ubuntu based desktops.
+- New Icons for Ubuntu based desktops.
 - New Images for First time wizard.
 
 * Sun Nov 06 2016 2100 Bajoja <steevenlopes@outlook.com> 0.2
@@ -119,4 +139,3 @@ popd
 
 * Mon Aug 20 2012 0323 Bajoja <steevenlopes@outlook.com> 0.1
 - Initial Release.
-
