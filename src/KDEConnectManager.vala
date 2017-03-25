@@ -35,15 +35,15 @@ namespace KDEConnectIndicator {
 
 	    var file = File.new_for_path (visible_devices);
 
-            try{
+            try {
 		file.create (FileCreateFlags.NONE);
 
-        	if (!file.query_exists())
-                   message("Devices file not creates");
+        	if (!file.query_exists ())
+                   message ("Devices file not creates");
                 else
-        	   message("New devices file created sucessfully");
+        	   message ("New devices file created sucessfully");
 	    }
-	    catch (Error e){
+	    catch (Error e) {
 		message("%s",e.message);
 	    }
 
@@ -129,8 +129,8 @@ namespace KDEConnectIndicator {
         	     message ("File '%s' doesn't exist.\n", file.get_path ());
     	    	 }
     	    	 else{
-    	    	     message("File path exist '%s'\n", file.get_path());
-		     file.delete();
+    	    	     message ("File path exist '%s'\n", file.get_path ());
+		     file.delete ();
     	    	 }
             }
             catch (Error e) {

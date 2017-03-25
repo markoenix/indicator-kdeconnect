@@ -2,7 +2,7 @@
 #                 		   the "Send To" menu.
 [Desktop Entry]
 Type=Application
-Version=0.6
+Version=0.7
 Encoding=UTF-8
 TryExec=kdeconnect-send
 Exec=kdeconnect-send %F

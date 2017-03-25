@@ -1,6 +1,8 @@
 indicator-kdeconnect (0.7) precise; urgency=low
   * Fix bug #46 - Nautilus freeze on copy/paste - URGENT
 
+  * Fix Desktop Computers don't appear on kdeconnect-send context menu
+
   * New UI for kdeconnect-send (move controls to header bar)
     and a button to reload devices
 

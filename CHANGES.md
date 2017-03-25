@@ -1,11 +1,12 @@
 # Version 0.7.0
  * Fix bug #46 - Nautilus freeze on copy/paste - URGENT
+ * Fix Desktop Computers don't appear on kdeconnect-send context menu
  * New UI for kdeconnect-send (move controls to header bar)
    and a button to reload devices
  * Add kdeconnect-send to Thunar 'send to' context menu
  * File manager extensions now is translated
  * Add Languages: French, Spanish, Catalan, Italian
- * Kdeconnect-send script for file manger not supported
+ * Kdeconnect-send script for file manager not supported
    by extension can send multiple files
  * Provide OpenSuse repo - Thanks to Raúl García
 

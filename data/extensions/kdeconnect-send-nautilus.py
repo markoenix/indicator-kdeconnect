@@ -39,14 +39,13 @@ class KDEConnectSendExtension(GObject.GObject, Nautilus.MenuProvider):
         with open(self.devices_file, 'r') as file:
             data = file.readline()
             while data:
-            	print "Found: "+data
             	devices.append(data)
              	data = file.readline()
 
         devices_a=[]
         for device in devices:
-            device_name=re.search("(?<=-\s).+(?=:\s)", device).group(0)
-            device_id=re.search("(?<=:\s)[_a-z0-9]+", device).group(0).strip()
+            device_name = re.search("(?<=-\s).+(?=:\s)", device).group(0)
+            device_id = re.search("(?<=:\s)[_a-z0-9]+", device).group(0).strip()
             devices_a.append({ "name": device_name, "id": device_id })
         return devices_a
 
@@ -86,10 +85,10 @@ class KDEConnectSendExtension(GObject.GObject, Nautilus.MenuProvider):
 
         self.setup_gettext()
         """If user only select file(s) create menu and sub menu"""
-        menu = Nautilus.MenuItem(name='KdeConnectSendExtension::KDEConnect_Send',
-                                 label=_('KDEConnect Send To'),
-                                 tip=_('send file(s) with kdeconnect'),
-                                 icon='kdeconnect')
+        menu = Nautilus.MenuItem(name = 'KdeConnectSendExtension::KDEConnect_Send',
+                                 label = _('KDEConnect Send To'),
+                                 tip = _('send file(s) with kdeconnect'),
+                                 icon = 'kdeconnect')
 
         sub_menu = Nautilus.Menu()
 

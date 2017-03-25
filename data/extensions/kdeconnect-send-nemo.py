@@ -15,8 +15,10 @@ import urllib, os.path, re, gettext, locale
 _ = gettext.gettext
 
 class KDEConnectSendExtension(GObject.GObject, Nemo.MenuProvider):
+
     def __init__(self):
-        pass
+        self.devices_file = "/tmp/devices"
+	pass
 
     """Inicialize translations to a domain"""
     def setup_gettext(self):
@@ -29,12 +31,20 @@ class KDEConnectSendExtension(GObject.GObject, Nemo.MenuProvider):
 
     """Get a list of reachable devices"""
     def get_reachable_devices(self):
-        devices = check_output(["kdeconnect-cli", "-a"]).strip().split("\n")
-        devices.pop()
+        if not isfile(self.devices_file):
+            return
+
+        devices = []
+        with open(self.devices_file, 'r') as file:
+            data = file.readline()
+            while data:
+            	devices.append(data)
+             	data = file.readline()
+
         devices_a=[]
         for device in devices:
-            device_name=re.search("(?<=-\s).+(?=:\s)", device).group(0)
-            device_id=re.search("(?<=:\s)[_a-z0-9]+(?=\s\()", device).group(0).strip()
+            device_name = re.search("(?<=-\s).+(?=:\s)", device).group(0)
+            device_id = re.search("(?<=:\s)[_a-z0-9]+", device).group(0).strip()
             devices_a.append({ "name": device_name, "id": device_id })
         return devices_a
 
@@ -75,10 +85,10 @@ class KDEConnectSendExtension(GObject.GObject, Nemo.MenuProvider):
 
         self.setup_gettext()
         """If user only select file(s) create menu and sub menu"""
-        menu = Nemo.MenuItem(name='KdeConnectSendExtension::KDEConnect_Send',
-                             label=_('KDEConnect - Send To'),
-                             tip=_('send file(s) with kdeconnect'),
-                             icon='kdeconnect')
+        menu = Nemo.MenuItem(name = 'KdeConnectSendExtension::KDEConnect_Send',
+                             label = _('KDEConnect Send To'),
+                             tip = _('send file(s) with kdeconnect'),
+                             icon = 'kdeconnect')
 
         sub_menu = Nemo.Menu()
 

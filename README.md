@@ -57,7 +57,7 @@ sudo dnf install kdeconnectd indicator-kdeconnect -y
  OpenSuSe Leap 42.2 user's can use this repo:
 ```
 http://download.opensuse.org/repositories/home:/Bajoja/openSUSE_Leap_42.2/
-```
+```  
 
  OpenSuSe Tumbleweed user's can use this repo:
 ```

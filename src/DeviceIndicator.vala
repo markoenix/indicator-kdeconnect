@@ -181,14 +181,10 @@ namespace KDEConnectIndicator {
         }
 
         private void update_visibility () {
-            if (!device.is_reachable){
+            if (!device.is_reachable)
                 indicator.set_status (AppIndicator.IndicatorStatus.PASSIVE);
-		delete_status();
-            }
-            else{
+            else
                 indicator.set_status (AppIndicator.IndicatorStatus.ACTIVE);
-                write_status();
-            }
         }
         
         private void update_name_item () {
@@ -211,16 +207,24 @@ namespace KDEConnectIndicator {
         private void update_status_item () {
 
             if (device.is_reachable) {
-                if (device.is_trusted)
+                if (device.is_trusted) {
                     status_item.label = _("Device Reachable and Trusted");
-                else
+                    write_status ();
+                }
+                else {
                     status_item.label = _("Device Reachable but Not Trusted");
+                    delete_status ();
+                }
             } else {
-                if (device.is_trusted)
+                if (device.is_trusted) {
                     status_item.label = _("Device Trusted but not Reachable");
-                else
+                    delete_status ();
+                }
+                else {
 	            status_item.label = _("Device Not Reachable and Not Trusted");
-                    // is this even posible?
+                    delete_status ();
+		    // is this even posible?
+                }
             }
         }
         
@@ -248,7 +252,7 @@ namespace KDEConnectIndicator {
             separator3.visible = ring_item.visible;
         }
 
-        private int write_status (){
+        private int write_status () {
 	    var file = File.new_for_path (visible_devices);
 
             if (!file.query_exists ()) {
@@ -256,10 +260,10 @@ namespace KDEConnectIndicator {
         	return 1;
     	    }
     	    else{
-    	    	message("File path exist '%s'\n", file.get_path());
+    	    	message ("File path exist '%s'\n", file.get_path());
     	    }
 
-    	    var sb = new StringBuilder();
+    	    StringBuilder sb = new StringBuilder();
 
     	    string device_path = "/modules/kdeconnect/devices/";
             string device_id = this.path.replace(device_path, "");
@@ -272,9 +276,9 @@ namespace KDEConnectIndicator {
 
 		//If the file contains one reference to this device just igone
         	while ((line = dis.read_line (null)) != null) {
-            	      stdout.printf ("%s\n", line);
+            	      message ("Status found on file %s\n", line);
             	      if (name_id != line)
-            	      	sb.append(line+"\n");
+            	      	sb.append (line+"\n");
             	      else
             	        return 1;
         	}
@@ -306,15 +310,15 @@ namespace KDEConnectIndicator {
 	    return 0;
         }
 
-        private int delete_status(){
+        private int delete_status () {
 	    var file = File.new_for_path (visible_devices);
 
             if (!file.query_exists ())
         	message ("File '%s' doesn't exist.\n", file.get_path ());
     	    else
-    	    	message("File path exist '%s'\n", file.get_path());
+    	    	message ("File path exist '%s'\n", file.get_path());
 
-    	    var sb = new StringBuilder();
+    	    StringBuilder sb = new StringBuilder();
 
     	    string device_path = "/modules/kdeconnect/devices/";
             string device_id = this.path.replace(device_path, "");
@@ -326,7 +330,7 @@ namespace KDEConnectIndicator {
         	string line;
 
         	while ((line = dis.read_line (null)) != null) {
-            	      stdout.printf ("%s\n", line);
+            	      message ("Delete status found on file %s\n", line);
             	      if (line != name_id)
 		      	sb.append (line+"\n");
         	}
