@@ -30,7 +30,7 @@ Installation
 - Arch Linux  
  There is a package available in the [AUR](https://aur.archlinux.org/packages/indicator-kdeconnect-git)
 
-- Ubuntu 16.04, 16.10, 17.04 and Linux Mint 18.1   
+- Ubuntu and Linux Mint 
  Ubuntu 16.04, 16.10, 17.04 and Linux Mint 18.1 users can use this ppa:
 ```
 sudo add-apt-repository ppa:webupd8team/indicator-kdeconnect
