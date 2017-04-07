@@ -30,21 +30,12 @@ Installation
 - Arch Linux  
  There is a package available in the [AUR](https://aur.archlinux.org/packages/indicator-kdeconnect-git)
 
-- Ubuntu 16.04  
- Ubuntu 16.04 users can use this ppa:
+- Ubuntu 16.04, 16.10, 17.04 and Linux Mint 18.1
+ Ubuntu 16.04, 16.10, 17.04 and Linux Mint 18.1 users can use this ppa:
 ```
-sudo add-apt-repository ppa:varlesh-l/indicator-kdeconnect
+sudo add-apt-repository ppa:webupd8team/indicator-kdeconnect
 sudo apt update
 sudo apt install kdeconnect indicator-kdeconnect
-```
-
-- Ubuntu 16.10  
- Ubuntu 16.10 users can use this ppa:
-```
-sudo add-apt-repository ppa:varlesh-l/indicator-kdeconnect
-sudo sed -i 's/yakkety/xenial/g' /etc/apt/sources.list.d/varlesh-l-ubuntu-indicator-kdeconnect-yakkety.list
-sudo apt update
-sudo apt install indicator-kdeconnect kdeconnect
 ```
 
 - Fedora  
@@ -53,16 +44,14 @@ sudo apt install indicator-kdeconnect kdeconnect
 sudo dnf config-manager --add-repo http://download.opensuse.org/repositories/home:/Bajoja/Fedora_25/home:Bajoja.repo
 sudo dnf install kdeconnectd indicator-kdeconnect -y
 ```
+
 - OpenSuSe  
- OpenSuSe Leap 42.2 user's can use this repo:
+ OpenSuSe Leap 42.2 user's can use the first repo and Tumbleweed the secound repo:
 ```
 http://download.opensuse.org/repositories/home:/Bajoja/openSUSE_Leap_42.2/
-```  
 
- OpenSuSe Tumbleweed user's can use this repo:
-```
 http://download.opensuse.org/repositories/home:/Bajoja/openSUSE_Tumbleweed/
-```
+```  
 
 - From the Source  
  Check the INSTALL file
