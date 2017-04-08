@@ -11,6 +11,7 @@ namespace KDEConnectIndicator {
         public FirstTimeWizard (KDEConnectManager manager) {
             this.default_width = 600;
             this.default_height = 500;
+            this.set_icon_name("kdeconnect");
             this.manager = manager;
 
             var stack = new Gtk.Stack ();
