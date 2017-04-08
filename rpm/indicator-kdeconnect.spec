@@ -19,7 +19,7 @@
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 Name:           indicator-kdeconnect
-Version:        0.7
+Version:        0.7.1
 Release:        0%{?dist}
 Summary:        App Indicator for KDE Connect
 Group:          Applications/System
@@ -104,6 +104,10 @@ popd
 
 
 %changelog
+* Sat Apr 08 2017 21:30 Bajoja <steevenlopes@outlook.com> 0.7.1
+- Fix bug #51 - Nemo and Caja extensions not working
+- Add Language: Lituan
+
 * Thu Mar 23 2017 2300 Bajoja <steevenlopes@outlook.com> 0.7
 - Fix bug #46 - Nautilus freeze on copy/paste - URGENT
 - Fix Desktop Computers don't appear on kdeconnect-send context menu

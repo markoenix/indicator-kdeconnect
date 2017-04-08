@@ -1,3 +1,9 @@
+indicator-kdeconnect (0.7.1) precise; urgency=low
+  * Fix bug #51 - Nemo and Caja extensions not workink
+  * Add Language: Lituan
+
+  -- Bajoja <steevenlopes@outlook.com> Sat, 08 Apr 2017 21:30 -0000
+
 indicator-kdeconnect (0.7) precise; urgency=low
   * Fix bug #46 - Nautilus freeze on copy/paste - URGENT
 
