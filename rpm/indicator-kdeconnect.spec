@@ -106,7 +106,7 @@ popd
 %changelog
 * Sat Apr 08 2017 21:30 Bajoja <steevenlopes@outlook.com> 0.7.1
 - Fix bug #51 - Nemo and Caja extensions not working
-- Add Language: Lituan
+- Add Language: Lithuanian Language
 
 * Thu Mar 23 2017 2300 Bajoja <steevenlopes@outlook.com> 0.7
 - Fix bug #46 - Nautilus freeze on copy/paste - URGENT

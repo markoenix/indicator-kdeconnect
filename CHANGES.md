@@ -1,6 +1,6 @@
 # Version 0.7.1
  * Fix bug #51 - Nemo and Caja extensions not working
- * Add Language: Lituan
+ * Add Language: Lithuanian Language
 
 # Version 0.7.0
  * Fix bug #46 - Nautilus freeze on copy/paste - URGENT
