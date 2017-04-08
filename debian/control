@@ -13,7 +13,7 @@ Homepage: https://github.com/Bajoja/indicator-kdeconnect
 
 Package: indicator-kdeconnect
 Architecture: any
-Depends: ${misc:Depends}, ${shlibs:Depends}, kdeconnect, ubuntu-mono
+Depends: ${misc:Depends}, ${shlibs:Depends}, kdeconnect
 Suggests: python-nautilus, python-caja, python-nemo
 Description: Indicator for KDE Connect
  KDE Connect is tool to integrate the KDE Plasma Workspace with your smartphones and
