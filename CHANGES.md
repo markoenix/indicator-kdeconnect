@@ -1,3 +1,7 @@
+# Version 0.7.1
+ * Fix bug #51 - Nemo and Caja extensions not working
+ * Add Language: Lituan
+
 # Version 0.7.0
  * Fix bug #46 - Nautilus freeze on copy/paste - URGENT
  * Fix Desktop Computers don't appear on kdeconnect-send context menu
