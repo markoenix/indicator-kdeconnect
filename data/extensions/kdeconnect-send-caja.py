@@ -9,6 +9,7 @@
 
 from gi.repository import Caja, GObject, Notify
 from subprocess import call, check_output
+from os.path import isfile
 import urllib, os.path, re, gettext, locale
 
 # use of _ to set messages to be translated
