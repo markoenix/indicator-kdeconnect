@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: indicator-kdeconnect\n"
 "Report-Msgid-Bugs-To: steevenlopes@outlook.com\n"
 "POT-Creation-Date: 2017-01-19 02:07+0000\n"
-"PO-Revision-Date: 2017-01-19 02:07+0000\n"
-"Last-Translator: Steeven Lopes <steevenlopes@outlook.com>\n"
+"PO-Revision-Date: 2017-04-11 00:13+0000\n"
+"Last-Translator: Salim B <salim@posteo.de>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/indicator-kde-"
 "connect/translations/de/>\n"
 "Language: de\n"
@@ -16,14 +16,14 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Poedit 1.8.11\n"
+"X-Generator: Weblate 2.13-dev\n"
 
 #: src/FirstTimeWizard.vala:50
 msgid ""
 "<b>Are you ready for your first device pairing?</b>\n"
 "\n"
 msgstr ""
-"<b>Sind Sie bereit das erste Gerät zu verbinden?</b>\n"
+"<b>Bereit, das erste Gerät zu verbinden?</b>\n"
 "\n"
 
 #: src/FirstTimeWizard.vala:51
@@ -32,7 +32,7 @@ msgstr "Verbinden Sie beide Geräte mit demselben WLAN.\n"
 
 #: src/FirstTimeWizard.vala:52
 msgid "Tethering should work too!\n"
-msgstr "Tethering sollte auch funktionieren.\n"
+msgstr "Tethering sollte auch funktionieren!\n"
 
 #: src/FirstTimeWizard.vala:53
 msgid ""
@@ -58,8 +58,8 @@ msgid ""
 "Everytime there is a new device connected, a new indicator will appear in "
 "your panel.\n"
 msgstr ""
-"Immer, wenn ein neues Gerät verbunden wird, erscheint ein neues Indicator-"
-"Symbol in der Desktop-Leiste.\n"
+"Immer wenn ein neues Gerät verbunden wird, erscheint ein neues Indikator-"
+"Applet in der Desktop-Leiste.\n"
 
 #: src/FirstTimeWizard.vala:66
 msgid ""
@@ -71,7 +71,7 @@ msgstr ""
 
 #: src/FirstTimeWizard.vala:67
 msgid "<b>Now try to pair your device</b>"
-msgstr "<b>Versuche jetzt deine Gerät zu verbinden</b>"
+msgstr "<b>Versuche jetzt dein Gerät zu verbinden</b>"
 
 #: src/FirstTimeWizard.vala:76
 msgid ""
@@ -89,16 +89,15 @@ msgstr ""
 
 #: src/FirstTimeWizard.vala:78
 msgid "Indicator already added to autostart.\n"
-msgstr "Der Indicator wurde bereits zum Autostart hinzugefügt.\n"
+msgstr "Das Indikator-Applet wurde bereits zum Autostart hinzugefügt.\n"
 
 #: src/FirstTimeWizard.vala:79
 msgid "Enjoy!"
 msgstr "Viel Spaß!"
 
 #: src/KDEConnectManager.vala:119
-#, fuzzy
 msgid "cannot connect to KDE Connect DBus service"
-msgstr "kann keine Verbindung zu KDE Connect DBus service aufbauen"
+msgstr "kann keine Verbindung zum KDE-Connect-DBus-Service aufbauen"
 
 #: src/Device.vala:524
 msgid "Encryption information not found"
@@ -114,7 +113,7 @@ msgstr "Sende Datei(en)"
 
 #: src/DeviceIndicator.vala:47
 msgid "Send SMS"
-msgstr ""
+msgstr "Sende SMS"
 
 #: src/DeviceIndicator.vala:51
 msgid "Find my phone"
@@ -179,32 +178,33 @@ msgstr "Datei nicht gefunden"
 
 #: src/contractor/Contractor.vala:143
 msgid "There's %u file(s) to be send"
-msgstr ""
+msgstr "Es gibt %u Datei(en) zu senden"
 
 #: src/Sms.vala:37
 msgid "Compose SMS"
-msgstr ""
+msgstr "Verfasse SMS"
 
 #: src/Sms.vala:51
 msgid "Phone number: "
-msgstr ""
+msgstr "Telefonnummer: "
 
 #: src/Sms.vala:60
 msgid "Message body: "
-msgstr ""
+msgstr "Nachrichtentext: "
 
 #: data/extensions/kdeconnect-send-nautilus.py:47 data/extensions/kdeconncet-send-nemo.py:47 data/extensions/kdeconnect-send-caja.py:47
 msgid "Check the device {device_name}"
-msgstr ""
+msgstr "Prüfe das Gerät {device_name}"
 
 #: data/extensions/kdeconnect-send-nautilus.py:48 data/extensions/kdeconncet-send-nemo.py:48 data/extensions/kdeconnect-send-caja.py:48
 msgid "Sending {num_files} file(s)"
-msgstr ""
+msgstr "Sende {num_files} Datei(en)"
 
 #: data/extensions/kdeconnect-send-nautilus.py:79 data/extensions/kdeconncet-send-nemo.py:79 data/extensions/kdeconnect-send-caja.py:79
+#, fuzzy
 msgid "KDEConnect Send To"
-msgstr ""
+msgstr "KDEConnect senden an"
 
 #: data/extensions/kdeconnect-send-nautilus.py:80 data/extensions/kdeconncet-send-nemo.py:80 data/extensions/kdeconnect-send-caja.py:80
 msgid "send file(s) with kdeconnect"
-msgstr ""
+msgstr "sende Datei(en) mit KDEConnect"
