@@ -19,7 +19,6 @@ class KDEConnectSendExtension(GObject.GObject, Nautilus.MenuProvider):
 
     def __init__(self):
         self.devices_file = "/tmp/devices"
-	pass
 
     """Inicialize translations to a domain"""
     def setup_gettext(self):
@@ -70,12 +69,12 @@ class KDEConnectSendExtension(GObject.GObject, Nautilus.MenuProvider):
     def get_file_items(self, window, files):
 	"""Ensure there are reachable devices"""
         try:
-            self.devices = self.get_reachable_devices()
+            devices = self.get_reachable_devices()
         except Exception as e:
             raise Exception("Error while getting reachable devices")
 
         """if there is no reacheable devices don't show this on context menu"""
-        if not self.devices:
+        if not devices:
             return
 
         """Ensure that user only select files"""
@@ -94,7 +93,7 @@ class KDEConnectSendExtension(GObject.GObject, Nautilus.MenuProvider):
 
         menu.set_submenu(sub_menu)
 
-        for device in self.devices:
+        for device in devices:
             item = Nautilus.MenuItem(name="KDEConnectSendExtension::Send_File_To",
                                      label=device["name"])
             item.connect('activate', self.menu_activate_cb, files, device["id"], device["name"])

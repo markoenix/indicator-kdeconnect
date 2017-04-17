@@ -19,7 +19,6 @@ class KDEConnectSendExtension(GObject.GObject, Caja.MenuProvider):
 
     def __init__(self):
         self.devices_file = "/tmp/devices"
-	pass
 
     """Inicialize translations to a domain"""
     def setup_gettext(self):
