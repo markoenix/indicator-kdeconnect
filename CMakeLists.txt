@@ -37,7 +37,8 @@ include(ValaPrecompile)
 # make sure we use GettextTranslate
 include(GettextTranslate)
 
-#indicator 
+
+#indicator
 set (INDICATOR_EXEC "indicator-kdeconnect")
 vala_precompile(INDICATOR_VALA_C ${INDICATOR_EXEC}
 	# TODO: dont know why but this one doenst work
@@ -49,7 +50,6 @@ vala_precompile(INDICATOR_VALA_C ${INDICATOR_EXEC}
 	src/DeviceIndicator.vala
 	src/FirstTimeWizard.vala
 	src/StartupManager.vala
-	src/Sms.vala
 	PACKAGES
 	gtk+-3.0
 	appindicator3-0.1
@@ -73,6 +73,14 @@ vala_precompile(VALA_C ${CONTRACTOR_EXEC}
 
 add_executable(${CONTRACTOR_EXEC} ${VALA_C})
 install (TARGETS ${CONTRACTOR_EXEC} RUNTIME DESTINATION bin)
+install (FILES "src/Sms.py" DESTINATION /opt/indicator-kdeconnect)
+
+install(
+	CODE
+	"execute_process (COMMAND chmod +x /opt/indicator-kdeconnect/Sms.py)"
+	CODE
+	"message (STATUS \"Updated execution permision for Sms.py\")"
+	)
 
 # install data files
 add_subdirectory(data)
