@@ -165,8 +165,10 @@ class MessageWindow(Gtk.Window):
 
 	def __init__(self):
 
-		Gtk.Window.__init__(self, title='Send Message')
+		Gtk.Window.__init__(self)
+		self.set_icon_name('kdeconnect')
 		self.set_border_width(6)
+		self.set_position(Gtk.WindowPosition.CENTER)
 		self.connect('delete-event', Gtk.main_quit)
 		hotkeys = Gtk.AccelGroup()
 		self.add_accel_group(hotkeys)
@@ -191,6 +193,7 @@ class MessageWindow(Gtk.Window):
 		if self.contacts:
 			self.phone_no.set_completion(self.get_completion())
 		self.phone_no.connect('activate', self.select_first)
+		self.phone_no.connect('changed', self.enable_send)
 		main_box.pack_start(self.phone_no, True, True, 0)
 		scrolled_window = Gtk.ScrolledWindow()
 		scrolled_window.set_vexpand(True)
@@ -202,17 +205,22 @@ class MessageWindow(Gtk.Window):
 		self.body.set_left_margin(4)
 		self.body.set_right_margin(4)
 		self.body.set_wrap_mode(Gtk.WrapMode.WORD_CHAR)
+		self.body_buffer = self.body.get_buffer()
+		self.body_buffer.connect('changed', self.enable_send)
 		scrolled_window.add(self.body)
 
-		send = Gtk.Button.new_with_label('Send')
-		send.add_accelerator(
+		self.send = Gtk.Button.new_with_label('Send')
+		self.send.add_accelerator(
 			'clicked',
 			hotkeys,
 			Gdk.KEY_Return,
 			Gdk.ModifierType.CONTROL_MASK,
 			Gtk.AccelFlags.VISIBLE)
-		send.connect('clicked', self.send)
-		headerbar.pack_end(send)
+		self.send.set_sensitive(False)
+		style_context = self.send.get_style_context()
+		style_context.add_class('suggested-action')
+		self.send.connect('clicked', self.send_msg)
+		headerbar.pack_end(self.send)
 		sync = Gtk.Button.new_from_icon_name('emblem-synchronizing', 3)
 		sync.connect('clicked', self.sync)
 		headerbar.pack_end(sync)
@@ -276,7 +284,17 @@ class MessageWindow(Gtk.Window):
 		self.contacts = google_contacts.get_contacts()
 		self.phone_no.set_completion(self.get_completion())
 
-	def send(self, widget):
+	def enable_send(self, obj):
+
+		phone_no = self.phone_no.get_text()
+		start, end = self.body_buffer.get_bounds()
+		body = self.body_buffer.get_text(start, end, False)
+		if phone_no and body:
+			self.send.set_sensitive(True)
+		else:
+			self.send.set_sensitive(False)
+
+	def send_msg(self, widget):
 
 		phone = self.phone_no.get_text()
 		text_buffer = self.body.get_buffer()
