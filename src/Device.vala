@@ -36,8 +36,18 @@ namespace KDEConnectIndicator {
             }
         }
         
+        private string _id;
+        public string id {
+        	get {
+        	     string device_path = "/modules/kdeconnect/devices/";
+            	     _id = this.path.replace(device_path, "");
+
+            	     return _id;
+            	}
+        }
+
         private string _icon;
-        public string icon_name {
+        public string icon {
 	    get {
 		try {
 		     var return_variant = conn.call_sync (

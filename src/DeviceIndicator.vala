@@ -29,7 +29,7 @@ namespace KDEConnectIndicator {
             menu = new Gtk.Menu ();
 
             indicator = new AppIndicator.Indicator (path,
-                    				    device.icon_name,
+                    				    device.icon,
                                                     AppIndicator.IndicatorCategory.HARDWARE);
 
             name_item = new Gtk.MenuItem ();
@@ -118,23 +118,16 @@ namespace KDEConnectIndicator {
             });
             
             sms_item.activate.connect (() => {
-        	string device_path = "/modules/kdeconnect/devices/";
-            	string device_id = this.path.replace(device_path, "");
 
             	try{
 		    Process.spawn_sync (null,
-				        new string[]
-				        {
-				         "/opt/indicator-kdeconnect/Sms.py",
-					 "-d",
-					 device_id
-				         },
-				         null,
-				         SpawnFlags.SEARCH_PATH,
-				         null,
-				         null,
-				         null,
-				         null);
+		    			new string[]{
+				        "/usr/share/indicator-kdeconnect/Sms.py",
+					"-d",
+					device.id},
+				        null,
+				        SpawnFlags.SEARCH_PATH,
+				        null, null, null, null);
 	    	} catch (Error e){
 		    message (e.message);
             	}
@@ -210,7 +203,7 @@ namespace KDEConnectIndicator {
         }
 
         private void update_icon_item(){
-	    indicator.set_icon_full (device.icon_name, "");
+	    indicator.set_icon_full (device.icon, "");
 	}
         
         private void update_battery_item () {
@@ -283,9 +276,7 @@ namespace KDEConnectIndicator {
 
     	    StringBuilder sb = new StringBuilder();
 
-    	    string device_path = "/modules/kdeconnect/devices/";
-            string device_id = this.path.replace(device_path, "");
-            string name_id = "- "+device.name+" : "+device_id;
+            string name_id = "- "+device.name+" : "+device.id;
 
     	    try {
         	var dis = new DataInputStream (file.read ());
@@ -338,9 +329,7 @@ namespace KDEConnectIndicator {
 
     	    StringBuilder sb = new StringBuilder();
 
-    	    string device_path = "/modules/kdeconnect/devices/";
-            string device_id = this.path.replace(device_path, "");
-            string name_id = "- "+device.name+" : "+device_id;
+            string name_id = "- "+device.name+" : "+device.id;
 
     	    try {
         	var dis = new DataInputStream (file.read ());

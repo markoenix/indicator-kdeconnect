@@ -9,6 +9,7 @@ on Ubuntu:
 -> sudo apt install libappindicator3-dev
 -> sudo apt install cmake
 -> sudo apt install valac
+-> sudo apt install python3-requests-oauthlib
 -> sudo apt install python-nautilus (if you use Nautilus) 
                     python-nemo (if you use Nemo)
  		    python-caja (if you use Caja)  
@@ -18,6 +19,7 @@ on Fedora:
 -> sudo dnf install libappindicator-gtk3-devel
 -> sudo dnf install cmake
 -> sudo dnf install vala-devel
+-> sudo dnf install python3-requests-oauthlib
 -> sudo dnf install nautilus-python (if you use Nautilus)
 		    nemo-python (if you use Nemo)
 		    caja-python (if you use Caja)
