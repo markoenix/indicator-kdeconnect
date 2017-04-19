@@ -311,11 +311,13 @@ class MessageWindow(Gtk.Window):
 		text_buffer = self.body.get_buffer()
 		start, end = text_buffer.get_bounds()
 		message = text_buffer.get_text(start, end, False)
-		subprocess.call([
-			'kdeconnect-cli',
-			'--device', args.device,
-			'--destination', phone,
-			'--send-sms', message])
+		chunks = (message[x:x+160] for x in range(0, len(message), 160))
+		for chunk in chunks:
+			subprocess.call([
+				'kdeconnect-cli',
+				'--device', args.device,
+				'--destination', phone,
+				'--send-sms', chunk])
 		self.close()
 
 MessageWindow()
