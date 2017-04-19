@@ -73,11 +73,11 @@ vala_precompile(VALA_C ${CONTRACTOR_EXEC}
 
 add_executable(${CONTRACTOR_EXEC} ${VALA_C})
 install (TARGETS ${CONTRACTOR_EXEC} RUNTIME DESTINATION bin)
-install (FILES "src/Sms.py" DESTINATION /opt/indicator-kdeconnect)
+install (FILES "src/Sms.py" DESTINATION ${DATADIR}/indicator-kdeconnect)
 
 install(
 	CODE
-	"execute_process (COMMAND chmod +x /opt/indicator-kdeconnect/Sms.py)"
+	"execute_process (COMMAND chmod +x ${DATADIR}/indicator-kdeconnect/Sms.py)"
 	CODE
 	"message (STATUS \"Updated execution permision for Sms.py\")"
 	)

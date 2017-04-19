@@ -123,18 +123,13 @@ namespace KDEConnectIndicator {
 
             	try{
 		    Process.spawn_sync (null,
-				        new string[]
-				        {
-				         "/opt/indicator-kdeconnect/Sms.py",
-					 "-d",
-					 device_id
-				         },
-				         null,
-				         SpawnFlags.SEARCH_PATH,
-				         null,
-				         null,
-				         null,
-				         null);
+		    			new string[]{
+				        "/usr/share/indicator-kdeconnect/Sms.py",
+					"-d",
+					device_id},
+				        null,
+				        SpawnFlags.SEARCH_PATH,
+				        null, null, null, null);
 	    	} catch (Error e){
 		    message (e.message);
             	}
