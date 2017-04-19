@@ -20,7 +20,7 @@ parser = argparse.ArgumentParser(
 parser.add_argument('-d', '--device', help='connected device id')
 args = parser.parse_args()
 
-data_dir = os.path.expanduser('~/.local/share/send-sms')
+data_dir = os.path.expanduser('~/.local/share/indicator-kdeconnect/sms')
 
 
 class RequestHandler(BaseHTTPRequestHandler):
@@ -88,7 +88,7 @@ class GoogleContacts(object):
 
 		if self.token:
 			if not os.path.isdir(data_dir):
-				os.mkdir(data_dir)
+				os.makedirs(data_dir, exist_ok=True)
 			with open(os.path.join(data_dir, 'token.json'), 'w') as fd:
 				fd.write(json.dumps(self.token, indent='\t'))
 
@@ -193,7 +193,7 @@ class MessageWindow(Gtk.Window):
 		if self.contacts:
 			self.phone_no.set_completion(self.get_completion())
 		self.phone_no.connect('activate', self.select_first)
-		self.phone_no.connect('changed', self.enable_send)
+		self.phone_no.connect('changed', self.on_entry)
 		main_box.pack_start(self.phone_no, True, True, 0)
 		scrolled_window = Gtk.ScrolledWindow()
 		scrolled_window.set_vexpand(True)
@@ -206,8 +206,11 @@ class MessageWindow(Gtk.Window):
 		self.body.set_right_margin(4)
 		self.body.set_wrap_mode(Gtk.WrapMode.WORD_CHAR)
 		self.body_buffer = self.body.get_buffer()
-		self.body_buffer.connect('changed', self.enable_send)
+		self.body_buffer.connect('changed', self.on_entry)
 		scrolled_window.add(self.body)
+		self.char_count = Gtk.Label('0')
+		self.char_count.set_halign(Gtk.Align.END)
+		main_box.pack_start(self.char_count, False, False, 0)
 
 		self.send = Gtk.Button.new_with_label('Send')
 		self.send.add_accelerator(
@@ -284,7 +287,7 @@ class MessageWindow(Gtk.Window):
 		self.contacts = google_contacts.get_contacts()
 		self.phone_no.set_completion(self.get_completion())
 
-	def enable_send(self, obj):
+	def on_entry(self, obj):
 
 		phone_no = self.phone_no.get_text()
 		start, end = self.body_buffer.get_bounds()
@@ -293,6 +296,14 @@ class MessageWindow(Gtk.Window):
 			self.send.set_sensitive(True)
 		else:
 			self.send.set_sensitive(False)
+		if body:
+			char_count = len(body)
+			msg_count = char_count // 160 + 1
+			string = ('{0} ({1})'.format(char_count, msg_count)
+				if msg_count > 1 else str(char_count))
+			self.char_count.set_label(string)
+		else:
+			self.char_count.set_label('0')
 
 	def send_msg(self, widget):
 
