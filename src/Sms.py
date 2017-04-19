@@ -165,8 +165,10 @@ class MessageWindow(Gtk.Window):
 
 	def __init__(self):
 
-		Gtk.Window.__init__(self, title='Send Message')
+		Gtk.Window.__init__(self)
+		self.set_icon_name('kdeconnect')
 		self.set_border_width(6)
+		self.set_position(Gtk.WindowPosition.CENTER)
 		self.connect('delete-event', Gtk.main_quit)
 		hotkeys = Gtk.AccelGroup()
 		self.add_accel_group(hotkeys)
@@ -215,6 +217,8 @@ class MessageWindow(Gtk.Window):
 			Gdk.ModifierType.CONTROL_MASK,
 			Gtk.AccelFlags.VISIBLE)
 		self.send.set_sensitive(False)
+		style_context = self.send.get_style_context()
+		style_context.add_class('suggested-action')
 		self.send.connect('clicked', self.send_msg)
 		headerbar.pack_end(self.send)
 		sync = Gtk.Button.new_from_icon_name('emblem-synchronizing', 3)
