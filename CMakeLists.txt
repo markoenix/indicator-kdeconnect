@@ -36,6 +36,9 @@ ensure_vala_version("0.20" MINIMUM)
 include(ValaPrecompile)
 # make sure we use GettextTranslate
 include(GettextTranslate)
+#
+include(FindPythonModule)
+find_python_module(requests_oauthlib)
 
 
 #indicator
