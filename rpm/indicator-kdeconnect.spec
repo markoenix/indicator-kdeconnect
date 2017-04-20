@@ -37,14 +37,15 @@ Source1:        kdeconnect.png
 %endif
 
 # Package names only verified with Fedora.
-# Should the packages in your distro be named dirrerently,
+# Should the packages in your distro be named differently,
 # see http://en.opensuse.org/openSUSE:Build_Service_cross_distribution_howto
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  gtk3-devel
 BuildRequires:  vala
 BuildRequires:  vala-devel
-
+BuildRequires:  pkgconfig(gtk+-3.0)
+Requires:          \python3-requests-oauthlib 
 
 %if 0%{?fedora} || 0%{?rhel_version} || 0%{?centos_version}
 BuildRequires:  libappindicator-gtk3-devel
@@ -65,37 +66,51 @@ A small program, kdeconnect-send, to help sending files from PC to Android is in
 %setup -q
 
 %build
-mkdir build
-pushd build
-cmake .. -DCMAKE_INSTALL_PREFIX="%_prefix"
-make PREFIX="%_prefix" %{?_smp_mflags}
-popd
+%__mkdir build
+cd build
+cmake .. \
+        -DCMAKE_INSTALL_PREFIX="%_prefix" \
+        -DCMAKE_INSTALL_LIBEXEC="%_libexecdir" \
+        -DCMAKE_C_FLAGS="%optflags" \
+        -DCMAKE_CXX_FLAGS="%optflags"
+
+make %{?_smp_mflags}
 
 %install
-pushd build
-%{make_install}
+cd build
+%make_install
+
 %if 0%{?suse_version}
 %suse_update_desktop_file -r -i %name Network Telephony
 %endif
-popd
 
 %files
 %defattr(-,root,root,-)
-%doc COPYING README.md
+
+%if 0%{?sle_version} <= 120200 && 0%{?suse_version} <= 1320
+%doc README.md COPYING
+%else
+%doc README.md
+%license COPYING
+%endif
+
 %dir %{_datadir}/caja-python
 %dir %{_datadir}/contractor
 %dir %{_datadir}/indicator-kdeconnect
 %dir %{_datadir}/nautilus-python
 %dir %{_datadir}/nemo-python
+%dir %{_datadir}/Thunar
 %{_bindir}/%{name}
 %{_bindir}/kdeconnect-send
+%{_bindir}/indicator-kdeconnect/Sms.py
 %{_datadir}/locale/*/LC_MESSAGES/indicator-kdeconnect.mo
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/contractor/kdeconnect.contract
-%{_datadir}/%{name}/*
+%{_datadir}/%{name}
 %{_datadir}/nautilus-python/extensions/
 %{_datadir}/nemo-python/extensions/
 %{_datadir}/caja-python/extensions/
+%{_datadir}/Thunar/sendto/
 %if 0%{?suse_version}
 %{_datadir}/pixmaps/kdeconnect.png
 %endif
@@ -107,7 +122,7 @@ popd
 %changelog
 * Sat Apr 08 2017 21:30 Bajoja <steevenlopes@outlook.com> 0.7.1
 - Fix bug #51 - Nemo and Caja extensions not working
-- Add Language: Lithuanian Language
+- Add Language: Lituan
 
 * Thu Mar 23 2017 2300 Bajoja <steevenlopes@outlook.com> 0.7
 - Fix bug #46 - Nautilus freeze on copy/paste - URGENT
@@ -120,6 +135,10 @@ popd
 - Kdeconnect-send script for file manager not supported
   by extension can send multiple files
 - Provide OpenSuse repo - Thanks to Raúl García
+
+* Tue Mar 7 2017 0300 Markus S. <kamikazow@web.de> 0.6-1
+- Ported openSUSE compatibility changes by Raúl García <raul@bgta.net>
+- Cleaned up specfile a bit.
 
 * Thu Jan 26 2017 0200 Bajoja <steevenlopes@outlook.com> 0.6
 - Monochrome icons for Gnome.
@@ -156,3 +175,4 @@ popd
 
 * Mon Aug 20 2012 0323 Bajoja <steevenlopes@outlook.com> 0.1
 - Initial Release.
+
