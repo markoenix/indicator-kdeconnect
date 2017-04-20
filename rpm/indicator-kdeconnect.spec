@@ -48,14 +48,12 @@ BuildRequires:  vala-devel
 
 %if 0%{?fedora} || 0%{?rhel_version} || 0%{?centos_version}
 BuildRequires:  libappindicator-gtk3-devel
-Requires:       python3-requests-oauthlib
 Requires:       kde-connect-libs
 %endif
 
 %if 0%{?suse_version}
 BuildRequires:  update-desktop-files
 BuildRequires:  libappindicator3-devel
-Requires:       python3-requests-oauthlib
 Requires:       kdeconnect-kde
 %endif
 
