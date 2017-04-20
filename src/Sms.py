@@ -2,9 +2,10 @@
 
 import os
 import json
-#~ import re
 import subprocess
 import argparse
+import gettext
+import locale
 from http.server import BaseHTTPRequestHandler, HTTPServer
 from urllib.parse import urlparse, parse_qs
 from webbrowser import open_new_tab
@@ -13,6 +14,11 @@ gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk, Gdk
 from requests_oauthlib import OAuth2Session
 from oauthlib.oauth2.rfc6749.errors import TokenExpiredError
+
+_ = gettext.gettext
+locale.setlocale(locale.LC_ALL, '')
+gettext.bindtextdomain('indicator-kdeconnect', '/usr/share/locale')
+gettext.textdomain('indicator-kdeconnect')
 
 parser = argparse.ArgumentParser(
 	description='Send sms via KDE Connect with Google Contacts sync and '
@@ -35,10 +41,11 @@ class RequestHandler(BaseHTTPRequestHandler):
 		if all(True if key in loopback_response else False for key in keys):
 			if loopback_response['state'][0] == GoogleContacts.auth_state:
 				GoogleContacts.auth_code = loopback_response['code'][0]
-				message = 'Authorization succesfull. You can close this window.'
+				message = _(
+					'Authorization succesfull. You can close this window.')
 				self.wfile.write(message.encode())
 				return
-		message = ('Authorization failed. '
+		message = _('Authorization failed. '
 			+ 'Please close this window and try again.')
 		self.wfile.write(message.encode())
 		return
@@ -174,7 +181,7 @@ class MessageWindow(Gtk.Window):
 		self.add_accel_group(hotkeys)
 
 		headerbar = Gtk.HeaderBar(spacing=0)
-		headerbar.props.title = 'Send SMS'
+		headerbar.props.title = _('Compose SMS')
 		self.set_titlebar(headerbar)
 
 		try:
@@ -189,7 +196,7 @@ class MessageWindow(Gtk.Window):
 		main_box = Gtk.Box(spacing=6, orientation=Gtk.Orientation.VERTICAL)
 		self.add(main_box)
 		self.phone_no = Gtk.Entry()
-		self.phone_no.set_placeholder_text('Phone number')
+		self.phone_no.set_placeholder_text(_('Phone number'))
 		if self.contacts:
 			self.phone_no.set_completion(self.get_completion())
 		self.phone_no.connect('activate', self.select_first)
@@ -197,7 +204,7 @@ class MessageWindow(Gtk.Window):
 		main_box.pack_start(self.phone_no, True, True, 0)
 		scrolled_window = Gtk.ScrolledWindow()
 		scrolled_window.set_vexpand(True)
-		scrolled_window.set_size_request(250, 200)
+		scrolled_window.set_size_request(300, 250)
 		main_box.pack_start(scrolled_window, True, True, 0)
 		self.body = Gtk.TextView()
 		self.body.set_top_margin(6)
@@ -212,7 +219,7 @@ class MessageWindow(Gtk.Window):
 		self.char_count.set_halign(Gtk.Align.END)
 		main_box.pack_start(self.char_count, False, False, 0)
 
-		self.send = Gtk.Button.new_with_label('Send')
+		self.send = Gtk.Button.new_with_label(_('Send'))
 		self.send.add_accelerator(
 			'clicked',
 			hotkeys,
@@ -227,7 +234,7 @@ class MessageWindow(Gtk.Window):
 		sync = Gtk.Button.new_from_icon_name('emblem-synchronizing', 3)
 		sync.connect('clicked', self.sync)
 		headerbar.pack_end(sync)
-		cancel = Gtk.Button.new_with_label('Cancel')
+		cancel = Gtk.Button.new_with_label(_('Cancel'))
 		cancel.connect('clicked', self.cancel)
 		headerbar.pack_start(cancel)
 
