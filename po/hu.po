@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: indicator-kdeconnect\n"
 "Report-Msgid-Bugs-To: steevenlopes@outlook.com\n"
 "POT-Creation-Date: 2017-04-20 12:47+0100\n"
-"PO-Revision-Date: 2017-04-20 12:47+0100\n"
-"Last-Translator: Péter Báthory <bathory86p@gmail.com>\n"
+"PO-Revision-Date: 2017-04-20 12:03+0000\n"
+"Last-Translator: Steeven Lopes <steevenlopes@outlook.com>\n"
 "Language-Team: Hungarian <https://hosted.weblate.org/projects/indicator-kde-"
 "connect/translations/hu/>\n"
 "Language: hu\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Poedit 1.8.12\n"
+"X-Generator: Weblate 2.14-dev\n"
 
 #: src/FirstTimeWizard.vala:50
 msgid ""
@@ -182,7 +182,7 @@ msgstr "SMS írás"
 
 #: src/Sms.py:199
 msgid "Phone number"
-msgstr ""
+msgstr "Telefonszám"
 
 #: src/Sms.vala:60
 msgid "Message body: "
