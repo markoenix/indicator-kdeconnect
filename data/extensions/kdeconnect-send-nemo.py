@@ -85,7 +85,7 @@ class KDEConnectSendExtension(GObject.GObject, Nemo.MenuProvider):
 
         self.setup_gettext()
         """If user only select file(s) create menu and sub menu"""
-        menu = Nemo.MenuItem(name = 'KdeConnectSendExtension::KDEConnect_Send',
+        menu = Nemo.MenuItem(name = 'KdeConnectSendExtension::KDEConnectSend',
                              label = _('KDEConnect Send To'),
                              tip = _('send file(s) with kdeconnect'),
                              icon = 'kdeconnect')
@@ -95,7 +95,7 @@ class KDEConnectSendExtension(GObject.GObject, Nemo.MenuProvider):
         menu.set_submenu(sub_menu)
 
         for device in devices:
-            item = Nemo.MenuItem(name="KDEConnectSendExtension::Send_File_To",
+            item = Nemo.MenuItem(name='KDEConnectSendExtension::SendFileTo'+device["id"],
                                  label=device["name"])
             item.connect('activate', self.menu_activate_cb, files, device["id"], device["name"])
             sub_menu.append_item(item)
