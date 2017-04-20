@@ -6,17 +6,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: indicator-kdeconnect\n"
 "Report-Msgid-Bugs-To: steevenlopes@outlook.com\n"
-"POT-Creation-Date: 2017-01-19 02:09+0000\n"
-"PO-Revision-Date: 2017-02-16 15:57+0000\n"
+"POT-Creation-Date: 2017-04-20 12:48+0100\n"
+"PO-Revision-Date: 2017-04-20 12:48+0100\n"
 "Last-Translator: Steeven Lopes <steevenlopes@outlook.com>\n"
-"Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects"
-"/indicator-kde-connect/translations/pt_BR/>\n"
+"Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
+"indicator-kde-connect/translations/pt_BR/>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 2.12-dev\n"
+"X-Generator: Poedit 1.8.12\n"
 
 #: src/FirstTimeWizard.vala:50
 msgid ""
@@ -130,7 +130,7 @@ msgid "Select file(s)"
 msgstr "Seleccionar ficheiro(s)"
 
 #: src/DeviceIndicator.vala:103 src/contractor/Contractor.vala:24
-#: src/Sms.vala:40
+#: src/Sms.py:237
 msgid "Cancel"
 msgstr "Cancelar"
 
@@ -150,7 +150,7 @@ msgstr " (carregando)"
 msgid "Device Reachable and Trusted"
 msgstr "Dispositivo Alcançável e Confiável"
 
-#: src/DeviceIndicator.vala:210
+#: src/DeviceIndicator.vala:212
 msgid "Device Reachable but Not Trusted"
 msgstr "Dispositivo Alcançável mas não Confiável"
 
@@ -166,7 +166,7 @@ msgstr "Dispositivo Não Alcançável e não Confiável"
 msgid "Send to"
 msgstr "Enviar para"
 
-#: src/contractor/Contractor.vala:25 src/Sms.vala:44
+#: src/contractor/Contractor.vala:25 src/Sms.py:220
 msgid "Send"
 msgstr "Enviar"
 
@@ -178,30 +178,49 @@ msgstr "Ficheiro(s) não encontrado"
 msgid "There's %u file(s) to be send"
 msgstr "Há %u ficheiro(s) a ser(em) enviado(s)"
 
-#: src/Sms.vala:37
+#: src/Sms.py:184
 msgid "Compose SMS"
 msgstr "Escrever SMS"
 
-#: src/Sms.vala:51
-msgid "Phone number: "
-msgstr "Telefone: "
+#: src/Sms.py:199
+msgid "Phone number"
+msgstr ""
 
 #: src/Sms.vala:60
 msgid "Message body: "
 msgstr "Mensagem: "
 
-#: data/extensions/kdeconnect-send-nautilus.py:47 data/extensions/kdeconncet-send-nemo.py:47 data/extensions/kdeconnect-send-caja.py:47
+#: src/Sms.py:44
+msgid "Authorization succesfull. You can close this window."
+msgstr ""
+
+#: src/Sms.py:48
+msgid "Authorization failed. Please close this window and try again."
+msgstr ""
+
+#: data/extensions/kdeconnect-send-nautilus.py:47
+#: data/extensions/kdeconncet-send-nemo.py:47
+#: data/extensions/kdeconnect-send-caja.py:47
 msgid "Check the device {device_name}"
 msgstr "Verifique o dispositivo {device_name}"
 
-#: data/extensions/kdeconnect-send-nautilus.py:48 data/extensions/kdeconncet-send-nemo.py:48 data/extensions/kdeconnect-send-caja.py:48
+#: data/extensions/kdeconnect-send-nautilus.py:48
+#: data/extensions/kdeconncet-send-nemo.py:48
+#: data/extensions/kdeconnect-send-caja.py:48
 msgid "Sending {num_files} file(s)"
 msgstr "Enviando {num_files} ficheiro(s)"
 
-#: data/extensions/kdeconnect-send-nautilus.py:79 data/extensions/kdeconncet-send-nemo.py:79 data/extensions/kdeconnect-send-caja.py:79
+#: data/extensions/kdeconnect-send-nautilus.py:79
+#: data/extensions/kdeconncet-send-nemo.py:79
+#: data/extensions/kdeconnect-send-caja.py:79
 msgid "KDEConnect Send To"
 msgstr "KDEConnect Enviar Para"
 
-#: data/extensions/kdeconnect-send-nautilus.py:80 data/extensions/kdeconncet-send-nemo.py:80 data/extensions/kdeconnect-send-caja.py:80
+#: data/extensions/kdeconnect-send-nautilus.py:80
+#: data/extensions/kdeconncet-send-nemo.py:80
+#: data/extensions/kdeconnect-send-caja.py:80
 msgid "send file(s) with kdeconnect"
 msgstr "enviar ficheiro(s) com kdeconnect"
+
+#~ msgid "Phone number: "
+#~ msgstr "Telefone: "

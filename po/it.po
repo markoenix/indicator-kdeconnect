@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: indicator-kdeconnect\n"
 "Report-Msgid-Bugs-To: steevenlopes@outlook.com\n"
-"POT-Creation-Date: 2016-11-18 18:46+0200\n"
-"PO-Revision-Date: 2017-02-08 11:15+0000\n"
+"POT-Creation-Date: 2017-04-20 12:47+0100\n"
+"PO-Revision-Date: 2017-04-20 12:47+0100\n"
 "Last-Translator: anthonytex <antoniotex90@gmail.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/indicator-kde-"
 "connect/translations/it/>\n"
@@ -16,10 +16,12 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.12-dev\n"
+"X-Generator: Poedit 1.8.12\n"
 
 #: src/FirstTimeWizard.vala:50
-msgid "<b>Are you ready for your first device pairing?</b>\n\n"
+msgid ""
+"<b>Are you ready for your first device pairing?</b>\n"
+"\n"
 msgstr ""
 "<b>Sei pronto ad associare il tuo dispositivo per la prima volta?</b>\n"
 "\n"
@@ -33,7 +35,9 @@ msgid "Tethering should work too!\n"
 msgstr "Dovrebbe funzionare anche tramite Tethering!\n"
 
 #: src/FirstTimeWizard.vala:53
-msgid "If you have Firewall running, please open port 1714-1764 for TCP and UDP\n\n"
+msgid ""
+"If you have Firewall running, please open port 1714-1764 for TCP and UDP\n"
+"\n"
 msgstr ""
 "Se stai utilizzando un Firewall, per favore apri le porte 1714-1764 sia TCP "
 "che UDP\n"
@@ -41,20 +45,25 @@ msgstr ""
 
 #: src/FirstTimeWizard.vala:54
 msgid "Launch KDE Connect in your Android which you can download from "
-msgstr "Avvia KDE Connect nel tuo dispositivo Android, puoi scaricare l'app da "
+msgstr ""
+"Avvia KDE Connect nel tuo dispositivo Android, puoi scaricare l'app da "
 
 #: src/FirstTimeWizard.vala:56
 msgid "Google Play</a>"
 msgstr "Google Play</a>"
 
 #: src/FirstTimeWizard.vala:65
-msgid "Everytime there is a new device connected, a new indicator will appear in your panel.\n"
+msgid ""
+"Everytime there is a new device connected, a new indicator will appear in "
+"your panel.\n"
 msgstr ""
 "Ogni volta che ci sarà un nuovo dispositivo connesso, un nuovo indicatore "
 "apparirà nel pannello.\n"
 
 #: src/FirstTimeWizard.vala:66
-msgid "There, you can pair and see its status\n\n"
+msgid ""
+"There, you can pair and see its status\n"
+"\n"
 msgstr ""
 "Qui puoi eseguire il pair e vedere lo stato\n"
 "\n"
@@ -64,7 +73,9 @@ msgid "<b>Now try to pair your device</b>"
 msgstr "<b>Prova ora ad eseguire il pair con il tuo dispositivo</b>"
 
 #: src/FirstTimeWizard.vala:76
-msgid "<b>Great! your device is all set</b>\n\n"
+msgid ""
+"<b>Great! your device is all set</b>\n"
+"\n"
 msgstr ""
 "<b>Ottimo! Il tuo dispositivo è pronto</b>\n"
 "\n"
@@ -72,8 +83,8 @@ msgstr ""
 #: src/FirstTimeWizard.vala:77
 msgid "Now you can enable or disable modules on KDE Connect settings.\n"
 msgstr ""
-"Puoi ora abilitare e disattivare i moduli nelle impostazioni di KDE Connect."
-"\n"
+"Puoi ora abilitare e disattivare i moduli nelle impostazioni di KDE "
+"Connect.\n"
 
 #: src/FirstTimeWizard.vala:78
 msgid "Indicator already added to autostart.\n"
@@ -119,11 +130,12 @@ msgstr "Disassocia"
 msgid "Select file(s)"
 msgstr "Scegli file"
 
-#: src/DeviceIndicator.vala:103 src/contractor/Contractor.vala:24 src/Sms.vala:40
+#: src/DeviceIndicator.vala:103 src/contractor/Contractor.vala:24
+#: src/Sms.py:237
 msgid "Cancel"
 msgstr "Annulla"
 
-#: src/DeviceIndicator.vala:105 
+#: src/DeviceIndicator.vala:105
 msgid "Select"
 msgstr "Seleziona"
 
@@ -155,7 +167,7 @@ msgstr "Dispositivo Non raggiungibile e Non affidabile"
 msgid "Send to"
 msgstr "Invia a"
 
-#: src/contractor/Contractor.vala:25 src/Sms.vala:44
+#: src/contractor/Contractor.vala:25 src/Sms.py:220
 msgid "Send"
 msgstr "Invia"
 
@@ -167,30 +179,49 @@ msgstr "File non torvato"
 msgid "There's %u file(s) to be send"
 msgstr "Ci sono %u file(s) che devono essere inviati"
 
-#: src/Sms.vala:37
+#: src/Sms.py:184
 msgid "Compose SMS"
 msgstr "Scrivi un SMS"
 
-#: src/Sms.vala:51
-msgid "Phone number: "
-msgstr "Numero di Telefono: "
+#: src/Sms.py:199
+msgid "Phone number"
+msgstr ""
 
 #: src/Sms.vala:60
 msgid "Message body: "
 msgstr "Testo del messaggio: "
 
-#: data/extensions/kdeconnect-send-nautilus.py:47 data/extensions/kdeconncet-send-nemo.py:47 data/extensions/kdeconnect-send-caja.py:47
+#: src/Sms.py:44
+msgid "Authorization succesfull. You can close this window."
+msgstr ""
+
+#: src/Sms.py:48
+msgid "Authorization failed. Please close this window and try again."
+msgstr ""
+
+#: data/extensions/kdeconnect-send-nautilus.py:47
+#: data/extensions/kdeconncet-send-nemo.py:47
+#: data/extensions/kdeconnect-send-caja.py:47
 msgid "Check the device {device_name}"
 msgstr "Controlla il dispositivo {device_name}"
 
-#: data/extensions/kdeconnect-send-nautilus.py:48 data/extensions/kdeconncet-send-nemo.py:48 data/extensions/kdeconnect-send-caja.py:48
+#: data/extensions/kdeconnect-send-nautilus.py:48
+#: data/extensions/kdeconncet-send-nemo.py:48
+#: data/extensions/kdeconnect-send-caja.py:48
 msgid "Sending {num_files} file(s)"
 msgstr "Sto inviando {num_files} file(s)"
 
-#: data/extensions/kdeconnect-send-nautilus.py:79 data/extensions/kdeconncet-send-nemo.py:79 data/extensions/kdeconnect-send-caja.py:79
+#: data/extensions/kdeconnect-send-nautilus.py:79
+#: data/extensions/kdeconncet-send-nemo.py:79
+#: data/extensions/kdeconnect-send-caja.py:79
 msgid "KDEConnect Send To"
 msgstr "KDEConnect Invia a"
 
-#: data/extensions/kdeconnect-send-nautilus.py:80 data/extensions/kdeconncet-send-nemo.py:80 data/extensions/kdeconnect-send-caja.py:80
+#: data/extensions/kdeconnect-send-nautilus.py:80
+#: data/extensions/kdeconncet-send-nemo.py:80
+#: data/extensions/kdeconnect-send-caja.py:80
 msgid "send file(s) with kdeconnect"
 msgstr "Invia file(s) con kdeconnect"
+
+#~ msgid "Phone number: "
+#~ msgstr "Numero di Telefono: "

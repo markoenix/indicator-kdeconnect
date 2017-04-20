@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: indicator-kdeconnect\n"
 "Report-Msgid-Bugs-To: steevenlopes@outlook.com\n"
-"POT-Creation-Date: 2016-11-18 18:46+0200\n"
-"PO-Revision-Date: 2017-02-06 07:28+0000\n"
+"POT-Creation-Date: 2017-04-20 12:47+0100\n"
+"PO-Revision-Date: 2017-04-20 12:47+0100\n"
 "Last-Translator: Mohamad Hasan Al Banna <se7entime@protonmail.com>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/indicator-kde-"
 "connect/translations/id/>\n"
@@ -16,10 +16,12 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 2.11\n"
+"X-Generator: Poedit 1.8.12\n"
 
 #: src/FirstTimeWizard.vala:50
-msgid "<b>Are you ready for your first device pairing?</b>\n\n"
+msgid ""
+"<b>Are you ready for your first device pairing?</b>\n"
+"\n"
 msgstr ""
 "<b>Apa anda siap untuk memasang perangkat pertama anda?</b>\n"
 "\n"
@@ -33,7 +35,9 @@ msgid "Tethering should work too!\n"
 msgstr "Peranggitan seharusnya dapat bekerja juga!\n"
 
 #: src/FirstTimeWizard.vala:53
-msgid "If you have Firewall running, please open port 1714-1764 for TCP and UDP\n\n"
+msgid ""
+"If you have Firewall running, please open port 1714-1764 for TCP and UDP\n"
+"\n"
 msgstr ""
 "Jika anda punya Firewall yang berjalan, harap buka port 1714-1764 untuk TCP "
 "dan UDP\n"
@@ -48,11 +52,15 @@ msgid "Google Play</a>"
 msgstr "Google Play</a>"
 
 #: src/FirstTimeWizard.vala:65
-msgid "Everytime there is a new device connected, a new indicator will appear in your panel.\n"
+msgid ""
+"Everytime there is a new device connected, a new indicator will appear in "
+"your panel.\n"
 msgstr ""
 
 #: src/FirstTimeWizard.vala:66
-msgid "There, you can pair and see its status\n\n"
+msgid ""
+"There, you can pair and see its status\n"
+"\n"
 msgstr ""
 
 #: src/FirstTimeWizard.vala:67
@@ -60,7 +68,9 @@ msgid "<b>Now try to pair your device</b>"
 msgstr ""
 
 #: src/FirstTimeWizard.vala:76
-msgid "<b>Great! your device is all set</b>\n\n"
+msgid ""
+"<b>Great! your device is all set</b>\n"
+"\n"
 msgstr ""
 
 #: src/FirstTimeWizard.vala:77
@@ -111,11 +121,12 @@ msgstr ""
 msgid "Select file(s)"
 msgstr ""
 
-#: src/DeviceIndicator.vala:103 src/contractor/Contractor.vala:24 src/Sms.vala:40
+#: src/DeviceIndicator.vala:103 src/contractor/Contractor.vala:24
+#: src/Sms.py:237
 msgid "Cancel"
 msgstr ""
 
-#: src/DeviceIndicator.vala:105 
+#: src/DeviceIndicator.vala:105
 msgid "Select"
 msgstr ""
 
@@ -147,7 +158,7 @@ msgstr ""
 msgid "Send to"
 msgstr ""
 
-#: src/contractor/Contractor.vala:25 src/Sms.vala:44
+#: src/contractor/Contractor.vala:25 src/Sms.py:220
 msgid "Send"
 msgstr ""
 
@@ -159,30 +170,46 @@ msgstr ""
 msgid "There's %u file(s) to be send"
 msgstr ""
 
-#: src/Sms.vala:37
+#: src/Sms.py:184
 msgid "Compose SMS"
 msgstr ""
 
-#: src/Sms.vala:51
-msgid "Phone number: "
+#: src/Sms.py:199
+msgid "Phone number"
 msgstr ""
 
 #: src/Sms.vala:60
 msgid "Message body: "
 msgstr ""
 
-#: data/extensions/kdeconnect-send-nautilus.py:47 data/extensions/kdeconncet-send-nemo.py:47 data/extensions/kdeconnect-send-caja.py:47
+#: src/Sms.py:44
+msgid "Authorization succesfull. You can close this window."
+msgstr ""
+
+#: src/Sms.py:48
+msgid "Authorization failed. Please close this window and try again."
+msgstr ""
+
+#: data/extensions/kdeconnect-send-nautilus.py:47
+#: data/extensions/kdeconncet-send-nemo.py:47
+#: data/extensions/kdeconnect-send-caja.py:47
 msgid "Check the device {device_name}"
 msgstr ""
 
-#: data/extensions/kdeconnect-send-nautilus.py:48 data/extensions/kdeconncet-send-nemo.py:48 data/extensions/kdeconnect-send-caja.py:48
+#: data/extensions/kdeconnect-send-nautilus.py:48
+#: data/extensions/kdeconncet-send-nemo.py:48
+#: data/extensions/kdeconnect-send-caja.py:48
 msgid "Sending {num_files} file(s)"
 msgstr ""
 
-#: data/extensions/kdeconnect-send-nautilus.py:79 data/extensions/kdeconncet-send-nemo.py:79 data/extensions/kdeconnect-send-caja.py:79
+#: data/extensions/kdeconnect-send-nautilus.py:79
+#: data/extensions/kdeconncet-send-nemo.py:79
+#: data/extensions/kdeconnect-send-caja.py:79
 msgid "KDEConnect Send To"
 msgstr ""
 
-#: data/extensions/kdeconnect-send-nautilus.py:80 data/extensions/kdeconncet-send-nemo.py:80 data/extensions/kdeconnect-send-caja.py:80
+#: data/extensions/kdeconnect-send-nautilus.py:80
+#: data/extensions/kdeconncet-send-nemo.py:80
+#: data/extensions/kdeconnect-send-caja.py:80
 msgid "send file(s) with kdeconnect"
 msgstr ""

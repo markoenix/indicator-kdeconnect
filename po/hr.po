@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: indicator-kdeconnect\n"
 "Report-Msgid-Bugs-To: steevenlopes@outlook.com\n"
-"POT-Creation-Date: 2016-11-18 18:46+0200\n"
-"PO-Revision-Date: 2017-01-23 13:10+0000\n"
+"POT-Creation-Date: 2017-04-20 12:47+0100\n"
+"PO-Revision-Date: 2017-04-20 12:47+0100\n"
 "Last-Translator: gogogogi <trebelnik2@gmail.com>\n"
 "Language-Team: Croatian <https://hosted.weblate.org/projects/indicator-kde-"
 "connect/translations/hr/>\n"
@@ -15,12 +15,14 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<="
-"4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 2.11-dev\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Poedit 1.8.12\n"
 
 #: src/FirstTimeWizard.vala:50
-msgid "<b>Are you ready for your first device pairing?</b>\n\n"
+msgid ""
+"<b>Are you ready for your first device pairing?</b>\n"
+"\n"
 msgstr ""
 "<b>Jeste li spremni za prvo uparivanje uređaja?</b>\n"
 "\n"
@@ -34,7 +36,9 @@ msgid "Tethering should work too!\n"
 msgstr "Dijeljenje povezivanja bi trebalo isto tako raditi!\n"
 
 #: src/FirstTimeWizard.vala:53
-msgid "If you have Firewall running, please open port 1714-1764 for TCP and UDP\n\n"
+msgid ""
+"If you have Firewall running, please open port 1714-1764 for TCP and UDP\n"
+"\n"
 msgstr ""
 "Ako imate pokrenut vatrozid, otvorite ulaze 1714-1764 za TCP i UDP\n"
 "\n"
@@ -48,13 +52,17 @@ msgid "Google Play</a>"
 msgstr "Google Trgovina</a>"
 
 #: src/FirstTimeWizard.vala:65
-msgid "Everytime there is a new device connected, a new indicator will appear in your panel.\n"
+msgid ""
+"Everytime there is a new device connected, a new indicator will appear in "
+"your panel.\n"
 msgstr ""
 "Svaki puta kada je novi uređaj povezan, novi indikator će se pojaviti na "
 "vašem panelu.\n"
 
 #: src/FirstTimeWizard.vala:66
-msgid "There, you can pair and see its status\n\n"
+msgid ""
+"There, you can pair and see its status\n"
+"\n"
 msgstr ""
 "Tamo, možete upariti uređaje i vidjeti stanje\n"
 "\n"
@@ -64,7 +72,9 @@ msgid "<b>Now try to pair your device</b>"
 msgstr "<b>Sada pokušajte upariti svoj uređaj</b>"
 
 #: src/FirstTimeWizard.vala:76
-msgid "<b>Great! your device is all set</b>\n\n"
+msgid ""
+"<b>Great! your device is all set</b>\n"
+"\n"
 msgstr ""
 "<b>Sjajno! Vaš uređaj je podešen</b>\n"
 "\n"
@@ -118,11 +128,12 @@ msgstr "Odpari"
 msgid "Select file(s)"
 msgstr "Odaberi datoteku(e)"
 
-#: src/DeviceIndicator.vala:103 src/contractor/Contractor.vala:24 src/Sms.vala:40
+#: src/DeviceIndicator.vala:103 src/contractor/Contractor.vala:24
+#: src/Sms.py:237
 msgid "Cancel"
 msgstr "Odustani"
 
-#: src/DeviceIndicator.vala:105 
+#: src/DeviceIndicator.vala:105
 msgid "Select"
 msgstr "Odaberi"
 
@@ -154,7 +165,7 @@ msgstr "Uređaj nije punjiv niti pouzdan"
 msgid "Send to"
 msgstr "Pošalji u"
 
-#: src/contractor/Contractor.vala:25 src/Sms.vala:44
+#: src/contractor/Contractor.vala:25 src/Sms.py:220
 msgid "Send"
 msgstr "Pošalji"
 
@@ -166,30 +177,49 @@ msgstr "Datoteka nije pronađena"
 msgid "There's %u file(s) to be send"
 msgstr "Postoji %u datoteka za slanje"
 
-#: src/Sms.vala:37
+#: src/Sms.py:184
 msgid "Compose SMS"
 msgstr "Sastavi SMS"
 
-#: src/Sms.vala:51
-msgid "Phone number: "
-msgstr "Broj telefona: "
+#: src/Sms.py:199
+msgid "Phone number"
+msgstr ""
 
 #: src/Sms.vala:60
 msgid "Message body: "
 msgstr "Sadržaj poruke: "
 
-#: data/extensions/kdeconnect-send-nautilus.py:47 data/extensions/kdeconncet-send-nemo.py:47 data/extensions/kdeconnect-send-caja.py:47
+#: src/Sms.py:44
+msgid "Authorization succesfull. You can close this window."
+msgstr ""
+
+#: src/Sms.py:48
+msgid "Authorization failed. Please close this window and try again."
+msgstr ""
+
+#: data/extensions/kdeconnect-send-nautilus.py:47
+#: data/extensions/kdeconncet-send-nemo.py:47
+#: data/extensions/kdeconnect-send-caja.py:47
 msgid "Check the device {device_name}"
 msgstr ""
 
-#: data/extensions/kdeconnect-send-nautilus.py:48 data/extensions/kdeconncet-send-nemo.py:48 data/extensions/kdeconnect-send-caja.py:48
+#: data/extensions/kdeconnect-send-nautilus.py:48
+#: data/extensions/kdeconncet-send-nemo.py:48
+#: data/extensions/kdeconnect-send-caja.py:48
 msgid "Sending {num_files} file(s)"
 msgstr ""
 
-#: data/extensions/kdeconnect-send-nautilus.py:79 data/extensions/kdeconncet-send-nemo.py:79 data/extensions/kdeconnect-send-caja.py:79
+#: data/extensions/kdeconnect-send-nautilus.py:79
+#: data/extensions/kdeconncet-send-nemo.py:79
+#: data/extensions/kdeconnect-send-caja.py:79
 msgid "KDEConnect Send To"
 msgstr ""
 
-#: data/extensions/kdeconnect-send-nautilus.py:80 data/extensions/kdeconncet-send-nemo.py:80 data/extensions/kdeconnect-send-caja.py:80
+#: data/extensions/kdeconnect-send-nautilus.py:80
+#: data/extensions/kdeconncet-send-nemo.py:80
+#: data/extensions/kdeconnect-send-caja.py:80
 msgid "send file(s) with kdeconnect"
 msgstr ""
+
+#~ msgid "Phone number: "
+#~ msgstr "Broj telefona: "

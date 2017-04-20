@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: indicator-kdeconnect\n"
 "Report-Msgid-Bugs-To: steevenlopes@outlook.com\n"
-"POT-Creation-Date: 2016-11-18 18:46+0200\n"
-"PO-Revision-Date: 2017-04-05 10:26+0000\n"
+"POT-Creation-Date: 2017-04-20 12:48+0100\n"
+"PO-Revision-Date: 2017-04-20 12:48+0100\n"
 "Last-Translator: Moo <hazap@hotmail.com>\n"
 "Language-Team: Lithuanian <https://hosted.weblate.org/projects/indicator-kde-"
 "connect/translations/lt/>\n"
@@ -15,12 +15,14 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"(n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 2.13-dev\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n"
+"%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Poedit 1.8.12\n"
 
 #: src/FirstTimeWizard.vala:50
-msgid "<b>Are you ready for your first device pairing?</b>\n\n"
+msgid ""
+"<b>Are you ready for your first device pairing?</b>\n"
+"\n"
 msgstr ""
 "<b>Ar esate pasiruošę suporuoti savo pirmąjį įrenginį?</b>\n"
 "\n"
@@ -34,7 +36,9 @@ msgid "Tethering should work too!\n"
 msgstr "Pririšimas taip pat turėtų veikti!\n"
 
 #: src/FirstTimeWizard.vala:53
-msgid "If you have Firewall running, please open port 1714-1764 for TCP and UDP\n\n"
+msgid ""
+"If you have Firewall running, please open port 1714-1764 for TCP and UDP\n"
+"\n"
 msgstr ""
 "Jeigu naudojate užkardą, prašome atverti prievadus 1714-1764, skirtus TCP ir "
 "UDP\n"
@@ -51,13 +55,17 @@ msgid "Google Play</a>"
 msgstr "Google Play</a>"
 
 #: src/FirstTimeWizard.vala:65
-msgid "Everytime there is a new device connected, a new indicator will appear in your panel.\n"
+msgid ""
+"Everytime there is a new device connected, a new indicator will appear in "
+"your panel.\n"
 msgstr ""
 "Kas kartą prisijungus naujam įrenginiui, jūsų skydelyje pasirodys naujas "
 "indikatorius.\n"
 
 #: src/FirstTimeWizard.vala:66
-msgid "There, you can pair and see its status\n\n"
+msgid ""
+"There, you can pair and see its status\n"
+"\n"
 msgstr ""
 "Ten, galėsite įrenginį suporuoti ir matyti jo būseną\n"
 "\n"
@@ -67,7 +75,9 @@ msgid "<b>Now try to pair your device</b>"
 msgstr "<b>Dabar, pabandykite suporuoti savo įrenginį</b>"
 
 #: src/FirstTimeWizard.vala:76
-msgid "<b>Great! your device is all set</b>\n\n"
+msgid ""
+"<b>Great! your device is all set</b>\n"
+"\n"
 msgstr ""
 "<b>Puiku! Jūsų įrenginys yra paruoštas</b>\n"
 "\n"
@@ -121,11 +131,12 @@ msgstr "Nutraukti poravimą"
 msgid "Select file(s)"
 msgstr "Pasirinkti failą(-us)"
 
-#: src/DeviceIndicator.vala:103 src/contractor/Contractor.vala:24 src/Sms.vala:40
+#: src/DeviceIndicator.vala:103 src/contractor/Contractor.vala:24
+#: src/Sms.py:237
 msgid "Cancel"
 msgstr "Atsisakyti"
 
-#: src/DeviceIndicator.vala:105 
+#: src/DeviceIndicator.vala:105
 msgid "Select"
 msgstr "Pasirinkti"
 
@@ -157,7 +168,7 @@ msgstr "Įrenginys nepasiekiamas ir nepatikimas"
 msgid "Send to"
 msgstr "Siųsti į"
 
-#: src/contractor/Contractor.vala:25 src/Sms.vala:44
+#: src/contractor/Contractor.vala:25 src/Sms.py:220
 msgid "Send"
 msgstr "Siųsti"
 
@@ -169,30 +180,49 @@ msgstr "Failas(-ai) nerastas"
 msgid "There's %u file(s) to be send"
 msgstr "Bus išsiųstas šis %u failas(-ai)"
 
-#: src/Sms.vala:37
+#: src/Sms.py:184
 msgid "Compose SMS"
 msgstr "Rašyti SMS"
 
-#: src/Sms.vala:51
-msgid "Phone number: "
-msgstr "Telefono numeris: "
+#: src/Sms.py:199
+msgid "Phone number"
+msgstr ""
 
 #: src/Sms.vala:60
 msgid "Message body: "
 msgstr "Žinutės tekstas: "
 
-#: data/extensions/kdeconnect-send-nautilus.py:47 data/extensions/kdeconncet-send-nemo.py:47 data/extensions/kdeconnect-send-caja.py:47
+#: src/Sms.py:44
+msgid "Authorization succesfull. You can close this window."
+msgstr ""
+
+#: src/Sms.py:48
+msgid "Authorization failed. Please close this window and try again."
+msgstr ""
+
+#: data/extensions/kdeconnect-send-nautilus.py:47
+#: data/extensions/kdeconncet-send-nemo.py:47
+#: data/extensions/kdeconnect-send-caja.py:47
 msgid "Check the device {device_name}"
 msgstr "Patikrinkite įrenginį {device_name}"
 
-#: data/extensions/kdeconnect-send-nautilus.py:48 data/extensions/kdeconncet-send-nemo.py:48 data/extensions/kdeconnect-send-caja.py:48
+#: data/extensions/kdeconnect-send-nautilus.py:48
+#: data/extensions/kdeconncet-send-nemo.py:48
+#: data/extensions/kdeconnect-send-caja.py:48
 msgid "Sending {num_files} file(s)"
 msgstr "Siunčiamas {num_files} failas(-ai)"
 
-#: data/extensions/kdeconnect-send-nautilus.py:79 data/extensions/kdeconncet-send-nemo.py:79 data/extensions/kdeconnect-send-caja.py:79
+#: data/extensions/kdeconnect-send-nautilus.py:79
+#: data/extensions/kdeconncet-send-nemo.py:79
+#: data/extensions/kdeconnect-send-caja.py:79
 msgid "KDEConnect Send To"
 msgstr "KDEConnect Siųsti į"
 
-#: data/extensions/kdeconnect-send-nautilus.py:80 data/extensions/kdeconncet-send-nemo.py:80 data/extensions/kdeconnect-send-caja.py:80
+#: data/extensions/kdeconnect-send-nautilus.py:80
+#: data/extensions/kdeconncet-send-nemo.py:80
+#: data/extensions/kdeconnect-send-caja.py:80
 msgid "send file(s) with kdeconnect"
 msgstr "siųsti failą(-us), naudojant kdeconnect"
+
+#~ msgid "Phone number: "
+#~ msgstr "Telefono numeris: "

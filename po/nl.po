@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: indicator-kdeconnect\n"
 "Report-Msgid-Bugs-To: steevenlopes@outlook.com\n"
-"POT-Creation-Date: 2017-01-19 03:46+0000\n"
-"PO-Revision-Date: 2017-02-01 14:03+0000\n"
+"POT-Creation-Date: 2017-04-20 12:48+0100\n"
+"PO-Revision-Date: 2017-04-20 12:48+0100\n"
 "Last-Translator: Heimen Stoffels <vistausss@outlook.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/indicator-kde-"
 "connect/translations/nl/>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.11\n"
+"X-Generator: Poedit 1.8.12\n"
 
 #: src/FirstTimeWizard.vala:50
 msgid ""
@@ -128,7 +128,7 @@ msgid "Select file(s)"
 msgstr "Bestand(en) selecteren"
 
 #: src/DeviceIndicator.vala:103 src/contractor/Contractor.vala:24
-#: src/Sms.vala:74
+#: src/Sms.py:237
 msgid "Cancel"
 msgstr "Annuleren"
 
@@ -136,27 +136,27 @@ msgstr "Annuleren"
 msgid "Select"
 msgstr "Selecteren"
 
-#: src/DeviceIndicator.vala:208
+#: src/DeviceIndicator.vala:201
 msgid "Battery : "
 msgstr "Batterij : "
 
-#: src/DeviceIndicator.vala:210
+#: src/DeviceIndicator.vala:203
 msgid " (charging)"
 msgstr " (bezig met opladen)"
 
-#: src/DeviceIndicator.vala:217
+#: src/DeviceIndicator.vala:210
 msgid "Device Reachable and Trusted"
 msgstr "Apparaat is bereikbaar en vertrouwd"
 
-#: src/DeviceIndicator.vala:219
+#: src/DeviceIndicator.vala:212
 msgid "Device Reachable but Not Trusted"
 msgstr "Apparaat is bereikbaar maar onvertrouwd"
 
-#: src/DeviceIndicator.vala:222
+#: src/DeviceIndicator.vala:215
 msgid "Device Trusted but not Reachable"
 msgstr "Apparaat is vertrouwd maar onbereikbaar"
 
-#: src/DeviceIndicator.vala:224
+#: src/DeviceIndicator.vala:217
 msgid "Device Not Reachable and Not Trusted"
 msgstr "Apparaat is onbereikbaar en onvertrouwd"
 
@@ -164,7 +164,7 @@ msgstr "Apparaat is onbereikbaar en onvertrouwd"
 msgid "Send to"
 msgstr "Versturen naar"
 
-#: src/contractor/Contractor.vala:25 src/Sms.vala:75
+#: src/contractor/Contractor.vala:25 src/Sms.py:220
 msgid "Send"
 msgstr "Versturen"
 
@@ -176,30 +176,49 @@ msgstr "Bestand niet gevonden"
 msgid "There's %u file(s) to be send"
 msgstr "Er is/zijn %u bestand(en) om te versturen"
 
-#: src/Sms.vala:51
+#: src/Sms.py:184
 msgid "Compose SMS"
 msgstr "SMS opstellen"
 
-#: src/Sms.vala:51
-msgid "Phone number: "
-msgstr "Telefoonnummer: "
+#: src/Sms.py:199
+msgid "Phone number"
+msgstr ""
 
-#: src/Sms.vala:51
+#: src/Sms.vala:60
 msgid "Message body: "
 msgstr "Berichtinhoud: "
 
-#: data/extensions/kdeconnect-send-nautilus.py:47 data/extensions/kdeconncet-send-nemo.py:47 data/extensions/kdeconnect-send-caja.py:47
+#: src/Sms.py:44
+msgid "Authorization succesfull. You can close this window."
+msgstr ""
+
+#: src/Sms.py:48
+msgid "Authorization failed. Please close this window and try again."
+msgstr ""
+
+#: data/extensions/kdeconnect-send-nautilus.py:47
+#: data/extensions/kdeconncet-send-nemo.py:47
+#: data/extensions/kdeconnect-send-caja.py:47
 msgid "Check the device {device_name}"
 msgstr "Controleer het apparaat {device_name}"
 
-#: data/extensions/kdeconnect-send-nautilus.py:48 data/extensions/kdeconncet-send-nemo.py:48 data/extensions/kdeconnect-send-caja.py:48
+#: data/extensions/kdeconnect-send-nautilus.py:48
+#: data/extensions/kdeconncet-send-nemo.py:48
+#: data/extensions/kdeconnect-send-caja.py:48
 msgid "Sending {num_files} file(s)"
 msgstr "Bezig met versturen van {num_files} bestand(en)"
 
-#: data/extensions/kdeconnect-send-nautilus.py:79 data/extensions/kdeconncet-send-nemo.py:79 data/extensions/kdeconnect-send-caja.py:79
+#: data/extensions/kdeconnect-send-nautilus.py:79
+#: data/extensions/kdeconncet-send-nemo.py:79
+#: data/extensions/kdeconnect-send-caja.py:79
 msgid "KDEConnect Send To"
 msgstr "KDEConnect Versturen naar"
 
-#: data/extensions/kdeconnect-send-nautilus.py:80 data/extensions/kdeconncet-send-nemo.py:80 data/extensions/kdeconnect-send-caja.py:80
+#: data/extensions/kdeconnect-send-nautilus.py:80
+#: data/extensions/kdeconncet-send-nemo.py:80
+#: data/extensions/kdeconnect-send-caja.py:80
 msgid "send file(s) with kdeconnect"
 msgstr "bestand(en) versturen met kdeconnect"
+
+#~ msgid "Phone number: "
+#~ msgstr "Telefoonnummer: "

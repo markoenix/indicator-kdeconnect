@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: indicator-kdeconnect\n"
 "Report-Msgid-Bugs-To: steevenlopes@outlook.com\n"
-"POT-Creation-Date: 2017-01-19 03:45+0000\n"
-"PO-Revision-Date: 2017-02-12 19:13+0000\n"
+"POT-Creation-Date: 2017-04-20 12:45+0100\n"
+"PO-Revision-Date: 2017-04-20 12:45+0100\n"
 "Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/indicator-kde-"
 "connect/translations/cs/>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Weblate 2.12-dev\n"
+"X-Generator: Poedit 1.8.12\n"
 
 #: src/FirstTimeWizard.vala:50
 msgid ""
@@ -133,7 +133,7 @@ msgid "Select file(s)"
 msgstr "Vyberte soubory"
 
 #: src/DeviceIndicator.vala:103 src/contractor/Contractor.vala:24
-#: src/Sms.vala:40
+#: src/Sms.py:237
 msgid "Cancel"
 msgstr "Storno"
 
@@ -169,7 +169,7 @@ msgstr "Zařízení není dostupné a není označeno jako důvěryhodné"
 msgid "Send to"
 msgstr "Odeslat na"
 
-#: src/contractor/Contractor.vala:25 src/Sms.vala:44
+#: src/contractor/Contractor.vala:25 src/Sms.py:220
 msgid "Send"
 msgstr "Odeslat"
 
@@ -181,30 +181,49 @@ msgstr "Soubor nebyl nalezen"
 msgid "There's %u file(s) to be send"
 msgstr "%u souborů k odeslání"
 
-#: src/Sms.vala:37
+#: src/Sms.py:184
 msgid "Compose SMS"
 msgstr "Napsat SMS zprávu"
 
-#: src/Sms.vala:51
-msgid "Phone number: "
-msgstr "Telefonní číslo: "
+#: src/Sms.py:199
+msgid "Phone number"
+msgstr ""
 
 #: src/Sms.vala:60
 msgid "Message body: "
 msgstr "Text zprávy: "
 
-#: data/extensions/kdeconnect-send-nautilus.py:47 data/extensions/kdeconncet-send-nemo.py:47 data/extensions/kdeconnect-send-caja.py:47
+#: src/Sms.py:44
+msgid "Authorization succesfull. You can close this window."
+msgstr ""
+
+#: src/Sms.py:48
+msgid "Authorization failed. Please close this window and try again."
+msgstr ""
+
+#: data/extensions/kdeconnect-send-nautilus.py:47
+#: data/extensions/kdeconncet-send-nemo.py:47
+#: data/extensions/kdeconnect-send-caja.py:47
 msgid "Check the device {device_name}"
 msgstr "Zkontrolovat zařízení {device_name}"
 
-#: data/extensions/kdeconnect-send-nautilus.py:48 data/extensions/kdeconncet-send-nemo.py:48 data/extensions/kdeconnect-send-caja.py:48
+#: data/extensions/kdeconnect-send-nautilus.py:48
+#: data/extensions/kdeconncet-send-nemo.py:48
+#: data/extensions/kdeconnect-send-caja.py:48
 msgid "Sending {num_files} file(s)"
 msgstr "Odesílání {num_files} souborů…"
 
-#: data/extensions/kdeconnect-send-nautilus.py:79 data/extensions/kdeconncet-send-nemo.py:79 data/extensions/kdeconnect-send-caja.py:79
+#: data/extensions/kdeconnect-send-nautilus.py:79
+#: data/extensions/kdeconncet-send-nemo.py:79
+#: data/extensions/kdeconnect-send-caja.py:79
 msgid "KDEConnect Send To"
 msgstr "KDEConnect Odeslat na"
 
-#: data/extensions/kdeconnect-send-nautilus.py:80 data/extensions/kdeconncet-send-nemo.py:80 data/extensions/kdeconnect-send-caja.py:80
+#: data/extensions/kdeconnect-send-nautilus.py:80
+#: data/extensions/kdeconncet-send-nemo.py:80
+#: data/extensions/kdeconnect-send-caja.py:80
 msgid "send file(s) with kdeconnect"
 msgstr "poslat soubory pomocí kdeconnect"
+
+#~ msgid "Phone number: "
+#~ msgstr "Telefonní číslo: "
