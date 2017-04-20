@@ -103,7 +103,7 @@ msgstr ""
 msgid "Select file(s)"
 msgstr ""
 
-#: src/DeviceIndicator.vala:103 src/contractor/Contractor.vala:24 src/Sms.vala:40
+#: src/DeviceIndicator.vala:103 src/contractor/Contractor.vala:24 src/Sms.py:230
 msgid "Cancel"
 msgstr ""
 
@@ -139,7 +139,7 @@ msgstr ""
 msgid "Send to"
 msgstr ""
 
-#: src/contractor/Contractor.vala:25 src/Sms.vala:44
+#: src/contractor/Contractor.vala:25 src/Sms.py:215
 msgid "Send"
 msgstr ""
 
@@ -151,16 +151,28 @@ msgstr ""
 msgid "There's %u file(s) to be send"
 msgstr ""
 
-#: src/Sms.vala:37
+#: src/Sms.py:137
 msgid "Compose SMS"
 msgstr ""
 
-#: src/Sms.vala:51
+#: src/Sms.py:192
 msgid "Phone number: "
 msgstr ""
 
 #: src/Sms.vala:60
 msgid "Message body: "
+msgstr ""
+
+#: src/Sms.py:230
+msgid "Authorization succesfull. You can close this window."
+msgstr ""
+
+#: src/Sms.py:230
+msgid "Authorization failed."
+msgstr ""
+
+#: src/Sms.py:231
+msgid "Please close this window and try again."
 msgstr ""
 
 #: data/extensions/kdeconnect-send-nautilus.py:47 data/extensions/kdeconncet-send-nemo.py:47 data/extensions/kdeconnect-send-caja.py:47
