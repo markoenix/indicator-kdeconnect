@@ -7,16 +7,16 @@ msgstr ""
 "Project-Id-Version: indicator-kdeconnect\n"
 "Report-Msgid-Bugs-To: steevenlopes@outlook.com\n"
 "POT-Creation-Date: 2017-04-20 12:48+0100\n"
-"PO-Revision-Date: 2017-04-20 12:48+0100\n"
+"PO-Revision-Date: 2017-04-20 11:57+0000\n"
 "Last-Translator: Steeven Lopes <steevenlopes@outlook.com>\n"
-"Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
-"indicator-kde-connect/translations/pt_BR/>\n"
+"Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects"
+"/indicator-kde-connect/translations/pt_BR/>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Poedit 1.8.12\n"
+"X-Generator: Weblate 2.14-dev\n"
 
 #: src/FirstTimeWizard.vala:50
 msgid ""
@@ -184,7 +184,7 @@ msgstr "Escrever SMS"
 
 #: src/Sms.py:199
 msgid "Phone number"
-msgstr ""
+msgstr "Número de telefone"
 
 #: src/Sms.vala:60
 msgid "Message body: "
@@ -192,11 +192,11 @@ msgstr "Mensagem: "
 
 #: src/Sms.py:44
 msgid "Authorization succesfull. You can close this window."
-msgstr ""
+msgstr "Autorização concedida. Podes fechar esta janela."
 
 #: src/Sms.py:48
 msgid "Authorization failed. Please close this window and try again."
-msgstr ""
+msgstr "Autorização falhou. Por favor fecha esta janela e tenta de novo."
 
 #: data/extensions/kdeconnect-send-nautilus.py:47
 #: data/extensions/kdeconncet-send-nemo.py:47
