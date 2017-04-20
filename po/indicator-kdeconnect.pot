@@ -163,15 +163,15 @@ msgstr ""
 msgid "Message body: "
 msgstr ""
 
-#: src/Sms.py:230
+#: src/Sms.py:38
 msgid "Authorization succesfull. You can close this window."
 msgstr ""
 
-#: src/Sms.py:230
+#: src/Sms.py:41
 msgid "Authorization failed."
 msgstr ""
 
-#: src/Sms.py:231
+#: src/Sms.py:42
 msgid "Please close this window and try again."
 msgstr ""
 
