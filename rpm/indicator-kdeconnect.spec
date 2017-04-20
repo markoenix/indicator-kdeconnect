@@ -1,9 +1,10 @@
 #
 # spec file for package indicator-kdeconnect
 #
-# Copyright © 2014–2017 Markus S. <kamikazow@web.de>
-# Copyright © 2016–2017 Bajoja <steevenlopes@outlook.com>
-# Copyright © 2017 Raúl García <raul@bgta.net>
+# Copyright © 2014–2017 Markus S.    <kamikazow@web.de>
+# Copyright © 2016–2017 Bajoja       <steevenlopes@outlook.com>
+# Copyright © 2017      Raúl García  <raul@bgta.net>
+# Copyright © 2017      Pousa Duarte <pousaduarte@gmail.com>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Lesser General Public License as
@@ -45,7 +46,7 @@ BuildRequires:  gtk3-devel
 BuildRequires:  vala
 BuildRequires:  vala-devel
 BuildRequires:  pkgconfig(gtk+-3.0)
-Requires:          \python3-requests-oauthlib 
+Requires:       python3-requests-oauthlib
 
 %if 0%{?fedora} || 0%{?rhel_version} || 0%{?centos_version}
 BuildRequires:  libappindicator-gtk3-devel
