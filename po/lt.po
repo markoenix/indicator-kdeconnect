@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: indicator-kdeconnect\n"
 "Report-Msgid-Bugs-To: steevenlopes@outlook.com\n"
 "POT-Creation-Date: 2017-04-20 12:48+0100\n"
-"PO-Revision-Date: 2017-04-20 12:04+0000\n"
-"Last-Translator: Steeven Lopes <steevenlopes@outlook.com>\n"
+"PO-Revision-Date: 2017-04-21 19:30+0000\n"
+"Last-Translator: Moo <hazap@hotmail.com>\n"
 "Language-Team: Lithuanian <https://hosted.weblate.org/projects/indicator-kde-"
 "connect/translations/lt/>\n"
 "Language: lt\n"
@@ -194,11 +194,13 @@ msgstr "Žinutės tekstas: "
 
 #: src/Sms.py:44
 msgid "Authorization succesfull. You can close this window."
-msgstr ""
+msgstr "Prieigos teisių suteikimas sėkmingas. Galite užverti šį langą."
 
 #: src/Sms.py:48
 msgid "Authorization failed. Please close this window and try again."
 msgstr ""
+"Prieigos teisių suteikimas nepavyko. Prašome užverti šį langą ir bandyti dar "
+"kartą."
 
 #: data/extensions/kdeconnect-send-nautilus.py:47
 #: data/extensions/kdeconncet-send-nemo.py:47
