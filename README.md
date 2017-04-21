@@ -3,10 +3,10 @@ KDE Connect Indicator
 [![Translation Status](https://hosted.weblate.org/widgets/indicator-kde-connect/-/svg-badge.svg)](https://hosted.weblate.org/engage/indicator-kde-connect/?utm_source=widget)
 [![Build Status](https://travis-ci.org/Bajoja/indicator-kdeconnect.svg?branch=send-sms-dev)](https://travis-ci.org/Bajoja/indicator-kdeconnect)
 
-This Indicator is written to make [KDE Connect](https://community.kde.org/KDEConnect) usable in desktops without KDE Plasma, such as Ubuntu Unity and Pantheon.  
+This Indicator is written to make [KDE Connect](https://community.kde.org/KDEConnect) usable in desktops without KDE Plasma, such as Ubuntu Unity and Pantheon.
 It started as an [AppIndicator](https://unity.ubuntu.com/projects/appindicators/), but you can send files and URLs easily through KDE Connect with kdeconnect-send.
 
-Features: 
+Features
 -------
  1. Indicator in the panel which show your devices, with its name, status, and battery.
  2. Menu to request for pairing and unpairing.
@@ -21,40 +21,30 @@ Features:
  11. From the device status menu item you can open KDE Connect settings.
  12. Custom device icons for Ubuntu, Gnome and Elementary OS.
 
-Limitation
+Compatibility
 -------
-Currently this is have some limitation:
- 1. After changes on KDE Connect this will work only in KDE Connect 1.0.0 and up
+Any desktop that supports KStatusNotifierItem/AppIndicator icons should just work – Budgie, Cinnamon, LXDE, Pantheon, Unity, and many others.
+The only major oddball is Gnome where you need an additional [Gnome Shell extension](https://extensions.gnome.org/extension/615/appindicator-support/) for proper support.
+
+After changes on KDE Connect this will work only in KDE Connect 1.0.0 and up which can be problematic on Linux distributions released before August 2016.
 
 Installation
 -------
-- Arch Linux  
+- Arch Linux
  There is a package available in the [AUR](https://aur.archlinux.org/packages/indicator-kdeconnect-git)
 
-- Ubuntu and Linux Mint   
- Ubuntu 16.04, 16.10, 17.04 and Linux Mint 18.1 users can use this ppa:
+- Fedora and openSUSE
+ Visit https://software.opensuse.org//download.html?project=home%3ABajoja&package=indicator-kdeconnect and select your operating system.
+
+- Ubuntu and Linux Mint
+ Ubuntu 16.04, 16.10, 17.04 and Linux Mint 18.1 users can use this PPA:
 ```
 sudo add-apt-repository ppa:webupd8team/indicator-kdeconnect
 sudo apt update
 sudo apt install kdeconnect indicator-kdeconnect
 ```
 
-- Fedora  
- Fedora 25 user's can use this repo:
-```
-sudo dnf config-manager --add-repo http://download.opensuse.org/repositories/home:/Bajoja/Fedora_25/home:Bajoja.repo
-sudo dnf install kdeconnectd indicator-kdeconnect -y
-```
-
-- OpenSuSe  
- OpenSuSe Leap 42.2 user's can use the first repo and Tumbleweed the secound repo:
-```
-http://download.opensuse.org/repositories/home:/Bajoja/openSUSE_Leap_42.2/
-
-http://download.opensuse.org/repositories/home:/Bajoja/openSUSE_Tumbleweed/
-```  
-
-- From the Source  
+- From the Source
  Check the INSTALL file
 
 Usage Suggestions
