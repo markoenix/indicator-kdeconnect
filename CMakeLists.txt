@@ -11,7 +11,7 @@ set (LOCALEDIR ${CMAKE_INSTALL_PREFIX}/share/locale)
 set (PKGDATADIR "${DATADIR}/indicator-kdeconnect")
 set (RELEASE_NAME "beta")
 set (VERSION_INFO "Indicator for KDE Connect daemon")
-set (VERSION "0.7.1")
+set (VERSION "0.8.0")
 
 # set gettexttranslate
 set (GettextTranslate_GMO_BINARY TRUE)
@@ -36,9 +36,9 @@ ensure_vala_version("0.20" MINIMUM)
 include(ValaPrecompile)
 # make sure we use GettextTranslate
 include(GettextTranslate)
-#
-include(FindPythonModule)
-find_python_module(requests_oauthlib)
+# ensure python dependencies are satisfied
+#include(FindPythonModule)
+#find_python_module(requests_oauthlib)
 
 
 #indicator

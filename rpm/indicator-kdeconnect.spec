@@ -20,7 +20,7 @@
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 Name:           indicator-kdeconnect
-Version:        0.7.1
+Version:        0.8.0
 Release:        0%{?dist}
 Summary:        App Indicator for KDE Connect
 Group:          Applications/System
@@ -46,11 +46,11 @@ BuildRequires:  gtk3-devel
 BuildRequires:  vala
 BuildRequires:  vala-devel
 BuildRequires:  pkgconfig(gtk+-3.0)
-Requires:       python3-requests-oauthlib
 
 %if 0%{?fedora} || 0%{?rhel_version} || 0%{?centos_version}
 BuildRequires:  libappindicator-gtk3-devel
 Requires:       kde-connect-libs
+Requires:       python3-requests-oauthlib
 %endif
 
 %if 0%{?suse_version}
@@ -121,9 +121,13 @@ cd build
 
 
 %changelog
+* Sat Apr 22 2017 00:00 Bajoja <steevenlopes@outlook.com> 0.8.0
+- Fix bug #51 - Nemo and Caja only show the first device
+- Send SMS is now stable and support autocomplete from Google Contacts
+
 * Sat Apr 08 2017 21:30 Bajoja <steevenlopes@outlook.com> 0.7.1
 - Fix bug #51 - Nemo and Caja extensions not working
-- Add Language: Lituan
+- Add Language: Lithuanian
 
 * Thu Mar 23 2017 2300 Bajoja <steevenlopes@outlook.com> 0.7
 - Fix bug #46 - Nautilus freeze on copy/paste - URGENT

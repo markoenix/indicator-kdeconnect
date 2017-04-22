@@ -1,3 +1,9 @@
+indicator-kdeconnect (0.8.0) precise; urgency=low
+  * Fix bug #51 - Nemo and Caja only show the first device
+  * Send SMS is now stable and support autocomplete from Google Contacts
+
+  -- Bajoja <steevenlopes@outlook.com> Sat, 20 Apr 2017 00:00 -0000
+
 indicator-kdeconnect (0.7.1) precise; urgency=low
   * Fix bug #51 - Nemo and Caja extensions not working
   * Add Language: Lithuanian Language

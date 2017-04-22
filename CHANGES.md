@@ -1,3 +1,7 @@
+# Version 0.8.0
+ * Fix bug #51 - Nemo and Caja only show the first device
+ * Send SMS is now stable and support autocomplete from Google Contacts
+
 # Version 0.7.1
  * Fix bug #51 - Nemo and Caja extensions not working
  * Add Language: Lithuanian Language

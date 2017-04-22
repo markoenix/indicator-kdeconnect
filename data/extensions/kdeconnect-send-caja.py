@@ -95,7 +95,7 @@ class KDEConnectSendExtension(GObject.GObject, Caja.MenuProvider):
         menu.set_submenu(sub_menu)
 
         for device in devices:
-            item = Caja.MenuItem(name='KDEConnectSendExtension::SendFileTo'+device["id"]
+            item = Caja.MenuItem(name='KDEConnectSendExtension::SendFileTo'+device["id"],
                                  label=device["name"])
             item.connect('activate', self.menu_activate_cb, files, device["id"], device["name"])
             sub_menu.append_item(item)
