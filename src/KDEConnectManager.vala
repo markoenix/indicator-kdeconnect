@@ -162,13 +162,14 @@ namespace KDEConnectIndicator {
         }
         
         private void run_kdeconnect_binary () {
-            //TODO: path depends from operating system, for now this will be the way to find it
+            var kdeconnect_path = GLib.Environment.get_system_config_dirs()[0]+
+            			  "/autostart/kdeconnectd.desktop";
+
             string std_out;
+
             try{
 		Process.spawn_sync (null,
-				    new string[]{"grep",
-				    "Exec",
-				    "/etc/xdg/autostart/kdeconnectd.desktop"},
+				    new string[]{"grep","Exec",kdeconnect_path},
 				    null,
 				    SpawnFlags.SEARCH_PATH,
 				    null,
