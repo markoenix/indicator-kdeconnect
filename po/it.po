@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: indicator-kdeconnect\n"
 "Report-Msgid-Bugs-To: steevenlopes@outlook.com\n"
 "POT-Creation-Date: 2017-04-20 12:47+0100\n"
-"PO-Revision-Date: 2017-04-20 12:04+0000\n"
+"PO-Revision-Date: 2017-04-23 20:09+0000\n"
 "Last-Translator: Steeven Lopes <steevenlopes@outlook.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/indicator-kde-"
 "connect/translations/it/>\n"
@@ -193,11 +193,11 @@ msgstr "Testo del messaggio: "
 
 #: src/Sms.py:44
 msgid "Authorization succesfull. You can close this window."
-msgstr ""
+msgstr "L'autorizzazione ha avuto successo. Puoi chiudere questa finestra."
 
 #: src/Sms.py:48
 msgid "Authorization failed. Please close this window and try again."
-msgstr ""
+msgstr "Autorizzazione fallita. Chiudere la finestra e riprovare."
 
 #: data/extensions/kdeconnect-send-nautilus.py:47
 #: data/extensions/kdeconncet-send-nemo.py:47
