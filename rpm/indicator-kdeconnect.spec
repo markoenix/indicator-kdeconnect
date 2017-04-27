@@ -20,7 +20,7 @@
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 Name:           indicator-kdeconnect
-Version:        0.8.0
+Version:        0.8.1
 Release:        0%{?dist}
 Summary:        App Indicator for KDE Connect
 Group:          Applications/System
@@ -121,6 +121,11 @@ cd build
 
 
 %changelog
+* Thu Apr 27 2017 00:00 Bajoja <steevenlopes@outlook.com> 0.8.1
+ - Fix bug #59 - SMS exec with permission problems
+ - Fix bug #60 - SMS autocomplete problem with accented letters
+ - Fix bug #60 - Port 8000 - "address already in use"
+
 * Sat Apr 22 2017 00:00 Bajoja <steevenlopes@outlook.com> 0.8.0
 - Fix bug #51 - Nemo and Caja only show the first device
 - Send SMS is now stable and support autocomplete from Google Contacts
