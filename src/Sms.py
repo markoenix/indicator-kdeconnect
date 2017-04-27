@@ -64,7 +64,7 @@ class GoogleContacts(object):
 		self.auth_base_url = 'https://accounts.google.com/o/oauth2/v2/auth'
 		self.token_url = 'https://www.googleapis.com/oauth2/v4/token'
 		self.scope = ['https://www.googleapis.com/auth/contacts.readonly']
-		self.local_address = ('127.0.0.1', '8000')
+		self.local_address = ('127.0.0.1', '8013')
 		try:
 			with open(os.path.join(data_dir, 'token.json')) as fd:
 				self.token = json.loads(fd.read())
@@ -262,6 +262,7 @@ class MessageWindow(Gtk.Window):
 	def match_contact(self, completion, key, tree_iter, udata):
 
 		model = completion.get_model()
+		key = self.phone_no.get_text().casefold()
 		matches = (any(token.startswith(key)
 			for token in model[tree_iter][1].casefold().split())
 				for key in key.split())
