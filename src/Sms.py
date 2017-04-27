@@ -262,6 +262,7 @@ class MessageWindow(Gtk.Window):
 	def match_contact(self, completion, key, tree_iter, udata):
 
 		model = completion.get_model()
+		key = self.phone_no.get_text().casefold()
 		matches = (any(token.startswith(key)
 			for token in model[tree_iter][1].casefold().split())
 				for key in key.split())
