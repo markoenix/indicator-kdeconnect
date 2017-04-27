@@ -231,7 +231,7 @@ class MessageWindow(Gtk.Window):
 		style_context.add_class('suggested-action')
 		self.send.connect('clicked', self.send_msg)
 		headerbar.pack_end(self.send)
-		sync = Gtk.Button.new_from_icon_name('emblem-synchronizing', 3)
+		sync = Gtk.Button.new_from_icon_name('reload', 3)
 		sync.connect('clicked', self.sync)
 		headerbar.pack_end(sync)
 		cancel = Gtk.Button.new_with_label(_('Cancel'))
