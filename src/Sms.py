@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import os
+import time
 import json
 import subprocess
 import argparse
@@ -9,9 +10,12 @@ import locale
 from http.server import BaseHTTPRequestHandler, HTTPServer
 from urllib.parse import urlparse, parse_qs
 from webbrowser import open_new_tab
+from threading import Thread
+from queue import Queue
 import gi
 gi.require_version('Gtk', '3.0')
-from gi.repository import Gtk, Gdk
+gi.require_version('Notify', '0.7')
+from gi.repository import Gtk, Gdk, Notify
 from requests_oauthlib import OAuth2Session
 from oauthlib.oauth2.rfc6749.errors import TokenExpiredError
 
@@ -70,6 +74,8 @@ class GoogleContacts(object):
 				self.token = json.loads(fd.read())
 		except FileNotFoundError:
 			self.token = None
+		self.contacts = Queue()
+		self.sync = Thread(target=self.get_contacts, name='Sync')
 
 	def serve_redirect(self):
 
@@ -127,45 +133,71 @@ class GoogleContacts(object):
 		people_api = 'https://people.googleapis.com/v1/people/me/connections'
 		batchget_api = 'https://people.googleapis.com/v1/people:batchGet'
 		request_mask = ['person.phoneNumbers', 'person.names']
-		raw_contacts = []
-		contacts = []
 		google = OAuth2Session(client_id=self.client_id, token=self.token)
+
+		def get_connections():
+
+			connections = []
+			space_requests = True
+			params_paging = {'pageSize': 500,
+							'pageToken': None}
+			response = google.get(people_api, params=params_paging).json()
+			try:
+				connections += response['connections']
+			except KeyError:
+				print(response)
+			if int(response['totalPeople']) < 200:
+				space_requests = False
+			while 'nextPageToken' in response:
+				if space_requests:
+					time.sleep(20)
+				params_paging['pageToken'] = response['nextPageToken']
+				response = google.get(people_api, params=params_paging).json()
+				connections += response['connections']
+			return space_requests, connections
+
 		if self.token:
 			try:
-				connections = google.get(people_api).json()['connections']
+				space_requests, connections = get_connections()
 			except TokenExpiredError:
 				self.refresh_token()
-				return self.get_contacts()
+				space_requests, connections = get_connections()
 		else:
 			self.get_consent()
-			self.get_token()
-			return self.get_contacts()
+			try:
+				self.get_token()
+				space_requests, connections = get_connections()
+			except ValueError:
+				space_requests, connections = (False, [])
 		resource_names = [connection['resourceName']
 			for connection in connections]
 		resource_chunks = [resource_names[x:x+50]
 			for x in range(0, len(resource_names), 50)]
 		for chunk in resource_chunks:
-			params = {'resourceNames': chunk,
-						'requestMask.includeField': request_mask}
-			contacts_chunk = google.get(
-				batchget_api, params=params).json()['responses']
-			raw_contacts += contacts_chunk
-		for contact in raw_contacts:
-			try:
-				for name in contact['person']['names']:
-					if name['metadata']['source']['type'] == 'CONTACT':
-						display_name = name['displayName']
-			except KeyError:
-				display_name = ''
-			try:
-				for phone in contact['person']['phoneNumbers']:
-					contacts.append(
-						[phone['canonicalForm'], display_name, phone['type']])
-			except KeyError:
-				pass
-		with open(os.path.join(data_dir, 'contacts.json'), 'w') as fd:
-			fd.write(json.dumps(contacts, indent='\t', ensure_ascii=False))
-		return contacts
+			contacts_chunk = []
+			params_filter = {'resourceNames': chunk,
+							'requestMask.includeField': request_mask}
+			if space_requests:
+				time.sleep(20)
+			response = google.get(batchget_api, params=params_filter).json()
+			raw_contacts = response['responses']
+			for contact in raw_contacts:
+				try:
+					for name in contact['person']['names']:
+						if name['metadata']['source']['type'] == 'CONTACT':
+							display_name = name['displayName']
+				except KeyError:
+					display_name = ''
+				try:
+					for phone in contact['person']['phoneNumbers']:
+						contacts_chunk.append(
+							[phone['canonicalForm'],
+							display_name,
+							phone['type']])
+				except KeyError:
+					pass
+			self.contacts.put_nowait(contacts_chunk)
+		self.contacts.put_nowait(None)
 
 
 class MessageWindow(Gtk.Window):
@@ -173,6 +205,7 @@ class MessageWindow(Gtk.Window):
 	def __init__(self):
 
 		Gtk.Window.__init__(self)
+		Notify.init('KDE Connect Indicator')
 		self.set_icon_name('kdeconnect')
 		self.set_border_width(6)
 		self.set_position(Gtk.WindowPosition.CENTER)
@@ -197,8 +230,7 @@ class MessageWindow(Gtk.Window):
 		self.add(main_box)
 		self.phone_no = Gtk.Entry()
 		self.phone_no.set_placeholder_text(_('Phone number'))
-		if self.contacts:
-			self.phone_no.set_completion(self.get_completion())
+		self.phone_no.set_completion(self.get_completion())
 		self.phone_no.connect('activate', self.select_first)
 		self.phone_no.connect('changed', self.on_entry)
 		main_box.pack_start(self.phone_no, True, True, 0)
@@ -242,22 +274,55 @@ class MessageWindow(Gtk.Window):
 		self.phone_no.grab_focus()
 		Gtk.main()
 
-	def cancel(self, widget):
-
-		self.close()
-
 	def get_completion(self):
 
-		model = Gtk.ListStore(str, str, str)
-		for contact in self.contacts:
-			model.append((contact[0], ' '.join(contact), contact[1]))
-		model.set_sort_column_id(2, Gtk.SortType.ASCENDING)
+		self.model = Gtk.ListStore(str, str, str)
+		self.model.set_sort_column_id(2, Gtk.SortType.ASCENDING)
+		if self.contacts:
+			for contact in self.contacts:
+				self.model.append((contact[0], ' '.join(contact), contact[1]))
 		completer = Gtk.EntryCompletion()
-		completer.set_model(model)
+		completer.set_model(self.model)
 		completer.set_text_column(1)
 		completer.set_match_func(self.match_contact, None)
 		completer.connect('match-selected', self.select_number)
 		return completer
+
+	def sync(self, widget):
+
+		self.model.clear()
+		google_contacts = GoogleContacts()
+		google_contacts.sync.start()
+		contacts_queue = google_contacts.contacts
+		sync = Thread(target=self._sync, name='Loader', args=[contacts_queue])
+		sync.start()
+
+	def _sync(self, contacts_queue):
+
+		Notify.Notification.new(
+			_('Sync starting'), _('Synchronizing contacts'), 'kdeconnect').show()
+		contacts = []
+		while True:
+			contacts_chunk = contacts_queue.get()
+			contacts_queue.task_done()
+			if contacts_chunk:
+				for contact in contacts_chunk:
+					contacts.append(contact)
+					self.model.append(
+						(contact[0], ' '.join(contact), contact[1]))
+			else:
+				with open(os.path.join(data_dir, 'contacts.json'), 'w') as fd:
+					fd.write(json.dumps(contacts, indent='\t'))
+				Notify.Notification.new(
+					_('Sync done'),
+					_('Synchronized contacts'),
+					'kdeconnect').show()
+				Notify.uninit()
+				break
+
+	def cancel(self, widget):
+
+		self.close()
 
 	def match_contact(self, completion, key, tree_iter, udata):
 
@@ -288,12 +353,6 @@ class MessageWindow(Gtk.Window):
 			tree_iter = self.suggestion_iters[0]
 			entry.set_text(model[tree_iter][0])
 		self.body.grab_focus()
-
-	def sync(self, widget):
-
-		google_contacts = GoogleContacts()
-		self.contacts = google_contacts.get_contacts()
-		self.phone_no.set_completion(self.get_completion())
 
 	def on_entry(self, obj):
 
