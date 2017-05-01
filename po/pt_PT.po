@@ -200,6 +200,22 @@ msgstr "Autorização concedida. Podes fechar esta janela."
 msgid "Authorization failed. Please close this window and try again."
 msgstr "Autorização falhou. Por favor fecha esta janela e tenta de novo."
 
+#: src/Sms.py:303
+msgid "Sync starting"
+msgstr ""
+
+#: src/Sms.py:303
+msgid "Synchronizing contacts"
+msgstr ""
+
+#: src/Sms.py:317
+msgid "Sync done"
+msgstr ""
+
+#: src/Sms.py:318
+msgid "Synchronized contacts"
+msgstr ""
+
 #: data/extensions/kdeconnect-send-nautilus.py:47
 #: data/extensions/kdeconncet-send-nemo.py:47
 #: data/extensions/kdeconnect-send-caja.py:47

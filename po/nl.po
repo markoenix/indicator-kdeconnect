@@ -196,6 +196,22 @@ msgstr "De autorisatie is gelukt. U kunt dit venster sluiten."
 msgid "Authorization failed. Please close this window and try again."
 msgstr "De autorisatie is mislukt. Sluit dit venster en probeer het opnieuw."
 
+#: src/Sms.py:303
+msgid "Sync starting"
+msgstr ""
+
+#: src/Sms.py:303
+msgid "Synchronizing contacts"
+msgstr ""
+
+#: src/Sms.py:317
+msgid "Sync done"
+msgstr ""
+
+#: src/Sms.py:318
+msgid "Synchronized contacts"
+msgstr ""
+
 #: data/extensions/kdeconnect-send-nautilus.py:47
 #: data/extensions/kdeconncet-send-nemo.py:47
 #: data/extensions/kdeconnect-send-caja.py:47
