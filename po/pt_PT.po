@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: indicator-kdeconnect\n"
 "Report-Msgid-Bugs-To: steevenlopes@outlook.com\n"
 "POT-Creation-Date: 2017-04-20 12:49+0100\n"
-"PO-Revision-Date: 2017-04-20 11:55+0000\n"
+"PO-Revision-Date: 2017-05-01 21:58+0000\n"
 "Last-Translator: Steeven Lopes <steevenlopes@outlook.com>\n"
 "Language-Team: Portuguese (Portugal) <https://hosted.weblate.org/projects"
 "/indicator-kde-connect/translations/pt_PT/>\n"
@@ -202,19 +202,19 @@ msgstr "Autorização falhou. Por favor fecha esta janela e tenta de novo."
 
 #: src/Sms.py:303
 msgid "Sync starting"
-msgstr ""
+msgstr "Iniciando a sincronização"
 
 #: src/Sms.py:303
 msgid "Synchronizing contacts"
-msgstr ""
+msgstr "Sincronizando contatos"
 
 #: src/Sms.py:317
 msgid "Sync done"
-msgstr ""
+msgstr "Sincronização terminou"
 
 #: src/Sms.py:318
 msgid "Synchronized contacts"
-msgstr ""
+msgstr "Contatos sincronizados"
 
 #: data/extensions/kdeconnect-send-nautilus.py:47
 #: data/extensions/kdeconncet-send-nemo.py:47
