@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Apr 27 2017 00:00 Bajoja <steevenlopes@outlook.com> 0.8.1
+
+- Update to version 0.8.0:
+ * Fix bug #59 - SMS exec with permission problems
+ * Fix bug #60 - SMS autocomplete problem with accented letters
+ * Fix bug #60 - Port 8000 - "address already in use"
+
+-------------------------------------------------------------------
 Sat Apr 22 00:00:00 UTC 2017 - pousaduarte@gmail.com
 
 - Update to version 0.8.0:

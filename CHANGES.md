@@ -1,3 +1,8 @@
+# Version 0.8.1
+ * Fix bug #59 - SMS exec with permission problems
+ * Fix bug #60 - SMS autocomplete problem with accented letters
+ * Fix bug #60 - Port 8000 - "address already in use"
+
 # Version 0.8.0
  * Fix bug #51 - Nemo and Caja only show the first device
  * Send SMS is now stable and support autocomplete from Google Contacts
