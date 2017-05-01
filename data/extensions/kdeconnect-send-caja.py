@@ -7,6 +7,9 @@
  This contain parts of functions getted from https://github.com/forabi/nautilus-kdeconnect
 """
 
+import gi
+gi.require_version('Nautilus', '3.0')
+gi.require_version('Notify', '0.7')
 from gi.repository import Caja, GObject, Notify
 from subprocess import call, check_output
 from os.path import isfile
