@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: indicator-kdeconnect\n"
 "Report-Msgid-Bugs-To: steevenlopes@outlook.com\n"
 "POT-Creation-Date: 2017-04-20 12:48+0100\n"
-"PO-Revision-Date: 2017-04-20 11:54+0000\n"
+"PO-Revision-Date: 2017-05-02 08:03+0000\n"
 "Last-Translator: Heimen Stoffels <vistausss@outlook.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/indicator-kde-"
 "connect/translations/nl/>\n"
@@ -198,19 +198,19 @@ msgstr "De autorisatie is mislukt. Sluit dit venster en probeer het opnieuw."
 
 #: src/Sms.py:303
 msgid "Sync starting"
-msgstr ""
+msgstr "Synchronisatie wordt gestart"
 
 #: src/Sms.py:303
 msgid "Synchronizing contacts"
-msgstr ""
+msgstr "Bezig met synchroniseren van contacten"
 
 #: src/Sms.py:317
 msgid "Sync done"
-msgstr ""
+msgstr "Synchroniseren voltooid"
 
 #: src/Sms.py:318
 msgid "Synchronized contacts"
-msgstr ""
+msgstr "Gesynchroniseerde contacten"
 
 #: data/extensions/kdeconnect-send-nautilus.py:47
 #: data/extensions/kdeconncet-send-nemo.py:47
