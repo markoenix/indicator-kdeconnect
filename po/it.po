@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: indicator-kdeconnect\n"
 "Report-Msgid-Bugs-To: steevenlopes@outlook.com\n"
 "POT-Creation-Date: 2017-04-20 12:47+0100\n"
-"PO-Revision-Date: 2017-04-23 20:09+0000\n"
+"PO-Revision-Date: 2017-05-02 14:29+0000\n"
 "Last-Translator: Steeven Lopes <steevenlopes@outlook.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/indicator-kde-"
 "connect/translations/it/>\n"
@@ -205,11 +205,11 @@ msgstr ""
 
 #: src/Sms.py:303
 msgid "Synchronizing contacts"
-msgstr ""
+msgstr "Sincronizzazione dei contatti"
 
 #: src/Sms.py:317
 msgid "Sync done"
-msgstr ""
+msgstr "Sincronizzazione effettuata"
 
 #: src/Sms.py:318
 msgid "Synchronized contacts"
