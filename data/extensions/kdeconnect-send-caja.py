@@ -8,7 +8,7 @@
 """
 
 import gi
-gi.require_version('Nautilus', '3.0')
+gi.require_version('Caja', '3.0')
 gi.require_version('Notify', '0.7')
 from gi.repository import Caja, GObject, Notify
 from subprocess import call
