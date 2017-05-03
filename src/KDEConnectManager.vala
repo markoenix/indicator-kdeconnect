@@ -165,6 +165,8 @@ namespace KDEConnectIndicator {
             var kdeconnect_path = GLib.Environment.get_system_config_dirs()[0]+
             			  "/autostart/kdeconnectd.desktop";
 
+
+
             string std_out;
 
             try{
