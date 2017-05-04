@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: indicator-kdeconnect\n"
 "Report-Msgid-Bugs-To: steevenlopes@outlook.com\n"
 "POT-Creation-Date: 2017-04-20 12:48+0100\n"
-"PO-Revision-Date: 2017-04-21 19:30+0000\n"
+"PO-Revision-Date: 2017-05-04 20:32+0000\n"
 "Last-Translator: Moo <hazap@hotmail.com>\n"
 "Language-Team: Lithuanian <https://hosted.weblate.org/projects/indicator-kde-"
 "connect/translations/lt/>\n"
@@ -204,19 +204,19 @@ msgstr ""
 
 #: src/Sms.py:303
 msgid "Sync starting"
-msgstr ""
+msgstr "Pradedamas sinchronizavimas"
 
 #: src/Sms.py:303
 msgid "Synchronizing contacts"
-msgstr ""
+msgstr "Sinchronizuojami kontaktai"
 
 #: src/Sms.py:317
 msgid "Sync done"
-msgstr ""
+msgstr "Sinchronizavimas atliktas"
 
 #: src/Sms.py:318
 msgid "Synchronized contacts"
-msgstr ""
+msgstr "Sinchronizuoti kontaktai"
 
 #: data/extensions/kdeconnect-send-nautilus.py:47
 #: data/extensions/kdeconncet-send-nemo.py:47
