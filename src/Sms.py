@@ -327,7 +327,7 @@ class MessageWindow(Gtk.Window):
 	def match_contact(self, completion, key, tree_iter, udata):
 
 		model = completion.get_model()
-		key = self.phone_no.get_text().casefold()
+		key = self.phone_no.get_text().casefold().split(';')[-1].strip()
 		matches = (any(token.startswith(key)
 			for token in model[tree_iter][1].casefold().split())
 				for key in key.split())
@@ -341,18 +341,37 @@ class MessageWindow(Gtk.Window):
 
 	def select_number(self, completion, model, tree_iter):
 
-		self.phone_no.set_text(model[tree_iter][0])
-		self.body.grab_focus()
+		entry = completion.get_entry()
+		phones = entry.get_text()
+		phones_list = phones.split(';')
+		phone = model[tree_iter][0]
+		entry.set_text(
+			'; '.join(phones_list[:-1])
+			+ ('; ' if ';' in phones else '')
+			+ phone
+			+ '; ')
+		entry.set_position(-1)
+		self.suggestion_iters = []
 		return True
 
 	def select_first(self, entry):
 
 		completion = entry.get_completion()
+		phones = entry.get_text()
+		phones_list = phones.split(';')
 		if completion and self.suggestion_iters:
 			model = completion.get_model()
 			tree_iter = self.suggestion_iters[0]
-			entry.set_text(model[tree_iter][0])
-		self.body.grab_focus()
+			phone = model[tree_iter][0]
+			entry.set_text(
+				'; '.join(phones_list[:-1])
+				+ ('; ' if ';' in phones else '')
+				+ phone
+				+ '; ')
+			entry.set_position(-1)
+			self.suggestion_iters = []
+		else:
+			self.body.grab_focus()
 
 	def on_entry(self, obj):
 
@@ -374,17 +393,19 @@ class MessageWindow(Gtk.Window):
 
 	def send_msg(self, widget):
 
-		phone = self.phone_no.get_text()
+		phones = self.phone_no.get_text().split(';')
 		text_buffer = self.body.get_buffer()
 		start, end = text_buffer.get_bounds()
 		message = text_buffer.get_text(start, end, False)
 		chunks = (message[x:x+160] for x in range(0, len(message), 160))
 		for chunk in chunks:
-			subprocess.call([
-				'kdeconnect-cli',
-				'--device', args.device,
-				'--destination', phone,
-				'--send-sms', chunk])
+			for phone in phones:
+				if not phone.isspace():
+					subprocess.call([
+						'kdeconnect-cli',
+						'--device', args.device,
+						'--destination', phone.strip(),
+						'--send-sms', chunk])
 		self.close()
 
 MessageWindow()
