@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: indicator-kdeconnect\n"
 "Report-Msgid-Bugs-To: steevenlopes@outlook.com\n"
 "POT-Creation-Date: 2017-04-20 12:47+0100\n"
-"PO-Revision-Date: 2017-04-24 22:37+0000\n"
+"PO-Revision-Date: 2017-05-05 08:40+0000\n"
 "Last-Translator: Péter Báthory <bathory86p@gmail.com>\n"
 "Language-Team: Hungarian <https://hosted.weblate.org/projects/indicator-kde-"
 "connect/translations/hu/>\n"
@@ -200,19 +200,19 @@ msgstr ""
 
 #: src/Sms.py:303
 msgid "Sync starting"
-msgstr ""
+msgstr "Szinkronizáció indítása"
 
 #: src/Sms.py:303
 msgid "Synchronizing contacts"
-msgstr ""
+msgstr "Névjegyek szinkronizálása"
 
 #: src/Sms.py:317
 msgid "Sync done"
-msgstr ""
+msgstr "Szinkronizáció kész"
 
 #: src/Sms.py:318
 msgid "Synchronized contacts"
-msgstr ""
+msgstr "Szinkronizált névjegyek"
 
 #: data/extensions/kdeconnect-send-nautilus.py:47
 #: data/extensions/kdeconncet-send-nemo.py:47
