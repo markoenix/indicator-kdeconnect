@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: indicator-kdeconnect\n"
 "Report-Msgid-Bugs-To: steevenlopes@outlook.com\n"
 "POT-Creation-Date: 2017-04-20 12:47+0100\n"
-"PO-Revision-Date: 2017-05-05 08:40+0000\n"
+"PO-Revision-Date: 2017-05-05 08:41+0000\n"
 "Last-Translator: Péter Báthory <bathory86p@gmail.com>\n"
 "Language-Team: Hungarian <https://hosted.weblate.org/projects/indicator-kde-"
 "connect/translations/hu/>\n"
@@ -23,12 +23,12 @@ msgid ""
 "<b>Are you ready for your first device pairing?</b>\n"
 "\n"
 msgstr ""
-"<b>Készen állsz az első eszközpárosításra?</b>\n"
+"<b>Készen áll az első eszközpárosításra?</b>\n"
 "\n"
 
 #: src/FirstTimeWizard.vala:51
 msgid "Now connect your devices using wifi connection.\n"
-msgstr "Csatlakoztasd az eszközeidet WiFi kapcsolaton keresztül.\n"
+msgstr "Csatlakoztassa az eszközeit WiFi kapcsolaton keresztül.\n"
 
 #: src/FirstTimeWizard.vala:52
 msgid "Tethering should work too!\n"
