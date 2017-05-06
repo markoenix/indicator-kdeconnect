@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: indicator-kdeconnect\n"
 "Report-Msgid-Bugs-To: steevenlopes@outlook.com\n"
 "POT-Creation-Date: 2017-04-20 12:46+0100\n"
-"PO-Revision-Date: 2017-04-20 12:46+0100\n"
-"Last-Translator: Salim B <salim@posteo.de>\n"
+"PO-Revision-Date: 2017-05-02 12:06+0000\n"
+"Last-Translator: BNeuner <t.michaeli@posteo.de>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/indicator-kde-"
 "connect/translations/de/>\n"
 "Language: de\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Poedit 1.8.12\n"
+"X-Generator: Weblate 2.14-dev\n"
 
 #: src/FirstTimeWizard.vala:50
 msgid ""
@@ -186,7 +186,7 @@ msgstr "Verfasse SMS"
 
 #: src/Sms.py:199
 msgid "Phone number"
-msgstr ""
+msgstr "Telefonnummer"
 
 #: src/Sms.vala:60
 msgid "Message body: "
@@ -194,27 +194,29 @@ msgstr "Nachrichtentext: "
 
 #: src/Sms.py:44
 msgid "Authorization succesfull. You can close this window."
-msgstr ""
+msgstr "Autorisierung erfolgreich. Sie können dieses Fenster schließen."
 
 #: src/Sms.py:48
 msgid "Authorization failed. Please close this window and try again."
 msgstr ""
+"Autorisierung fehlgeschlagen. Bitte schließen Sie dieses Fenster und "
+"versuchen sie es erneut."
 
 #: src/Sms.py:303
 msgid "Sync starting"
-msgstr ""
+msgstr "Synchronisation gestartet"
 
 #: src/Sms.py:303
 msgid "Synchronizing contacts"
-msgstr ""
+msgstr "Synchronisiere Kontakte"
 
 #: src/Sms.py:317
 msgid "Sync done"
-msgstr ""
+msgstr "Synchronisation abgeschlossen"
 
 #: src/Sms.py:318
 msgid "Synchronized contacts"
-msgstr ""
+msgstr "Kontakte synchronisiert"
 
 #: data/extensions/kdeconnect-send-nautilus.py:47
 #: data/extensions/kdeconncet-send-nemo.py:47
