@@ -1,11 +1,11 @@
 -------------------------------------------------------------------
-Thu May 04 2017 00:00 Bajoja <steevenlopes@outlook.com> 0.8.2
+Thu May 04 00:00:00 UTC 2017 - <steevenlopes@outlook.com>
 - Update to version 0.8.2:
  * Fix bug #64 - SMS only getting 100 contacts
  * Added support for sending same SMS to multiple numbers
 
 -------------------------------------------------------------------
-Thu Apr 27 2017 00:00 Bajoja <steevenlopes@outlook.com> 0.8.1
+Thu Apr 27 00:00:00 UTC 2017 - <steevenlopes@outlook.com>
 
 - Update to version 0.8.1:
  * Fix bug #59 - SMS exec with permission problems
