@@ -70,6 +70,7 @@
   <update_contact>steevenlopes@outlook.com</update_contact>
 
   <releases>
+    <release version="0.8.2" date="2017-05-04" />
     <release version="0.8.1" date="2017-04-27" />
     <release version="0.8.0" date="2016-04-20" />
     <release version="0.7.1" date="2016-04-07" />
