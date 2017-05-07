@@ -11,7 +11,7 @@ set (LOCALEDIR ${CMAKE_INSTALL_PREFIX}/share/locale)
 set (PKGDATADIR "${DATADIR}/indicator-kdeconnect")
 set (RELEASE_NAME "beta")
 set (VERSION_INFO "Indicator for KDE Connect daemon")
-set (VERSION "0.8.1")
+set (VERSION "0.8.2")
 
 # set gettexttranslate
 set (GettextTranslate_GMO_BINARY TRUE)
@@ -96,4 +96,4 @@ configure_file(
   IMMEDIATE @ONLY)
 
 add_custom_target(uninstall
-	COMMAND ${CMAKE_COMMAND} -P ${CMAKE_CURRENT_BINARY_DIR}/cmake/cmake_uninstall.cmake)
+COMMAND ${CMAKE_COMMAND} -P ${CMAKE_CURRENT_BINARY_DIR}/cmake/cmake_uninstall.cmake)

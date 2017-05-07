@@ -28,6 +28,10 @@ endif()
 install (FILES "images/indicator.jpg" DESTINATION ${DATADIR}/indicator-kdeconnect/)
 install (FILES "images/startup.jpg" DESTINATION ${DATADIR}/indicator-kdeconnect/)
 
+#install appdata
+install(FILES "com.bajoja.indicator-kdeconnect.appdata.xml"
+        DESTINATION share/metainfo)
+
 #update icons cache
 install(
 	CODE
