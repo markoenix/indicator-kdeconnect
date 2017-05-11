@@ -7,39 +7,45 @@ msgstr ""
 "Project-Id-Version: indicator-kdeconnect\n"
 "Report-Msgid-Bugs-To: steevenlopes@outlook.com\n"
 "POT-Creation-Date: 2016-11-18 18:46+0200\n"
-"PO-Revision-Date: 2016-11-18 18:46+0200\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2017-05-04 19:10+0000\n"
+"Last-Translator: Слободан Симић(Slobodan Simić) <slsimic@gmail.com>\n"
+"Language-Team: Serbian <https://hosted.weblate.org/projects/indicator-kde-"
+"connect/translations/sr/>\n"
 "Language: sr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<="
 "4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 2.14-dev\n"
 
 #: src/FirstTimeWizard.vala:50
 msgid "<b>Are you ready for your first device pairing?</b>\n\n"
 msgstr ""
+"<b>Јесте ли спремни за прво упаривање уређаја?</b>\n"
+"\n"
 
 #: src/FirstTimeWizard.vala:51
 msgid "Now connect your devices using wifi connection.\n"
-msgstr ""
+msgstr "Сада повежите ваше уређаје бежичном везом.\n"
 
 #: src/FirstTimeWizard.vala:52
 msgid "Tethering should work too!\n"
-msgstr ""
+msgstr "Тетеринг ће такође радити!\n"
 
 #: src/FirstTimeWizard.vala:53
 msgid "If you have Firewall running, please open port 1714-1764 for TCP and UDP\n\n"
 msgstr ""
+"Ако вам ради Ватробран, отворите портове 1714-1764 за ТЦП и УДП\n"
+"\n"
 
 #: src/FirstTimeWizard.vala:54
 msgid "Launch KDE Connect in your Android which you can download from "
-msgstr ""
+msgstr "Покрените КДЕ конект на свом Андроид уређају а можете га преузети са "
 
 #: src/FirstTimeWizard.vala:56
 msgid "Google Play</a>"
-msgstr ""
+msgstr "Гугл Плеју</a>"
 
 #: src/FirstTimeWizard.vala:65
 msgid "Everytime there is a new device connected, a new indicator will appear in your panel.\n"

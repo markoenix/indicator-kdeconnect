@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: indicator-kdeconnect\n"
 "Report-Msgid-Bugs-To: steevenlopes@outlook.com\n"
 "POT-Creation-Date: 2017-04-20 12:47+0100\n"
-"PO-Revision-Date: 2017-05-05 08:41+0000\n"
+"PO-Revision-Date: 2017-05-05 08:51+0000\n"
 "Last-Translator: Péter Báthory <bathory86p@gmail.com>\n"
 "Language-Team: Hungarian <https://hosted.weblate.org/projects/indicator-kde-"
 "connect/translations/hu/>\n"
@@ -39,16 +39,16 @@ msgid ""
 "If you have Firewall running, please open port 1714-1764 for TCP and UDP\n"
 "\n"
 msgstr ""
-"Ha tűzfalat használsz, kérlek nyisd meg a 1714-1764 TCP és UDP portokat\n"
+"Ha tűzfalat használ, kérem nyissa meg a 1714-1764 TCP és UDP portokat\n"
 "\n"
 
 #: src/FirstTimeWizard.vala:54
 msgid "Launch KDE Connect in your Android which you can download from "
-msgstr "Az Androidos eszközödön indítsd el a KDE Connect alkalmazást, amit a "
+msgstr "Az Androidos eszközén indítsa el a KDE Connect alkalmazást, amit a "
 
 #: src/FirstTimeWizard.vala:56
 msgid "Google Play</a>"
-msgstr "Google Play</a>-ről tudsz letölteni"
+msgstr "Google Play</a>-ről tud letölteni"
 
 #: src/FirstTimeWizard.vala:65
 msgid ""
@@ -63,25 +63,24 @@ msgid ""
 "There, you can pair and see its status\n"
 "\n"
 msgstr ""
-"Itt kezdeményezheted a párosítását és láthatod az állapotát\n"
+"Itt kezdeményezheti a párosítást és láthatja az állapotát\n"
 "\n"
 
 #: src/FirstTimeWizard.vala:67
 msgid "<b>Now try to pair your device</b>"
-msgstr "<b>Próbáld meg párosítani az eszközöd</b>"
+msgstr "<b>Próbálja meg párosítani az eszközeit</b>"
 
 #: src/FirstTimeWizard.vala:76
 msgid ""
 "<b>Great! your device is all set</b>\n"
 "\n"
 msgstr ""
-"<b>Remek! Az eszközöd készen áll</b>\n"
+"<b>Remek! Az eszköze készen áll</b>\n"
 "\n"
 
 #: src/FirstTimeWizard.vala:77
 msgid "Now you can enable or disable modules on KDE Connect settings.\n"
-msgstr ""
-"Modulokat engedélyezni és letiltani a KDE Connect beállításokban tudsz.\n"
+msgstr "Modulokat engedélyezni és letiltani a KDE Connect beállításokban tud.\n"
 
 #: src/FirstTimeWizard.vala:78
 msgid "Indicator already added to autostart.\n"
@@ -121,7 +120,7 @@ msgstr "Párosítás kérése"
 
 #: src/DeviceIndicator.vala:58
 msgid "Unpair"
-msgstr "Párosítás megszűntetése"
+msgstr "Párosítás megszüntetése"
 
 #: src/DeviceIndicator.vala:100
 msgid "Select file(s)"
@@ -138,7 +137,7 @@ msgstr "Kiválasztás"
 
 #: src/DeviceIndicator.vala:201
 msgid "Battery : "
-msgstr "Akkumulátor : "
+msgstr "Akkumulátor: "
 
 #: src/DeviceIndicator.vala:203
 msgid " (charging)"
@@ -190,12 +189,12 @@ msgstr "Üzenet: "
 
 #: src/Sms.py:44
 msgid "Authorization succesfull. You can close this window."
-msgstr "Az engedélyezés sikeres. Bezárhatod ezt az ablakot."
+msgstr "Az engedélyezés sikeres. Bezárhatja ezt az ablakot."
 
 #: src/Sms.py:48
 msgid "Authorization failed. Please close this window and try again."
 msgstr ""
-"Az engedélyezés sikertelen. Kérlek, zárd be ezt az ablakot és próbáld meg "
+"Az engedélyezés sikertelen. Kérem, zárja be ezt az ablakot és próbálja meg "
 "újra."
 
 #: src/Sms.py:303
@@ -218,7 +217,7 @@ msgstr "Szinkronizált névjegyek"
 #: data/extensions/kdeconncet-send-nemo.py:47
 #: data/extensions/kdeconnect-send-caja.py:47
 msgid "Check the device {device_name}"
-msgstr "Ellenőrizd a(z) {device_name} eszközt"
+msgstr "Ellenőrizze a(z) {device_name} eszközt"
 
 #: data/extensions/kdeconnect-send-nautilus.py:48
 #: data/extensions/kdeconncet-send-nemo.py:48
