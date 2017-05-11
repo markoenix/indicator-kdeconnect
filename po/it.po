@@ -215,6 +215,26 @@ msgstr "Sincronizzazione effettuata"
 msgid "Synchronized contacts"
 msgstr ""
 
+#: src/settings/Settings.vala:50
+msgid "Apply"
+msgstr ""
+
+#: src/settings/Settings.vala:59
+msgid "Visibility"
+msgstr ""
+
+#: src/settings/Settings.vala:61
+msgid "Icons"
+msgstr ""
+
+#: src/settings/Settings.vala:97
+msgid "Show only paired devices: "
+msgstr ""
+
+#: src/settings/Settings.vala:128
+msgid "Show custom icons for Elementary OS: "
+msgstr ""
+
 #: data/extensions/kdeconnect-send-nautilus.py:47
 #: data/extensions/kdeconncet-send-nemo.py:47
 #: data/extensions/kdeconnect-send-caja.py:47
