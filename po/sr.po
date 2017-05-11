@@ -111,7 +111,7 @@ msgstr ""
 msgid "Select file(s)"
 msgstr ""
 
-#: src/DeviceIndicator.vala:103 src/contractor/Contractor.vala:24 src/Sms.py:237
+#: src/DeviceIndicator.vala:103 src/contractor/Contractor.vala:24 src/settings/Settings.vala:47 src/Sms.py:237
 msgid "Cancel"
 msgstr ""
 

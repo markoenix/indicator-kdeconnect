@@ -79,6 +79,10 @@ vala_precompile(VALA_C ${CONTRACTOR_EXEC}
 	gtk+-3.0
 )
 
+add_definitions(-Wno-deprecated-declarations)
+add_definitions(-Wno-incompatible-pointer-types)
+add_definitions(-Wformat)
+add_definitions(-Wformat-security)
 add_executable(${CONTRACTOR_EXEC} ${VALA_C})
 install (TARGETS ${CONTRACTOR_EXEC} RUNTIME DESTINATION bin)
 
@@ -91,6 +95,10 @@ vala_precompile(VALA_C ${SETTINGS_EXEC}
 	gtk+-3.0
 )
 
+add_definitions(-Wno-deprecated-declarations)
+add_definitions(-Wno-incompatible-pointer-types)
+add_definitions(-Wformat)
+add_definitions(-Wformat-security)
 add_executable(${SETTINGS_EXEC} ${VALA_C})
 install (TARGETS ${SETTINGS_EXEC} RUNTIME DESTINATION bin)
 

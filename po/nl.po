@@ -127,7 +127,7 @@ msgstr "Ontkoppelen"
 msgid "Select file(s)"
 msgstr "Bestand(en) selecteren"
 
-#: src/DeviceIndicator.vala:103 src/contractor/Contractor.vala:24
+#: src/DeviceIndicator.vala:103 src/contractor/Contractor.vala:24 src/settings/Settings.vala:47
 #: src/Sms.py:237
 msgid "Cancel"
 msgstr "Annuleren"

@@ -9,6 +9,7 @@ namespace KDEConnectIndicator {
         private DBusProxy device_proxy;
         private string path;
         private SList<uint> subs_identifier;
+        private GLib.Settings settings;
         
         private string _name;
         public string name {
@@ -65,7 +66,14 @@ namespace KDEConnectIndicator {
                      Variant s = return_variant.get_child_value (0);
                      Variant v = s.get_variant ();
                      string d = v.get_string ();
-                     _icon = "%s".printf(Uri.unescape_string (d, null));
+                     string icon = "%s".printf(Uri.unescape_string (d, null));
+                     try{
+                     	 _icon = icon+this.settings.get_string("icons");
+                     } catch (Error e){
+                     	message (e.message);
+                     	_icon = icon;
+                     }
+
 		} catch (Error e) {
 		     message (e.message);
 		}
@@ -97,6 +105,17 @@ namespace KDEConnectIndicator {
                  }
                  return -1;
             }
+        }
+
+        public bool to_hidde{
+        	get {
+        	     try{
+        	         return this.settings.get_boolean ("visibilitiy");
+        	     } catch (Error e){
+        	     	 message (e.message);
+        	     	 return false;
+        	     }
+        	}
         }
 
         public Device (string path) {
@@ -212,6 +231,14 @@ namespace KDEConnectIndicator {
                     void_signal_cb
                     );
             subs_identifier.append (id);
+
+	    try{
+                this.settings = new Settings("com.bajoja.indicator-kdeconnect");
+            } catch (Error e){
+            	message (e.message);
+            }
+
+
         }
         ~Device () {
             if (is_mounted ())
@@ -286,7 +313,13 @@ namespace KDEConnectIndicator {
 		       Variant v = rtn_var.get_variant ();
 
                        if(v!=null)
-			   return v.get_boolean ();
+			   if(to_hidde)
+			   	return is_trusted? v.get_boolean () : false;
+			   else
+			   	return v.get_boolean ();
+		       else
+		           return false;
+
 
 		  } catch (Error e) {
                        message (e.message);

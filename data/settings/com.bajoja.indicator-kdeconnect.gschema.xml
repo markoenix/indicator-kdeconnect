@@ -2,7 +2,7 @@
   <schema id="com.bajoja.indicator-kdeconnect" path="/com/bajoja/indicator/" gettext-domain="indicator-kdeconnect">
 
     <key name="icons" type="s">
-      <default>"-symbolic"</default>
+      <default>""</default>
       <summary>Icons</summary>
       <description>
         The default icons to be used
@@ -10,7 +10,7 @@
     </key>
 
     <key name="visibilitiy" type="b">
-      <default>false</default>
+      <default>true</default>
       <summary>Show only paired devices</summary>
       <description>
         Show only paired devie on the indicator
