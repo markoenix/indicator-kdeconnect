@@ -53,12 +53,17 @@ vala_precompile(INDICATOR_VALA_C ${INDICATOR_EXEC}
 	src/DeviceIndicator.vala
 	src/FirstTimeWizard.vala
 	src/StartupManager.vala
+	src/settings/InOut.vala
 	PACKAGES
 	gtk+-3.0
 	appindicator3-0.1
 	       )
 
 # tell cmake what to call the executable we just made
+add_definitions(-Wno-deprecated-declarations)
+add_definitions(-Wno-incompatible-pointer-types)
+add_definitions(-Wformat)
+add_definitions(-Wformat-security)
 add_definitions(-DGETTEXT_PACKAGE="${PROJECT_NAME}")
 add_definitions(-DLOCALEDIR="${LOCALEDIR}")
 add_executable(${INDICATOR_EXEC} ${INDICATOR_VALA_C})
@@ -77,8 +82,20 @@ vala_precompile(VALA_C ${CONTRACTOR_EXEC}
 add_executable(${CONTRACTOR_EXEC} ${VALA_C})
 install (TARGETS ${CONTRACTOR_EXEC} RUNTIME DESTINATION bin)
 
+# settings binary
+set (SETTINGS_EXEC "indicator-kdeconnect-settings")
+vala_precompile(VALA_C ${SETTINGS_EXEC}
+	src/settings/Settings.vala
+	src/settings/InOut.vala
+	PACKAGES
+	gtk+-3.0
+)
 
-install (FILES "src/Sms.py"
+add_executable(${SETTINGS_EXEC} ${VALA_C})
+install (TARGETS ${SETTINGS_EXEC} RUNTIME DESTINATION bin)
+
+
+install (FILES "src/sms/Sms.py"
          DESTINATION ${DATADIR}/indicator-kdeconnect
          PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE GROUP_READ
          GROUP_EXECUTE WORLD_READ WORLD_EXECUTE)

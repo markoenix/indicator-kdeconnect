@@ -29,8 +29,13 @@ install (FILES "images/indicator.jpg" DESTINATION ${DATADIR}/indicator-kdeconnec
 install (FILES "images/startup.jpg" DESTINATION ${DATADIR}/indicator-kdeconnect/)
 
 #install appdata
-install(FILES "com.bajoja.indicator-kdeconnect.appdata.xml"
+install(FILES "settings/com.bajoja.indicator-kdeconnect.appdata.xml"
         DESTINATION share/metainfo)
+
+# GSettings
+include(GSettings)
+add_schema(settings/com.bajoja.indicator-kdeconnect.gschema.xml)
+
 
 #update icons cache
 install(

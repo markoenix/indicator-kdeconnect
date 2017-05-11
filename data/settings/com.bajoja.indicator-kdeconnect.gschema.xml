@@ -1,0 +1,21 @@
+<schemalist>
+  <schema id="com.bajoja.indicator-kdeconnect" path="/com/bajoja/indicator/" gettext-domain="indicator-kdeconnect">
+
+    <key name="icons" type="s">
+      <default>"-symbolic"</default>
+      <summary>Icons</summary>
+      <description>
+        The default icons to be used
+      </description>
+    </key>
+
+    <key name="visibilitiy" type="b">
+      <default>false</default>
+      <summary>Show only paired devices</summary>
+      <description>
+        Show only paired devie on the indicator
+      </description>
+    </key>
+
+  </schema>
+</schemalist>

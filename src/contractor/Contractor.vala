@@ -25,7 +25,7 @@ namespace KDEConnectIndicator{
 		private SList<Device> device_list;
 
 		public SendDialog () {
-			Object (application_id: "org.bajoja.kdeconnect-send",
+			Object (application_id: "com.bajoja.kdeconnect-send",
 				flags: ApplicationFlags.HANDLES_OPEN);
 		}
 
