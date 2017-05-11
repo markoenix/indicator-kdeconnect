@@ -1,5 +1,6 @@
 # install our .desktop file so the Applications menu will see it
 install (FILES "desktop/indicator-kdeconnect.desktop" DESTINATION ${DATADIR}/applications/)
+install (FILES "desktop/indicator-kdeconnect-settings.desktop" DESTINATION ${DATADIR}/applications/)
 
 # install extensions
 install (FILES "extensions/kdeconnect.contract" DESTINATION ${DATADIR}/contractor/)

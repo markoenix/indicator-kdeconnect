@@ -26,7 +26,7 @@ namespace KDEConnectIndicator {
 				flags: ApplicationFlags.FLAGS_NONE);
 		}
 
-		protected override void activate () {
+		protected override void activate (){
 			try{
 			    this.settings = new GLib.Settings("com.bajoja.indicator-kdeconnect");
 			    create_window ();
@@ -44,7 +44,7 @@ namespace KDEConnectIndicator {
 
 			this.headerBar = new Gtk.HeaderBar ();
 
-			this.cancel_button = new Gtk.Button.with_label(_("Cancel"));
+			this.cancel_button = new Gtk.Button.with_label (_("Cancel"));
 			this.headerBar.pack_start (cancel_button);
 
 			this.ok_button = new Gtk.Button.with_label (_("Apply"));
@@ -52,22 +52,22 @@ namespace KDEConnectIndicator {
 			this.style_context.add_class ("suggested-action");
 			this.headerBar.pack_end (ok_button);
 
-			this.stack = new Stack();
+			this.stack = new Stack ();
 
-			this.stack.set_transition_type(Gtk.StackTransitionType.SLIDE_LEFT_RIGHT);
+			this.stack.set_transition_type (Gtk.StackTransitionType.SLIDE_LEFT_RIGHT);
 
-			this.stack.add_titled(create_visibility_setts(), "visibility", "Visibility");
+			this.stack.add_titled(create_visibility_setts (), "visibility", _("Visibility"));
 
-			this.stack.add_titled(create_icons_setts(), "icons", "Icons");
+			this.stack.add_titled (create_icons_setts (), "icons", _("Icons"));
 
-        		this.stack_switcher = new StackSwitcher();
+        		this.stack_switcher = new StackSwitcher ();
         		this.stack_switcher.halign = Gtk.Align.CENTER;
-			this.stack_switcher.set_stack(stack);
+			this.stack_switcher.set_stack (stack);
 
-			Box title = new Box(Gtk.Orientation.VERTICAL, 0);
-        		title.pack_start(stack_switcher, false, false, 0);
+			Box title = new Box (Gtk.Orientation.VERTICAL, 0);
+        		title.pack_start (stack_switcher, false, false, 0);
 
-        		create_signals();
+        		create_signals ();
 
         		this.headerBar.set_custom_title (title);
 
@@ -93,8 +93,8 @@ namespace KDEConnectIndicator {
 
 		}
 
-		private Box create_visibility_setts(){
-			Label label1 = new Label(_("Show only paired devices: "));
+		private Box create_visibility_setts (){
+			Label label1 = new Label (_("Show only paired devices: "));
 
 			Switch switch1 = new Switch ();
 			switch1.set_active (settings.get_boolean ("visibilitiy"));
@@ -104,28 +104,28 @@ namespace KDEConnectIndicator {
 			});
 
 
-			ListBox list_box = new ListBox();
-			list_box.set_selection_mode(Gtk.SelectionMode.NONE);
+			ListBox list_box = new ListBox ();
+			list_box.set_selection_mode (Gtk.SelectionMode.NONE);
 
-			Box hbox1 = new Box(Gtk.Orientation.HORIZONTAL, 50);
+			Box hbox1 = new Box (Gtk.Orientation.HORIZONTAL, 50);
 
-			ListBoxRow boxrow1 = new ListBoxRow();
+			ListBoxRow boxrow1 = new ListBoxRow ();
 
-			boxrow1.add(hbox1);
+			boxrow1.add (hbox1);
 
 			hbox1.pack_start (label1, true, true, 0);
 			hbox1.pack_start (switch1, true, true, 0);
 
-			list_box.add(boxrow1);
+			list_box.add (boxrow1);
 
-			Box vbox = new Box(Gtk.Orientation.HORIZONTAL, 0);
-        		vbox.pack_start(list_box, true, true, 0);
+			Box vbox = new Box (Gtk.Orientation.HORIZONTAL, 0);
+        		vbox.pack_start (list_box, true, true, 0);
 
         		return vbox;
 		}
 
-		private Box create_icons_setts(){
-			Label label1 = new Label(_("Show custom icons for Elementary OS: "));
+		private Box create_icons_setts (){
+			Label label1 = new Label (_("Show custom icons for Elementary OS: "));
 
 			Switch switch2 = new Switch ();
 			switch2.set_active (settings.get_string ("icons")!="");
@@ -138,22 +138,22 @@ namespace KDEConnectIndicator {
 				}
 			});
 
-			ListBox list_box = new ListBox();
-			list_box.set_selection_mode(Gtk.SelectionMode.NONE);
+			ListBox list_box = new ListBox ();
+			list_box.set_selection_mode (Gtk.SelectionMode.NONE);
 
-			Box hbox1 = new Box(Gtk.Orientation.HORIZONTAL, 50);
+			Box hbox1 = new Box (Gtk.Orientation.HORIZONTAL, 50);
 
-			ListBoxRow boxrow1 = new ListBoxRow();
+			ListBoxRow boxrow1 = new ListBoxRow ();
 
-			boxrow1.add(hbox1);
+			boxrow1.add (hbox1);
 
 			hbox1.pack_start (label1, true, true, 0);
 			hbox1.pack_start (switch2, true, true, 0);
 
-			list_box.add(boxrow1);
+			list_box.add (boxrow1);
 
-			Box vbox = new Box(Gtk.Orientation.HORIZONTAL, 0);
-        		vbox.pack_start(list_box, true, true, 0);
+			Box vbox = new Box (Gtk.Orientation.HORIZONTAL, 0);
+        		vbox.pack_start (list_box, true, true, 0);
 
         		return vbox;
         	}
