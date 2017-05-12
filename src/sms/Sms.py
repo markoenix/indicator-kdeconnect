@@ -169,6 +169,8 @@ class GoogleContacts(object):
 				space_requests, connections = get_connections()
 			except TokenExpiredError:
 				self.refresh_token()
+				google = OAuth2Session(
+					client_id=self.client_id, token=self.token)
 				space_requests, connections = get_connections()
 		else:
 			self.get_consent()
