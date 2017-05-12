@@ -1,3 +1,9 @@
+indicator-kdeconnect (0.8.2) precise; urgency=low
+ * Fix bug #64 - SMS only getting 100 contacts
+ * Added support for sending same SMS to multiple numbers
+
+ -- Bajoja <steevenlopes@outlook.com> Thu, 04 May 2017 00:00 -0000
+
 indicator-kdeconnect (0.8.1) precise; urgency=low
  * Fix bug #59 - SMS exec with permission problems
  * Fix bug #60 - SMS autocomplete problem with accented letters

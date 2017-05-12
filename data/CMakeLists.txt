@@ -1,5 +1,6 @@
 # install our .desktop file so the Applications menu will see it
 install (FILES "desktop/indicator-kdeconnect.desktop" DESTINATION ${DATADIR}/applications/)
+install (FILES "desktop/indicator-kdeconnect-settings.desktop" DESTINATION ${DATADIR}/applications/)
 
 # install extensions
 install (FILES "extensions/kdeconnect.contract" DESTINATION ${DATADIR}/contractor/)
@@ -29,8 +30,13 @@ install (FILES "images/indicator.jpg" DESTINATION ${DATADIR}/indicator-kdeconnec
 install (FILES "images/startup.jpg" DESTINATION ${DATADIR}/indicator-kdeconnect/)
 
 #install appdata
-install(FILES "com.bajoja.indicator-kdeconnect.appdata.xml"
+install(FILES "settings/com.bajoja.indicator-kdeconnect.appdata.xml"
         DESTINATION share/metainfo)
+
+# GSettings
+include(GSettings)
+add_schema(settings/com.bajoja.indicator-kdeconnect.gschema.xml)
+
 
 #update icons cache
 install(

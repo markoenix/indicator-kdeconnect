@@ -20,7 +20,7 @@
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 Name:           indicator-kdeconnect
-Version:        0.8.1
+Version:        0.8.2
 Release:        0%{?dist}
 Summary:        App Indicator for KDE Connect
 Group:          Applications/System
@@ -121,6 +121,10 @@ cd build
 
 
 %changelog
+* Thu May 04 2017 00:00 Bajoja <steevenlopes@outlook.com> 0.8.2
+ - Fix bug #64 - SMS only getting 100 contacts
+ - Added support for sending same SMS to multiple numbers
+
 * Thu Apr 27 2017 00:00 Bajoja <steevenlopes@outlook.com> 0.8.1
  - Fix bug #59 - SMS exec with permission problems
  - Fix bug #60 - SMS autocomplete problem with accented letters

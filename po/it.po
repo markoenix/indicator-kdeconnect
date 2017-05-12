@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: indicator-kdeconnect\n"
 "Report-Msgid-Bugs-To: steevenlopes@outlook.com\n"
 "POT-Creation-Date: 2017-04-20 12:47+0100\n"
-"PO-Revision-Date: 2017-04-23 20:09+0000\n"
+"PO-Revision-Date: 2017-05-02 14:29+0000\n"
 "Last-Translator: Steeven Lopes <steevenlopes@outlook.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/indicator-kde-"
 "connect/translations/it/>\n"
@@ -130,7 +130,7 @@ msgstr "Disassocia"
 msgid "Select file(s)"
 msgstr "Scegli file"
 
-#: src/DeviceIndicator.vala:103 src/contractor/Contractor.vala:24
+#: src/DeviceIndicator.vala:103 src/contractor/Contractor.vala:24 src/settings/Settings.vala:47
 #: src/Sms.py:237
 msgid "Cancel"
 msgstr "Annulla"
@@ -205,14 +205,34 @@ msgstr ""
 
 #: src/Sms.py:303
 msgid "Synchronizing contacts"
-msgstr ""
+msgstr "Sincronizzazione dei contatti"
 
 #: src/Sms.py:317
 msgid "Sync done"
-msgstr ""
+msgstr "Sincronizzazione effettuata"
 
 #: src/Sms.py:318
 msgid "Synchronized contacts"
+msgstr ""
+
+#: src/settings/Settings.vala:50
+msgid "Apply"
+msgstr ""
+
+#: src/settings/Settings.vala:59
+msgid "Visibility"
+msgstr ""
+
+#: src/settings/Settings.vala:61
+msgid "Icons"
+msgstr ""
+
+#: src/settings/Settings.vala:97
+msgid "Show only paired devices: "
+msgstr ""
+
+#: src/settings/Settings.vala:128
+msgid "Show custom icons for Elementary OS: "
 msgstr ""
 
 #: data/extensions/kdeconnect-send-nautilus.py:47

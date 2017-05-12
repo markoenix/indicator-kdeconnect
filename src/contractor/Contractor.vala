@@ -21,10 +21,11 @@ namespace KDEConnectIndicator{
 		private TreeView tv;
 		private Gtk.ListStore list_store;
 		private DBusConnection conn;
+		private TreeSelection ts;
 		private SList<Device> device_list;
 
 		public SendDialog () {
-			Object (application_id: "org.bajoja.kdeconnect-send",
+			Object (application_id: "com.bajoja.kdeconnect-send",
 				flags: ApplicationFlags.HANDLES_OPEN);
 		}
 
@@ -66,8 +67,6 @@ namespace KDEConnectIndicator{
 			else{
 				activate ();
 			}
-
-			//this.hold ();
 		}
 
 		private void create_window (){
@@ -100,6 +99,8 @@ namespace KDEConnectIndicator{
 						       false, true, 10);
 
 			this.tv = new TreeView ();
+			this.ts = this.tv.get_selection();
+			this.ts.set_mode(Gtk.SelectionMode.MULTIPLE);
 			this.tv.headers_visible = false;
            		CellRendererText cell = new CellRendererText ();
                         this.tv.insert_column_with_attributes (-1,"Device",cell,"text",0);
@@ -113,7 +114,8 @@ namespace KDEConnectIndicator{
 
 		private void create_signals (){
 			this.tv.cursor_changed.connect (() => {
-				this.send_button.sensitive = (get_selected()>=0);
+				this.send_button.sensitive = (
+					get_selected().length () > 0);
 			});
 
 			this.tv.row_activated.connect ((path, column) => {
@@ -136,13 +138,22 @@ namespace KDEConnectIndicator{
 
 		}
 
-		private int get_selected (){
-			TreePath path;
-            		TreeViewColumn column;
-            		this.tv.get_cursor (out path, out column);
-            		if (path == null)
-                		return -1;
-            		return int.parse (path.to_string ());
+		private SList<int> get_selected (){
+
+            		SList<int> selected_devices = new SList<int> ();
+
+			TreeModel tm;
+
+            		List<TreePath> selected_paths = this.ts.
+            					     get_selected_rows (out tm);
+
+			foreach (TreePath path in selected_paths){
+				if(path != null)
+					selected_devices.append (int.parse
+							  (path.to_string ()));
+			}
+
+            		return selected_devices.copy ();
 		}
 
 		private void set_device_list (Gtk.ListStore device_list) {
@@ -202,10 +213,16 @@ namespace KDEConnectIndicator{
 		}
 
 		private void send_items (){
-			var selected = get_selected ();
-            		var selected_dev = this.device_list.nth_data (selected);
-           		foreach (File file in files)
-            			selected_dev.send_file (file.get_uri ());
+			SList<int> selected_devs = get_selected ();
+
+            		foreach (File file in files){
+            			foreach (int selected in selected_devs){
+            				Device selected_dev = this.device_list.
+            						    nth_data (selected);
+
+            				selected_dev.send_file (file.get_uri ());
+            			}
+            		}
 
             		this.window.close ();
 		}
@@ -215,3 +232,4 @@ namespace KDEConnectIndicator{
 		return new SendDialog ().run (args);
 	}
 }
+

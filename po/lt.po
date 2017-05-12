@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: indicator-kdeconnect\n"
 "Report-Msgid-Bugs-To: steevenlopes@outlook.com\n"
 "POT-Creation-Date: 2017-04-20 12:48+0100\n"
-"PO-Revision-Date: 2017-04-21 19:30+0000\n"
+"PO-Revision-Date: 2017-05-04 20:32+0000\n"
 "Last-Translator: Moo <hazap@hotmail.com>\n"
 "Language-Team: Lithuanian <https://hosted.weblate.org/projects/indicator-kde-"
 "connect/translations/lt/>\n"
@@ -131,7 +131,7 @@ msgstr "Nutraukti poravimą"
 msgid "Select file(s)"
 msgstr "Pasirinkti failą(-us)"
 
-#: src/DeviceIndicator.vala:103 src/contractor/Contractor.vala:24
+#: src/DeviceIndicator.vala:103 src/contractor/Contractor.vala:24 src/settings/Settings.vala:47
 #: src/Sms.py:237
 msgid "Cancel"
 msgstr "Atsisakyti"
@@ -204,18 +204,38 @@ msgstr ""
 
 #: src/Sms.py:303
 msgid "Sync starting"
-msgstr ""
+msgstr "Pradedamas sinchronizavimas"
 
 #: src/Sms.py:303
 msgid "Synchronizing contacts"
-msgstr ""
+msgstr "Sinchronizuojami kontaktai"
 
 #: src/Sms.py:317
 msgid "Sync done"
-msgstr ""
+msgstr "Sinchronizavimas atliktas"
 
 #: src/Sms.py:318
 msgid "Synchronized contacts"
+msgstr "Sinchronizuoti kontaktai"
+
+#: src/settings/Settings.vala:50
+msgid "Apply"
+msgstr ""
+
+#: src/settings/Settings.vala:59
+msgid "Visibility"
+msgstr ""
+
+#: src/settings/Settings.vala:61
+msgid "Icons"
+msgstr ""
+
+#: src/settings/Settings.vala:97
+msgid "Show only paired devices: "
+msgstr ""
+
+#: src/settings/Settings.vala:128
+msgid "Show custom icons for Elementary OS: "
 msgstr ""
 
 #: data/extensions/kdeconnect-send-nautilus.py:47

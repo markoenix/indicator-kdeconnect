@@ -1,3 +1,7 @@
+# Version 0.8.2
+ * Fix bug #64 - SMS only getting 100 contacts
+ * Added support for sending same SMS to multiple numbers
+
 # Version 0.8.1
  * Fix bug #59 - SMS exec with permission problems
  * Fix bug #60 - SMS autocomplete problem with accented letters
