@@ -67,12 +67,11 @@ namespace KDEConnectIndicator {
                      Variant v = s.get_variant ();
                      string d = v.get_string ();
                      string icon = "%s".printf(Uri.unescape_string (d, null));
-                     try{
-                     	 _icon = icon+this.settings.get_string("icons");
-                     } catch (Error e){
-                     	message (e.message);
+
+                     if(this.settings.get_string ("icons") != null)
+                     	_icon = icon+this.settings.get_string("icons");
+                     else
                      	_icon = icon;
-                     }
 
 		} catch (Error e) {
 		     message (e.message);
@@ -109,12 +108,7 @@ namespace KDEConnectIndicator {
 
         public bool to_hidde{
         	get {
-        	     try{
-        	         return this.settings.get_boolean ("visibilitiy");
-        	     } catch (Error e){
-        	     	 message (e.message);
-        	     	 return false;
-        	     }
+        	     return this.settings.get_boolean ("visibilitiy");
         	}
         }
 
@@ -232,14 +226,9 @@ namespace KDEConnectIndicator {
                     );
             subs_identifier.append (id);
 
-	    try{
-                this.settings = new Settings("com.bajoja.indicator-kdeconnect");
-            } catch (Error e){
-            	message (e.message);
-            }
-
-
+            this.settings = new Settings("com.bajoja.indicator-kdeconnect");
         }
+
         ~Device () {
             if (is_mounted ())
                 unmount ();
@@ -248,7 +237,7 @@ namespace KDEConnectIndicator {
                 conn.signal_unsubscribe (i);
             }
         }
-        
+
         public void send_file (string url) {
             try {
                  if (!has_plugin ("kdeconnect_share"))

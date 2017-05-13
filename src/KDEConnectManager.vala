@@ -36,12 +36,10 @@ namespace KDEConnectIndicator {
 	    var file = File.new_for_path (visible_devices);
 
             try {
-		file.create (FileCreateFlags.NONE);
-
         	if (!file.query_exists ())
-                   message ("Devices file not creates");
+        	   file.create (FileCreateFlags.NONE);
                 else
-        	   message ("New devices file created sucessfully");
+                   message ("Devices file not creates");
 	    }
 	    catch (Error e) {
 		message("%s",e.message);
@@ -102,6 +100,7 @@ namespace KDEConnectIndicator {
                 message (e.message);
             }
         }
+
         ~KDEConnectManager () {
             try {
                 conn.call_sync (
@@ -122,18 +121,11 @@ namespace KDEConnectIndicator {
             foreach (uint i in subs_identifier)
                 conn.signal_unsubscribe (i);
 
-	    //Delete trusted devices file
             try {
                  var file = File.new_for_path (visible_devices);
-	         if (!file.query_exists ()) {
-        	     message ("File '%s' doesn't exist.\n", file.get_path ());
-    	    	 }
-    	    	 else{
-    	    	     message ("File path exist '%s'\n", file.get_path ());
+	         if (file.query_exists ())
 		     file.delete ();
-    	    	 }
-            }
-            catch (Error e) {
+            } catch (Error e) {
         	message ("%s\n", e.message);
     	    }
 
