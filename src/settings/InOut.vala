@@ -15,11 +15,11 @@ namespace KDEConnectIndicator {
         	message ("File '%s' doesn't exist.\n", file.get_path ());
         	return 1;
     	    }
-    	    else{
-    	    	message ("File path exist '%s'\n", file.get_path());
+    	    else {
+    	    	message ("File path exist '%s'\n", file.get_path ());
     	    }
 
-    	    StringBuilder sb = new StringBuilder();
+    	    StringBuilder sb = new StringBuilder ();
 
             string name_id = "- "+name+" : "+id;
 
@@ -67,12 +67,15 @@ namespace KDEConnectIndicator {
         public static int delete_status (string id, string name) {
 	    var file = File.new_for_path (visible_devices);
 
-            if (!file.query_exists ())
+            if (!file.query_exists ()) {
         	message ("File '%s' doesn't exist.\n", file.get_path ());
-    	    else
-    	    	message ("File path exist '%s'\n", file.get_path());
+        	return 1;
+            }
+    	    else {
+    	    	message ("File path exist '%s'\n", file.get_path ());
+    	    }
 
-    	    StringBuilder sb = new StringBuilder();
+    	    StringBuilder sb = new StringBuilder ();
 
             string name_id = "- "+name+" : "+id;
 
@@ -92,9 +95,8 @@ namespace KDEConnectIndicator {
     	    }
 
     	    try {
-                if (file.query_exists ()) {
+                if (file.query_exists ())
                    file.delete ();
-                }
 
                 var dos = new DataOutputStream (file.create (FileCreateFlags.REPLACE_DESTINATION));
 
@@ -109,5 +111,5 @@ namespace KDEConnectIndicator {
 
 	    return 0;
         }
-	}
+        }
 }
