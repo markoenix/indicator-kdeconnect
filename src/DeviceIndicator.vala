@@ -79,6 +79,19 @@ namespace KDEConnectIndicator {
 		msg.destroy();
 	    });
 
+	    battery_item.activate.connect(() => {
+	    	try {
+	    	     Process.spawn_async (null,
+	    	     			  new string[]{"indicator-kdeconnect-settings"},
+	    	     			  null,
+	    	     			  SpawnFlags.SEARCH_PATH,
+	    	     			  null,
+	    	     			  null);
+	    	} catch (Error	e) {
+	    	     message (e.message);
+	    	}
+	    });
+
 	    status_item.activate.connect(() => {
 		try {
                     Process.spawn_async (null,
