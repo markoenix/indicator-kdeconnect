@@ -86,7 +86,7 @@ namespace KDEConnectIndicator {
 
 			this.ok_button.clicked.connect (() => {
 				this.settings.apply ();
-				this.settings.sync ();
+				//this.settings.sync ();
 				this.window.close ();
 			});
 

@@ -3,8 +3,6 @@
  *
  * This software is licensed under the GNU Lesser General Public License
  * (version 2.1 or later).  See the COPYING file in this distribution.
-
- This contain parts of functions getted from https://github.com/forabi/nautilus-kdeconnect
 """
 #!/usr/bin/env python3
 
@@ -169,6 +167,8 @@ class GoogleContacts(object):
 				space_requests, connections = get_connections()
 			except TokenExpiredError:
 				self.refresh_token()
+				google = OAuth2Session(
+					client_id=self.client_id, token=self.token)
 				space_requests, connections = get_connections()
 		else:
 			self.get_consent()

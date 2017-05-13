@@ -1,3 +1,11 @@
+# Version 0.9.0
+ * Add support to send files to multiple devices
+ * Add settings panel
+ * Now users can hidde untrusted devices to save space on menu bar
+ * Fix Elementary OS not show monochrome icons
+ * Fix bugs on SMS contacts sync
+ * Add Language: Serbian
+
 # Version 0.8.2
  * Fix bug #64 - SMS only getting 100 contacts
  * Added support for sending same SMS to multiple numbers
