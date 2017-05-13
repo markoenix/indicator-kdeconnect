@@ -26,7 +26,7 @@ namespace KDEConnectIndicator {
 				flags: ApplicationFlags.FLAGS_NONE);
 		}
 
-		protected override void activate (){
+		protected override void activate () {
 			try{
 			    this.settings = new GLib.Settings("com.bajoja.indicator-kdeconnect");
 			    create_window ();
@@ -36,7 +36,7 @@ namespace KDEConnectIndicator {
 
 		}
 
-		private void create_window (){
+		private void create_window () {
 			this.window = new Gtk.ApplicationWindow (this);
 			this.window.set_icon_name ("kdeconnect");
 			this.window.set_default_size (200, 150);
@@ -78,7 +78,7 @@ namespace KDEConnectIndicator {
 			this.window.show_all ();
 		}
 
-		private void create_signals (){
+		private void create_signals () {
 
 			this.cancel_button.clicked.connect (() => {
 				this.window.close ();
@@ -93,7 +93,7 @@ namespace KDEConnectIndicator {
 
 		}
 
-		private Box create_visibility_setts (){
+		private Box create_visibility_setts () {
 			Label label1 = new Label (_("Show only paired devices: "));
 
 			Switch switch1 = new Switch ();
@@ -124,7 +124,7 @@ namespace KDEConnectIndicator {
         		return vbox;
 		}
 
-		private Box create_icons_setts (){
+		private Box create_icons_setts () {
 			Label label1 = new Label (_("Show custom icons for Elementary OS: "));
 
 			Switch switch2 = new Switch ();

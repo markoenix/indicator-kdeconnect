@@ -79,7 +79,7 @@ namespace KDEConnectIndicator {
 		msg.destroy();
 	    });
 
-	    battery_item.activate.connect(() => {
+	    battery_item.activate.connect (() => {
 	    	try {
 	    	     Process.spawn_async (null,
 	    	     			  new string[]{"indicator-kdeconnect-settings"},
@@ -92,7 +92,7 @@ namespace KDEConnectIndicator {
 	    	}
 	    });
 
-	    status_item.activate.connect(() => {
+	    status_item.activate.connect (() => {
 		try {
                     Process.spawn_async (null,
                     			 new string[]{"kcmshell5", "kcm_kdeconnect"},
@@ -140,7 +140,7 @@ namespace KDEConnectIndicator {
 				        null,
 				        SpawnFlags.SEARCH_PATH,
 				        null, null, null, null);
-	    	} catch (Error e){
+	    	} catch (Error e) {
 		    message (e.message);
             	}
             });
@@ -214,7 +214,7 @@ namespace KDEConnectIndicator {
             name_item.label = device.name;
         }
 
-        private void update_icon_item(){
+        private void update_icon_item() {
 	    indicator.set_icon_full (device.icon, "");
 	}
         
