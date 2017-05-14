@@ -6,10 +6,10 @@
 
 namespace KDEConnectIndicator {
 	class InOut{
-	private static string visible_devices = "/tmp/devices";
+	public static unowned string visible_devices = "/tmp/devices";
 
         public static int write_status (string id, string name) {
-	    var file = File.new_for_path (visible_devices);
+	    var file = File.new_for_path (InOut.visible_devices);
 
             if (!file.query_exists ()) {
         	message ("File '%s' doesn't exist.\n", file.get_path ());
@@ -65,7 +65,7 @@ namespace KDEConnectIndicator {
         }
 
         public static int delete_status (string id, string name) {
-	    var file = File.new_for_path (visible_devices);
+	    var file = File.new_for_path (InOut.visible_devices);
 
             if (!file.query_exists ()) {
         	message ("File '%s' doesn't exist.\n", file.get_path ());

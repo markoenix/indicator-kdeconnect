@@ -8,7 +8,7 @@ namespace KDEConnectIndicator {
         private DBusConnection conn;
         private SList<DeviceIndicator> device_list;
         private SList<uint> subs_identifier;
-        private string visible_devices = "/tmp/devices";
+        //private string visible_devices = "/tmp/devices";
 
         public KDEConnectManager () {
             try {
@@ -33,7 +33,7 @@ namespace KDEConnectIndicator {
             message ("KDE Connect daemon found");
 
 
-	    var file = File.new_for_path (visible_devices);
+	    var file = File.new_for_path (KDEConnectIndicator.InOut.visible_devices);
 
             try {
         	if (!file.query_exists ())
@@ -122,7 +122,7 @@ namespace KDEConnectIndicator {
                 conn.signal_unsubscribe (i);
 
             try {
-                 var file = File.new_for_path (visible_devices);
+                 var file = File.new_for_path (KDEConnectIndicator.InOut.visible_devices);
 	         if (file.query_exists ())
 		     file.delete ();
             } catch (Error e) {
@@ -156,8 +156,6 @@ namespace KDEConnectIndicator {
         private void run_kdeconnect_binary () {
             var kdeconnect_path = GLib.Environment.get_system_config_dirs()[0]+
             			  "/autostart/kdeconnectd.desktop";
-
-
 
             string std_out;
 
