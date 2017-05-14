@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: indicator-kdeconnect\n"
 "Report-Msgid-Bugs-To: steevenlopes@outlook.com\n"
 "POT-Creation-Date: 2017-04-20 12:47+0100\n"
-"PO-Revision-Date: 2017-05-12 14:19+0000\n"
+"PO-Revision-Date: 2017-05-14 02:04+0000\n"
 "Last-Translator: Steeven Lopes <steevenlopes@outlook.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/indicator-kde-"
 "connect/translations/it/>\n"
@@ -200,8 +200,9 @@ msgid "Authorization failed. Please close this window and try again."
 msgstr "Autorizzazione fallita. Chiudere la finestra e riprovare."
 
 #: src/Sms.py:303
+#, fuzzy
 msgid "Sync starting"
-msgstr ""
+msgstr "Sincronizzazione inizio"
 
 #: src/Sms.py:303
 msgid "Synchronizing contacts"
@@ -212,8 +213,9 @@ msgid "Sync done"
 msgstr "Sincronizzazione effettuata"
 
 #: src/Sms.py:318
+#, fuzzy
 msgid "Synchronized contacts"
-msgstr ""
+msgstr "Contatti sincronizzati"
 
 #: src/settings/Settings.vala:50
 msgid "Apply"
@@ -236,8 +238,9 @@ msgid "Show custom icons for Elementary OS: "
 msgstr "Mostra le icone personalizzate per Elementary OS: "
 
 #: src/settings/Settings.vala:152
+#, fuzzy
 msgid "Delete Google Contacts: "
-msgstr ""
+msgstr "Elimina Google contatti: "
 
 #: data/extensions/kdeconnect-send-nautilus.py:47
 #: data/extensions/kdeconncet-send-nemo.py:47
