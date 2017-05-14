@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: indicator-kdeconnect\n"
 "Report-Msgid-Bugs-To: steevenlopes@outlook.com\n"
 "POT-Creation-Date: 2017-04-20 12:49+0100\n"
-"PO-Revision-Date: 2017-05-12 14:11+0000\n"
+"PO-Revision-Date: 2017-05-14 02:09+0000\n"
 "Last-Translator: Steeven Lopes <steevenlopes@outlook.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/indicator-kde-"
 "connect/translations/ru/>\n"
@@ -195,52 +195,63 @@ msgid "Message body: "
 msgstr "Текст сообщения: "
 
 #: src/Sms.py:44
+#, fuzzy
 msgid "Authorization succesfull. You can close this window."
-msgstr ""
+msgstr "Авторизация завершена. Вы можете закрыть это окно."
 
 #: src/Sms.py:48
+#, fuzzy
 msgid "Authorization failed. Please close this window and try again."
-msgstr ""
+msgstr "Авторизация не удалась. Закройте это окно и повторите попытку."
 
 #: src/Sms.py:303
+#, fuzzy
 msgid "Sync starting"
-msgstr ""
+msgstr "Синхронный запуск"
 
 #: src/Sms.py:303
+#, fuzzy
 msgid "Synchronizing contacts"
-msgstr ""
+msgstr "Синхронизация контактов"
 
 #: src/Sms.py:317
 msgid "Sync done"
 msgstr "Синхронизация выполнена"
 
 #: src/Sms.py:318
+#, fuzzy
 msgid "Synchronized contacts"
-msgstr ""
+msgstr "Синхронизированные контакты"
 
 #: src/settings/Settings.vala:50
+#, fuzzy
 msgid "Apply"
-msgstr ""
+msgstr "Подать заявление"
 
 #: src/settings/Settings.vala:59
+#, fuzzy
 msgid "Visibility"
-msgstr ""
+msgstr "видимость"
 
 #: src/settings/Settings.vala:61
+#, fuzzy
 msgid "Icons"
-msgstr ""
+msgstr "Иконки"
 
 #: src/settings/Settings.vala:97
+#, fuzzy
 msgid "Show only paired devices: "
-msgstr ""
+msgstr "Показывать только спаренные устройства: "
 
 #: src/settings/Settings.vala:128
+#, fuzzy
 msgid "Show custom icons for Elementary OS: "
-msgstr ""
+msgstr "Показать пользовательские значки для Elementary OS: "
 
 #: src/settings/Settings.vala:152
+#, fuzzy
 msgid "Delete Google Contacts: "
-msgstr ""
+msgstr "Удаление Google Контактов: "
 
 #: data/extensions/kdeconnect-send-nautilus.py:47
 #: data/extensions/kdeconncet-send-nemo.py:47
@@ -257,8 +268,9 @@ msgstr "Отправка {num_files} файла(-ов)"
 #: data/extensions/kdeconnect-send-nautilus.py:79
 #: data/extensions/kdeconncet-send-nemo.py:79
 #: data/extensions/kdeconnect-send-caja.py:79
+#, fuzzy
 msgid "KDEConnect Send To"
-msgstr ""
+msgstr "KDEConnect Отправить"
 
 #: data/extensions/kdeconnect-send-nautilus.py:80
 #: data/extensions/kdeconncet-send-nemo.py:80
