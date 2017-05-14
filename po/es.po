@@ -233,6 +233,10 @@ msgstr "Mostrar sólo dispositivos emparejados: "
 msgid "Show custom icons for Elementary OS: "
 msgstr "Mostrar iconos personalizados para Elementary OS: "
 
+#: src/settings/Settings.vala:152
+msgid "Delete Google Contacts: "
+msgstr ""
+
 #: data/extensions/kdeconnect-send-nautilus.py:47
 #: data/extensions/kdeconncet-send-nemo.py:47
 #: data/extensions/kdeconnect-send-caja.py:47

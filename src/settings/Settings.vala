@@ -26,17 +26,12 @@ namespace KDEConnectIndicator {
 				flags: ApplicationFlags.FLAGS_NONE);
 		}
 
-		protected override void activate (){
-			try{
-			    this.settings = new GLib.Settings("com.bajoja.indicator-kdeconnect");
-			    create_window ();
-			} catch (Error e){
-			    message(e.message);
-			}
-
+		protected override void activate () {
+			this.settings = new GLib.Settings("com.bajoja.indicator-kdeconnect");
+			create_window ();
 		}
 
-		private void create_window (){
+		private void create_window () {
 			this.window = new Gtk.ApplicationWindow (this);
 			this.window.set_icon_name ("kdeconnect");
 			this.window.set_default_size (200, 150);
@@ -57,8 +52,8 @@ namespace KDEConnectIndicator {
 			this.stack.set_transition_type (Gtk.StackTransitionType.SLIDE_LEFT_RIGHT);
 
 			this.stack.add_titled(create_visibility_setts (), "visibility", _("Visibility"));
-
 			this.stack.add_titled (create_icons_setts (), "icons", _("Icons"));
+			this.stack.add_titled (create_sms_setts (), "sms", _("SMS"));
 
         		this.stack_switcher = new StackSwitcher ();
         		this.stack_switcher.halign = Gtk.Align.CENTER;
@@ -78,7 +73,7 @@ namespace KDEConnectIndicator {
 			this.window.show_all ();
 		}
 
-		private void create_signals (){
+		private void create_signals () {
 
 			this.cancel_button.clicked.connect (() => {
 				this.window.close ();
@@ -86,14 +81,13 @@ namespace KDEConnectIndicator {
 
 			this.ok_button.clicked.connect (() => {
 				this.settings.apply ();
-				//this.settings.sync ();
 				this.window.close ();
 			});
 
 
 		}
 
-		private Box create_visibility_setts (){
+		private Box create_visibility_setts () {
 			Label label1 = new Label (_("Show only paired devices: "));
 
 			Switch switch1 = new Switch ();
@@ -124,7 +118,7 @@ namespace KDEConnectIndicator {
         		return vbox;
 		}
 
-		private Box create_icons_setts (){
+		private Box create_icons_setts () {
 			Label label1 = new Label (_("Show custom icons for Elementary OS: "));
 
 			Switch switch2 = new Switch ();
@@ -149,6 +143,70 @@ namespace KDEConnectIndicator {
 
 			hbox1.pack_start (label1, true, true, 0);
 			hbox1.pack_start (switch2, true, true, 0);
+
+			list_box.add (boxrow1);
+
+			Box vbox = new Box (Gtk.Orientation.HORIZONTAL, 0);
+        		vbox.pack_start (list_box, true, true, 0);
+
+        		return vbox;
+        	}
+
+		private Box create_sms_setts () {
+			Label label1 = new Label (_("Delete Google Contacts: "));
+
+			Gtk.Button button1 = new Gtk.Button.from_icon_name ("user-trash");
+
+			button1.sensitive = false;
+
+			string _contacts = GLib.Environment. get_user_data_dir()+
+				            "/indicator-kdeconnect/sms/contacts.json";
+
+			string _token = GLib.Environment. get_user_data_dir()+
+			                 "/indicator-kdeconnect/sms/token.json";
+
+			File contacts = File.new_for_path (_contacts);
+			File token = File.new_for_path (_token);
+
+			if (contacts.query_exists () || token.query_exists ())
+				button1.sensitive = true;
+
+			button1.clicked.connect (() => {
+				bool tmp = false;
+
+				if (contacts.query_exists ())
+					try{
+					     contacts.delete ();
+					     tmp = true;
+					} catch (Error e){
+					     message (e.message);
+					     tmp = false;
+					}
+
+				if (token.query_exists ())
+					try{
+					     token.delete ();
+					     tmp = true;
+					} catch (Error e){
+					     message (e.message);
+					     tmp = false;
+					}
+
+				if (tmp)
+					button1.sensitive = false;
+			});
+
+			ListBox list_box = new ListBox ();
+			list_box.set_selection_mode (Gtk.SelectionMode.NONE);
+
+			Box hbox1 = new Box (Gtk.Orientation.HORIZONTAL, 50);
+
+			ListBoxRow boxrow1 = new ListBoxRow ();
+
+			boxrow1.add (hbox1);
+
+			hbox1.pack_start (label1, true, true, 0);
+			hbox1.pack_start (button1, true, true, 0);
 
 			list_box.add (boxrow1);
 

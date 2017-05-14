@@ -219,6 +219,10 @@ msgstr "Прикажи само упарене уређаје: "
 msgid "Show custom icons for Elementary OS: "
 msgstr "Прикажи посебну икону за Елементари ОС: "
 
+#: src/settings/Settings.vala:152
+msgid "Delete Google Contacts: "
+msgstr ""
+
 #: data/extensions/kdeconnect-send-nautilus.py:47 data/extensions/kdeconncet-send-nemo.py:47 data/extensions/kdeconnect-send-caja.py:47
 msgid "Check the device {device_name}"
 msgstr "Провери уређај {device_name}"
