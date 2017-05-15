@@ -57,6 +57,7 @@ Requires:       python3-requests-oauthlib
 BuildRequires:  update-desktop-files
 BuildRequires:  libappindicator3-devel
 Requires:       kdeconnect-kde
+Requires:       python3-requests-oauthlib
 %endif
 
 %description
