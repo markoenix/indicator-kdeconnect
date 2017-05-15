@@ -1,7 +1,9 @@
 # Version 0.9.0
  * Add support to send files to multiple devices
  * Add settings panel
+ * Users can open settings panel from battery menu item
  * Now users can hidde untrusted devices to save space on menu bar
+ * Users can delete Google Contacts from settings panel
  * Fix Elementary OS not show monochrome icons
  * Fix bugs on SMS contacts sync
  * Add Language: Serbian

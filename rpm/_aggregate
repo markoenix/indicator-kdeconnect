@@ -1,5 +1,0 @@
-<aggregatelist>
-  <aggregate project="devel:languages:python3">
-    <package>python3-requests-oauthlib</package>
-  </aggregate>
-</aggregatelist>

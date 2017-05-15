@@ -20,7 +20,7 @@
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 Name:           indicator-kdeconnect
-Version:        0.8.2
+Version:        0.9.0
 Release:        0%{?dist}
 Summary:        App Indicator for KDE Connect
 Group:          Applications/System
@@ -46,18 +46,17 @@ BuildRequires:  gtk3-devel
 BuildRequires:  vala
 BuildRequires:  vala-devel
 BuildRequires:  pkgconfig(gtk+-3.0)
+Requires:       python3-requests-oauthlib
 
 %if 0%{?fedora} || 0%{?rhel_version} || 0%{?centos_version}
 BuildRequires:  libappindicator-gtk3-devel
 Requires:       kde-connect-libs
-Requires:       python3-requests-oauthlib
 %endif
 
 %if 0%{?suse_version}
 BuildRequires:  update-desktop-files
 BuildRequires:  libappindicator3-devel
 Requires:       kdeconnect-kde
-Requires:       python3-requests-oauthlib
 %endif
 
 %description
@@ -122,6 +121,16 @@ cd build
 
 
 %changelog
+* Mon May 16 2017 00:00 Bajoja <steevenlopes@outlook.com> 0.9.0
+ - Add support to send files to multiple devices
+ - Add settings panel
+ - Users can open settings panel from battery menu item
+ - Now users can hidde untrusted devices to save space on menu bar
+ - Users can delete Google Contacts from settings panel
+ - Fix Elementary OS not show monochrome icons
+ - Fix bugs on SMS contacts sync
+ - Add Language: Serbian
+
 * Thu May 04 2017 00:00 Bajoja <steevenlopes@outlook.com> 0.8.2
  - Fix bug #64 - SMS only getting 100 contacts
  - Added support for sending same SMS to multiple numbers

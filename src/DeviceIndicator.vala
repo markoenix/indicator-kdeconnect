@@ -132,14 +132,15 @@ namespace KDEConnectIndicator {
             sms_item.activate.connect (() => {
 
             	try{
-		    Process.spawn_sync (null,
+		    Process.spawn_async (null,
 		    			new string[]{
 				        "/usr/share/indicator-kdeconnect/Sms.py",
 					"-d",
 					device.id},
 				        null,
 				        SpawnFlags.SEARCH_PATH,
-				        null, null, null, null);
+				        null,
+				        null);
 	    	} catch (Error e) {
 		    message (e.message);
             	}

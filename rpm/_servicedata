@@ -1,4 +1,6 @@
 <servicedata>
-<service name="tar_scm">
-                <param name="url">https://github.com/Bajoja/indicator-kdeconnect.git</param>
-              <param name="changesrevision">c694300619d2346d3c0950c966ddba4f7fe3562d</param></service></servicedata>
+	<service name="tar_scm">
+		<param name="url">https://github.com/Bajoja/indicator-kdeconnect.git</param>
+		<param name="changesrevision">c694300619d2346d3c0950c966ddba4f7fe3562d</param>
+	</service>
+</servicedata>
