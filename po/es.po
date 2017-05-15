@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: indicator-kdeconnect\n"
 "Report-Msgid-Bugs-To: steevenlopes@outlook.com\n"
 "POT-Creation-Date: 2017-04-20 12:46+0100\n"
-"PO-Revision-Date: 2017-05-12 14:15+0000\n"
+"PO-Revision-Date: 2017-05-14 02:10+0000\n"
 "Last-Translator: Steeven Lopes <steevenlopes@outlook.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/indicator-kde-"
 "connect/translations/es/>\n"
@@ -235,7 +235,7 @@ msgstr "Mostrar iconos personalizados para Elementary OS: "
 
 #: src/settings/Settings.vala:152
 msgid "Delete Google Contacts: "
-msgstr ""
+msgstr "Eliminar contactos de Google: "
 
 #: data/extensions/kdeconnect-send-nautilus.py:47
 #: data/extensions/kdeconncet-send-nemo.py:47
