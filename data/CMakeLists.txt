@@ -25,6 +25,18 @@ if(EXISTS ${DATADIR}/icons/elementary)
 install (DIRECTORY "icons/elementary" DESTINATION ${DATADIR}/icons)
 endif()
 
+#update icons cache
+install(
+	CODE
+	"execute_process (COMMAND gtk-update-icon-cache -t -f ${CMAKE_INSTALL_PREFIX}/share/icons)"
+	CODE
+	"message (STATUS \"Updated icon cache in ${CMAKE_INSTALL_PREFIX}/share/icons\")"
+	)
+
+# GSettings
+include(GSettings)
+add_schema(settings/com.bajoja.indicator-kdeconnect.gschema.xml)
+
 #install FTW image
 install (FILES "images/indicator.jpg" DESTINATION ${DATADIR}/indicator-kdeconnect/)
 install (FILES "images/startup.jpg" DESTINATION ${DATADIR}/indicator-kdeconnect/)
@@ -33,15 +45,3 @@ install (FILES "images/startup.jpg" DESTINATION ${DATADIR}/indicator-kdeconnect/
 install(FILES "settings/com.bajoja.indicator-kdeconnect.appdata.xml"
         DESTINATION share/metainfo)
 
-# GSettings
-include(GSettings)
-add_schema(settings/com.bajoja.indicator-kdeconnect.gschema.xml)
-
-
-#update icons cache
-install(
-	CODE
-	"execute_process (COMMAND gtk-update-icon-cache -t -f ${CMAKE_INSTALL_PREFIX}/share/icons)"
-	CODE
-	"message (STATUS \"Updated icon cache in ${CMAKE_INSTALL_PREFIX}/share/icons\")"
-	)

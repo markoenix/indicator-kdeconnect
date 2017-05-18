@@ -79,7 +79,20 @@ namespace KDEConnectIndicator {
 		msg.destroy();
 	    });
 
-	    status_item.activate.connect(() => {
+	    battery_item.activate.connect (() => {
+	    	try {
+	    	     Process.spawn_async (null,
+	    	     			  new string[]{"indicator-kdeconnect-settings"},
+	    	     			  null,
+	    	     			  SpawnFlags.SEARCH_PATH,
+	    	     			  null,
+	    	     			  null);
+	    	} catch (Error	e) {
+	    	     message (e.message);
+	    	}
+	    });
+
+	    status_item.activate.connect (() => {
 		try {
                     Process.spawn_async (null,
                     			 new string[]{"kcmshell5", "kcm_kdeconnect"},
@@ -119,15 +132,16 @@ namespace KDEConnectIndicator {
             sms_item.activate.connect (() => {
 
             	try{
-		    Process.spawn_sync (null,
+		    Process.spawn_async (null,
 		    			new string[]{
 				        "/usr/share/indicator-kdeconnect/Sms.py",
 					"-d",
 					device.id},
 				        null,
 				        SpawnFlags.SEARCH_PATH,
-				        null, null, null, null);
-	    	} catch (Error e){
+				        null,
+				        null);
+	    	} catch (Error e) {
 		    message (e.message);
             	}
             });
@@ -201,7 +215,7 @@ namespace KDEConnectIndicator {
             name_item.label = device.name;
         }
 
-        private void update_icon_item(){
+        private void update_icon_item() {
 	    indicator.set_icon_full (device.icon, "");
 	}
         
@@ -219,20 +233,20 @@ namespace KDEConnectIndicator {
             if (device.is_reachable) {
                 if (device.is_trusted) {
                     status_item.label = _("Device Reachable and Trusted");
-                    InOut.write_status (device.id, device.name);
+                    KDEConnectIndicator.InOut.write_status (device.id, device.name);
                 }
                 else {
                     status_item.label = _("Device Reachable but Not Trusted");
-                    InOut.delete_status (device.id, device.name);
+                    KDEConnectIndicator.InOut.delete_status (device.id, device.name);
                 }
             } else {
                 if (device.is_trusted) {
                     status_item.label = _("Device Trusted but not Reachable");
-                    InOut.delete_status (device.id, device.name);
+                    KDEConnectIndicator.InOut.delete_status (device.id, device.name);
                 }
                 else {
 	            status_item.label = _("Device Not Reachable and Not Trusted");
-                    InOut.delete_status (device.id, device.name);
+                    KDEConnectIndicator.InOut.delete_status (device.id, device.name);
 		    // is this even posible?
                 }
             }
