@@ -148,7 +148,7 @@ namespace KDEConnectIndicator {
 			switch1.set_active (settings.get_string ("icons")!="");
 
 			switch1.notify["active"].connect (() => {
-				if (switch2.active)
+				if (switch1.active)
 					settings.set_string ("icons", "-symbolic");
 				else
 					settings.set_string ("icons", "");
@@ -165,7 +165,7 @@ namespace KDEConnectIndicator {
 			boxrow1.add (hbox1);
 
 			hbox1.pack_start (label1, true, true, 0);
-			hbox1.pack_start (switch2, true, true, 0);
+			hbox1.pack_start (switch1, true, true, 0);
 
 			list_box.add (boxrow1);
 
