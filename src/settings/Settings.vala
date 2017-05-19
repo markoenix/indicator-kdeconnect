@@ -108,13 +108,13 @@ namespace KDEConnectIndicator {
 
 			//----------------------------------------------------//
 
-			Label label2 = new Label (_("Show device directories instead browse of: "));
+			Label label2 = new Label (_("Show device directories instead browse: "));
 
 			Switch switch2 = new Switch ();
 			switch2.set_active (settings.get_boolean ("list-device-dir"));
 
 			switch2.notify["active"].connect (() => {
-				settings.set_boolean ("list-device-dir", switch1.active);
+				settings.set_boolean ("list-device-dir", switch2.active);
 			});
 
 			Box hbox2 = new Box (Gtk.Orientation.HORIZONTAL, 50);
@@ -144,15 +144,15 @@ namespace KDEConnectIndicator {
 		private Box create_icons_setts () {
 			Label label1 = new Label (_("Show custom icons for Elementary OS: "));
 
-			Switch switch2 = new Switch ();
-			switch2.set_active (settings.get_string ("icons")!="");
+			Switch switch1 = new Switch ();
+			switch1.set_active (settings.get_string ("icons")!="");
 
-			switch2.notify["active"].connect (() => {
-				if (switch2.active) {
+			switch1.notify["active"].connect (() => {
+				if (switch2.active)
 					settings.set_string ("icons", "-symbolic");
-				} else {
+				else
 					settings.set_string ("icons", "");
-				}
+
 			});
 
 			ListBox list_box = new ListBox ();
