@@ -97,20 +97,43 @@ namespace KDEConnectIndicator {
 				settings.set_boolean ("visibilitiy", switch1.active);
 			});
 
-
-			ListBox list_box = new ListBox ();
-			list_box.set_selection_mode (Gtk.SelectionMode.NONE);
-
 			Box hbox1 = new Box (Gtk.Orientation.HORIZONTAL, 50);
+
+			hbox1.pack_start (label1, true, true, 0);
+			hbox1.pack_start (switch1, true, true, 0);
 
 			ListBoxRow boxrow1 = new ListBoxRow ();
 
 			boxrow1.add (hbox1);
 
-			hbox1.pack_start (label1, true, true, 0);
-			hbox1.pack_start (switch1, true, true, 0);
+			//----------------------------------------------------//
+
+			Label label2 = new Label (_("Show device directories instead browse of: "));
+
+			Switch switch2 = new Switch ();
+			switch2.set_active (settings.get_boolean ("list-device-dir"));
+
+			switch2.notify["active"].connect (() => {
+				settings.set_boolean ("list-device-dir", switch1.active);
+			});
+
+			Box hbox2 = new Box (Gtk.Orientation.HORIZONTAL, 50);
+
+			hbox2.pack_start (label2, true, true, 0);
+			hbox2.pack_start (switch2, true, true, 0);
+
+			ListBoxRow boxrow2 = new ListBoxRow ();
+
+			boxrow2.add (hbox2);
+
+			//----------------------------------------------------//
+
+			ListBox list_box = new ListBox ();
+			list_box.set_selection_mode (Gtk.SelectionMode.NONE);
+
 
 			list_box.add (boxrow1);
+			list_box.add (boxrow2);
 
 			Box vbox = new Box (Gtk.Orientation.HORIZONTAL, 0);
         		vbox.pack_start (list_box, true, true, 0);
