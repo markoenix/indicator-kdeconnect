@@ -112,6 +112,12 @@ namespace KDEConnectIndicator {
         	}
         }
 
+        public bool to_list_dir{
+        	get {
+        	     return this.settings.get_boolean ("list-device-dir");
+        	}
+        }
+
         public Device (string path) {
             message ("device : %s",path);
             this.path = path;
@@ -400,15 +406,15 @@ namespace KDEConnectIndicator {
             }
         }
         
-        public void browse () {
+        public void browse (string open_path="") {
             if (!has_plugin ("kdeconnect_sftp"))
                 return;
             if (is_mounted ())
-                open_file (mount_point);
+            	open_file (mount_point+open_path);
             else {
                 mount();
                 Timeout.add (1000, ()=> { // idle for a few second to let sftp kickin
-                        open_file (mount_point);
+                        open_file (mount_point+open_path);
                         return false;
                 });
             }

@@ -8,11 +8,15 @@ namespace KDEConnectIndicator {
         public string path;
         private Device device;
         private Gtk.Menu menu;
+        private Gtk.Menu browse_submenu;
         private AppIndicator.Indicator indicator;
         private Gtk.MenuItem name_item;
         private Gtk.MenuItem battery_item;
         private Gtk.MenuItem status_item;
         private Gtk.MenuItem browse_item;
+        private Gtk.MenuItem dcim_item;
+        private Gtk.MenuItem sdcard_item;
+        private Gtk.MenuItem internal_item;
         private Gtk.MenuItem send_item;
         private Gtk.MenuItem ring_item;
         private Gtk.MenuItem pair_item;
@@ -38,8 +42,26 @@ namespace KDEConnectIndicator {
             status_item = new Gtk.MenuItem ();
             menu.append (status_item);
             menu.append (new Gtk.SeparatorMenuItem ());
+
+
             browse_item = new Gtk.MenuItem.with_label (_("Browse device"));
             menu.append (browse_item);
+
+            if (device.to_list_dir) {
+            	message ("To List Directories");
+            	browse_submenu = new Gtk.Menu ();
+            	browse_item.set_submenu (browse_submenu);
+
+            	dcim_item = new Gtk.MenuItem.with_label (_("DCIM"));
+            	browse_submenu.add (dcim_item);
+
+            	internal_item = new Gtk.MenuItem.with_label (_("Internal"));
+            	browse_submenu.add (internal_item);
+
+            	sdcard_item = new Gtk.MenuItem.with_label (_("SD Card"));
+            	browse_submenu.add (sdcard_item);
+            }
+
             send_item = new Gtk.MenuItem.with_label (_("Send file(s)"));
             menu.append (send_item);
             separator = new Gtk.SeparatorMenuItem ();
@@ -105,9 +127,24 @@ namespace KDEConnectIndicator {
                 }
 	    });
 
-            browse_item.activate.connect (() => {
-                device.browse ();
-            });
+	    if (device.to_list_dir) {
+	    	dcim_item.activate.connect (() => {
+            		device.browse ("/storage/emulated/0/DCIM");
+            	});
+
+            	internal_item.activate.connect (() => {
+            		device.browse ("/storage/emulated/0");
+            	});
+
+            	sdcard_item.activate.connect (() => {
+	            	device.browse ("/storage/2248-1D0C");
+            	});
+	    }
+	    else{
+	    	browse_item.activate.connect (() => {
+                	device.browse ();
+                });
+	    }
 
             send_item.activate.connect (() => {
                 var chooser = new Gtk.FileChooserDialog (_("Select file(s)"),
