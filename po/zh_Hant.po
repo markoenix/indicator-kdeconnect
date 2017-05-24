@@ -7,234 +7,233 @@ msgstr ""
 "Project-Id-Version: indicator-kdeconnect\n"
 "Report-Msgid-Bugs-To: steevenlopes@outlook.com\n"
 "POT-Creation-Date: 2016-11-18 18:46+0200\n"
-"PO-Revision-Date: 2017-05-23 18:08+0000\n"
-"Last-Translator: Слободан Симић(Slobodan Simić) <slsimic@gmail.com>\n"
-"Language-Team: Serbian <https://hosted.weblate.org/projects/indicator-kde-"
-"connect/translations/sr/>\n"
-"Language: sr\n"
+"PO-Revision-Date: 2017-05-23 14:33+0000\n"
+"Last-Translator: Vdragon, Ｖ字龍 <Vdragon.Taiwan@gmail.com>\n"
+"Language-Team: Chinese (Traditional) <https://hosted.weblate.org/projects"
+"/indicator-kde-connect/translations/zh_Hant/>\n"
+"Language: zh_Hant\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<="
-"4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Weblate 2.14.1-dev\n"
 
 #: src/FirstTimeWizard.vala:50
 msgid "<b>Are you ready for your first device pairing?</b>\n\n"
 msgstr ""
-"<b>Јесте ли спремни за прво упаривање уређаја?</b>\n"
+"<b>準備好進行您的第一次裝置配對了嗎？</b>\n"
 "\n"
 
 #: src/FirstTimeWizard.vala:51
 msgid "Now connect your devices using wifi connection.\n"
-msgstr "Сада повежите ваше уређаје бежичном везом.\n"
+msgstr "現在透過 wifi 網路連線連接您的裝置。\n"
 
 #: src/FirstTimeWizard.vala:52
 msgid "Tethering should work too!\n"
-msgstr "Тетеринг ће такође радити!\n"
+msgstr "行動網路分享下應也可以運作！\n"
 
 #: src/FirstTimeWizard.vala:53
 msgid "If you have Firewall running, please open port 1714-1764 for TCP and UDP\n\n"
 msgstr ""
-"Ако вам ради Ватробран, отворите портове 1714-1764 за ТЦП и УДП\n"
+"如果您有運行中的防火牆，請將 TCP 與 UDP 的 1714-1764 連接埠開啟\n"
 "\n"
 
 #: src/FirstTimeWizard.vala:54
 msgid "Launch KDE Connect in your Android which you can download from "
-msgstr "Покрените КДЕ конект на свом Андроид уређају а можете га преузети на "
+msgstr "啟動您 Android 裝置上的 KDE Connect 應用軟體，其可以從下列地點下載： "
 
 #: src/FirstTimeWizard.vala:56
 msgid "Google Play</a>"
-msgstr "Гугл Плеју</a>"
+msgstr "Google Play 商店</a>"
 
 #: src/FirstTimeWizard.vala:65
 msgid "Everytime there is a new device connected, a new indicator will appear in your panel.\n"
-msgstr "Када се нови уређај повеже, нови индикатор ће се појавити на панелу\n"
+msgstr "每當一個新裝置連接上了，您的面板上就會出現一個新的指示器圖示。\n"
 
 #: src/FirstTimeWizard.vala:66
 msgid "There, you can pair and see its status\n\n"
 msgstr ""
-"Овде, можете упарити и видети његово стање\n"
+"在那，您可以配對並查看其狀態\n"
 "\n"
 
 #: src/FirstTimeWizard.vala:67
 msgid "<b>Now try to pair your device</b>"
-msgstr "<b>Сада покушајте упаривање уређаја</b>"
+msgstr "<b>現在來嘗試配對您的裝置吧</b>"
 
 #: src/FirstTimeWizard.vala:76
 msgid "<b>Great! your device is all set</b>\n\n"
 msgstr ""
-"<b>Одлично! Ваш уређај је подешен</b>\n"
+"<b>很好！您的裝置已經準備好了</b>\n"
 "\n"
 
 #: src/FirstTimeWizard.vala:77
 msgid "Now you can enable or disable modules on KDE Connect settings.\n"
-msgstr "Сада можете укључивати модуле у КДЕ конект поставкама.\n"
+msgstr "現在您可以在 KDE Connect 設定中啟用或停用模組。\n"
 
 #: src/FirstTimeWizard.vala:78
 msgid "Indicator already added to autostart.\n"
-msgstr "Индикатор је већ додат у аутостарт.\n"
+msgstr "指示器早已新增到自動啟動項目中。\n"
 
 #: src/FirstTimeWizard.vala:79
 msgid "Enjoy!"
-msgstr "Уживајте!"
+msgstr "祝使用愉快！"
 
 #: src/KDEConnectManager.vala:119
 msgid "cannot connect to KDE Connect DBus service"
-msgstr "не могу да се повежем на Д-бус сервис КДЕ конекта"
+msgstr "無法連接至 KDE Connect DBus 服務"
 
 #: src/Device.vala:524
 msgid "Encryption information not found"
-msgstr "Подаци о шифровању нису пронађени"
+msgstr "未找到加密資訊"
 
 #: src/DeviceIndicator.vala:41
 msgid "Browse device"
-msgstr "Прегледај уређај"
+msgstr "瀏覽裝置"
 
 #: src/DeviceIndicator.vala:43
 msgid "Send file(s)"
-msgstr "Шаљи фајлове"
+msgstr "傳送檔案"
 
 #: src/DeviceIndicator.vala:47
 msgid "Send SMS"
-msgstr "Шаљи СМС"
+msgstr "傳送簡訊"
 
 #: src/DeviceIndicator.vala:51
 msgid "Find my phone"
-msgstr "Нађи мој телефон"
+msgstr "尋找我的手機"
 
 #: src/DeviceIndicator.vala:55
 msgid "Request pairing"
-msgstr "Захтевај упаривање"
+msgstr "請求配對"
 
 #: src/DeviceIndicator.vala:58
 msgid "Unpair"
-msgstr "Распари"
+msgstr "解除配對"
 
 #: src/DeviceIndicator.vala:100
 msgid "Select file(s)"
-msgstr "Одабери фајлове"
+msgstr "選擇檔案"
 
 #: src/DeviceIndicator.vala:103 src/contractor/Contractor.vala:24 src/settings/Settings.vala:47 src/Sms.py:237
 msgid "Cancel"
-msgstr "Откажи"
+msgstr "取消"
 
 #: src/DeviceIndicator.vala:105 
 msgid "Select"
-msgstr "Изабери"
+msgstr "選取"
 
 #: src/DeviceIndicator.vala:201
 msgid "Battery : "
-msgstr "Батерија: "
+msgstr "電池電量： "
 
 #: src/DeviceIndicator.vala:203
 msgid " (charging)"
-msgstr " (пуни се)"
+msgstr " （充電中）"
 
 #: src/DeviceIndicator.vala:210
 msgid "Device Reachable and Trusted"
-msgstr "Уређај доступан и поуздан"
+msgstr "可偵測且信任的裝置"
 
 #: src/DeviceIndicator.vala:212
 msgid "Device Reachable but Not Trusted"
-msgstr "Уређај доступан али непоуздан"
+msgstr "可偵測但未受信任的裝置"
 
 #: src/DeviceIndicator.vala:215
 msgid "Device Trusted but not Reachable"
-msgstr "Уређај поуздан али недоступан"
+msgstr "受信任但不可偵測的裝置"
 
 #: src/DeviceIndicator.vala:217
 msgid "Device Not Reachable and Not Trusted"
-msgstr "Уређај недоступан и непоуздан"
+msgstr "不可偵測且未受信任的裝置"
 
 #: src/contractor/Contractor.vala:15
 msgid "Send to"
-msgstr "Пошаљи на"
+msgstr "傳送到"
 
 #: src/contractor/Contractor.vala:25 src/Sms.py:220
 msgid "Send"
-msgstr "Пошаљи"
+msgstr "傳送"
 
 #: src/contractor/Contractor.vala:84
 msgid "File(s) not found"
-msgstr "Фајлови нису нађени"
+msgstr "找不到檔案"
 
 #: src/contractor/Contractor.vala:143
 msgid "There's %u file(s) to be send"
-msgstr "Фајлова за слање: %u"
+msgstr "這 %u 個檔案將被傳送"
 
 #: src/Sms.py:184
 msgid "Compose SMS"
-msgstr "Напиши СМС"
+msgstr "撰寫簡訊"
 
 #: src/Sms.py:199
 msgid "Phone number"
-msgstr "Број телефона"
+msgstr "電話號碼"
 
 #: src/Sms.vala:60
 msgid "Message body: "
-msgstr "Текст поруке: "
+msgstr "訊息內文： "
 
 #: src/Sms.py:44
 msgid "Authorization succesfull. You can close this window."
-msgstr "Пријављивање успешно. Можете затворити овај прозор."
+msgstr "授權成功。您可以關掉這個視窗了。"
 
 #: src/Sms.py:48
 msgid "Authorization failed. Please close this window and try again."
-msgstr "Пријављивање неуспешно. Затворите овај прозор и покушајте поново."
+msgstr "授權失敗。請關掉這個視窗再試一遍。"
 
 #: src/Sms.py:303
 msgid "Sync starting"
-msgstr "Синхронизација започета"
+msgstr "正在開始同步"
 
 #: src/Sms.py:303
 msgid "Synchronizing contacts"
-msgstr "Синхронизујем контакте"
+msgstr "正在同步通訊錄"
 
 #: src/Sms.py:317
 msgid "Sync done"
-msgstr "Синхронизација завршена"
+msgstr "同步已完成"
 
 #: src/Sms.py:318
 msgid "Synchronized contacts"
-msgstr "Синхронизовани контакти"
+msgstr "已同步的通訊錄項目"
 
 #: src/settings/Settings.vala:50
 msgid "Apply"
-msgstr "Примени"
+msgstr "套用"
 
 #: src/settings/Settings.vala:59
 msgid "Visibility"
-msgstr "Видљивост"
+msgstr "可見度"
 
 #: src/settings/Settings.vala:61
 msgid "Icons"
-msgstr "Иконе"
+msgstr "圖示"
 
 #: src/settings/Settings.vala:97
 msgid "Show only paired devices: "
-msgstr "Прикажи само упарене уређаје: "
+msgstr "只顯示已配對的裝置： "
 
 #: src/settings/Settings.vala:128
 msgid "Show custom icons for Elementary OS: "
-msgstr "Прикажи посебну икону за Елементари ОС: "
+msgstr "顯示用於 Elementary OS 的客製圖示： "
 
 #: src/settings/Settings.vala:152
 msgid "Delete Google Contacts: "
-msgstr "Обриши Гугл контакте: "
+msgstr "移除 Google 通訊錄項目： "
 
 #: data/extensions/kdeconnect-send-nautilus.py:47 data/extensions/kdeconncet-send-nemo.py:47 data/extensions/kdeconnect-send-caja.py:47
 msgid "Check the device {device_name}"
-msgstr "Провери уређај {device_name}"
+msgstr "檢查「{device_name}」裝置"
 
 #: data/extensions/kdeconnect-send-nautilus.py:48 data/extensions/kdeconncet-send-nemo.py:48 data/extensions/kdeconnect-send-caja.py:48
 msgid "Sending {num_files} file(s)"
-msgstr "Шаљем фајлове"
+msgstr "正在傳送 {num_files} 個檔案"
 
 #: data/extensions/kdeconnect-send-nautilus.py:79 data/extensions/kdeconncet-send-nemo.py:79 data/extensions/kdeconnect-send-caja.py:79
 msgid "KDEConnect Send To"
-msgstr "КДЕ конект шаље на"
+msgstr "KDEConnect 傳送到"
 
 #: data/extensions/kdeconnect-send-nautilus.py:80 data/extensions/kdeconncet-send-nemo.py:80 data/extensions/kdeconnect-send-caja.py:80
 msgid "send file(s) with kdeconnect"
-msgstr "шаљи фајлове помоћу КДЕ конекта"
+msgstr "使用 kdeconnect 傳送檔案"
