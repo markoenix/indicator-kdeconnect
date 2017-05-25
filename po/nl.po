@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: indicator-kdeconnect\n"
 "Report-Msgid-Bugs-To: steevenlopes@outlook.com\n"
 "POT-Creation-Date: 2017-04-20 12:48+0100\n"
-"PO-Revision-Date: 2017-05-14 08:49+0000\n"
+"PO-Revision-Date: 2017-05-23 14:31+0000\n"
 "Last-Translator: Heimen Stoffels <vistausss@outlook.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/indicator-kde-"
 "connect/translations/nl/>\n"
@@ -16,14 +16,14 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.14-dev\n"
+"X-Generator: Weblate 2.14.1-dev\n"
 
 #: src/FirstTimeWizard.vala:50
 msgid ""
 "<b>Are you ready for your first device pairing?</b>\n"
 "\n"
 msgstr ""
-"<b>Bent u er klaar voor om uw eerste apparaat te koppelen?</b>\n"
+"<b>Bent u klaar voor het koppelen van uw eerste apparaat?</b>\n"
 "\n"
 
 #: src/FirstTimeWizard.vala:51
@@ -45,7 +45,8 @@ msgstr ""
 
 #: src/FirstTimeWizard.vala:54
 msgid "Launch KDE Connect in your Android which you can download from "
-msgstr "Open KDE Connect op uw Android-apparaat. Deze app is te downloaden in "
+msgstr ""
+"Open KDE Connect op uw Android-apparaat. Deze app kan worden gedownload via "
 
 #: src/FirstTimeWizard.vala:56
 msgid "Google Play</a>"
@@ -56,8 +57,8 @@ msgid ""
 "Everytime there is a new device connected, a new indicator will appear in "
 "your panel.\n"
 msgstr ""
-"Er zal telkens een nieuwe indicator verschijnen op uw paneel voor elk nieuw "
-"apparaat dat u verbindt.\n"
+"Er zal een nieuwe indicator verschijnen op uw paneel voor elk nieuw apparaat "
+"dat u verbindt.\n"
 
 #: src/FirstTimeWizard.vala:66
 msgid ""
@@ -138,7 +139,7 @@ msgstr "Selecteren"
 
 #: src/DeviceIndicator.vala:201
 msgid "Battery : "
-msgstr "Batterij : "
+msgstr "Accu : "
 
 #: src/DeviceIndicator.vala:203
 msgid " (charging)"
@@ -170,11 +171,11 @@ msgstr "Versturen"
 
 #: src/contractor/Contractor.vala:84
 msgid "File(s) not found"
-msgstr "Bestand niet gevonden"
+msgstr "Bestand(en) niet gevonden"
 
 #: src/contractor/Contractor.vala:143
 msgid "There's %u file(s) to be send"
-msgstr "Er is/zijn %u bestand(en) om te versturen"
+msgstr "U staat op het punt om %u bestand(en) te versturen"
 
 #: src/Sms.py:184
 msgid "Compose SMS"
@@ -198,7 +199,7 @@ msgstr "De autorisatie is mislukt. Sluit dit venster en probeer het opnieuw."
 
 #: src/Sms.py:303
 msgid "Sync starting"
-msgstr "Synchronisatie wordt gestart"
+msgstr "Bezig met starten van synchronisatie"
 
 #: src/Sms.py:303
 msgid "Synchronizing contacts"
@@ -230,7 +231,7 @@ msgstr "Alleen gekoppelde apparaten weergeven: "
 
 #: src/settings/Settings.vala:128
 msgid "Show custom icons for Elementary OS: "
-msgstr "Aangepaste pictogrammen weergeven voor Elementary OS: "
+msgstr "Aangepaste pictogrammen weergeven op Elementary OS: "
 
 #: src/settings/Settings.vala:152
 msgid "Delete Google Contacts: "
