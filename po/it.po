@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: indicator-kdeconnect\n"
 "Report-Msgid-Bugs-To: steevenlopes@outlook.com\n"
 "POT-Creation-Date: 2017-04-20 12:47+0100\n"
-"PO-Revision-Date: 2017-05-14 02:04+0000\n"
-"Last-Translator: Steeven Lopes <steevenlopes@outlook.com>\n"
+"PO-Revision-Date: 2017-06-19 12:09+0000\n"
+"Last-Translator: ShellAddicted <shelladdicted@gmail.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/indicator-kde-"
 "connect/translations/it/>\n"
 "Language: it\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.14-dev\n"
+"X-Generator: Weblate 2.15-dev\n"
 
 #: src/FirstTimeWizard.vala:50
 msgid ""
@@ -200,9 +200,8 @@ msgid "Authorization failed. Please close this window and try again."
 msgstr "Autorizzazione fallita. Chiudere la finestra e riprovare."
 
 #: src/Sms.py:303
-#, fuzzy
 msgid "Sync starting"
-msgstr "Sincronizzazione inizio"
+msgstr "Inizio sincronizzazione"
 
 #: src/Sms.py:303
 msgid "Synchronizing contacts"
@@ -213,7 +212,6 @@ msgid "Sync done"
 msgstr "Sincronizzazione effettuata"
 
 #: src/Sms.py:318
-#, fuzzy
 msgid "Synchronized contacts"
 msgstr "Contatti sincronizzati"
 
@@ -238,9 +236,8 @@ msgid "Show custom icons for Elementary OS: "
 msgstr "Mostra le icone personalizzate per Elementary OS: "
 
 #: src/settings/Settings.vala:152
-#, fuzzy
 msgid "Delete Google Contacts: "
-msgstr "Elimina Google contatti: "
+msgstr "Elimina i Contatti Google: "
 
 #: data/extensions/kdeconnect-send-nautilus.py:47
 #: data/extensions/kdeconncet-send-nemo.py:47
