@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: indicator-kdeconnect\n"
 "Report-Msgid-Bugs-To: steevenlopes@outlook.com\n"
 "POT-Creation-Date: 2017-04-20 12:47+0100\n"
-"PO-Revision-Date: 2017-06-19 12:09+0000\n"
+"PO-Revision-Date: 2017-06-19 12:15+0000\n"
 "Last-Translator: ShellAddicted <shelladdicted@gmail.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/indicator-kde-"
 "connect/translations/it/>\n"
@@ -45,8 +45,7 @@ msgstr ""
 
 #: src/FirstTimeWizard.vala:54
 msgid "Launch KDE Connect in your Android which you can download from "
-msgstr ""
-"Avvia KDE Connect nel tuo dispositivo Android, puoi scaricare l'app da "
+msgstr "Avvia KDE Connect sul tuo dispositivo Android, puoi scaricare l'app da "
 
 #: src/FirstTimeWizard.vala:56
 msgid "Google Play</a>"
@@ -65,12 +64,12 @@ msgid ""
 "There, you can pair and see its status\n"
 "\n"
 msgstr ""
-"Qui puoi eseguire il pair e vedere lo stato\n"
+"Qui puoi eseguire l'associazione e vedere lo stato\n"
 "\n"
 
 #: src/FirstTimeWizard.vala:67
 msgid "<b>Now try to pair your device</b>"
-msgstr "<b>Prova ora ad eseguire il pair con il tuo dispositivo</b>"
+msgstr "<b>Prova ora ad eseguire l'associazione con il tuo dispositivo</b>"
 
 #: src/FirstTimeWizard.vala:76
 msgid ""
@@ -83,12 +82,11 @@ msgstr ""
 #: src/FirstTimeWizard.vala:77
 msgid "Now you can enable or disable modules on KDE Connect settings.\n"
 msgstr ""
-"Puoi ora abilitare e disattivare i moduli nelle impostazioni di KDE "
-"Connect.\n"
+"Adesso puoi abilitare e disattivare i moduli nelle impostazioni di KDE\n"
 
 #: src/FirstTimeWizard.vala:78
 msgid "Indicator already added to autostart.\n"
-msgstr "Kde Indicator è stato aggiunto all'autostart.\n"
+msgstr "Kde Indicator è stato aggiunto all' avvio automatico.\n"
 
 #: src/FirstTimeWizard.vala:79
 msgid "Enjoy!"
@@ -161,7 +159,7 @@ msgstr "Il dispositivo è affidabile ma non raggiungibile"
 
 #: src/DeviceIndicator.vala:217
 msgid "Device Not Reachable and Not Trusted"
-msgstr "Dispositivo Non raggiungibile e Non affidabile"
+msgstr "Dispositivo non raggiungibile nè affidabile"
 
 #: src/contractor/Contractor.vala:15
 msgid "Send to"
@@ -209,7 +207,7 @@ msgstr "Sincronizzazione dei contatti"
 
 #: src/Sms.py:317
 msgid "Sync done"
-msgstr "Sincronizzazione effettuata"
+msgstr "Sincronizzazione completata"
 
 #: src/Sms.py:318
 msgid "Synchronized contacts"
@@ -229,7 +227,7 @@ msgstr "Icone"
 
 #: src/settings/Settings.vala:97
 msgid "Show only paired devices: "
-msgstr "Mostra solo dispositivi accoppiati: "
+msgstr "Mostra solo dispositivi associati: "
 
 #: src/settings/Settings.vala:128
 msgid "Show custom icons for Elementary OS: "
