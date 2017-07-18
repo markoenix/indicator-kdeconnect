@@ -20,7 +20,7 @@
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 Name:           indicator-kdeconnect
-Version:        0.9.0
+Version:        0.9.1
 Release:        0%{?dist}
 Summary:        App Indicator for KDE Connect
 Group:          Applications/System
@@ -121,6 +121,13 @@ cd build
 
 
 %changelog
+* Thu Jul 18 00:00 Bajoja <steevenlopes@outlook.com> 0.9.1
+ - Add Languages: Chinese
+ - Fix Elementary OS App Center app compilation
+ - Fix Nautilus and Caja send files don't work
+ - Remove settings option to use custom Elementary Icons
+ - Make indicator-kdeconnect restart after apply settings
+
 * Mon May 16 2017 00:00 Bajoja <steevenlopes@outlook.com> 0.9.0
  - Add support to send files to multiple devices
  - Add settings panel

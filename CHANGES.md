@@ -1,3 +1,10 @@
+# Version 0.9.1
+ * Add Languages: Chinese
+ * Fix Elementary OS App Center app compilation
+ * Fix Nautilus and Caja send files don't work
+ * Remove settings option to use custom Elementary Icons
+ * Make indicator-kdeconnect restart after apply settings
+
 # Version 0.9.0
  * Add support to send files to multiple devices
  * Add settings panel
