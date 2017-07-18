@@ -50,7 +50,7 @@ class KDEConnectSendExtension(GObject.GObject, Caja.MenuProvider):
         return devices_a
 
     """Send a files with kdeconnect"""
-    def send_files(self, files, device_id, device_name):
+    def send_files(self, menu, files, device_id, device_name):
         for file in files:
             filename = urllib.unquote(file.get_uri()[7:])
             Popen(["kdeconnect-cli", "-d", device_id, "--share", filename])

@@ -6,4 +6,4 @@ Terminal=false
 Type=Application
 StartupNotify=true
 Icon=kdeconnect
-Categories=GNOME;GTK;System;
+Categories=Network;System;

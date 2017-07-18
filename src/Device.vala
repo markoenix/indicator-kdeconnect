@@ -68,10 +68,7 @@ namespace KDEConnectIndicator {
                      string d = v.get_string ();
                      string icon = "%s".printf(Uri.unescape_string (d, null));
 
-                     if(this.settings.get_string ("icons") != null)
-                     	_icon = icon+this.settings.get_string("icons");
-                     else
-                     	_icon = icon;
+                     _icon = icon;
 
 		} catch (Error e) {
 		     message (e.message);
