@@ -165,7 +165,7 @@ namespace KDEConnectIndicator {
 
 			//----------------------------------------------------//
 
-			Label label2 = new Label (_("Show device directories instead browse: "));
+			Label label2 = new Label (_("Show device directories: "));
 
 			Switch switch2 = new Switch ();
 			switch2.set_active (settings.get_boolean ("list-device-dir"));
