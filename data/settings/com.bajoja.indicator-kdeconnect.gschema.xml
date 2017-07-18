@@ -10,7 +10,7 @@
     </key>
 
     <key name="visibilitiy" type="b">
-      <default>true</default>
+      <default>false</default>
       <summary>Show only paired devices</summary>
       <description>
         Show only paired devie on the indicator

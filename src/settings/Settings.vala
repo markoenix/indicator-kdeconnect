@@ -83,10 +83,65 @@ namespace KDEConnectIndicator {
 
 			this.ok_button.clicked.connect (() => {
 				this.settings.apply ();
+				restart();
 				this.window.close ();
 			});
 
 
+		}
+
+		private void restart () {
+			string std_out;
+
+			message("Getting PID");
+
+            		try{
+			    Process.spawn_sync (null,
+			     			new string[]{"pidof",
+			     			             "indicator-kdeconnect"},
+			    			null,
+			    			SpawnFlags.SEARCH_PATH,
+			    			null,
+			                        out std_out,
+			    			null,
+			    			null);
+	    		} catch (Error e){
+			    message (e.message);
+             		}
+
+
+             		if (std_out != ""){
+             			message("Kill PID");
+
+             			int pid = int.parse(std_out);
+
+             			try{
+			    	    Process.spawn_sync (null,
+			     		    	        new string[]{"kill",
+			     		    	                     pid.to_string()},
+			    			        null,
+			    			        SpawnFlags.SEARCH_PATH,
+			    			        null,
+			                        	out std_out,
+			    				null,
+			    				null);
+	    			} catch (Error e){
+			    	    message (e.message);
+             			}
+
+
+				message("Restart process");
+             			try{
+		    		    Process.spawn_async (null,
+		    					 new string[]{"indicator-kdeconnect"},
+				        		 null,
+				        		 SpawnFlags.SEARCH_PATH,
+					                 null,
+				                         null);
+	    			} catch (Error e) {
+		    		    message (e.message);
+            			}
+             		}
 		}
 
 		private Box create_visibility_setts () {
