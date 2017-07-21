@@ -7,223 +7,237 @@ msgstr ""
 "Project-Id-Version: indicator-kdeconnect\n"
 "Report-Msgid-Bugs-To: steevenlopes@outlook.com\n"
 "POT-Creation-Date: 2016-11-18 18:46+0200\n"
-"PO-Revision-Date: 2016-11-18 18:46+0200\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2017-07-21 08:58+0000\n"
+"Last-Translator: Amin Khozaei <amin.khozaei@gmail.com>\n"
+"Language-Team: Persian <https://hosted.weblate.org/projects/indicator-kde-"
+"connect/translations/fa/>\n"
 "Language: fa\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 2.16-dev\n"
 
 #: src/FirstTimeWizard.vala:50
 msgid "<b>Are you ready for your first device pairing?</b>\n\n"
 msgstr ""
+"<b>آیا برای اتصال اولین دستگاه آماده هستید؟</b>\n"
+"\n"
 
 #: src/FirstTimeWizard.vala:51
 msgid "Now connect your devices using wifi connection.\n"
-msgstr ""
+msgstr "حال دستگاه‌های خود را با استفاده از وای فای متصل کنید.\n"
 
 #: src/FirstTimeWizard.vala:52
 msgid "Tethering should work too!\n"
-msgstr ""
+msgstr "اتصال اینترنت نیز باید کار کند!\n"
 
 #: src/FirstTimeWizard.vala:53
 msgid "If you have Firewall running, please open port 1714-1764 for TCP and UDP\n\n"
 msgstr ""
+"اگر فایرفال در حال اجراست پورت‌های ۱۷۱۴ تا ۱۷۶۴ را برای اتصال TCP و UDP باز "
+"کنید.\n"
+"\n"
 
 #: src/FirstTimeWizard.vala:54
 msgid "Launch KDE Connect in your Android which you can download from "
 msgstr ""
+"برنامه KDE Connect را بر روی اندروید خود اجرا کنید، این برنامه را می‌توانید "
+"از آدرس زیر بگیرید "
 
 #: src/FirstTimeWizard.vala:56
 msgid "Google Play</a>"
-msgstr ""
+msgstr "گوگل پلی</a>"
 
 #: src/FirstTimeWizard.vala:65
 msgid "Everytime there is a new device connected, a new indicator will appear in your panel.\n"
-msgstr ""
+msgstr "هر وقت دستگاه جدیدی متصل شود، یک آیکون جدید در پنل شما نمایان می‌شود.\n"
 
 #: src/FirstTimeWizard.vala:66
 msgid "There, you can pair and see its status\n\n"
 msgstr ""
+"آنجا می‌توانید دستگاه جدید متصل کنید و وضعیت آن‌ها را ببینید\n"
+"\n"
 
 #: src/FirstTimeWizard.vala:67
 msgid "<b>Now try to pair your device</b>"
-msgstr ""
+msgstr "<b>حال می‌توانید دستگاه خود را متصل کنید</b>"
 
 #: src/FirstTimeWizard.vala:76
 msgid "<b>Great! your device is all set</b>\n\n"
 msgstr ""
+"<b>تبریک! دستگاه شما متصل شد</b>\n"
+"\n"
 
 #: src/FirstTimeWizard.vala:77
 msgid "Now you can enable or disable modules on KDE Connect settings.\n"
-msgstr ""
+msgstr "حال می‌توانید ماژول‌ها را در تنظیمات KDE Connect فعال/غیرفعال کنید.\n"
 
 #: src/FirstTimeWizard.vala:78
 msgid "Indicator already added to autostart.\n"
-msgstr ""
+msgstr "برنامه قبلا به اجرای خودکار اضافه شده است.\n"
 
 #: src/FirstTimeWizard.vala:79
 msgid "Enjoy!"
-msgstr ""
+msgstr "لذت ببرید!"
 
 #: src/KDEConnectManager.vala:119
 msgid "cannot connect to KDE Connect DBus service"
-msgstr ""
+msgstr "برنامه KDE Connect نمی‌تواند به سرویس DBus متصل شود"
 
 #: src/Device.vala:524
 msgid "Encryption information not found"
-msgstr ""
+msgstr "اطلاعات رمزنگاری یافت نشد"
 
 #: src/DeviceIndicator.vala:41
 msgid "Browse device"
-msgstr ""
+msgstr "مرور کردن دستگاه"
 
 #: src/DeviceIndicator.vala:43
 msgid "Send file(s)"
-msgstr ""
+msgstr "ارسال فایل(فایل‌ها)"
 
 #: src/DeviceIndicator.vala:47
 msgid "Send SMS"
-msgstr ""
+msgstr "ارسال پیامک"
 
 #: src/DeviceIndicator.vala:51
 msgid "Find my phone"
-msgstr ""
+msgstr "پیدا کردن گوشی"
 
 #: src/DeviceIndicator.vala:55
 msgid "Request pairing"
-msgstr ""
+msgstr "درخواست اتصال"
 
 #: src/DeviceIndicator.vala:58
 msgid "Unpair"
-msgstr ""
+msgstr "قطع اتصال"
 
 #: src/DeviceIndicator.vala:100
 msgid "Select file(s)"
-msgstr ""
+msgstr "انتخاب فایل(فایل‌ها)"
 
 #: src/DeviceIndicator.vala:103 src/contractor/Contractor.vala:24 src/settings/Settings.vala:47 src/Sms.py:237
 msgid "Cancel"
-msgstr ""
+msgstr "لغو"
 
 #: src/DeviceIndicator.vala:105 
 msgid "Select"
-msgstr ""
+msgstr "انتخاب"
 
 #: src/DeviceIndicator.vala:201
 msgid "Battery : "
-msgstr ""
+msgstr "باتری: "
 
 #: src/DeviceIndicator.vala:203
 msgid " (charging)"
-msgstr ""
+msgstr " (در حال شارژ)"
 
 #: src/DeviceIndicator.vala:210
 msgid "Device Reachable and Trusted"
-msgstr ""
+msgstr "دستگاه در دسترس بوده و مورد اعتماد قرار گرفته است"
 
 #: src/DeviceIndicator.vala:212
 msgid "Device Reachable but Not Trusted"
-msgstr ""
+msgstr "دستگاه در دسترس است اما مورد اعتماد نیست"
 
 #: src/DeviceIndicator.vala:215
 msgid "Device Trusted but not Reachable"
-msgstr ""
+msgstr "دستگاه مورد اعتماد قرار گرفته است اما در دسترس نیست"
 
 #: src/DeviceIndicator.vala:217
 msgid "Device Not Reachable and Not Trusted"
-msgstr ""
+msgstr "دستگاه در دسترس و مورد اعتماد نیست"
 
 #: src/contractor/Contractor.vala:15
 msgid "Send to"
-msgstr ""
+msgstr "ارسال به"
 
 #: src/contractor/Contractor.vala:25 src/Sms.py:220
 msgid "Send"
-msgstr ""
+msgstr "ارسال"
 
 #: src/contractor/Contractor.vala:84
 msgid "File(s) not found"
-msgstr ""
+msgstr "فایل(فایل‌ها) یافت نشد"
 
 #: src/contractor/Contractor.vala:143
 msgid "There's %u file(s) to be send"
-msgstr ""
+msgstr "فایل(فایل‌های) %u برای ارسال وجود دارد"
 
 #: src/Sms.py:184
 msgid "Compose SMS"
-msgstr ""
+msgstr "پیامک جدید"
 
 #: src/Sms.py:199
 msgid "Phone number"
-msgstr ""
+msgstr "شماره تلفن"
 
 #: src/Sms.vala:60
 msgid "Message body: "
-msgstr ""
+msgstr "متن پیام: "
 
 #: src/Sms.py:44
 msgid "Authorization succesfull. You can close this window."
-msgstr ""
+msgstr "احراز هویت انجام شد. می‌توانید این پنجره را ببندید."
 
 #: src/Sms.py:48
 msgid "Authorization failed. Please close this window and try again."
 msgstr ""
+"احراز هویت با شکست مواجه شد. لطفاً این پنجره را ببندید و دوباره تلاش کنید."
 
 #: src/Sms.py:303
 msgid "Sync starting"
-msgstr ""
+msgstr "همگام‌سازی شروع شد"
 
 #: src/Sms.py:303
 msgid "Synchronizing contacts"
-msgstr ""
+msgstr "همگام‌سازی مخاطبان"
 
 #: src/Sms.py:317
 msgid "Sync done"
-msgstr ""
+msgstr "همگام‌سازی انجام شد"
 
 #: src/Sms.py:318
 msgid "Synchronized contacts"
-msgstr ""
+msgstr "مخاطبان همگام‌سازی شدند"
 
 #: src/settings/Settings.vala:50
 msgid "Apply"
-msgstr ""
+msgstr "تایید"
 
 #: src/settings/Settings.vala:59
 msgid "Visibility"
-msgstr ""
+msgstr "پدیداری"
 
 #: src/settings/Settings.vala:61
 msgid "Icons"
-msgstr ""
+msgstr "آیکون‌ها"
 
 #: src/settings/Settings.vala:97
 msgid "Show only paired devices: "
-msgstr ""
+msgstr "تنها دستگاه‌ها متصل را نشان بده: "
 
 #: src/settings/Settings.vala:128
 msgid "Show custom icons for Elementary OS: "
-msgstr ""
+msgstr "آیکون‌های شخصی‌سازی شده را برای سیستم‌عامل المنتری نمایش بده: "
 
 #: src/settings/Settings.vala:152
 msgid "Delete Google Contacts: "
-msgstr ""
+msgstr "حساب‌های گوگل را حذف کن: "
 
 #: data/extensions/kdeconnect-send-nautilus.py:47 data/extensions/kdeconncet-send-nemo.py:47 data/extensions/kdeconnect-send-caja.py:47
 msgid "Check the device {device_name}"
-msgstr ""
+msgstr "دستگاه {device_name} را بررسی نمایید"
 
 #: data/extensions/kdeconnect-send-nautilus.py:48 data/extensions/kdeconncet-send-nemo.py:48 data/extensions/kdeconnect-send-caja.py:48
 msgid "Sending {num_files} file(s)"
-msgstr ""
+msgstr "در حال ارسال {num_files} فایل"
 
 #: data/extensions/kdeconnect-send-nautilus.py:79 data/extensions/kdeconncet-send-nemo.py:79 data/extensions/kdeconnect-send-caja.py:79
 msgid "KDEConnect Send To"
-msgstr ""
+msgstr "ارسال از طریق KDEConnect"
 
 #: data/extensions/kdeconnect-send-nautilus.py:80 data/extensions/kdeconncet-send-nemo.py:80 data/extensions/kdeconnect-send-caja.py:80
 msgid "send file(s) with kdeconnect"
-msgstr ""
+msgstr "ارسال فایل(فایل‌ها) با kdeconnect"
