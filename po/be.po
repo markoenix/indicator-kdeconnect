@@ -7,224 +7,237 @@ msgstr ""
 "Project-Id-Version: indicator-kdeconnect\n"
 "Report-Msgid-Bugs-To: steevenlopes@outlook.com\n"
 "POT-Creation-Date: 2016-11-18 18:46+0200\n"
-"PO-Revision-Date: 2016-11-18 18:46+0200\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2017-08-13 18:28+0000\n"
+"Last-Translator: Viktar Vauchkevich <victorenator@gmail.com>\n"
+"Language-Team: Belarusian <https://hosted.weblate.org/projects/indicator-kde-"
+"connect/translations/be/>\n"
 "Language: be\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<="
 "4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 2.16\n"
 
 #: src/FirstTimeWizard.vala:50
 msgid "<b>Are you ready for your first device pairing?</b>\n\n"
 msgstr ""
+"<b>Вы гатовыя да спалучэння вашай першай прылады?</b>\n"
+"\n"
 
 #: src/FirstTimeWizard.vala:51
 msgid "Now connect your devices using wifi connection.\n"
-msgstr ""
+msgstr "Цяпер падлучыце вашыя прылады, выкарыстоўваючы WiFi.\n"
 
 #: src/FirstTimeWizard.vala:52
 msgid "Tethering should work too!\n"
-msgstr ""
+msgstr "Тэзэрынг павінен працаваць таксама!\n"
 
 #: src/FirstTimeWizard.vala:53
 msgid "If you have Firewall running, please open port 1714-1764 for TCP and UDP\n\n"
 msgstr ""
+"Калі вы карыстаецеся фаэрволам, адкрыйце парты 1714-1764 для TCP і UDP\n"
+"\n"
 
 #: src/FirstTimeWizard.vala:54
 msgid "Launch KDE Connect in your Android which you can download from "
-msgstr ""
+msgstr "Запусціце KDE Connect на Андроід, папярэдне спампаваўшы яго з "
 
 #: src/FirstTimeWizard.vala:56
 msgid "Google Play</a>"
-msgstr ""
+msgstr "Google Play</a>"
 
 #: src/FirstTimeWizard.vala:65
 msgid "Everytime there is a new device connected, a new indicator will appear in your panel.\n"
 msgstr ""
+"Кожны раз, як новая прылада падлучыцца, новы індыкатар будзе з'яўляцца на "
+"панэлі.\n"
 
 #: src/FirstTimeWizard.vala:66
 msgid "There, you can pair and see its status\n\n"
 msgstr ""
+"Там вы можаце спалучыць і ўбачыць яго статус\n"
+"\n"
 
 #: src/FirstTimeWizard.vala:67
 msgid "<b>Now try to pair your device</b>"
-msgstr ""
+msgstr "<b>Цяпер паспрабуйце выканаць спалучэнне вышай пралады</b>"
 
 #: src/FirstTimeWizard.vala:76
 msgid "<b>Great! your device is all set</b>\n\n"
 msgstr ""
+"<b>Выдатна! Вашая прылада наладжана</b>\n"
+"\n"
 
 #: src/FirstTimeWizard.vala:77
 msgid "Now you can enable or disable modules on KDE Connect settings.\n"
-msgstr ""
+msgstr "Цяпер вы можаце ўключыць ці выключыць модулі ў наладах KDE Connect.\n"
 
 #: src/FirstTimeWizard.vala:78
 msgid "Indicator already added to autostart.\n"
-msgstr ""
+msgstr "Індыкатар ужо даданы ў аўтазапуск.\n"
 
 #: src/FirstTimeWizard.vala:79
 msgid "Enjoy!"
-msgstr ""
+msgstr "Атрымлівайце асалоду!"
 
 #: src/KDEConnectManager.vala:119
 msgid "cannot connect to KDE Connect DBus service"
-msgstr ""
+msgstr "немагчыма злучыцца з DBus-сэрвісам KDE Connect"
 
 #: src/Device.vala:524
 msgid "Encryption information not found"
-msgstr ""
+msgstr "Інфармацыя аб шыфраванні не знойдзенная"
 
 #: src/DeviceIndicator.vala:41
 msgid "Browse device"
-msgstr ""
+msgstr "Прагляд прылад"
 
 #: src/DeviceIndicator.vala:43
 msgid "Send file(s)"
-msgstr ""
+msgstr "Адправаць файл(ы)"
 
 #: src/DeviceIndicator.vala:47
 msgid "Send SMS"
-msgstr ""
+msgstr "Адправіць SMS"
 
 #: src/DeviceIndicator.vala:51
 msgid "Find my phone"
-msgstr ""
+msgstr "Знайсці мой тэлефон"
 
 #: src/DeviceIndicator.vala:55
 msgid "Request pairing"
-msgstr ""
+msgstr "Запыт спалучэння"
 
 #: src/DeviceIndicator.vala:58
 msgid "Unpair"
-msgstr ""
+msgstr "Раз'яднаць"
 
 #: src/DeviceIndicator.vala:100
 msgid "Select file(s)"
-msgstr ""
+msgstr "Абраць файл(ы)"
 
 #: src/DeviceIndicator.vala:103 src/contractor/Contractor.vala:24 src/settings/Settings.vala:47 src/Sms.py:237
 msgid "Cancel"
-msgstr ""
+msgstr "Адмяніць"
 
 #: src/DeviceIndicator.vala:105 
 msgid "Select"
-msgstr ""
+msgstr "Абраць"
 
 #: src/DeviceIndicator.vala:201
 msgid "Battery : "
-msgstr ""
+msgstr "Батарэя: "
 
 #: src/DeviceIndicator.vala:203
 msgid " (charging)"
-msgstr ""
+msgstr " (зарадка)"
 
 #: src/DeviceIndicator.vala:210
 msgid "Device Reachable and Trusted"
-msgstr ""
+msgstr "Прылада дасягальная і давераная"
 
 #: src/DeviceIndicator.vala:212
 msgid "Device Reachable but Not Trusted"
-msgstr ""
+msgstr "Прылада дасягальная, але не давераная"
 
 #: src/DeviceIndicator.vala:215
 msgid "Device Trusted but not Reachable"
-msgstr ""
+msgstr "Прылада давераная, але не дасягальная"
 
 #: src/DeviceIndicator.vala:217
 msgid "Device Not Reachable and Not Trusted"
-msgstr ""
+msgstr "Прылада не дасягальная і не давераная"
 
 #: src/contractor/Contractor.vala:15
 msgid "Send to"
-msgstr ""
+msgstr "Адправіць у"
 
 #: src/contractor/Contractor.vala:25 src/Sms.py:220
 msgid "Send"
-msgstr ""
+msgstr "Адправіць"
 
 #: src/contractor/Contractor.vala:84
 msgid "File(s) not found"
-msgstr ""
+msgstr "Файл(ы) не знойдзены"
 
 #: src/contractor/Contractor.vala:143
 msgid "There's %u file(s) to be send"
-msgstr ""
+msgstr "Гэты файл(ы) будзе адпраўлены"
 
 #: src/Sms.py:184
 msgid "Compose SMS"
-msgstr ""
+msgstr "Напісаць SMS"
 
 #: src/Sms.py:199
 msgid "Phone number"
-msgstr ""
+msgstr "Нумар тэлефона"
 
 #: src/Sms.vala:60
 msgid "Message body: "
-msgstr ""
+msgstr "Тэкст паведамлення: "
 
 #: src/Sms.py:44
 msgid "Authorization succesfull. You can close this window."
-msgstr ""
+msgstr "Аўтарызацыя паспяховая. Вы можаце закрыць гэтае вакно."
 
 #: src/Sms.py:48
 msgid "Authorization failed. Please close this window and try again."
 msgstr ""
+"Аўтарызацыя не ўдалася. Калі ласка, закрыйце гэтае вакно і паспрабуйце зноў."
 
 #: src/Sms.py:303
 msgid "Sync starting"
-msgstr ""
+msgstr "Запуск сінхранізацыі"
 
 #: src/Sms.py:303
 msgid "Synchronizing contacts"
-msgstr ""
+msgstr "Сінхранізаваць кантакты"
 
 #: src/Sms.py:317
 msgid "Sync done"
-msgstr ""
+msgstr "Сінхранізацыя завершаная"
 
 #: src/Sms.py:318
 msgid "Synchronized contacts"
-msgstr ""
+msgstr "Сінхранізаваныя кантакты"
 
 #: src/settings/Settings.vala:50
 msgid "Apply"
-msgstr ""
+msgstr "Ужыць"
 
 #: src/settings/Settings.vala:59
 msgid "Visibility"
-msgstr ""
+msgstr "Бачнасць"
 
 #: src/settings/Settings.vala:61
 msgid "Icons"
-msgstr ""
+msgstr "Значкі"
 
 #: src/settings/Settings.vala:97
 msgid "Show only paired devices: "
-msgstr ""
+msgstr "Паказваць толькі спалучаныя прылады: "
 
 #: src/settings/Settings.vala:128
 msgid "Show custom icons for Elementary OS: "
-msgstr ""
+msgstr "Паказваць свае значкі для Elementary OS: "
 
 #: src/settings/Settings.vala:152
 msgid "Delete Google Contacts: "
-msgstr ""
+msgstr "Выдаліць кантакты Google: "
 
 #: data/extensions/kdeconnect-send-nautilus.py:47 data/extensions/kdeconncet-send-nemo.py:47 data/extensions/kdeconnect-send-caja.py:47
 msgid "Check the device {device_name}"
-msgstr ""
+msgstr "Праверыць прыладу {device_name}"
 
 #: data/extensions/kdeconnect-send-nautilus.py:48 data/extensions/kdeconncet-send-nemo.py:48 data/extensions/kdeconnect-send-caja.py:48
 msgid "Sending {num_files} file(s)"
-msgstr ""
+msgstr "Адпраўка {num_files} файл(аў)"
 
 #: data/extensions/kdeconnect-send-nautilus.py:79 data/extensions/kdeconncet-send-nemo.py:79 data/extensions/kdeconnect-send-caja.py:79
 msgid "KDEConnect Send To"
-msgstr ""
+msgstr "Адправіць праз KDEConnect"
 
 #: data/extensions/kdeconnect-send-nautilus.py:80 data/extensions/kdeconncet-send-nemo.py:80 data/extensions/kdeconnect-send-caja.py:80
 msgid "send file(s) with kdeconnect"
-msgstr ""
+msgstr "адправіць файл(ы) з kdeconnect"
