@@ -21,7 +21,7 @@ from queue import Queue
 import gi
 gi.require_version('Gtk', '3.0')
 gi.require_version('Notify', '0.7')
-from gi.repository import Gtk, Gdk, Notify
+from gi.repository import Gio, GLib, Gtk, Gdk, Notify
 from requests_oauthlib import OAuth2Session
 from oauthlib.oauth2.rfc6749.errors import TokenExpiredError
 
@@ -220,6 +220,15 @@ class MessageWindow(Gtk.Window):
 		self.connect('delete-event', Gtk.main_quit)
 		hotkeys = Gtk.AccelGroup()
 		self.add_accel_group(hotkeys)
+		
+		self.dbus = Gio.DBusProxy.new_for_bus_sync(
+			Gio.BusType.SESSION,
+			Gio.DBusProxyFlags.NONE,
+			None,
+			'org.kde.kdeconnectd',
+			'/modules/kdeconnect/devices/' + args.device + '/telephony',
+			'org.kde.kdeconnect.device.telephony',
+			None)
 
 		headerbar = Gtk.HeaderBar(spacing=0)
 		headerbar.props.title = _('Compose SMS')
@@ -409,11 +418,8 @@ class MessageWindow(Gtk.Window):
 		#~ for chunk in chunks:
 		for phone in phones:
 			if not phone.isspace():
-				subprocess.call([
-					'kdeconnect-cli',
-					'--device', args.device,
-					'--destination', phone.strip(),
-					'--send-sms', message])
+				variant = GLib.Variant('(ss)', (phone.strip(), message))
+				self.dbus.call_sync('sendSms', variant, 0, -1, None)
 		self.close()
 
 MessageWindow()
