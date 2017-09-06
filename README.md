@@ -60,6 +60,8 @@ Usage Suggestions
  3. If your files manager is not supported by extensions create a action entry with `kdeconnect-send %F` as command.
     Or you can use the script present on the [scripts folder](https://github.com/Bajoja/indicator-kdeconnect/tree/master/scripts/kdeconnect-send), adding it to your file manager script folder.
  4. If you having troubles under Wayland install this [script](https://github.com/Bajoja/indicator-kdeconnect/tree/master/scripts/wayland). 
+ 
+Gnome Shell users can consider use [KDE Connect/MConnect integration for Gnome Shell](https://github.com/andyholmes/gnome-shell-extension-mconnect). It's a full integrated extension with the same features.
 
 Please report issues and suggestion [here](https://github.com/Bajoja/indicator-kdeconnect/issues)
 
