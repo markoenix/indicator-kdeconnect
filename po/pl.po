@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: indicator-kdeconnect\n"
 "Report-Msgid-Bugs-To: steevenlopes@outlook.com\n"
 "POT-Creation-Date: 2016-11-18 18:46+0200\n"
-"PO-Revision-Date: 2017-09-09 13:56+0000\n"
+"PO-Revision-Date: 2017-09-10 16:47+0000\n"
 "Last-Translator: pshem <ppikula@rocketmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/indicator-kde-"
 "connect/translations/pl/>\n"
@@ -220,7 +220,7 @@ msgstr "Pokaż tylko połączone urządzenia: "
 
 #: src/settings/Settings.vala:128
 msgid "Show custom icons for Elementary OS: "
-msgstr "Użyj monotonicznych ikon: "
+msgstr "Użyj ikon dla Elementary OS "
 
 #: src/settings/Settings.vala:152
 msgid "Delete Google Contacts: "
@@ -236,7 +236,7 @@ msgstr "Wysyłam {num_files} plik(ów)"
 
 #: data/extensions/kdeconnect-send-nautilus.py:79 data/extensions/kdeconncet-send-nemo.py:79 data/extensions/kdeconnect-send-caja.py:79
 msgid "KDEConnect Send To"
-msgstr "KDEConnect Wyślij do"
+msgstr "KDE Connect Wyślij do"
 
 #: data/extensions/kdeconnect-send-nautilus.py:80 data/extensions/kdeconncet-send-nemo.py:80 data/extensions/kdeconnect-send-caja.py:80
 msgid "send file(s) with kdeconnect"
