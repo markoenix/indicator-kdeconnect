@@ -20,7 +20,7 @@ msgid "<b>Are you ready for your first device pairing?</b>\n\n"
 msgstr ""
 
 #: src/FirstTimeWizard.vala:51
-msgid "Now connect your devices using wifi connection.\n"
+msgid "Now connect your devices using Wi-Fi connection.\n"
 msgstr ""
 
 #: src/FirstTimeWizard.vala:52
@@ -28,19 +28,19 @@ msgid "Tethering should work too!\n"
 msgstr ""
 
 #: src/FirstTimeWizard.vala:53
-msgid "If you have Firewall running, please open port 1714-1764 for TCP and UDP\n\n"
+msgid "If you have a firewall running, please open TCP and UDP ports 1714-1764\n\n"
 msgstr ""
 
 #: src/FirstTimeWizard.vala:54
-msgid "Launch KDE Connect in your Android which you can download from "
+msgid "Launch KDE Connect on your Android device. You can download it from "
 msgstr ""
 
 #: src/FirstTimeWizard.vala:56
-msgid "Google Play</a>"
+msgid "Google Play or F-Droid</a>"
 msgstr ""
 
 #: src/FirstTimeWizard.vala:65
-msgid "Everytime there is a new device connected, a new indicator will appear in your panel.\n"
+msgid "Whenever a new device is connected, a new indicator will appear in your panel.\n"
 msgstr ""
 
 #: src/FirstTimeWizard.vala:66
@@ -56,11 +56,11 @@ msgid "<b>Great! your device is all set</b>\n\n"
 msgstr ""
 
 #: src/FirstTimeWizard.vala:77
-msgid "Now you can enable or disable modules on KDE Connect settings.\n"
+msgid "Now you can enable or disable modules in KDE Connect settings.\n"
 msgstr ""
 
 #: src/FirstTimeWizard.vala:78
-msgid "Indicator already added to autostart.\n"
+msgid "Indicator has been added to autostart.\n"
 msgstr ""
 
 #: src/FirstTimeWizard.vala:79
@@ -68,7 +68,7 @@ msgid "Enjoy!"
 msgstr ""
 
 #: src/KDEConnectManager.vala:119
-msgid "cannot connect to KDE Connect DBus service"
+msgid "Cannot connect to KDE Connect DBus service"
 msgstr ""
 
 #: src/Device.vala:524
@@ -120,19 +120,19 @@ msgid " (charging)"
 msgstr ""
 
 #: src/DeviceIndicator.vala:210
-msgid "Device Reachable and Trusted"
+msgid "Device reachable and trusted"
 msgstr ""
 
 #: src/DeviceIndicator.vala:212
-msgid "Device Reachable but Not Trusted"
+msgid "Device reachable, but untrusted"
 msgstr ""
 
 #: src/DeviceIndicator.vala:215
-msgid "Device Trusted but not Reachable"
+msgid "Device trusted, but unreachable"
 msgstr ""
 
 #: src/DeviceIndicator.vala:217
-msgid "Device Not Reachable and Not Trusted"
+msgid "Device unreachable and untrusted"
 msgstr ""
 
 #: src/contractor/Contractor.vala:15
@@ -164,11 +164,11 @@ msgid "Message body: "
 msgstr ""
 
 #: src/Sms.py:44
-msgid "Authorization succesfull. You can close this window."
+msgid "Authorization succesfull. You can close this window"
 msgstr ""
 
 #: src/Sms.py:48
-msgid "Authorization failed. Please close this window and try again."
+msgid "Authorization failed. Please close this window and try again"
 msgstr ""
 
 #: src/Sms.py:303
@@ -220,9 +220,9 @@ msgid "Sending {num_files} file(s)"
 msgstr ""
 
 #: data/extensions/kdeconnect-send-nautilus.py:79 data/extensions/kdeconncet-send-nemo.py:79 data/extensions/kdeconnect-send-caja.py:79
-msgid "KDEConnect Send To"
+msgid "KDE Connect Send To"
 msgstr ""
 
 #: data/extensions/kdeconnect-send-nautilus.py:80 data/extensions/kdeconncet-send-nemo.py:80 data/extensions/kdeconnect-send-caja.py:80
-msgid "send file(s) with kdeconnect"
+msgid "send file(s) with KDE Connect"
 msgstr ""
