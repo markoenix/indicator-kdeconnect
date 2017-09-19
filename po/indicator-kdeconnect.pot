@@ -208,7 +208,7 @@ msgid "Show custom icons for Elementary OS: "
 msgstr ""
 
 #: src/settings/Settings.vala:152
-msgid "Delete Google Contacts: "
+msgid "Delete Google contacts: "
 msgstr ""
 
 #: data/extensions/kdeconnect-send-nautilus.py:47 data/extensions/kdeconncet-send-nemo.py:47 data/extensions/kdeconnect-send-caja.py:47
@@ -220,7 +220,7 @@ msgid "Sending {num_files} file(s)"
 msgstr ""
 
 #: data/extensions/kdeconnect-send-nautilus.py:79 data/extensions/kdeconncet-send-nemo.py:79 data/extensions/kdeconnect-send-caja.py:79
-msgid "KDE Connect Send To"
+msgid "KDE Connect send to"
 msgstr ""
 
 #: data/extensions/kdeconnect-send-nautilus.py:80 data/extensions/kdeconncet-send-nemo.py:80 data/extensions/kdeconnect-send-caja.py:80
