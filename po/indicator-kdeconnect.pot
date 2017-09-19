@@ -208,7 +208,7 @@ msgid "Show custom icons for Elementary OS: "
 msgstr ""
 
 #: src/settings/Settings.vala:152
-msgid "Delete Google contacts: "
+msgid "Delete Google Contacts imported from your Android device: "
 msgstr ""
 
 #: data/extensions/kdeconnect-send-nautilus.py:47 data/extensions/kdeconncet-send-nemo.py:47 data/extensions/kdeconnect-send-caja.py:47
