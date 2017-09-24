@@ -1,0 +1,53 @@
+gi	kdeconnect-send-caja.py	/^import gi$/;"	i
+Caja	kdeconnect-send-caja.py	/^from gi.repository import Caja, GObject, Notify$/;"	i
+GObject	kdeconnect-send-caja.py	/^from gi.repository import Caja, GObject, Notify$/;"	i
+Notify	kdeconnect-send-caja.py	/^from gi.repository import Caja, GObject, Notify$/;"	i
+Popen	kdeconnect-send-caja.py	/^from subprocess import Popen$/;"	i
+isfile	kdeconnect-send-caja.py	/^from os.path import isfile$/;"	i
+urllib	kdeconnect-send-caja.py	/^import urllib, re, gettext, locale$/;"	i
+re	kdeconnect-send-caja.py	/^import urllib, re, gettext, locale$/;"	i
+gettext	kdeconnect-send-caja.py	/^import urllib, re, gettext, locale$/;"	i
+locale	kdeconnect-send-caja.py	/^import urllib, re, gettext, locale$/;"	i
+_	kdeconnect-send-caja.py	/^_ = gettext.gettext$/;"	v
+KDEConnectSendExtension	kdeconnect-send-caja.py	/^class KDEConnectSendExtension(GObject.GObject, Caja.MenuProvider):$/;"	c
+__init__	kdeconnect-send-caja.py	/^    def __init__(self):$/;"	m	class:KDEConnectSendExtension
+setup_gettext	kdeconnect-send-caja.py	/^    def setup_gettext(self):$/;"	m	class:KDEConnectSendExtension
+get_reachable_devices	kdeconnect-send-caja.py	/^    def get_reachable_devices(self):$/;"	m	class:KDEConnectSendExtension
+send_files	kdeconnect-send-caja.py	/^    def send_files(self, menu, files, device_id, device_name):$/;"	m	class:KDEConnectSendExtension
+get_file_items	kdeconnect-send-caja.py	/^    def get_file_items(self, window, files):$/;"	m	class:KDEConnectSendExtension
+gi	kdeconnect-send-nautilus.py	/^import gi$/;"	i
+Nautilus	kdeconnect-send-nautilus.py	/^from gi.repository import Nautilus, GObject, Notify$/;"	i
+GObject	kdeconnect-send-nautilus.py	/^from gi.repository import Nautilus, GObject, Notify$/;"	i
+Notify	kdeconnect-send-nautilus.py	/^from gi.repository import Nautilus, GObject, Notify$/;"	i
+Popen	kdeconnect-send-nautilus.py	/^from subprocess import Popen$/;"	i
+isfile	kdeconnect-send-nautilus.py	/^from os.path import isfile$/;"	i
+urllib	kdeconnect-send-nautilus.py	/^import urllib, re, gettext, locale$/;"	i
+re	kdeconnect-send-nautilus.py	/^import urllib, re, gettext, locale$/;"	i
+gettext	kdeconnect-send-nautilus.py	/^import urllib, re, gettext, locale$/;"	i
+locale	kdeconnect-send-nautilus.py	/^import urllib, re, gettext, locale$/;"	i
+_	kdeconnect-send-nautilus.py	/^_ = gettext.gettext$/;"	v
+KDEConnectSendExtension	kdeconnect-send-nautilus.py	/^class KDEConnectSendExtension(GObject.GObject, Nautilus.MenuProvider):$/;"	c
+__init__	kdeconnect-send-nautilus.py	/^    def __init__(self):$/;"	m	class:KDEConnectSendExtension
+setup_gettext	kdeconnect-send-nautilus.py	/^    def setup_gettext(self):$/;"	m	class:KDEConnectSendExtension
+get_reachable_devices	kdeconnect-send-nautilus.py	/^    def get_reachable_devices(self):$/;"	m	class:KDEConnectSendExtension
+send_files	kdeconnect-send-nautilus.py	/^    def send_files(self, menu, files, device_id, device_name):$/;"	m	class:KDEConnectSendExtension
+send_to_multiple_devices	kdeconnect-send-nautilus.py	/^    def send_to_multiple_devices(self, menu, files):$/;"	m	class:KDEConnectSendExtension
+menu_activate_cb	kdeconnect-send-nautilus.py	/^    def menu_activate_cb(self, menu, files, device_id, device_name):$/;"	m	class:KDEConnectSendExtension
+get_file_items	kdeconnect-send-nautilus.py	/^    def get_file_items(self, window, files):$/;"	m	class:KDEConnectSendExtension
+gi	kdeconnect-send-nemo.py	/^import gi$/;"	i
+Nemo	kdeconnect-send-nemo.py	/^from gi.repository import Nemo, GObject, Notify$/;"	i
+GObject	kdeconnect-send-nemo.py	/^from gi.repository import Nemo, GObject, Notify$/;"	i
+Notify	kdeconnect-send-nemo.py	/^from gi.repository import Nemo, GObject, Notify$/;"	i
+Popen	kdeconnect-send-nemo.py	/^from subprocess import Popen$/;"	i
+isfile	kdeconnect-send-nemo.py	/^from os.path import isfile$/;"	i
+urllib	kdeconnect-send-nemo.py	/^import urllib, re, gettext, locale$/;"	i
+re	kdeconnect-send-nemo.py	/^import urllib, re, gettext, locale$/;"	i
+gettext	kdeconnect-send-nemo.py	/^import urllib, re, gettext, locale$/;"	i
+locale	kdeconnect-send-nemo.py	/^import urllib, re, gettext, locale$/;"	i
+_	kdeconnect-send-nemo.py	/^_ = gettext.gettext$/;"	v
+KDEConnectSendExtension	kdeconnect-send-nemo.py	/^class KDEConnectSendExtension(GObject.GObject, Nemo.MenuProvider):$/;"	c
+__init__	kdeconnect-send-nemo.py	/^    def __init__(self):$/;"	m	class:KDEConnectSendExtension
+setup_gettext	kdeconnect-send-nemo.py	/^    def setup_gettext(self):$/;"	m	class:KDEConnectSendExtension
+get_reachable_devices	kdeconnect-send-nemo.py	/^    def get_reachable_devices(self):$/;"	m	class:KDEConnectSendExtension
+send_files	kdeconnect-send-nemo.py	/^    def send_files(self, menu, files, device_id, device_name):$/;"	m	class:KDEConnectSendExtension
+get_file_items	kdeconnect-send-nemo.py	/^    def get_file_items(self, window, files):$/;"	m	class:KDEConnectSendExtension

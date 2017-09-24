@@ -1,4 +1,4 @@
-Source: indicator-kdeconnect
+Source: com.github.bajoja.indicator-kdeconnect
 Section: net
 Priority: extra
 Maintainer: Bajoja <steevenlopes@outlook.com>
