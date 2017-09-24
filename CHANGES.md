@@ -1,3 +1,7 @@
+# Version 0.9.2
+ * Add Languages: Persian, Polish, Norwegian,Slovenian
+ * Fix English errors on main translation file
+
 # Version 0.9.1
  * Add Languages: Chinese
  * Fix Elementary OS App Center app compilation

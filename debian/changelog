@@ -1,3 +1,7 @@
+indicator-kdeconnect (0.9.2) precise; urgency=low
+ * Add Languages: Persian, Polish, Norwegian,Slovenian
+ * Fix English errors on main translation file
+
 indicator-kdeconnect (0.9.1) precise; urgency=low
  * Add Languages: Chinese
  * Fix Elementary OS App Center app compilation

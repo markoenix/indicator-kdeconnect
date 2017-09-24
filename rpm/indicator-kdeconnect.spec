@@ -20,7 +20,7 @@
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 Name:           indicator-kdeconnect
-Version:        0.9.1
+Version:        0.9.2
 Release:        0%{?dist}
 Summary:        App Indicator for KDE Connect
 Group:          Applications/System
@@ -121,7 +121,12 @@ cd build
 
 
 %changelog
-* Thu Jul 18 00:00 Bajoja <steevenlopes@outlook.com> 0.9.1
+
+* Sun Sep 24 2017 00:00 Bajoja <steevenlopes@outlook.com> 0.9.2
+ - Add Languages: Persian, Polish, Norwegian,Slovenian
+ - Fix English errors on main translation file
+
+* Thu Jul 18 2017 00:00 Bajoja <steevenlopes@outlook.com> 0.9.1
  - Add Languages: Chinese
  - Fix Elementary OS App Center app compilation
  - Fix Nautilus and Caja send files don't work
