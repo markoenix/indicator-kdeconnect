@@ -109,6 +109,12 @@ namespace KDEConnectIndicator {
         	}
         }
 
+        public bool to_list_dir{
+        	get {
+        	     return this.settings.get_boolean ("list-device-dir");
+        	}
+        }
+
         public Device (string path) {
             message ("device : %s",path);
             this.path = path;
@@ -397,15 +403,15 @@ namespace KDEConnectIndicator {
             }
         }
         
-        public void browse () {
+        public void browse (string open_path="") {
             if (!has_plugin ("kdeconnect_sftp"))
                 return;
             if (is_mounted ())
-                open_file (mount_point);
+                open_file (open_path.length == 0 ? mount_point : open_path);
             else {
                 mount();
                 Timeout.add (1000, ()=> { // idle for a few second to let sftp kickin
-                        open_file (mount_point);
+                        open_file (open_path.length == 0 ? mount_point : open_path);
                         return false;
                 });
             }
@@ -454,25 +460,39 @@ namespace KDEConnectIndicator {
                 } catch (Error e) {
                     message (e.message);
                 }
-                return ""; //TODO : maybe return /home/vikoadi/.kde/share/apps/kdeconnect/
+                return "";
             }
         }
-        
-        public void mount () {
+
+        public void mount (bool mount_and_wait=false) {
             try {
                  if (!has_plugin ("kdeconnect_sftp"))
                      return;
-                 conn.call_sync (
-                         "org.kde.kdeconnect",
-                         path+"/sftp",
-                         "org.kde.kdeconnect.device.sftp",
-                         "mount",
-                         null,
-                         null,
-                         DBusCallFlags.NONE,
-                         -1,
-                         null
-                         );
+
+		 if (mount_and_wait)
+                     conn.call_sync (
+                             "org.kde.kdeconnect",
+                             path+"/sftp",
+                             "org.kde.kdeconnect.device.sftp",
+                             "mountAndWait",
+                             null,
+                             null,
+                             DBusCallFlags.NONE,
+                             -1,
+                             null
+                             );
+                 else
+                     conn.call_sync (
+                             "org.kde.kdeconnect",
+                             path+"/sftp",
+                             "org.kde.kdeconnect.device.sftp",
+                             "mount",
+                             null,
+                             null,
+                             DBusCallFlags.NONE,
+                             -1,
+                             null
+                             );
             } catch (Error e) {
                 message (e.message);
             }
@@ -498,6 +518,40 @@ namespace KDEConnectIndicator {
             }
         }
         
+        public HashTable<string, string> get_directories () {
+            try {
+                 var return_variant = conn.call_sync (
+                              "org.kde.kdeconnect",
+                              path+"/sftp",
+                              "org.kde.kdeconnect.device.sftp",
+                              "getDirectories",
+                              null,
+                              null,
+                              DBusCallFlags.NONE,
+                              -1,
+                              null
+                              );
+
+		 HashTable<string, string> directories = new HashTable<string, string> (str_hash, str_equal);
+
+                 Variant variant = return_variant.get_child_value (0);
+                 VariantIter iter = variant.iterator ();
+
+                 Variant? val = null;
+                 string? key = null;
+
+	         while (iter.next ("{sv}", &key, &val)) {
+			directories.insert (key, val.dup_string ());
+		 }
+
+		 return directories;
+
+            } catch (Error e) {
+            	message (e.message);
+            }
+            return new HashTable<string, string> (str_hash, str_equal);;
+        }
+
         private bool open_file (string path) {
             var file = File.new_for_path (path);
             try {

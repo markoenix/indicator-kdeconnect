@@ -61,12 +61,8 @@ namespace KDEConnectIndicator{
 		    			files.append (file);
 			}
 
-			if (files.length () == 0){
-
-			}
-			else{
+			if (files.length () > 0)
 				activate ();
-			}
 		}
 
 		private void create_window (){
@@ -218,7 +214,7 @@ namespace KDEConnectIndicator{
             		foreach (File file in files){
             			foreach (int selected in selected_devs){
             				Device selected_dev = this.device_list.
-            						    nth_data (selected);
+            						   	 nth_data (selected);
 
             				selected_dev.send_file (file.get_uri ());
             			}

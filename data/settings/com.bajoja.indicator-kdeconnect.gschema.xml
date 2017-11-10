@@ -17,5 +17,13 @@
       </description>
     </key>
 
+    <key name="list-device-dir" type="b">
+      <default>false</default>
+      <summary>Show directory list</summary>
+      <description>
+        Show directory list of the device
+      </description>
+    </key>
+
   </schema>
 </schemalist>

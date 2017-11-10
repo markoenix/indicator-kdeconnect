@@ -52,9 +52,7 @@ namespace KDEConnectIndicator {
 			this.stack.set_transition_type (Gtk.StackTransitionType.SLIDE_LEFT_RIGHT);
 
 			this.stack.add_titled(create_visibility_setts (), "visibility", _("Visibility"));
-			// Will be Deprecate on 1.0
-			//this.stack.add_titled (create_icons_setts (), "icons", _("Icons"));
-			
+
 			this.stack.add_titled (create_sms_setts (), "sms", _("SMS"));
 
         		this.stack_switcher = new StackSwitcher ();
@@ -154,62 +152,49 @@ namespace KDEConnectIndicator {
 				settings.set_boolean ("visibilitiy", switch1.active);
 			});
 
-
-			ListBox list_box = new ListBox ();
-			list_box.set_selection_mode (Gtk.SelectionMode.NONE);
-
 			Box hbox1 = new Box (Gtk.Orientation.HORIZONTAL, 50);
+
+			hbox1.pack_start (label1, true, true, 0);
+			hbox1.pack_start (switch1, true, true, 0);
 
 			ListBoxRow boxrow1 = new ListBoxRow ();
 
 			boxrow1.add (hbox1);
 
-			hbox1.pack_start (label1, true, true, 0);
-			hbox1.pack_start (switch1, true, true, 0);
+			//----------------------------------------------------//
+
+			Label label2 = new Label (_("Show device directories: "));
+
+			Switch switch2 = new Switch ();
+			switch2.set_active (settings.get_boolean ("list-device-dir"));
+
+			switch2.notify["active"].connect (() => {
+				settings.set_boolean ("list-device-dir", switch2.active);
+			});
+
+			Box hbox2 = new Box (Gtk.Orientation.HORIZONTAL, 50);
+
+			hbox2.pack_start (label2, true, true, 0);
+			hbox2.pack_start (switch2, true, true, 0);
+
+			ListBoxRow boxrow2 = new ListBoxRow ();
+
+			boxrow2.add (hbox2);
+
+			//----------------------------------------------------//
+
+			ListBox list_box = new ListBox ();
+			list_box.set_selection_mode (Gtk.SelectionMode.NONE);
+
 
 			list_box.add (boxrow1);
+			list_box.add (boxrow2);
 
 			Box vbox = new Box (Gtk.Orientation.HORIZONTAL, 0);
         		vbox.pack_start (list_box, true, true, 0);
 
         		return vbox;
 		}
-		
-		/*
-		private Box create_icons_setts () {
-			Label label1 = new Label (_("Show custom icons for Elementary OS: "));
-
-			Switch switch2 = new Switch ();
-			switch2.set_active (settings.get_string ("icons")!="");
-
-			switch2.notify["active"].connect (() => {
-				if (switch2.active) {
-					settings.set_string ("icons", "-symbolic");
-				} else {
-					settings.set_string ("icons", "");
-				}
-			});
-
-			ListBox list_box = new ListBox ();
-			list_box.set_selection_mode (Gtk.SelectionMode.NONE);
-
-			Box hbox1 = new Box (Gtk.Orientation.HORIZONTAL, 50);
-
-			ListBoxRow boxrow1 = new ListBoxRow ();
-
-			boxrow1.add (hbox1);
-
-			hbox1.pack_start (label1, true, true, 0);
-			hbox1.pack_start (switch2, true, true, 0);
-
-			list_box.add (boxrow1);
-
-			Box vbox = new Box (Gtk.Orientation.HORIZONTAL, 0);
-        		vbox.pack_start (list_box, true, true, 0);
-
-        		return vbox;
-        	}
-		*/
 
 		private Box create_sms_setts () {
 			Label label1 = new Label (_("Delete Google Contacts: "));

@@ -73,7 +73,7 @@ install (TARGETS ${INDICATOR_EXEC} RUNTIME DESTINATION bin)
 # contractor binary
 set (CONTRACTOR_EXEC "kdeconnect-send")
 vala_precompile(VALA_C ${CONTRACTOR_EXEC}
-	src/contractor/Contractor.vala
+	src/contractor/KDEConnectSend.vala
 	src/Device.vala
 	PACKAGES
 	gtk+-3.0
