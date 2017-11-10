@@ -49,6 +49,9 @@ sudo apt update
 sudo apt install kdeconnect indicator-kdeconnect
 ```
 
+- Flatpack
+ Flatpack source can be found [here](https://github.com/flathub/com.github.bajoja.indicator-kdeconnect)
+
 - From the Source
  Check the INSTALL file
 

@@ -1,3 +1,6 @@
+# Version 0.9.3
+ * Add Option to show device main folders instead of internel storage
+
 # Version 0.9.2
  * Add Languages: Persian, Polish, Norwegian,Slovenian
  * Fix English errors on main translation file
