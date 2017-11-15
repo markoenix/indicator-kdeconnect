@@ -123,7 +123,7 @@ cd build
 %changelog
 
 * Fri Nov 10 2017 00:00 Bajoja <steevenlopes@outlook.com> 0.9.3
- - Add Option to show device main folders instead of internel storage
+ - Add Option to show device main folders instead of internal storage
 
 * Sun Sep 24 2017 00:00 Bajoja <steevenlopes@outlook.com> 0.9.2
  - Add Languages: Persian, Polish, Norwegian,Slovenian
