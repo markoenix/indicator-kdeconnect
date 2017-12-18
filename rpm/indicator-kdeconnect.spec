@@ -82,8 +82,11 @@ cd build
 %make_install
 
 %if 0%{?suse_version}
-%suse_update_desktop_file -r -i %name Network Telephony
+%suse_update_desktop_file -r -i %name 'Network;Telephony;'
 %endif
+
+# Bad workaround for a "directories not owned by a package" failure
+rm -rf ${RPM_BUILD_ROOT}%{_datadir}/locale/zh_Hant
 
 %files
 %defattr(-,root,root,-)
@@ -101,13 +104,14 @@ cd build
 %dir %{_datadir}/nautilus-python
 %dir %{_datadir}/nemo-python
 %dir %{_datadir}/Thunar
-%{_bindir}/%{name}
+%{_bindir}/indicator-kdeconnect*
 %{_bindir}/kdeconnect-send
-%{_bindir}/indicator-kdeconnect/Sms.py
 %{_datadir}/locale/*/LC_MESSAGES/indicator-kdeconnect.mo
-%{_datadir}/applications/%{name}.desktop
+%{_datadir}/applications/*.desktop
+%{_datadir}/indicator-kdeconnect/*
 %{_datadir}/contractor/kdeconnect.contract
-%{_datadir}/%{name}
+%{_datadir}/glib-2.0/schemas/com.bajoja.indicator-kdeconnect.gschema.xml
+%{_datadir}/metainfo/com.bajoja.indicator-kdeconnect.appdata.xml
 %{_datadir}/nautilus-python/extensions/
 %{_datadir}/nemo-python/extensions/
 %{_datadir}/caja-python/extensions/
@@ -118,7 +122,6 @@ cd build
 %if 0%{?fedora} || 0%{?rhel_version} || 0%{?centos_version}
 %{_datadir}/icons/Adwaita/*/*/*
 %endif
-
 
 %changelog
 
