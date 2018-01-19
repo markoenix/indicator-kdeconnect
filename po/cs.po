@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: indicator-kdeconnect\n"
 "Report-Msgid-Bugs-To: steevenlopes@outlook.com\n"
 "POT-Creation-Date: 2017-04-20 12:45+0100\n"
-"PO-Revision-Date: 2018-01-19 12:52+0000\n"
-"Last-Translator: anonymous <>\n"
+"PO-Revision-Date: 2018-01-19 12:54+0000\n"
+"Last-Translator: Miroslav Holeček <mirek.kulda@volny.cz>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/indicator-kde-"
 "connect/translations/cs/>\n"
 "Language: cs\n"
@@ -235,7 +235,7 @@ msgstr "Zobrazit pouze připojená zařízení:"
 
 #: src/settings/Settings.vala:128
 msgid "Show custom icons for Elementary OS: "
-msgstr "Zobrazit volitelné ikony pro Elementary OS:"
+msgstr "Zobrazit volitelné ikony pro základní OS: "
 
 #: src/settings/Settings.vala:152
 msgid "Delete Google Contacts: "
