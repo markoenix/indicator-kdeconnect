@@ -8,7 +8,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: steevenlopes@outlook.com\n"
 "POT-Creation-Date: 2017-04-20 12:45+0100\n"
 "PO-Revision-Date: 2018-01-19 12:58+0000\n"
-"Last-Translator: anonymous <>\n"
+"Last-Translator: Miroslav Holeček <mirek.kulda@volny.cz>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/indicator-kde-"
 "connect/translations/cs/>\n"
 "Language: cs\n"
@@ -219,7 +219,7 @@ msgstr "Synchronizované kontakty"
 
 #: src/settings/Settings.vala:50
 msgid "Apply"
-msgstr ""
+msgstr "Použít"
 
 #: src/settings/Settings.vala:59
 msgid "Visibility"
