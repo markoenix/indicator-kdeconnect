@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: indicator-kdeconnect\n"
 "Report-Msgid-Bugs-To: steevenlopes@outlook.com\n"
 "POT-Creation-Date: 2016-11-18 18:46+0200\n"
-"PO-Revision-Date: 2017-08-31 07:47+0000\n"
+"PO-Revision-Date: 2018-01-27 12:34+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects"
 "/indicator-kde-connect/translations/nb_NO/>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.17-dev\n"
+"X-Generator: Weblate 2.19-dev\n"
 
 #: src/FirstTimeWizard.vala:50
 msgid "<b>Are you ready for your first device pairing?</b>\n\n"
@@ -29,7 +29,6 @@ msgid "Now connect your devices using wifi connection.\n"
 msgstr "Koble enhetene dine ved bruk av Wi-Fi.\n"
 
 #: src/FirstTimeWizard.vala:52
-#, fuzzy
 msgid "Tethering should work too!\n"
 msgstr "Tjudring bør også fungere!\n"
 
