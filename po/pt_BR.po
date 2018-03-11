@@ -8,7 +8,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: steevenlopes@outlook.com\n"
 "POT-Creation-Date: 2017-04-20 12:48+0100\n"
 "PO-Revision-Date: 2018-03-11 22:54+0000\n"
-"Last-Translator: Gustavo Marques <pushstarttocontinue@outlook.com>\n"
+"Last-Translator: anonymous <>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects"
 "/indicator-kde-connect/translations/pt_BR/>\n"
 "Language: pt_BR\n"
@@ -65,7 +65,7 @@ msgid ""
 "There, you can pair and see its status\n"
 "\n"
 msgstr ""
-"Ali, podes emparelhar e ver o seu estado\n"
+"Ali, você pode emparelhar e ver estado do dispositivo\n"
 "\n"
 
 #: src/FirstTimeWizard.vala:67
@@ -83,15 +83,15 @@ msgstr ""
 #: src/FirstTimeWizard.vala:77
 msgid "Now you can enable or disable modules on KDE Connect settings.\n"
 msgstr ""
-"Agora podes habilitar ou desabilitar módulos no KDE Connect settings.\n"
+"Agora você pode habilitar ou desabilitar módulos no KDE Connect settings.\n"
 
 #: src/FirstTimeWizard.vala:78
 msgid "Indicator already added to autostart.\n"
-msgstr "O indicador já foi adicionado às aplicações de arranque.\n"
+msgstr "O indicador já foi adicionado às aplicações de inicialização.\n"
 
 #: src/FirstTimeWizard.vala:79
 msgid "Enjoy!"
-msgstr "Desfruta!"
+msgstr "Aproveite!"
 
 #: src/KDEConnectManager.vala:119
 msgid "cannot connect to KDE Connect DBus service"
@@ -107,7 +107,7 @@ msgstr "Navegar no dispositivo"
 
 #: src/DeviceIndicator.vala:43
 msgid "Send file(s)"
-msgstr "Enviar ficheiro(s)"
+msgstr "Enviar arquivos(s)"
 
 #: src/DeviceIndicator.vala:47
 msgid "Send SMS"
