@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: indicator-kdeconnect\n"
 "Report-Msgid-Bugs-To: steevenlopes@outlook.com\n"
 "POT-Creation-Date: 2017-04-20 12:48+0100\n"
-"PO-Revision-Date: 2018-03-11 22:55+0000\n"
-"Last-Translator: Gustavo Marques <pushstarttocontinue@outlook.com>\n"
+"PO-Revision-Date: 2018-03-11 22:57+0000\n"
+"Last-Translator: anonymous <>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects"
 "/indicator-kde-connect/translations/pt_BR/>\n"
 "Language: pt_BR\n"
@@ -127,7 +127,7 @@ msgstr "Desemparelhar"
 
 #: src/DeviceIndicator.vala:100
 msgid "Select file(s)"
-msgstr "Seleccionar ficheiro(s)"
+msgstr "Selecionar arquivo(s)"
 
 #: src/DeviceIndicator.vala:103 src/contractor/Contractor.vala:24 src/settings/Settings.vala:47
 #: src/Sms.py:237
@@ -172,11 +172,11 @@ msgstr "Enviar"
 
 #: src/contractor/Contractor.vala:84
 msgid "File(s) not found"
-msgstr "Ficheiro(s) não encontrado"
+msgstr "Arquivo(s) não encontrado"
 
 #: src/contractor/Contractor.vala:143
 msgid "There's %u file(s) to be send"
-msgstr "Há %u ficheiro(s) a ser(em) enviado(s)"
+msgstr "Há %u arquivo(s) a ser(em) enviado(s)"
 
 #: src/Sms.py:184
 msgid "Compose SMS"
@@ -192,11 +192,11 @@ msgstr "Mensagem: "
 
 #: src/Sms.py:44
 msgid "Authorization succesfull. You can close this window."
-msgstr "Autorização concedida. Podes fechar esta janela."
+msgstr "Autorização concedida. Pode fechar esta janela."
 
 #: src/Sms.py:48
 msgid "Authorization failed. Please close this window and try again."
-msgstr "Autorização falhou. Por favor fecha esta janela e tenta de novo."
+msgstr "Autorização falhou. Por favor feche esta janela e tente novamente."
 
 #: src/Sms.py:303
 msgid "Sync starting"
@@ -208,7 +208,7 @@ msgstr "Sincronizando contatos"
 
 #: src/Sms.py:317
 msgid "Sync done"
-msgstr "Sincronização terminada"
+msgstr "Sincronização concluída"
 
 #: src/Sms.py:318
 msgid "Synchronized contacts"
@@ -224,15 +224,15 @@ msgstr "Visibilidade"
 
 #: src/settings/Settings.vala:61
 msgid "Icons"
-msgstr "Icones"
+msgstr "Ícones"
 
 #: src/settings/Settings.vala:97
 msgid "Show only paired devices: "
-msgstr "Mostrar apenas dispositivos emperelhados: "
+msgstr "Mostrar apenas dispositivos emparelhados: "
 
 #: src/settings/Settings.vala:128
 msgid "Show custom icons for Elementary OS: "
-msgstr "Mostrar icones customizados para Elementary OS: "
+msgstr "Mostrar ícones customizados para o elementaryOS: "
 
 #: src/settings/Settings.vala:152
 msgid "Delete Google Contacts: "
