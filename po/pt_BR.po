@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: indicator-kdeconnect\n"
 "Report-Msgid-Bugs-To: steevenlopes@outlook.com\n"
 "POT-Creation-Date: 2017-04-20 12:48+0100\n"
-"PO-Revision-Date: 2018-03-11 22:57+0000\n"
-"Last-Translator: Gustavo Marques <pushstarttocontinue@outlook.com>\n"
+"PO-Revision-Date: 2018-03-11 22:58+0000\n"
+"Last-Translator: anonymous <>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects"
 "/indicator-kde-connect/translations/pt_BR/>\n"
 "Language: pt_BR\n"
@@ -236,7 +236,7 @@ msgstr "Mostrar ícones customizados para o elementary OS: "
 
 #: src/settings/Settings.vala:152
 msgid "Delete Google Contacts: "
-msgstr "Eliminar contatos do Google: "
+msgstr "Deletar contatos do Google: "
 
 #: data/extensions/kdeconnect-send-nautilus.py:47
 #: data/extensions/kdeconncet-send-nemo.py:47
@@ -248,7 +248,7 @@ msgstr "Verifique o dispositivo {device_name}"
 #: data/extensions/kdeconncet-send-nemo.py:48
 #: data/extensions/kdeconnect-send-caja.py:48
 msgid "Sending {num_files} file(s)"
-msgstr "Enviando {num_files} ficheiro(s)"
+msgstr "Enviando {num_files} arquivo(s)"
 
 #: data/extensions/kdeconnect-send-nautilus.py:79
 #: data/extensions/kdeconncet-send-nemo.py:79
@@ -260,7 +260,7 @@ msgstr "KDEConnect Enviar Para"
 #: data/extensions/kdeconncet-send-nemo.py:80
 #: data/extensions/kdeconnect-send-caja.py:80
 msgid "send file(s) with kdeconnect"
-msgstr "enviar ficheiro(s) com kdeconnect"
+msgstr "enviar arquivo(s) com kdeconnect"
 
 #~ msgid "Phone number: "
 #~ msgstr "Telefone: "
