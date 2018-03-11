@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: indicator-kdeconnect\n"
 "Report-Msgid-Bugs-To: steevenlopes@outlook.com\n"
 "POT-Creation-Date: 2017-04-20 12:48+0100\n"
-"PO-Revision-Date: 2018-03-11 22:54+0000\n"
-"Last-Translator: anonymous <>\n"
+"PO-Revision-Date: 2018-03-11 22:55+0000\n"
+"Last-Translator: Gustavo Marques <pushstarttocontinue@outlook.com>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects"
 "/indicator-kde-connect/translations/pt_BR/>\n"
 "Language: pt_BR\n"
@@ -107,7 +107,7 @@ msgstr "Navegar no dispositivo"
 
 #: src/DeviceIndicator.vala:43
 msgid "Send file(s)"
-msgstr "Enviar arquivos(s)"
+msgstr "Enviar arquivo(s)"
 
 #: src/DeviceIndicator.vala:47
 msgid "Send SMS"
