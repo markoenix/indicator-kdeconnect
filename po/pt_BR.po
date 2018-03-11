@@ -8,7 +8,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: steevenlopes@outlook.com\n"
 "POT-Creation-Date: 2017-04-20 12:48+0100\n"
 "PO-Revision-Date: 2018-03-11 22:57+0000\n"
-"Last-Translator: anonymous <>\n"
+"Last-Translator: Gustavo Marques <pushstarttocontinue@outlook.com>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects"
 "/indicator-kde-connect/translations/pt_BR/>\n"
 "Language: pt_BR\n"
@@ -232,7 +232,7 @@ msgstr "Mostrar apenas dispositivos emparelhados: "
 
 #: src/settings/Settings.vala:128
 msgid "Show custom icons for Elementary OS: "
-msgstr "Mostrar ícones customizados para o elementaryOS: "
+msgstr "Mostrar ícones customizados para o elementary OS: "
 
 #: src/settings/Settings.vala:152
 msgid "Delete Google Contacts: "
