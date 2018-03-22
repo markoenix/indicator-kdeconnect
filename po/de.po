@@ -8,7 +8,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: steevenlopes@outlook.com\n"
 "POT-Creation-Date: 2017-04-20 12:46+0100\n"
 "PO-Revision-Date: 2018-03-22 15:32+0000\n"
-"Last-Translator: Claus Rüdinger <Mail-an-CR@web.de>\n"
+"Last-Translator: anonymous <>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/"
 "indicator-kde-connect/translations/de/>\n"
 "Language: de\n"
@@ -105,11 +105,11 @@ msgstr "Verschlüsselungsinformationen konnten nicht gefunden werden"
 
 #: src/DeviceIndicator.vala:41
 msgid "Browse device"
-msgstr "Durchsuche Gerät"
+msgstr "Gerät durchsuchen"
 
 #: src/DeviceIndicator.vala:43
 msgid "Send file(s)"
-msgstr "Sende Datei(en)"
+msgstr "Datei(en) senden"
 
 #: src/DeviceIndicator.vala:47
 msgid "Send SMS"
