@@ -8,7 +8,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: steevenlopes@outlook.com\n"
 "POT-Creation-Date: 2017-04-20 12:46+0100\n"
 "PO-Revision-Date: 2018-03-22 15:32+0000\n"
-"Last-Translator: anonymous <>\n"
+"Last-Translator: Claus Rüdinger <Mail-an-CR@web.de>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/"
 "indicator-kde-connect/translations/de/>\n"
 "Language: de\n"
@@ -97,7 +97,7 @@ msgstr "Viel Spaß!"
 
 #: src/KDEConnectManager.vala:119
 msgid "cannot connect to KDE Connect DBus service"
-msgstr "kann keine Verbindung zum KDE-Connect-DBus-Service aufbauen"
+msgstr "Verbindung zu KDE Connect DBus-Service nicht möglich"
 
 #: src/Device.vala:524
 msgid "Encryption information not found"
