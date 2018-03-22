@@ -8,7 +8,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: steevenlopes@outlook.com\n"
 "POT-Creation-Date: 2017-04-20 12:46+0100\n"
 "PO-Revision-Date: 2018-03-22 15:32+0000\n"
-"Last-Translator: anonymous <>\n"
+"Last-Translator: Claus Rüdinger <Mail-an-CR@web.de>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/"
 "indicator-kde-connect/translations/de/>\n"
 "Language: de\n"
@@ -113,7 +113,7 @@ msgstr "Datei(en) senden"
 
 #: src/DeviceIndicator.vala:47
 msgid "Send SMS"
-msgstr "Sende SMS"
+msgstr "SMS senden"
 
 #: src/DeviceIndicator.vala:51
 msgid "Find my phone"
