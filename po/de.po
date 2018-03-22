@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: indicator-kdeconnect\n"
 "Report-Msgid-Bugs-To: steevenlopes@outlook.com\n"
 "POT-Creation-Date: 2017-04-20 12:46+0100\n"
-"PO-Revision-Date: 2018-03-22 15:32+0000\n"
-"Last-Translator: Claus Rüdinger <Mail-an-CR@web.de>\n"
+"PO-Revision-Date: 2018-03-22 15:34+0000\n"
+"Last-Translator: anonymous <>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/"
 "indicator-kde-connect/translations/de/>\n"
 "Language: de\n"
@@ -117,11 +117,11 @@ msgstr "SMS senden"
 
 #: src/DeviceIndicator.vala:51
 msgid "Find my phone"
-msgstr "Finde mein Telefon"
+msgstr "Mein Gerät finden"
 
 #: src/DeviceIndicator.vala:55
 msgid "Request pairing"
-msgstr "Verbindung anfragen"
+msgstr "Verbindung anfordern"
 
 #: src/DeviceIndicator.vala:58
 msgid "Unpair"
@@ -129,7 +129,7 @@ msgstr "Verbindung trennen"
 
 #: src/DeviceIndicator.vala:100
 msgid "Select file(s)"
-msgstr "Wähle Datei(en)"
+msgstr "Datei(en) auswählen"
 
 #: src/DeviceIndicator.vala:103 src/contractor/Contractor.vala:24 src/settings/Settings.vala:47
 #: src/Sms.py:237
@@ -178,11 +178,11 @@ msgstr "Datei nicht gefunden"
 
 #: src/contractor/Contractor.vala:143
 msgid "There's %u file(s) to be send"
-msgstr "Es gibt %u Datei(en) zu senden"
+msgstr "Es gibt %u zu sendende Datei(en)"
 
 #: src/Sms.py:184
 msgid "Compose SMS"
-msgstr "Verfasse SMS"
+msgstr "SMS verfassen"
 
 #: src/Sms.py:199
 msgid "Phone number"
@@ -200,7 +200,7 @@ msgstr "Autorisierung erfolgreich. Sie können dieses Fenster schließen."
 msgid "Authorization failed. Please close this window and try again."
 msgstr ""
 "Autorisierung fehlgeschlagen. Bitte schließen Sie dieses Fenster und "
-"versuchen sie es erneut."
+"versuchen Sie es erneut."
 
 #: src/Sms.py:303
 msgid "Sync starting"
@@ -257,15 +257,14 @@ msgstr "Sende {num_files} Datei(en)"
 #: data/extensions/kdeconnect-send-nautilus.py:79
 #: data/extensions/kdeconncet-send-nemo.py:79
 #: data/extensions/kdeconnect-send-caja.py:79
-#, fuzzy
 msgid "KDEConnect Send To"
-msgstr "KDEConnect senden an"
+msgstr "Versand mit KDEConnect"
 
 #: data/extensions/kdeconnect-send-nautilus.py:80
 #: data/extensions/kdeconncet-send-nemo.py:80
 #: data/extensions/kdeconnect-send-caja.py:80
 msgid "send file(s) with kdeconnect"
-msgstr "sende Datei(en) mit KDEConnect"
+msgstr "Datei(en) mit KDEConnect senden"
 
 #~ msgid "Phone number: "
 #~ msgstr "Telefonnummer: "
