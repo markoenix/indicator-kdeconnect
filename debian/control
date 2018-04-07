@@ -1,6 +1,6 @@
 Source: indicator-kdeconnect
 Section: net
-Priority: extra
+Priority: optional
 Maintainer: Bajoja <steevenlopes@outlook.com>
 Build-Depends: cmake (>= 2.8),
                debhelper (>= 9.0.0),
