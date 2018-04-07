@@ -7,13 +7,14 @@ Build-Depends: cmake (>= 2.8),
                libgtk-3-dev (>=3.6),
                libappindicator3-dev,
                pkg-config,
+               python3,
                valac (>=0.20)
 Standards-Version: 3.9.3
 Homepage: https://github.com/Bajoja/indicator-kdeconnect
 
 Package: indicator-kdeconnect
 Architecture: any
-Depends: ${misc:Depends}, ${shlibs:Depends}, python3-requests-oauthlib, kdeconnect
+Depends: ${misc:Depends}, ${shlibs:Depends}, ${python3:Depends}, python3-requests-oauthlib, kdeconnect
 Suggests: python-nautilus, python-caja, python-nemo
 Description: Indicator for KDE Connect
  KDE Connect is a tool to integrate the KDE Plasma Workspace with your
