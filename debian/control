@@ -16,6 +16,6 @@ Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends}, python3-requests-oauthlib, kdeconnect
 Suggests: python-nautilus, python-caja, python-nemo
 Description: Indicator for KDE Connect
- KDE Connect is tool to integrate the KDE Plasma Workspace with your smartphones and
- similar devices.
- this indicator is aiming to bring those integration on any system using libappindicator
+ KDE Connect is a tool to integrate the KDE Plasma Workspace with your
+ smartphone and similar devices.  This indicator brings this integration
+ to any system using libappindicator.
