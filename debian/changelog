@@ -47,7 +47,7 @@ indicator-kdeconnect (0.8.0) precise; urgency=low
   * Fix bug #51 - Nemo and Caja only show the first device
   * Send SMS is now stable and support autocomplete from Google Contacts
 
- -- Bajoja <steevenlopes@outlook.com>  Sat, 20 Apr 2017 00:00 -0000
+ -- Bajoja <steevenlopes@outlook.com>  Sat, 20 Apr 2017 00:00:00 -0000
 
 indicator-kdeconnect (0.7.1) precise; urgency=low
   * Fix bug #51 - Nemo and Caja extensions not working
@@ -85,7 +85,7 @@ indicator-kdeconnect (0.6) precise; urgency=low
   
   * Now you can Send SMS as a Beta Feature
 
- -- Bajoja <steevenlopes@outlook.com> Thu, 26 Jan 2017 02:00 -0000
+ -- Bajoja <steevenlopes@outlook.com>  Thu, 26 Jan 2017 02:00:00 -0000
 
 indicator-kdeconnect (0.5) precise; urgency=low
   * Bugs Fixes
@@ -96,7 +96,7 @@ indicator-kdeconnect (0.5) precise; urgency=low
 
   * Trusted devices now appear on context menu extension to send files directly
 
- -- Bajoja <steevenlopes@outlook.com> Tue, 03 Jan 2017 18:00 -0000
+ -- Bajoja <steevenlopes@outlook.com>  Tue, 03 Jan 2017 18:00:00 -0000
 
 indicator-kdeconnect (0.4) precise; urgency=low
   * New native extension for Nautilus, Caja and Nemo
@@ -107,7 +107,7 @@ indicator-kdeconnect (0.4) precise; urgency=low
 
   * Provide CMake uninstall process
 
- -- Bajoja <steevenlopes@outlook.com> Thu, 24 Nov 2016 17:00 -0000
+ -- Bajoja <steevenlopes@outlook.com>  Thu, 24 Nov 2016 17:00:00 -0000
 
 indicator-kdeconnect (0.3) precise; urgency=low
 
@@ -119,7 +119,7 @@ indicator-kdeconnect (0.3) precise; urgency=low
 
   * New Images for First time wizard.
 
- -- Bajoja <steevenlopes@outlook.com> Mon, 15 Nov 2016 16:44 -0000
+ -- Bajoja <steevenlopes@outlook.com>  Mon, 15 Nov 2016 16:44:00 -0000
   
 indicator-kdeconnect (0.2) precise; urgency=low
 
