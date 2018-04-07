@@ -11,4 +11,7 @@
 
 %:
 	dh $@ --with python3
-
+ 
+override_dh_auto_install:
+	dh_auto_install
+	chmod 755 debian/indicator-kdeconnect/usr/share/indicator-kdeconnect/Sms.py
