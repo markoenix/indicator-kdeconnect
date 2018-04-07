@@ -1,4 +1,4 @@
-Source: com.github.bajoja.indicator-kdeconnect
+Source: indicator-kdeconnect
 Section: net
 Priority: extra
 Maintainer: Bajoja <steevenlopes@outlook.com>
@@ -11,7 +11,7 @@ Build-Depends: cmake (>= 2.8),
 Standards-Version: 3.9.3
 Homepage: https://github.com/Bajoja/indicator-kdeconnect
 
-Package: com.github.bajoja.indicator-kdeconnect
+Package: indicator-kdeconnect
 Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends}, python3-requests-oauthlib, kdeconnect
 Suggests: python-nautilus, python-caja, python-nemo
