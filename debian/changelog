@@ -1,4 +1,10 @@
 indicator-kdeconnect (0.9.3) precise; urgency=low
+  * Add Languages: Greek, Hebrew, Chinese
+  * Fix Icons Name
+
+ -- Bajoja <steevenlopes@outlook.com>  Sun, 08 Apr 2018 00:00:00 -0000
+
+indicator-kdeconnect (0.9.3) precise; urgency=low
   * Add Option to show device main folders instead of internal storage
 
  -- Bajoja <steevenlopes@outlook.com>  Fri, 10 Nov 2017 00:00:00 -0000

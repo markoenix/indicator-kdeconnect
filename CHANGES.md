@@ -1,3 +1,7 @@
+# Version 0.9.4
+ * Add Languages: Greek,Hebrew,Chinese
+ * Fix Icons Name
+
 # Version 0.9.3
  * Add Option to show device main folders instead of internal storage
 

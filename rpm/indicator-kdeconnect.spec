@@ -20,7 +20,7 @@
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 Name:           indicator-kdeconnect
-Version:        0.9.3
+Version:        0.9.4
 Release:        0%{?dist}
 Summary:        App Indicator for KDE Connect
 Group:          Applications/System
@@ -124,6 +124,10 @@ rm -rf ${RPM_BUILD_ROOT}%{_datadir}/locale/zh_Hant
 %endif
 
 %changelog
+
+* Sun Apr 08 2018 00:00 Bajoja <steevenlopes@outlook.com> 0.9.4
+ - Add Languages: Greek, Hebrew, Chinese
+ - Fix Icons Name
 
 * Fri Nov 10 2017 00:00 Bajoja <steevenlopes@outlook.com> 0.9.3
  - Add Option to show device main folders instead of internal storage
