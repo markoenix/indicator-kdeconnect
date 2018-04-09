@@ -7,16 +7,16 @@ msgstr ""
 "Project-Id-Version: indicator-kdeconnect\n"
 "Report-Msgid-Bugs-To: steevenlopes@outlook.com\n"
 "POT-Creation-Date: 2017-04-20 12:44+0100\n"
-"PO-Revision-Date: 2017-04-20 11:59+0000\n"
-"Last-Translator: Steeven Lopes <steevenlopes@outlook.com>\n"
-"Language-Team: Catalan <https://hosted.weblate.org/projects/indicator-kde-"
-"connect/translations/ca/>\n"
+"PO-Revision-Date: 2018-04-09 14:34+0000\n"
+"Last-Translator: Toni Estévez <toni.estevez@gmail.com>\n"
+"Language-Team: Catalan <https://hosted.weblate.org/projects/"
+"indicator-kde-connect/translations/ca/>\n"
 "Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.14-dev\n"
+"X-Generator: Weblate 2.20\n"
 
 #: src/FirstTimeWizard.vala:50
 msgid ""
@@ -46,8 +46,8 @@ msgstr ""
 #: src/FirstTimeWizard.vala:54
 msgid "Launch KDE Connect in your Android which you can download from "
 msgstr ""
-"Obriu el KDE Connect al vostre aparell Android, el qual us podeu baixar des "
-"de la botiga "
+"Obriu el KDE Connect al vostre aparell Android, que podeu baixar des de la "
+"botiga "
 
 #: src/FirstTimeWizard.vala:56
 msgid "Google Play</a>"
@@ -193,51 +193,52 @@ msgstr "Cos del missatge: "
 
 #: src/Sms.py:44
 msgid "Authorization succesfull. You can close this window."
-msgstr ""
+msgstr "Autorització exitosa. Podeu tancar aquesta finestra."
 
 #: src/Sms.py:48
 msgid "Authorization failed. Please close this window and try again."
 msgstr ""
+"Ha fallat l'autorització. Tanqueu aquesta finestra i torneu-ho a provar."
 
 #: src/Sms.py:303
 msgid "Sync starting"
-msgstr ""
+msgstr "S'està iniciant la sincronització"
 
 #: src/Sms.py:303
 msgid "Synchronizing contacts"
-msgstr ""
+msgstr "Sincronització de contactes"
 
 #: src/Sms.py:317
 msgid "Sync done"
-msgstr ""
+msgstr "Sincronització feta"
 
 #: src/Sms.py:318
 msgid "Synchronized contacts"
-msgstr ""
+msgstr "Contactes sincronitzats"
 
 #: src/settings/Settings.vala:50
 msgid "Apply"
-msgstr ""
+msgstr "Aplica"
 
 #: src/settings/Settings.vala:59
 msgid "Visibility"
-msgstr ""
+msgstr "visibilitat"
 
 #: src/settings/Settings.vala:61
 msgid "Icons"
-msgstr ""
+msgstr "Icones"
 
 #: src/settings/Settings.vala:97
 msgid "Show only paired devices: "
-msgstr ""
+msgstr "Mostra només els dispositius emparellats: "
 
 #: src/settings/Settings.vala:128
 msgid "Show custom icons for Elementary OS: "
-msgstr ""
+msgstr "Mostra icones personalitzades per a a Elementary OS "
 
 #: src/settings/Settings.vala:152
 msgid "Delete Google Contacts: "
-msgstr ""
+msgstr "Suprimeix els contactes de Google: "
 
 #: data/extensions/kdeconnect-send-nautilus.py:47
 #: data/extensions/kdeconncet-send-nemo.py:47
