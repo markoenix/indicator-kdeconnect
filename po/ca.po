@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: indicator-kdeconnect\n"
 "Report-Msgid-Bugs-To: steevenlopes@outlook.com\n"
 "POT-Creation-Date: 2017-04-20 12:44+0100\n"
-"PO-Revision-Date: 2018-04-09 14:34+0000\n"
+"PO-Revision-Date: 2018-04-10 15:34+0000\n"
 "Last-Translator: Toni Estévez <toni.estevez@gmail.com>\n"
 "Language-Team: Catalan <https://hosted.weblate.org/projects/"
 "indicator-kde-connect/translations/ca/>\n"
@@ -28,7 +28,7 @@ msgstr ""
 
 #: src/FirstTimeWizard.vala:51
 msgid "Now connect your devices using wifi connection.\n"
-msgstr "Ara connecteu els dispositius mitjançant la Wi-Fi.\n"
+msgstr "Ara connecteu els dispositius mitjançant la wifi.\n"
 
 #: src/FirstTimeWizard.vala:52
 msgid "Tethering should work too!\n"
@@ -46,8 +46,8 @@ msgstr ""
 #: src/FirstTimeWizard.vala:54
 msgid "Launch KDE Connect in your Android which you can download from "
 msgstr ""
-"Obriu el KDE Connect al vostre aparell Android, que podeu baixar des de la "
-"botiga "
+"Obriu el KDE Connect al vostre dispositiu Android, que podeu baixar des de "
+"la botiga "
 
 #: src/FirstTimeWizard.vala:56
 msgid "Google Play</a>"
@@ -193,7 +193,7 @@ msgstr "Cos del missatge: "
 
 #: src/Sms.py:44
 msgid "Authorization succesfull. You can close this window."
-msgstr "Autorització exitosa. Podeu tancar aquesta finestra."
+msgstr "Autorització correcta. Podeu tancar aquesta finestra."
 
 #: src/Sms.py:48
 msgid "Authorization failed. Please close this window and try again."
