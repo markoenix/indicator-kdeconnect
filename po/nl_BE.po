@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: indicator-kdeconnect\n"
 "Report-Msgid-Bugs-To: steevenlopes@outlook.com\n"
 "POT-Creation-Date: 2016-11-18 18:46+0200\n"
-"PO-Revision-Date: 2018-04-14 20:49+0000\n"
+"PO-Revision-Date: 2018-04-23 23:37+0000\n"
 "Last-Translator: Nathan Follens <nathan@email.is>\n"
 "Language-Team: Flemish <https://hosted.weblate.org/projects/"
 "indicator-kde-connect/translations/nl_BE/>\n"
@@ -21,7 +21,7 @@ msgstr ""
 #: src/FirstTimeWizard.vala:50
 msgid "<b>Are you ready for your first device pairing?</b>\n\n"
 msgstr ""
-"<b>Bent u klaar voor het koppelen van uw eerste apparaat?</b>\n"
+"<b>Zijd ge klaar voor het koppelen van uw eerste apparaat?</b>\n"
 "\n"
 
 #: src/FirstTimeWizard.vala:51
@@ -35,12 +35,13 @@ msgstr "Via tethering zou het ook moeten werken!\n"
 #: src/FirstTimeWizard.vala:53
 msgid "If you have Firewall running, please open port 1714-1764 for TCP and UDP\n\n"
 msgstr ""
-"Als u ne firewall gebruikt, open dan poort 1714-1764 voor zowel TCP als UDP\n"
+"Als ge ne firewall gebruikt, opend dan poort 1714-1764 voor zowel TCP als "
+"UDP\n"
 "\n"
 
 #: src/FirstTimeWizard.vala:54
 msgid "Launch KDE Connect in your Android which you can download from "
-msgstr "Open KDE Connect op uw Android-apparaat. U kunt het downloaden via "
+msgstr "Opend KDE Connect op uw Android-apparaat. Ge kund het downloaden via "
 
 #: src/FirstTimeWizard.vala:56
 msgid "Google Play</a>"
@@ -50,17 +51,17 @@ msgstr "Google Play</a>"
 msgid "Everytime there is a new device connected, a new indicator will appear in your panel.\n"
 msgstr ""
 "Der zal ne nieuwen indicator verschijnen op uw paneel voor elk nieuw "
-"apparaat dat u verbindt.\n"
+"apparaat da’ ge verbind.\n"
 
 #: src/FirstTimeWizard.vala:66
 msgid "There, you can pair and see its status\n\n"
 msgstr ""
-"Daar kunt u de desbetreffende apparaten koppelen en de status weergeven\n"
+"Daar kund ge de desbetreffende apparaten koppelen en de status weergeven\n"
 "\n"
 
 #: src/FirstTimeWizard.vala:67
 msgid "<b>Now try to pair your device</b>"
-msgstr "<b>Probeer nu uw apparaat te koppelen</b>"
+msgstr "<b>Probeerd nu uw apparaat te koppelen</b>"
 
 #: src/FirstTimeWizard.vala:76
 msgid "<b>Great! your device is all set</b>\n\n"
@@ -70,11 +71,11 @@ msgstr ""
 
 #: src/FirstTimeWizard.vala:77
 msgid "Now you can enable or disable modules on KDE Connect settings.\n"
-msgstr "Nu kunt u modules in- of uitschakelen in de KDE Connect-instellingen\n"
+msgstr "Nu kund ge modules in- of uitschakelen in de KDE Connect-instellingen\n"
 
 #: src/FirstTimeWizard.vala:78
 msgid "Indicator already added to autostart.\n"
-msgstr "Den indicator is al toegevoegd aan de opstarttoepassingen.\n"
+msgstr "Den indicator is al toegevoegd aan d’opstarttoepassingen.\n"
 
 #: src/FirstTimeWizard.vala:79
 msgid "Enjoy!"
@@ -158,11 +159,11 @@ msgstr "Versturen"
 
 #: src/contractor/Contractor.vala:84
 msgid "File(s) not found"
-msgstr "Bestand(en) niet gevonden"
+msgstr "Bestand(en) nie’ gevonden"
 
 #: src/contractor/Contractor.vala:143
 msgid "There's %u file(s) to be send"
-msgstr "U staat op het punt om %u bestand(en) te versturen"
+msgstr "Ge staad op het punt %u bestand(en) te versturen"
 
 #: src/Sms.py:184
 msgid "Compose SMS"
@@ -178,11 +179,11 @@ msgstr "Berichtinhoud: "
 
 #: src/Sms.py:44
 msgid "Authorization succesfull. You can close this window."
-msgstr "De autorisatie is gelukt. U kunt dit venster sluiten."
+msgstr "D’autorisatie is gelukt. Ge kund dit venster sluiten."
 
 #: src/Sms.py:48
 msgid "Authorization failed. Please close this window and try again."
-msgstr "De autorisatie is mislukt. Sluit dit venster en probeer het opnieuw."
+msgstr "D’autorisatie is mislukt. Sluit dit venster en probeerd het opnieuw."
 
 #: src/Sms.py:303
 msgid "Sync starting"
@@ -226,11 +227,11 @@ msgstr "Google-contacten verwijderen: "
 
 #: data/extensions/kdeconnect-send-nautilus.py:47 data/extensions/kdeconncet-send-nemo.py:47 data/extensions/kdeconnect-send-caja.py:47
 msgid "Check the device {device_name}"
-msgstr "Controleer het apparaat {device_name}"
+msgstr "Controleerd het apparaat {device_name}"
 
 #: data/extensions/kdeconnect-send-nautilus.py:48 data/extensions/kdeconncet-send-nemo.py:48 data/extensions/kdeconnect-send-caja.py:48
 msgid "Sending {num_files} file(s)"
-msgstr "Bezig met versturen van {num_files} bestand(en)"
+msgstr "Bezig me’ versturen van {num_files} bestand(en)"
 
 #: data/extensions/kdeconnect-send-nautilus.py:79 data/extensions/kdeconncet-send-nemo.py:79 data/extensions/kdeconnect-send-caja.py:79
 msgid "KDEConnect Send To"
