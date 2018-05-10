@@ -31,7 +31,7 @@ namespace KDEConnectIndicator {
             menu = new Gtk.Menu ();
 
             indicator = new AppIndicator.Indicator (path,
-                    				    device.icon,
+                    				                device.icon,
                                                     AppIndicator.IndicatorCategory.HARDWARE);
 
             name_item = new Gtk.MenuItem ();
@@ -52,20 +52,20 @@ namespace KDEConnectIndicator {
             		browse_submenu = new Gtk.Menu ();
             		browse_item.set_submenu (browse_submenu);
 
-			browse_items = new SList<Gtk.MenuItem> ();
+			        browse_items = new SList<Gtk.MenuItem> ();
 
-			HashTable<string, string> directories = device.get_directories();
-	        	path_directories = new Queue<string> ();
+			        HashTable<string, string> directories = device.get_directories();
+	        	    path_directories = new Queue<string> ();
 
-			directories.@foreach ((key, val) => {
-				path_directories.push_tail (key);
-				browse_items.append (new Gtk.MenuItem.with_label (val));
-			});
+			        directories.@foreach ((key, val) => {
+    				    path_directories.push_tail (key);
+	    			    browse_items.append (new Gtk.MenuItem.with_label (val));
+		    	    });
 
-			browse_items.@foreach ((item) => {
-				browse_submenu.append (item);
-			});
-		}
+			        browse_items.@foreach ((item) => {
+				        browse_submenu.append (item);
+			        });
+		        }
             }
 
             send_item = new Gtk.MenuItem.with_label (_("Send file(s)"));
@@ -88,51 +88,43 @@ namespace KDEConnectIndicator {
             menu.show_all ();
 
             name_item.activate.connect (() => {
-		var msg = new Gtk.MessageDialog.with_markup (null,
-		                                             Gtk.DialogFlags.MODAL,
-                			                     Gtk.MessageType.INFO,
-                			                     Gtk.ButtonsType.OK,
-                			                     "msg");
+                try {
+	    	        Process.spawn_async (null,
+	    	     	                 	 new string[]{"indicator-kdeconnect-settings"},
+	    	     			             null,
+	    	     			             SpawnFlags.SEARCH_PATH,
+	    	     			             null,
+	    	     			             null);
+	    	    } catch (Error	e) {
+	    	        message (e.message);
+	    	    }
+	        });
+            
+	        //  battery_item.activate.connect (() => {
+	    	    
+	        //  });
 
-                msg.set_markup (device.encryption_info);
-		msg.run ();
-		msg.destroy();
-	    });
-
-	    battery_item.activate.connect (() => {
-	    	try {
-	    	     Process.spawn_async (null,
-	    	     			  new string[]{"indicator-kdeconnect-settings"},
-	    	     			  null,
-	    	     			  SpawnFlags.SEARCH_PATH,
-	    	     			  null,
-	    	     			  null);
-	    	} catch (Error	e) {
-	    	     message (e.message);
-	    	}
-	    });
-
-	    status_item.activate.connect (() => {
-		try {
+	        status_item.activate.connect (() => {
+		        try {
                     Process.spawn_async (null,
-                    			 new string[]{"kcmshell5", "kcm_kdeconnect"},
-					 null,
-					 SpawnFlags.SEARCH_PATH,
-					 null,
-					 null);
+                            			 new string[]{"kcmshell5", "kcm_kdeconnect"},
+					                     null,
+					                     SpawnFlags.SEARCH_PATH,
+					                     null,
+					                     null);
                 } catch (Error e) {
                     message (e.message);
                 }
-	    });
+	        });
 
-	    if (device.to_list_dir) {
-	    	if (device.get_directories().size () > 0) {
-	    	   	browse_items.@foreach ((item) => {
-        			item.activate.connect (() => {
-        				device.browse (path_directories.pop_head ());
-        			});
-			});
-	    	}
+	        if (device.to_list_dir) {
+	    	    if (device.get_directories().size () > 0) {
+	    	   	    browse_items.@foreach ((item) => {
+        			    item.activate.connect (() => {
+        				    device.browse (path_directories.pop_head ());
+        			    });
+			        });
+	    	    }
             }
             else {
             	browse_item.activate.connect (() => {
@@ -151,36 +143,36 @@ namespace KDEConnectIndicator {
                 					 Gtk.ResponseType.OK);
                 
                 chooser.select_multiple = true;
+                
                 if (chooser.run () == Gtk.ResponseType.OK) {
                     SList<string> urls = chooser.get_uris ();
 
-		    urls.@foreach ((item) => {
-		    	device.send_file(item);
-		    });
+		            urls.@foreach ((item) => {
+		    	        device.send_file(item);
+		            });
                 }
+                
                 chooser.close ();
             });
             
             sms_item.activate.connect (() => {
-
             	try{
-		    Process.spawn_async (null,
-		    			new string[]{
-				        "/usr/share/indicator-kdeconnect/Sms.py",
-					"-d",
-					device.id},
-				        null,
-				        SpawnFlags.SEARCH_PATH,
-				        null,
-				        null);
-	    	} catch (Error e) {
-		    message (e.message);
+		            Process.spawn_async (null,
+		    		                     new string[]{"/usr/share/indicator-kdeconnect/Sms.py",
+					                                  "-d",
+					                                  device.id},
+				                         null,
+				                         SpawnFlags.SEARCH_PATH,
+				                         null,
+				                         null);
+	    	    } catch (Error e) {
+		            message (e.message);
             	}
             });
 
             ring_item.activate.connect (() => {
-		device.find_my_phone ();
-	    });
+		        device.find_my_phone ();
+	        });
 			
             pair_item.activate.connect (() => {
                 device.request_pair ();
@@ -256,14 +248,16 @@ namespace KDEConnectIndicator {
         }
 
         private void update_icon_item() {
-	    indicator.set_icon_full (device.icon, "");
-	}
+	        indicator.set_icon_full (device.icon, "");
+	    }
         
         private void update_battery_item () {
-            battery_item.visible = device.is_trusted
-                && device.is_reachable
-                && device.has_plugin ("kdeconnect_battery");
+            battery_item.visible = device.is_trusted && 
+                                   device.is_reachable && 
+                                   device.has_plugin ("kdeconnect_battery");
+
             battery_item.label = _("Battery : ") + "%d%%".printf(device.battery);
+            
             if (device.is_charging ())
                 battery_item.label += _(" (charging)");
         }
@@ -279,15 +273,16 @@ namespace KDEConnectIndicator {
                     status_item.label = _("Device Reachable but Not Trusted");
                     KDEConnectIndicator.InOut.delete_status (device.id, device.name);
                 }
-            } else {
+            } 
+            else {
                 if (device.is_trusted) {
                     status_item.label = _("Device Trusted but not Reachable");
                     KDEConnectIndicator.InOut.delete_status (device.id, device.name);
                 }
                 else {
-	            status_item.label = _("Device Not Reachable and Not Trusted");
+    	            status_item.label = _("Device Not Reachable and Not Trusted");
                     KDEConnectIndicator.InOut.delete_status (device.id, device.name);
-		    // is this even posible?
+	    	        // is this even posible?
                 }
             }
         }
