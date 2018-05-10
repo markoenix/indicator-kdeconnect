@@ -74,7 +74,6 @@ namespace KDEConnectIndicator {
 		}
 
 		private void create_signals () {
-
 			this.cancel_button.clicked.connect (() => {
 				this.window.close ();
 			});
@@ -84,8 +83,6 @@ namespace KDEConnectIndicator {
 				restart();
 				this.window.close ();
 			});
-
-
 		}
 
 		private void restart () {
@@ -93,53 +90,51 @@ namespace KDEConnectIndicator {
 
 			message("Getting PID");
 
-            		try{
+            try{
 			    Process.spawn_sync (null,
-			     			new string[]{"pidof",
-			     			             "indicator-kdeconnect"},
-			    			null,
-			    			SpawnFlags.SEARCH_PATH,
-			    			null,
+			              			new string[]{"pidof",
+			     	         		             "indicator-kdeconnect"},
+			    					null,
+			    					SpawnFlags.SEARCH_PATH,
+			    					null,
 			                        out std_out,
-			    			null,
-			    			null);
-	    		} catch (Error e){
+			    					null,
+			    					null);
+	    	} catch (Error e){
 			    message (e.message);
-             		}
+			}
 
+			if (std_out != ""){
+       			message("Kill PID");
 
-             		if (std_out != ""){
-             			message("Kill PID");
+    		int pid = int.parse(std_out);
 
-             			int pid = int.parse(std_out);
-
-             			try{
-			    	    Process.spawn_sync (null,
-			     		    	        new string[]{"kill",
-			     		    	                     pid.to_string()},
+    		try{
+	    	    Process.spawn_sync (null,
+	        		    	        new string[]{"kill",
+		    	                    pid.to_string()},
 			    			        null,
 			    			        SpawnFlags.SEARCH_PATH,
 			    			        null,
-			                        	out std_out,
-			    				null,
-			    				null);
-	    			} catch (Error e){
-			    	    message (e.message);
-             			}
-
-
-				message("Restart process");
-             			try{
-		    		    Process.spawn_async (null,
-		    					 new string[]{"indicator-kdeconnect"},
-				        		 null,
-				        		 SpawnFlags.SEARCH_PATH,
+			                        out std_out,
+			    				    null,
+			    				    null);
+	    	} catch (Error e){
+			    message (e.message);
+			}
+			
+			message("Restart process");
+            try{
+		        Process.spawn_async (null,
+		                			 new string[]{"indicator-kdeconnect"},
+				         			 null,
+				        			 SpawnFlags.SEARCH_PATH,
 					                 null,
-				                         null);
-	    			} catch (Error e) {
-		    		    message (e.message);
-            			}
-             		}
+				                     null);
+	    		} catch (Error e) {
+		    	    message (e.message);
+				}
+        	}
 		}
 
 		private Box create_visibility_setts () {

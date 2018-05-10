@@ -7,8 +7,7 @@ namespace KDEConnectIndicator {
     public class KDEConnectManager {
         private DBusConnection conn;
         private SList<DeviceIndicator> device_list;
-        private SList<uint> subs_identifier;
-        //private string visible_devices = "/tmp/devices";
+        private SList<uint> subs_identifier;        
 
         public KDEConnectManager () {
             try {
@@ -290,4 +289,3 @@ namespace KDEConnectIndicator {
         public signal void device_visibility_changed (string id, bool visible);
     }
 }
-

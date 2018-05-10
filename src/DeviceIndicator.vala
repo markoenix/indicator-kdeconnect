@@ -22,8 +22,7 @@ namespace KDEConnectIndicator {
         private Gtk.SeparatorMenuItem separator;
         private Gtk.SeparatorMenuItem separator2;
         private Gtk.SeparatorMenuItem separator3;
-        private SList<Gtk.MenuItem> browse_items;
-        private Queue<string> path_directories;
+        private SList<Gtk.MenuItem> browse_items;        
 
         public DeviceIndicator (string path) {
             this.path = path;
@@ -54,19 +53,32 @@ namespace KDEConnectIndicator {
 
 			        browse_items = new SList<Gtk.MenuItem> ();
 
-			        HashTable<string, string> directories = device.get_directories();
-	        	    path_directories = new Queue<string> ();
+			        HashTable<string, string> directories = device.get_directories();	        	    
 
-			        directories.@foreach ((key, val) => {
-    				    path_directories.push_tail (key);
-	    			    browse_items.append (new Gtk.MenuItem.with_label (val));
+			        directories.@foreach ((key, val) => {    				    
+                        browse_items.append (new Gtk.MenuItem.with_label (val));
+                        
+                        Gtk.MenuItem tmpMenuItem = null;
+
+                        if (browse_items.length ()  > 0)
+                           tmpMenuItem = browse_items.nth_data(browse_items.length () - 1); 
+                        else
+                           tmpMenuItem = browse_items.nth_data(0);
+
+                        browse_submenu.append (tmpMenuItem);
+
+                        tmpMenuItem.activate.connect (() => {
+        				    device.browse (key);
+        			    });
 		    	    });
-
-			        browse_items.@foreach ((item) => {
-				        browse_submenu.append (item);
-			        });
 		        }
             }
+            else{
+                browse_item.activate.connect (() => {
+            		device.mount(true);
+                	device.browse ();
+            	});
+            }            
 
             send_item = new Gtk.MenuItem.with_label (_("Send file(s)"));
             menu.append (send_item);
@@ -116,22 +128,6 @@ namespace KDEConnectIndicator {
                     message (e.message);
                 }
 	        });
-
-	        if (device.to_list_dir) {
-	    	    if (device.get_directories().size () > 0) {
-	    	   	    browse_items.@foreach ((item) => {
-        			    item.activate.connect (() => {
-        				    device.browse (path_directories.pop_head ());
-        			    });
-			        });
-	    	    }
-            }
-            else {
-            	browse_item.activate.connect (() => {
-            		device.mount(true);
-                	device.browse ();
-            	});
-            }
 
             send_item.activate.connect (() => {
                 var chooser = new Gtk.FileChooserDialog (_("Select file(s)"),
