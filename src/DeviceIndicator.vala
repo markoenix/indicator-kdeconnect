@@ -68,6 +68,7 @@ namespace KDEConnectIndicator {
                         browse_submenu.append (tmpMenuItem);
 
                         tmpMenuItem.activate.connect (() => {
+                            device.mount(true);
         				    device.browse (key);
         			    });
 		    	    });
@@ -263,21 +264,17 @@ namespace KDEConnectIndicator {
             if (device.is_reachable) {
                 if (device.is_trusted) {
                     status_item.label = _("Device Reachable and Trusted");
-                    KDEConnectIndicator.InOut.write_status (device.id, device.name);
                 }
                 else {
                     status_item.label = _("Device Reachable but Not Trusted");
-                    KDEConnectIndicator.InOut.delete_status (device.id, device.name);
                 }
             } 
             else {
                 if (device.is_trusted) {
                     status_item.label = _("Device Trusted but not Reachable");
-                    KDEConnectIndicator.InOut.delete_status (device.id, device.name);
                 }
                 else {
     	            status_item.label = _("Device Not Reachable and Not Trusted");
-                    KDEConnectIndicator.InOut.delete_status (device.id, device.name);
 	    	        // is this even posible?
                 }
             }

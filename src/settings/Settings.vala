@@ -23,7 +23,7 @@ namespace KDEConnectIndicator {
 
 		public SettingsDialog () {
 			Object (application_id: "com.bajoja.indicator-kdeconnect-settings",
-				flags: ApplicationFlags.FLAGS_NONE);
+				    flags: ApplicationFlags.FLAGS_NONE);
 		}
 
 		protected override void activate () {
@@ -55,20 +55,18 @@ namespace KDEConnectIndicator {
 
 			this.stack.add_titled (create_sms_setts (), "sms", _("SMS"));
 
-        		this.stack_switcher = new StackSwitcher ();
-        		this.stack_switcher.halign = Gtk.Align.CENTER;
+        	this.stack_switcher = new StackSwitcher ();
+        	this.stack_switcher.halign = Gtk.Align.CENTER;
 			this.stack_switcher.set_stack (stack);
 
 			Box title = new Box (Gtk.Orientation.VERTICAL, 0);
-        		title.pack_start (stack_switcher, false, false, 0);
+        	title.pack_start (stack_switcher, false, false, 0);
 
-        		create_signals ();
+        	create_signals ();
 
-        		this.headerBar.set_custom_title (title);
-
-                        this.window.set_titlebar (headerBar);
-
-                        this.window.add (stack);
+        	this.headerBar.set_custom_title (title);
+			this.window.set_titlebar (headerBar);
+			this.window.add (stack);
 
 			this.window.show_all ();
 		}
@@ -181,14 +179,13 @@ namespace KDEConnectIndicator {
 			ListBox list_box = new ListBox ();
 			list_box.set_selection_mode (Gtk.SelectionMode.NONE);
 
-
 			list_box.add (boxrow1);
 			list_box.add (boxrow2);
 
 			Box vbox = new Box (Gtk.Orientation.HORIZONTAL, 0);
-        		vbox.pack_start (list_box, true, true, 0);
+        	vbox.pack_start (list_box, true, true, 0);
 
-        		return vbox;
+        	return vbox;
 		}
 
 		private Box create_sms_setts () {
@@ -199,10 +196,10 @@ namespace KDEConnectIndicator {
 			button1.sensitive = false;
 
 			string _contacts = GLib.Environment. get_user_data_dir()+
-				            "/indicator-kdeconnect/sms/contacts.json";
+				               "/indicator-kdeconnect/sms/contacts.json";
 
 			string _token = GLib.Environment. get_user_data_dir()+
-			                 "/indicator-kdeconnect/sms/token.json";
+			                "/indicator-kdeconnect/sms/token.json";
 
 			File contacts = File.new_for_path (_contacts);
 			File token = File.new_for_path (_token);
@@ -224,11 +221,11 @@ namespace KDEConnectIndicator {
 
 				if (token.query_exists ())
 					try{
-					     token.delete ();
-					     tmp = true;
+					    token.delete ();
+					    tmp = true;
 					} catch (Error e){
-					     message (e.message);
-					     tmp = false;
+					    message (e.message);
+					    tmp = false;
 					}
 
 				if (tmp)
@@ -250,10 +247,10 @@ namespace KDEConnectIndicator {
 			list_box.add (boxrow1);
 
 			Box vbox = new Box (Gtk.Orientation.HORIZONTAL, 0);
-        		vbox.pack_start (list_box, true, true, 0);
+        	vbox.pack_start (list_box, true, true, 0);
 
-        		return vbox;
-        	}
+        	return vbox;
+        }
 	}
 
 	int main (string[] args) {

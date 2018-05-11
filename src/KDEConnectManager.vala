@@ -31,19 +31,6 @@ namespace KDEConnectIndicator {
             }
             message ("KDE Connect daemon found");
 
-
-	    var file = File.new_for_path (KDEConnectIndicator.InOut.visible_devices);
-
-            try {
-        	if (!file.query_exists ())
-        	   file.create (FileCreateFlags.NONE);
-                else
-                   message ("Devices file not creates");
-	    }
-	    catch (Error e) {
-		message("%s",e.message);
-	    }
-
             device_list = new SList<DeviceIndicator> ();
             populate_devices ();
 
@@ -119,15 +106,6 @@ namespace KDEConnectIndicator {
 
             foreach (uint i in subs_identifier)
                 conn.signal_unsubscribe (i);
-
-            try {
-                 var file = File.new_for_path (KDEConnectIndicator.InOut.visible_devices);
-	         if (file.query_exists ())
-		     file.delete ();
-            } catch (Error e) {
-        	message ("%s\n", e.message);
-    	    }
-
         }
 
         public int get_devices_number () {
