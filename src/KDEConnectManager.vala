@@ -114,17 +114,17 @@ namespace KDEConnectIndicator {
 
         private void show_no_service_daemon () {
             var msg = new Gtk.MessageDialog (null,
-            				     Gtk.DialogFlags.MODAL,
-                    			     Gtk.MessageType.WARNING,
-                    			     Gtk.ButtonsType.OK,
-                    			     "msg");
+            				                 Gtk.DialogFlags.MODAL,
+                    			             Gtk.MessageType.WARNING,
+                    			             Gtk.ButtonsType.OK,
+                    			             "msg");
 
             msg.set_markup (_("cannot connect to KDE Connect DBus service"));
 
             msg.response.connect(()=>{
                     msg.destroy();
                     GLib.Application.get_default ().quit_mainloop ();
-                    });
+            });
 
             msg.show_all ();
             msg.run ();
@@ -132,21 +132,21 @@ namespace KDEConnectIndicator {
         
         private void run_kdeconnect_binary () {
             var kdeconnect_path = GLib.Environment.get_system_config_dirs()[0]+
-            			  "/autostart/kdeconnectd.desktop";
+            			                       "/autostart/kdeconnectd.desktop";
 
             string std_out;
 
             try{
-		Process.spawn_sync (null,
-				    new string[]{"grep","Exec",kdeconnect_path},
-				    null,
-				    SpawnFlags.SEARCH_PATH,
-				    null,
-				    out std_out,
-				    null,
-				    null);
-	    } catch (Error e){
-		message (e.message);
+		        Process.spawn_sync (null,
+				                    new string[]{"grep","Exec",kdeconnect_path},
+				                    null,
+				                    SpawnFlags.SEARCH_PATH,
+				                    null,
+				                    out std_out,
+				                    null,
+				                    null);
+	        } catch (Error e){
+		        message (e.message);
             }
 			
             File f = File.new_for_path (std_out.substring (5));

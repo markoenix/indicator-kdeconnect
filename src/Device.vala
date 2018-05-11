@@ -123,6 +123,8 @@ namespace KDEConnectIndicator {
             message ("device : %s",path);
             this.path = path;
 
+            this.settings = new Settings("com.bajoja.indicator-kdeconnect");
+
             try {
                  conn = Bus.get_sync (BusType.SESSION);
             } catch (Error e) {
@@ -231,9 +233,7 @@ namespace KDEConnectIndicator {
                     DBusSignalFlags.NONE,
                     void_signal_cb
                     );
-            subs_identifier.append (id);
-
-            this.settings = new Settings("com.bajoja.indicator-kdeconnect");
+            subs_identifier.append (id);            
         }
 
         ~Device () {
