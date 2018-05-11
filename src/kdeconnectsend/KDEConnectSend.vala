@@ -33,16 +33,16 @@ namespace KDEConnectIndicator{
 			if (files.length () == 0){
 				message ("file(s) doesnt exist(s) or not found");
 
-            			var msg = new Gtk.MessageDialog (null,
-                  						 Gtk.DialogFlags.MODAL,
-                   			                 	 Gtk.MessageType.WARNING,
-                   			                	 Gtk.ButtonsType.OK,
-                     			                 	 "msg");
+            	var msg = new Gtk.MessageDialog (null,
+                				 				 Gtk.DialogFlags.MODAL,
+                	                 	 		 Gtk.MessageType.WARNING,
+                	                	 		 Gtk.ButtonsType.OK,
+                		                 	 	 "msg");
 
-            			msg.set_markup (_("File(s) not found"));
+    			msg.set_markup (_("File(s) not found"));
 
-            			msg.destroy.connect (Gtk.main_quit);
-            			msg.run ();
+            	msg.destroy.connect (Gtk.main_quit);
+            	msg.run ();
 			}
 			else{
 				create_window ();
@@ -57,8 +57,8 @@ namespace KDEConnectIndicator{
 			foreach (File file in _files){
 				message ("%s".printf(file.get_uri ()));
 				if (file.get_path() != null && // null path means its remote file
-		    	    	    file.query_exists ())
-		    			files.append (file);
+		    	    file.query_exists ())		
+					files.append (file);
 			}
 
 			if (files.length () > 0)
@@ -91,34 +91,33 @@ namespace KDEConnectIndicator{
 			Box content = new Box (Gtk.Orientation.VERTICAL, 0);
 
 			content.pack_start (new Label (_("There's %u file(s) to be send")
-						       .printf (files.length ())),
-						       false, true, 10);
+						       .printf (files.length ())), false, true, 10);
 
 			this.tv = new TreeView ();
 			this.ts = this.tv.get_selection();
 			this.ts.set_mode(Gtk.SelectionMode.MULTIPLE);
 			this.tv.headers_visible = false;
-           		CellRendererText cell = new CellRendererText ();
-                        this.tv.insert_column_with_attributes (-1,"Device",cell,"text",0);
+			   
+			CellRendererText cell = new CellRendererText ();
+            this.tv.insert_column_with_attributes (-1,"Device",cell,"text",0);
+			
 			content.pack_start (tv);
 
-                        this.window.set_titlebar (headerBar);
-                        this.window.add (content);
+            this.window.set_titlebar (headerBar);
+            this.window.add (content);
 
 			this.window.show_all ();
 		}
 
 		private void create_signals (){
 			this.tv.cursor_changed.connect (() => {
-				this.send_button.sensitive = (
-					get_selected().length () > 0);
+				this.send_button.sensitive = (get_selected().length () > 0);
 			});
 
 			this.tv.row_activated.connect ((path, column) => {
-                		tv.set_cursor (path, null, false);
-               		 	send_items ();
-           		 });
-
+                tv.set_cursor (path, null, false);
+            	send_items ();
+           	});
 
 			this.cancel_button.clicked.connect (() => {
 				this.window.close ();
@@ -131,96 +130,89 @@ namespace KDEConnectIndicator{
 			this.reload_button.clicked.connect (() => {
 				reload_device_list ();
 			});
-
 		}
 
 		private SList<int> get_selected (){
 
-            		SList<int> selected_devices = new SList<int> ();
+            SList<int> selected_devices = new SList<int> ();
 
 			TreeModel tm;
 
-            		List<TreePath> selected_paths = this.ts.
-            					     get_selected_rows (out tm);
+            List<TreePath> selected_paths = this.ts.get_selected_rows (out tm);
 
 			foreach (TreePath path in selected_paths){
 				if(path != null)
-					selected_devices.append (int.parse
-							  (path.to_string ()));
+					selected_devices.append (int.parse (path.to_string ()));
 			}
 
-            		return selected_devices.copy ();
+            return selected_devices.copy ();
 		}
 
 		private void set_device_list (Gtk.ListStore device_list) {
-            		this.tv.set_model (device_list);
+            this.tv.set_model (device_list);
 
-            		// select first item
-            		Gtk.TreePath path = new Gtk.TreePath.from_indices (0, -1);
-            		tv.set_cursor (path, null, false);
+            // select first item
+            Gtk.TreePath path = new Gtk.TreePath.from_indices (0, -1);
+            tv.set_cursor (path, null, false);
 		}
 
 		private void reload_device_list (){
 			try{
 				conn = Bus.get_sync (BusType.SESSION);
-
 			} catch (Error e){
 				message (e.message);
 				this.window.close ();
 			}
 
 			string[] id_list = {};
-        		try {
-            			var return_variant = conn.call_sync (
-                    		"org.kde.kdeconnect",
+        	try {
+            	var return_variant = conn.call_sync (
+            	      		"org.kde.kdeconnect",
                     		"/modules/kdeconnect",
                     		"org.kde.kdeconnect.daemon",
                     		"devices",
                     		new Variant ("(b)", true),
-                   		null,
+                	   		null,
                     		DBusCallFlags.NONE,
                     		-1,
                     		null
                     		);
 
-            			Variant i = return_variant.get_child_value (0);
-            			id_list = i.dup_strv ();
+            	Variant i = return_variant.get_child_value (0);
+    			id_list = i.dup_strv ();
 
-       			} catch (Error e) {
-            			message (e.message);
-       	 		}
+   			} catch (Error e) {
+       			message (e.message);
+   	 		}
 
 			this.list_store = new Gtk.ListStore (1,typeof(string));
-       			this.device_list = new SList<Device> ();
+   			this.device_list = new SList<Device> ();
 
-        		foreach (string id in id_list) {
-            			var d = new Device ("/modules/kdeconnect/devices/"+id);
-            			if (d.is_reachable && d.is_trusted) {
-                			device_list.append (d);
-                			Gtk.TreeIter iter;
-                			this.list_store.append (out iter);
-                			message (d.name);
-                			this.list_store.set (iter, 0, d.name);
-            			}
-        		}
+       		foreach (string id in id_list) {
+       			var d = new Device ("/modules/kdeconnect/devices/"+id);
+       			if (d.is_reachable && d.is_trusted) {
+           			device_list.append (d);
+           			Gtk.TreeIter iter;
+           			this.list_store.append (out iter);
+           			message (d.name);
+           			this.list_store.set (iter, 0, d.name);
+       			}
+      		}
 
-        		set_device_list (this.list_store);
-
+       		set_device_list (this.list_store);
 		}
 
 		private void send_items (){
 			SList<int> selected_devs = get_selected ();
 
-            		foreach (File file in files){
-            			foreach (int selected in selected_devs){
-            				Device selected_dev = this.device_list.
-            						   	 nth_data (selected);
+            foreach (File file in files){
+    			foreach (int selected in selected_devs){
+        			Device selected_dev = this.device_list.nth_data (selected);
+            		selected_dev.send_file (file.get_uri ());
+       			}
+       		}
 
-            				selected_dev.send_file (file.get_uri ());
-            			}
-            		}
-
-            		this.window.close ();
+		   this.window.close ();
 		}
 	}
 
