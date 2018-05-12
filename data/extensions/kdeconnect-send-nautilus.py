@@ -90,7 +90,7 @@ class KDEConnectSendExtension(GObject.GObject, Nautilus.MenuProvider):
 
     """Get files that user selected"""
     def get_file_items(self, window, files):
-	    """Ensure there are reachable devices"""
+        """Ensure there are reachable devices"""
         try:
             devices = self.get_reachable_devices()        
         except Exception as e:
