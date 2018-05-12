@@ -1,3 +1,21 @@
+# Version 0.9.4
+ * Add Languages: Greek,Hebrew,Chinese
+ * Fix Icons Name
+
+# Version 0.9.3
+ * Add Option to show device main folders instead of internal storage
+
+# Version 0.9.2
+ * Add Languages: Persian, Polish, Norwegian,Slovenian
+ * Fix English errors on main translation file
+
+# Version 0.9.1
+ * Add Languages: Chinese
+ * Fix Elementary OS App Center app compilation
+ * Fix Nautilus and Caja send files don't work
+ * Remove settings option to use custom Elementary Icons
+ * Make indicator-kdeconnect restart after apply settings
+
 # Version 0.9.0
  * Add support to send files to multiple devices
  * Add settings panel

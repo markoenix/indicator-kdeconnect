@@ -7,222 +7,238 @@ msgstr ""
 "Project-Id-Version: indicator-kdeconnect\n"
 "Report-Msgid-Bugs-To: steevenlopes@outlook.com\n"
 "POT-Creation-Date: 2016-11-18 18:46+0200\n"
-"PO-Revision-Date: 2016-11-18 18:46+0200\n"
-"Last-Translator: Bajoja <steevenlopes@outlook.com>\n"
-"Language-Team: \n"
+"PO-Revision-Date: 2017-09-11 11:27+0000\n"
+"Last-Translator: Jure Slak <jure.slak@gmail.com>\n"
+"Language-Team: Slovenian <https://hosted.weblate.org/projects/indicator-kde-"
+"connect/translations/sl/>\n"
+"Language: sl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"Plural-Forms: nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || "
+"n%100==4 ? 2 : 3;\n"
+"X-Generator: Weblate 2.17-dev\n"
 
 #: src/FirstTimeWizard.vala:50
 msgid "<b>Are you ready for your first device pairing?</b>\n\n"
 msgstr ""
+"<b>Ste pripravljeni na povezavo s prvo napravo?</b>\n"
+"\n"
 
 #: src/FirstTimeWizard.vala:51
-msgid "Now connect your devices using Wi-Fi connection.\n"
-msgstr ""
+msgid "Now connect your devices using wifi connection.\n"
+msgstr "Sedaj povežite svoje naprave prek WIFI povezave.\n"
 
 #: src/FirstTimeWizard.vala:52
 msgid "Tethering should work too!\n"
-msgstr ""
+msgstr "Delovati bi moralo tudi prek tetheringa.\n"
 
 #: src/FirstTimeWizard.vala:53
-msgid "If you have a firewall running, please open TCP and UDP ports 1714-1764\n\n"
+msgid "If you have Firewall running, please open port 1714-1764 for TCP and UDP\n\n"
 msgstr ""
+"Če imate vzpostavljen požarni zid, prosimo odprite vrata 1714-1764 za TCP in "
+"UDP.\n"
+"\n"
 
 #: src/FirstTimeWizard.vala:54
-msgid "Launch KDE Connect on your Android device. You can download it from "
-msgstr ""
+msgid "Launch KDE Connect in your Android which you can download from "
+msgstr "V svoji Android napravi zaženite KDE Connect, ki ga lahko prenesete "
 
 #: src/FirstTimeWizard.vala:56
-msgid "Google Play or F-Droid</a>"
-msgstr ""
+msgid "Google Play</a>"
+msgstr "iz Google Play</a>"
 
 #: src/FirstTimeWizard.vala:65
-msgid "Whenever a new device is connected, a new indicator will appear in your panel.\n"
+msgid "Everytime there is a new device connected, a new indicator will appear in your panel.\n"
 msgstr ""
+"Vsakič, ko se poveže nova naprava, se bo pojavila nova ikona v orodni "
+"vrstici.\n"
 
 #: src/FirstTimeWizard.vala:66
 msgid "There, you can pair and see its status\n\n"
 msgstr ""
+"Tam se lahko z njo povežete in vidite njeno stanje.\n"
+"\n"
 
 #: src/FirstTimeWizard.vala:67
 msgid "<b>Now try to pair your device</b>"
-msgstr ""
+msgstr "<b>Poskusite se povezati z vašo napravo</b>"
 
 #: src/FirstTimeWizard.vala:76
 msgid "<b>Great! your device is all set</b>\n\n"
 msgstr ""
+"<b>Odlično! Vaša naprava je pripravljena</b>\n"
+"\n"
 
 #: src/FirstTimeWizard.vala:77
-msgid "Now you can enable or disable modules in KDE Connect settings.\n"
+msgid "Now you can enable or disable modules on KDE Connect settings.\n"
 msgstr ""
+"Različne module lahko omogočite ali onemogočite v nastavitvah KDE Connect.\n"
 
 #: src/FirstTimeWizard.vala:78
-msgid "Indicator has been added to autostart.\n"
-msgstr ""
+msgid "Indicator already added to autostart.\n"
+msgstr "Indicator je bil že dodan med avtomatsko zagnane programe.\n"
 
 #: src/FirstTimeWizard.vala:79
 msgid "Enjoy!"
-msgstr ""
+msgstr "Uživajte!"
 
 #: src/KDEConnectManager.vala:119
-msgid "Cannot connect to KDE Connect DBus service"
-msgstr ""
+msgid "cannot connect to KDE Connect DBus service"
+msgstr "Ne morem se povezati s KDE Connect DBus storitvijo"
 
 #: src/Device.vala:524
 msgid "Encryption information not found"
-msgstr ""
+msgstr "Ne najdem informacij za šifriranje"
 
 #: src/DeviceIndicator.vala:41
 msgid "Browse device"
-msgstr ""
+msgstr "Brskaj po napravi"
 
 #: src/DeviceIndicator.vala:43
 msgid "Send file(s)"
-msgstr ""
+msgstr "Pošlji datoteke"
 
 #: src/DeviceIndicator.vala:47
 msgid "Send SMS"
-msgstr ""
+msgstr "Pošlji SMS"
 
 #: src/DeviceIndicator.vala:51
 msgid "Find my phone"
-msgstr ""
+msgstr "Najdi moj telefon"
 
 #: src/DeviceIndicator.vala:55
 msgid "Request pairing"
-msgstr ""
+msgstr "Zahtevaj povezavo"
 
 #: src/DeviceIndicator.vala:58
 msgid "Unpair"
-msgstr ""
+msgstr "Prekliči povezavo"
 
 #: src/DeviceIndicator.vala:100
 msgid "Select file(s)"
-msgstr ""
+msgstr "Izberi datoteke"
 
 #: src/DeviceIndicator.vala:103 src/contractor/Contractor.vala:24 src/settings/Settings.vala:47 src/Sms.py:237
 msgid "Cancel"
-msgstr ""
+msgstr "Prekliči"
 
 #: src/DeviceIndicator.vala:105 
 msgid "Select"
-msgstr ""
+msgstr "Izberi"
 
 #: src/DeviceIndicator.vala:201
 msgid "Battery : "
-msgstr ""
+msgstr "Baterija : "
 
 #: src/DeviceIndicator.vala:203
 msgid " (charging)"
-msgstr ""
+msgstr " (polnjenje)"
 
 #: src/DeviceIndicator.vala:210
-msgid "Device reachable and trusted"
-msgstr ""
+msgid "Device Reachable and Trusted"
+msgstr "Naprava dosegljva in med zaupanimi napravami"
 
 #: src/DeviceIndicator.vala:212
-msgid "Device reachable, but untrusted"
-msgstr ""
+msgid "Device Reachable but Not Trusted"
+msgstr "Naprava dosegljiva, a ni med zaupanimi napravami"
 
 #: src/DeviceIndicator.vala:215
-msgid "Device trusted, but unreachable"
-msgstr ""
+msgid "Device Trusted but not Reachable"
+msgstr "Naprava med zaupanami napravami, a ni dosegljiva"
 
 #: src/DeviceIndicator.vala:217
-msgid "Device unreachable and untrusted"
-msgstr ""
+msgid "Device Not Reachable and Not Trusted"
+msgstr "Naprava ni dosegljiva in ni med zaupanimi napravami"
 
 #: src/contractor/Contractor.vala:15
 msgid "Send to"
-msgstr ""
+msgstr "Pošlji"
 
 #: src/contractor/Contractor.vala:25 src/Sms.py:220
 msgid "Send"
-msgstr ""
+msgstr "Pošlji"
 
 #: src/contractor/Contractor.vala:84
 msgid "File(s) not found"
-msgstr ""
+msgstr "Ne najdem datotek"
 
 #: src/contractor/Contractor.vala:143
 msgid "There's %u file(s) to be send"
-msgstr ""
+msgstr "Pošiljam %u datotek"
 
 #: src/Sms.py:184
 msgid "Compose SMS"
-msgstr ""
+msgstr "Napiši SMS"
 
 #: src/Sms.py:199
 msgid "Phone number"
-msgstr ""
+msgstr "Telefonska številka"
 
 #: src/Sms.vala:60
 msgid "Message body: "
-msgstr ""
+msgstr "Sporočilo: "
 
 #: src/Sms.py:44
-msgid "Authorization succesfull. You can close this window"
-msgstr ""
+msgid "Authorization succesfull. You can close this window."
+msgstr "Avtorizacija uspešna. Lahko zaprete to okno."
 
 #: src/Sms.py:48
-msgid "Authorization failed. Please close this window and try again"
-msgstr ""
+msgid "Authorization failed. Please close this window and try again."
+msgstr "Avtorizacija neuspešna. Zaprite okno in poskusite ponovno."
 
 #: src/Sms.py:303
 msgid "Sync starting"
-msgstr ""
+msgstr "Začenjam sinhronizacijo"
 
 #: src/Sms.py:303
 msgid "Synchronizing contacts"
-msgstr ""
+msgstr "Sinhroniziram kontakte"
 
 #: src/Sms.py:317
 msgid "Sync done"
-msgstr ""
+msgstr "Sinhronizacija zaključena"
 
 #: src/Sms.py:318
 msgid "Synchronized contacts"
-msgstr ""
+msgstr "Sinhronizirani kontakti"
 
 #: src/settings/Settings.vala:50
 msgid "Apply"
-msgstr ""
+msgstr "Uporabi"
 
 #: src/settings/Settings.vala:59
 msgid "Visibility"
-msgstr ""
+msgstr "Vidnost"
 
 #: src/settings/Settings.vala:61
 msgid "Icons"
-msgstr ""
+msgstr "Ikone"
 
 #: src/settings/Settings.vala:97
 msgid "Show only paired devices: "
-msgstr ""
+msgstr "Pokaži samo povezane naprave: "
 
 #: src/settings/Settings.vala:128
 msgid "Show custom icons for Elementary OS: "
-msgstr ""
+msgstr "Pokaži posebne ikone za Elementary OS: "
 
 #: src/settings/Settings.vala:152
-msgid "Delete Google Contacts imported from your Android device: "
-msgstr ""
+msgid "Delete Google Contacts: "
+msgstr "Izbriši Google Contacts: "
 
 #: data/extensions/kdeconnect-send-nautilus.py:47 data/extensions/kdeconncet-send-nemo.py:47 data/extensions/kdeconnect-send-caja.py:47
 msgid "Check the device {device_name}"
-msgstr ""
+msgstr "Preveri napravo {device_name}"
 
 #: data/extensions/kdeconnect-send-nautilus.py:48 data/extensions/kdeconncet-send-nemo.py:48 data/extensions/kdeconnect-send-caja.py:48
 msgid "Sending {num_files} file(s)"
-msgstr ""
+msgstr "Pošiljam {num_files} datotek"
 
 #: data/extensions/kdeconnect-send-nautilus.py:79 data/extensions/kdeconncet-send-nemo.py:79 data/extensions/kdeconnect-send-caja.py:79
-msgid "KDE Connect send to"
-msgstr ""
+msgid "KDEConnect Send To"
+msgstr "Pošlji v KDEConnect"
 
 #: data/extensions/kdeconnect-send-nautilus.py:80 data/extensions/kdeconncet-send-nemo.py:80 data/extensions/kdeconnect-send-caja.py:80
-msgid "send file(s) with KDE Connect"
-msgstr ""
+msgid "send file(s) with kdeconnect"
+msgstr "pošlji datoteke s KDEConnect"

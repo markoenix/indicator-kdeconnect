@@ -7,222 +7,235 @@ msgstr ""
 "Project-Id-Version: indicator-kdeconnect\n"
 "Report-Msgid-Bugs-To: steevenlopes@outlook.com\n"
 "POT-Creation-Date: 2016-11-18 18:46+0200\n"
-"PO-Revision-Date: 2016-11-18 18:46+0200\n"
-"Last-Translator: Bajoja <steevenlopes@outlook.com>\n"
-"Language-Team: \n"
+"PO-Revision-Date: 2018-01-27 12:34+0000\n"
+"Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
+"Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects"
+"/indicator-kde-connect/translations/nb_NO/>\n"
+"Language: nb_NO\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 2.19-dev\n"
 
 #: src/FirstTimeWizard.vala:50
 msgid "<b>Are you ready for your first device pairing?</b>\n\n"
 msgstr ""
+"<b>Er du klar for å sette opp din første enhet</b>\n"
+"\n"
 
 #: src/FirstTimeWizard.vala:51
-msgid "Now connect your devices using Wi-Fi connection.\n"
-msgstr ""
+msgid "Now connect your devices using wifi connection.\n"
+msgstr "Koble enhetene dine ved bruk av Wi-Fi.\n"
 
 #: src/FirstTimeWizard.vala:52
 msgid "Tethering should work too!\n"
-msgstr ""
+msgstr "Tjudring bør også fungere!\n"
 
 #: src/FirstTimeWizard.vala:53
-msgid "If you have a firewall running, please open TCP and UDP ports 1714-1764\n\n"
+msgid "If you have Firewall running, please open port 1714-1764 for TCP and UDP\n\n"
 msgstr ""
+"Hvis du har en brannmur kjørende, åpne port 1714-1764 for TCP og UDP\n"
+"\n"
 
 #: src/FirstTimeWizard.vala:54
-msgid "Launch KDE Connect on your Android device. You can download it from "
-msgstr ""
+msgid "Launch KDE Connect in your Android which you can download from "
+msgstr "Kjør KDE Connect på Android, som du kan laste ned fra "
 
 #: src/FirstTimeWizard.vala:56
-msgid "Google Play or F-Droid</a>"
-msgstr ""
+msgid "Google Play</a>"
+msgstr "Google Play (eller F-droid)</a>"
 
 #: src/FirstTimeWizard.vala:65
-msgid "Whenever a new device is connected, a new indicator will appear in your panel.\n"
+msgid "Everytime there is a new device connected, a new indicator will appear in your panel.\n"
 msgstr ""
+"Hver gang en ny enhet kobles til, vil en indikator komme til syne i panelet "
+"ditt.\n"
 
 #: src/FirstTimeWizard.vala:66
 msgid "There, you can pair and see its status\n\n"
 msgstr ""
+"Der kan du sette opp enheter og se status\n"
+"\n"
 
 #: src/FirstTimeWizard.vala:67
 msgid "<b>Now try to pair your device</b>"
-msgstr ""
+msgstr "<b>Prøv å sette opp din enhet</b>"
 
 #: src/FirstTimeWizard.vala:76
 msgid "<b>Great! your device is all set</b>\n\n"
 msgstr ""
+"<b>Storartet! Din enhet er satt opp</b>\n"
+"\n"
 
 #: src/FirstTimeWizard.vala:77
-msgid "Now you can enable or disable modules in KDE Connect settings.\n"
-msgstr ""
+msgid "Now you can enable or disable modules on KDE Connect settings.\n"
+msgstr "Nå kan du skru på eller av moduler i KDE Connect-innstillingene.\n"
 
 #: src/FirstTimeWizard.vala:78
-msgid "Indicator has been added to autostart.\n"
-msgstr ""
+msgid "Indicator already added to autostart.\n"
+msgstr "Indikator er allerede lagt til i autostart.\n"
 
 #: src/FirstTimeWizard.vala:79
 msgid "Enjoy!"
-msgstr ""
+msgstr "Kos deg!"
 
 #: src/KDEConnectManager.vala:119
-msgid "Cannot connect to KDE Connect DBus service"
-msgstr ""
+msgid "cannot connect to KDE Connect DBus service"
+msgstr "kan ikke koble til KDE D-Bus-tjeneste"
 
 #: src/Device.vala:524
 msgid "Encryption information not found"
-msgstr ""
+msgstr "Kunne ikke skaffe til veie krypteringsinformasjon"
 
 #: src/DeviceIndicator.vala:41
 msgid "Browse device"
-msgstr ""
+msgstr "Utforsk enhet"
 
 #: src/DeviceIndicator.vala:43
 msgid "Send file(s)"
-msgstr ""
+msgstr "Send fil(er)"
 
 #: src/DeviceIndicator.vala:47
 msgid "Send SMS"
-msgstr ""
+msgstr "Send SMS"
 
 #: src/DeviceIndicator.vala:51
 msgid "Find my phone"
-msgstr ""
+msgstr "Finn telefonen min"
 
 #: src/DeviceIndicator.vala:55
 msgid "Request pairing"
-msgstr ""
+msgstr "Forespør oppsett av enhet"
 
 #: src/DeviceIndicator.vala:58
 msgid "Unpair"
-msgstr ""
+msgstr "Fjern oppsett av enhet"
 
 #: src/DeviceIndicator.vala:100
 msgid "Select file(s)"
-msgstr ""
+msgstr "Velg fil(er)"
 
 #: src/DeviceIndicator.vala:103 src/contractor/Contractor.vala:24 src/settings/Settings.vala:47 src/Sms.py:237
 msgid "Cancel"
-msgstr ""
+msgstr "Avbryt"
 
 #: src/DeviceIndicator.vala:105 
 msgid "Select"
-msgstr ""
+msgstr "Velg"
 
 #: src/DeviceIndicator.vala:201
 msgid "Battery : "
-msgstr ""
+msgstr "Batteri: "
 
 #: src/DeviceIndicator.vala:203
 msgid " (charging)"
-msgstr ""
+msgstr " (lader)"
 
 #: src/DeviceIndicator.vala:210
-msgid "Device reachable and trusted"
-msgstr ""
+msgid "Device Reachable and Trusted"
+msgstr "Enheten kan nås og er betrodd"
 
 #: src/DeviceIndicator.vala:212
-msgid "Device reachable, but untrusted"
-msgstr ""
+msgid "Device Reachable but Not Trusted"
+msgstr "Enheten kan nås, men er ikke betrodd"
 
 #: src/DeviceIndicator.vala:215
-msgid "Device trusted, but unreachable"
-msgstr ""
+msgid "Device Trusted but not Reachable"
+msgstr "Enheten er betrodd, men kan ikke nås"
 
 #: src/DeviceIndicator.vala:217
-msgid "Device unreachable and untrusted"
-msgstr ""
+msgid "Device Not Reachable and Not Trusted"
+msgstr "Enheten kan nås, men er ikke betrodd"
 
 #: src/contractor/Contractor.vala:15
 msgid "Send to"
-msgstr ""
+msgstr "Send til"
 
 #: src/contractor/Contractor.vala:25 src/Sms.py:220
 msgid "Send"
-msgstr ""
+msgstr "Send"
 
 #: src/contractor/Contractor.vala:84
 msgid "File(s) not found"
-msgstr ""
+msgstr "Fil(er) ikke funnet"
 
 #: src/contractor/Contractor.vala:143
 msgid "There's %u file(s) to be send"
-msgstr ""
+msgstr "Det er %u fil(er) i forsendelseskø"
 
 #: src/Sms.py:184
 msgid "Compose SMS"
-msgstr ""
+msgstr "Skriv SMS"
 
 #: src/Sms.py:199
 msgid "Phone number"
-msgstr ""
+msgstr "Telefonnummer"
 
 #: src/Sms.vala:60
 msgid "Message body: "
-msgstr ""
+msgstr "Meldingstekst: "
 
 #: src/Sms.py:44
-msgid "Authorization succesfull. You can close this window"
-msgstr ""
+msgid "Authorization succesfull. You can close this window."
+msgstr "Identitetsbekreftelse gjort. Du kan lukke dette vinduet."
 
 #: src/Sms.py:48
-msgid "Authorization failed. Please close this window and try again"
-msgstr ""
+msgid "Authorization failed. Please close this window and try again."
+msgstr "Identitetsbekreftelse mislyktes. Lukk dette vinduet og prøv igjen."
 
 #: src/Sms.py:303
 msgid "Sync starting"
-msgstr ""
+msgstr "Synkronisering starter"
 
 #: src/Sms.py:303
 msgid "Synchronizing contacts"
-msgstr ""
+msgstr "Synkroniserer kontakter"
 
 #: src/Sms.py:317
 msgid "Sync done"
-msgstr ""
+msgstr "Synkronisering fullført"
 
 #: src/Sms.py:318
 msgid "Synchronized contacts"
-msgstr ""
+msgstr "Synkroniserte kontakter"
 
 #: src/settings/Settings.vala:50
 msgid "Apply"
-msgstr ""
+msgstr "Bruk"
 
 #: src/settings/Settings.vala:59
 msgid "Visibility"
-msgstr ""
+msgstr "Synlighet"
 
 #: src/settings/Settings.vala:61
 msgid "Icons"
-msgstr ""
+msgstr "Ikoner"
 
 #: src/settings/Settings.vala:97
 msgid "Show only paired devices: "
-msgstr ""
+msgstr "Bare vis oppsatte enheter: "
 
 #: src/settings/Settings.vala:128
 msgid "Show custom icons for Elementary OS: "
-msgstr ""
+msgstr "Vis egendefinerte ikoner for elementary OS: "
 
 #: src/settings/Settings.vala:152
-msgid "Delete Google Contacts imported from your Android device: "
-msgstr ""
+msgid "Delete Google Contacts: "
+msgstr "Slett Google-kontakter: "
 
 #: data/extensions/kdeconnect-send-nautilus.py:47 data/extensions/kdeconncet-send-nemo.py:47 data/extensions/kdeconnect-send-caja.py:47
 msgid "Check the device {device_name}"
-msgstr ""
+msgstr "Sjekk enheten {device_name}"
 
 #: data/extensions/kdeconnect-send-nautilus.py:48 data/extensions/kdeconncet-send-nemo.py:48 data/extensions/kdeconnect-send-caja.py:48
 msgid "Sending {num_files} file(s)"
-msgstr ""
+msgstr "Sender {num_files} fil(er)"
 
 #: data/extensions/kdeconnect-send-nautilus.py:79 data/extensions/kdeconncet-send-nemo.py:79 data/extensions/kdeconnect-send-caja.py:79
-msgid "KDE Connect send to"
-msgstr ""
+msgid "KDEConnect Send To"
+msgstr "KDE Connect Send til"
 
 #: data/extensions/kdeconnect-send-nautilus.py:80 data/extensions/kdeconncet-send-nemo.py:80 data/extensions/kdeconnect-send-caja.py:80
-msgid "send file(s) with KDE Connect"
-msgstr ""
+msgid "send file(s) with kdeconnect"
+msgstr "send fil(er) med KDE Connect"

@@ -41,9 +41,9 @@ namespace KDEConnectIndicator {
     
     int main (string[] args) {
         GLib.Intl.setlocale(GLib.LocaleCategory.ALL, "");
-  	GLib.Intl.bindtextdomain (GETTEXT_PACKAGE, LOCALEDIR);
-  	GLib.Intl.bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
-  	GLib.Intl.textdomain (GETTEXT_PACKAGE);
+  	    GLib.Intl.bindtextdomain (GETTEXT_PACKAGE, LOCALEDIR);
+  	    GLib.Intl.bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
+  	    GLib.Intl.textdomain (GETTEXT_PACKAGE);
 
         Application app = new Application ();
         return app.run (args);

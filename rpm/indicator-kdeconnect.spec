@@ -20,7 +20,7 @@
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 Name:           indicator-kdeconnect
-Version:        0.9.0
+Version:        0.9.4
 Release:        0%{?dist}
 Summary:        App Indicator for KDE Connect
 Group:          Applications/System
@@ -82,8 +82,11 @@ cd build
 %make_install
 
 %if 0%{?suse_version}
-%suse_update_desktop_file -r -i %name Network Telephony
+%suse_update_desktop_file -r -i %name 'Network;Telephony;'
 %endif
+
+# Bad workaround for a "directories not owned by a package" failure
+rm -rf ${RPM_BUILD_ROOT}%{_datadir}/locale/zh_Hant
 
 %files
 %defattr(-,root,root,-)
@@ -101,13 +104,14 @@ cd build
 %dir %{_datadir}/nautilus-python
 %dir %{_datadir}/nemo-python
 %dir %{_datadir}/Thunar
-%{_bindir}/%{name}
+%{_bindir}/indicator-kdeconnect*
 %{_bindir}/kdeconnect-send
-%{_bindir}/indicator-kdeconnect/Sms.py
 %{_datadir}/locale/*/LC_MESSAGES/indicator-kdeconnect.mo
-%{_datadir}/applications/%{name}.desktop
+%{_datadir}/applications/*.desktop
+%{_datadir}/indicator-kdeconnect/*
 %{_datadir}/contractor/kdeconnect.contract
-%{_datadir}/%{name}
+%{_datadir}/glib-2.0/schemas/com.bajoja.indicator-kdeconnect.gschema.xml
+%{_datadir}/metainfo/com.bajoja.indicator-kdeconnect.appdata.xml
 %{_datadir}/nautilus-python/extensions/
 %{_datadir}/nemo-python/extensions/
 %{_datadir}/caja-python/extensions/
@@ -119,8 +123,26 @@ cd build
 %{_datadir}/icons/Adwaita/*/*/*
 %endif
 
-
 %changelog
+
+* Sun Apr 08 2018 00:00 Bajoja <steevenlopes@outlook.com> 0.9.4
+ - Add Languages: Greek, Hebrew, Chinese
+ - Fix Icons Name
+
+* Fri Nov 10 2017 00:00 Bajoja <steevenlopes@outlook.com> 0.9.3
+ - Add Option to show device main folders instead of internal storage
+
+* Sun Sep 24 2017 00:00 Bajoja <steevenlopes@outlook.com> 0.9.2
+ - Add Languages: Persian, Polish, Norwegian,Slovenian
+ - Fix English errors on main translation file
+
+* Thu Jul 18 2017 00:00 Bajoja <steevenlopes@outlook.com> 0.9.1
+ - Add Languages: Chinese
+ - Fix Elementary OS App Center app compilation
+ - Fix Nautilus and Caja send files don't work
+ - Remove settings option to use custom Elementary Icons
+ - Make indicator-kdeconnect restart after apply settings
+
 * Mon May 16 2017 00:00 Bajoja <steevenlopes@outlook.com> 0.9.0
  - Add support to send files to multiple devices
  - Add settings panel

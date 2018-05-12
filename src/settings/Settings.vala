@@ -23,7 +23,7 @@ namespace KDEConnectIndicator {
 
 		public SettingsDialog () {
 			Object (application_id: "com.bajoja.indicator-kdeconnect-settings",
-				flags: ApplicationFlags.FLAGS_NONE);
+				    flags: ApplicationFlags.FLAGS_NONE);
 		}
 
 		protected override void activate () {
@@ -52,31 +52,26 @@ namespace KDEConnectIndicator {
 			this.stack.set_transition_type (Gtk.StackTransitionType.SLIDE_LEFT_RIGHT);
 
 			this.stack.add_titled(create_visibility_setts (), "visibility", _("Visibility"));
-			// Will be Deprecate on 1.0
-			//this.stack.add_titled (create_icons_setts (), "icons", _("Icons"));
-			
+
 			this.stack.add_titled (create_sms_setts (), "sms", _("SMS"));
 
-        		this.stack_switcher = new StackSwitcher ();
-        		this.stack_switcher.halign = Gtk.Align.CENTER;
+        	this.stack_switcher = new StackSwitcher ();
+        	this.stack_switcher.halign = Gtk.Align.CENTER;
 			this.stack_switcher.set_stack (stack);
 
 			Box title = new Box (Gtk.Orientation.VERTICAL, 0);
-        		title.pack_start (stack_switcher, false, false, 0);
+        	title.pack_start (stack_switcher, false, false, 0);
 
-        		create_signals ();
+        	create_signals ();
 
-        		this.headerBar.set_custom_title (title);
-
-                        this.window.set_titlebar (headerBar);
-
-                        this.window.add (stack);
+        	this.headerBar.set_custom_title (title);
+			this.window.set_titlebar (headerBar);
+			this.window.add (stack);
 
 			this.window.show_all ();
 		}
 
 		private void create_signals () {
-
 			this.cancel_button.clicked.connect (() => {
 				this.window.close ();
 			});
@@ -86,8 +81,6 @@ namespace KDEConnectIndicator {
 				restart();
 				this.window.close ();
 			});
-
-
 		}
 
 		private void restart () {
@@ -95,53 +88,51 @@ namespace KDEConnectIndicator {
 
 			message("Getting PID");
 
-            		try{
+            try{
 			    Process.spawn_sync (null,
-			     			new string[]{"pidof",
-			     			             "indicator-kdeconnect"},
-			    			null,
-			    			SpawnFlags.SEARCH_PATH,
-			    			null,
+			              			new string[]{"pidof",
+			     	         		             "indicator-kdeconnect"},
+			    					null,
+			    					SpawnFlags.SEARCH_PATH,
+			    					null,
 			                        out std_out,
-			    			null,
-			    			null);
-	    		} catch (Error e){
+			    					null,
+			    					null);
+	    	} catch (Error e){
 			    message (e.message);
-             		}
+			}
 
+			if (std_out != ""){
+       			message("Kill PID");
 
-             		if (std_out != ""){
-             			message("Kill PID");
+    		int pid = int.parse(std_out);
 
-             			int pid = int.parse(std_out);
-
-             			try{
-			    	    Process.spawn_sync (null,
-			     		    	        new string[]{"kill",
-			     		    	                     pid.to_string()},
+    		try{
+	    	    Process.spawn_sync (null,
+	        		    	        new string[]{"kill",
+		    	                    pid.to_string()},
 			    			        null,
 			    			        SpawnFlags.SEARCH_PATH,
 			    			        null,
-			                        	out std_out,
-			    				null,
-			    				null);
-	    			} catch (Error e){
-			    	    message (e.message);
-             			}
-
-
-				message("Restart process");
-             			try{
-		    		    Process.spawn_async (null,
-		    					 new string[]{"indicator-kdeconnect"},
-				        		 null,
-				        		 SpawnFlags.SEARCH_PATH,
+			                        out std_out,
+			    				    null,
+			    				    null);
+	    	} catch (Error e){
+			    message (e.message);
+			}
+			
+			message("Restart process");
+            try{
+		        Process.spawn_async (null,
+		                			 new string[]{"indicator-kdeconnect"},
+				         			 null,
+				        			 SpawnFlags.SEARCH_PATH,
 					                 null,
-				                         null);
-	    			} catch (Error e) {
-		    		    message (e.message);
-            			}
-             		}
+				                     null);
+	    		} catch (Error e) {
+		    	    message (e.message);
+				}
+        	}
 		}
 
 		private Box create_visibility_setts () {
@@ -158,6 +149,7 @@ namespace KDEConnectIndicator {
 
 			hbox1.pack_start (label1, true, true, 0);
 			hbox1.pack_start (switch1, true, true, 0);
+<<<<<<< HEAD
 
 			ListBoxRow boxrow1 = new ListBoxRow ();
 
@@ -191,17 +183,18 @@ namespace KDEConnectIndicator {
 
 			list_box.add (boxrow1);
 			list_box.add (boxrow2);
+=======
 
-			Box vbox = new Box (Gtk.Orientation.HORIZONTAL, 0);
-        		vbox.pack_start (list_box, true, true, 0);
+			ListBoxRow boxrow1 = new ListBoxRow ();
+>>>>>>> master
 
-        		return vbox;
-		}
-		
-		/*
-		private Box create_icons_setts () {
-			Label label1 = new Label (_("Show custom icons for Elementary OS: "));
+			boxrow1.add (hbox1);
 
+			//----------------------------------------------------//
+
+			Label label2 = new Label (_("Show device directories: "));
+
+<<<<<<< HEAD
 			Switch switch1 = new Switch ();
 			switch1.set_active (settings.get_string ("icons")!="");
 
@@ -211,28 +204,42 @@ namespace KDEConnectIndicator {
 				else
 					settings.set_string ("icons", "");
 
+=======
+			Switch switch2 = new Switch ();
+			switch2.set_active (settings.get_boolean ("list-device-dir"));
+
+			switch2.notify["active"].connect (() => {
+				settings.set_boolean ("list-device-dir", switch2.active);
+>>>>>>> master
 			});
+
+			Box hbox2 = new Box (Gtk.Orientation.HORIZONTAL, 50);
+
+			hbox2.pack_start (label2, true, true, 0);
+			hbox2.pack_start (switch2, true, true, 0);
+
+			ListBoxRow boxrow2 = new ListBoxRow ();
+
+			boxrow2.add (hbox2);
+
+<<<<<<< HEAD
+			hbox1.pack_start (label1, true, true, 0);
+			hbox1.pack_start (switch1, true, true, 0);
+=======
+			//----------------------------------------------------//
 
 			ListBox list_box = new ListBox ();
 			list_box.set_selection_mode (Gtk.SelectionMode.NONE);
-
-			Box hbox1 = new Box (Gtk.Orientation.HORIZONTAL, 50);
-
-			ListBoxRow boxrow1 = new ListBoxRow ();
-
-			boxrow1.add (hbox1);
-
-			hbox1.pack_start (label1, true, true, 0);
-			hbox1.pack_start (switch1, true, true, 0);
+>>>>>>> master
 
 			list_box.add (boxrow1);
+			list_box.add (boxrow2);
 
 			Box vbox = new Box (Gtk.Orientation.HORIZONTAL, 0);
-        		vbox.pack_start (list_box, true, true, 0);
+        	vbox.pack_start (list_box, true, true, 0);
 
-        		return vbox;
-        	}
-		*/
+        	return vbox;
+		}
 
 		private Box create_sms_setts () {
 			Label label1 = new Label (_("Delete Google Contacts: "));
@@ -242,10 +249,10 @@ namespace KDEConnectIndicator {
 			button1.sensitive = false;
 
 			string _contacts = GLib.Environment. get_user_data_dir()+
-				            "/indicator-kdeconnect/sms/contacts.json";
+				               "/indicator-kdeconnect/sms/contacts.json";
 
 			string _token = GLib.Environment. get_user_data_dir()+
-			                 "/indicator-kdeconnect/sms/token.json";
+			                "/indicator-kdeconnect/sms/token.json";
 
 			File contacts = File.new_for_path (_contacts);
 			File token = File.new_for_path (_token);
@@ -267,11 +274,11 @@ namespace KDEConnectIndicator {
 
 				if (token.query_exists ())
 					try{
-					     token.delete ();
-					     tmp = true;
+					    token.delete ();
+					    tmp = true;
 					} catch (Error e){
-					     message (e.message);
-					     tmp = false;
+					    message (e.message);
+					    tmp = false;
 					}
 
 				if (tmp)
@@ -293,10 +300,10 @@ namespace KDEConnectIndicator {
 			list_box.add (boxrow1);
 
 			Box vbox = new Box (Gtk.Orientation.HORIZONTAL, 0);
-        		vbox.pack_start (list_box, true, true, 0);
+        	vbox.pack_start (list_box, true, true, 0);
 
-        		return vbox;
-        	}
+        	return vbox;
+        }
 	}
 
 	int main (string[] args) {

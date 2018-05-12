@@ -29,6 +29,8 @@ Compatibility
 Any desktop that supports KStatusNotifierItem/AppIndicator icons should just work – Budgie, Cinnamon, LXDE, Pantheon, Unity, and many others.
 The only major oddball is Gnome where you need an additional [Gnome Shell extension](https://extensions.gnome.org/extension/615/appindicator-support/) for proper support.
 
+Another solution for Gnome Shell is consider to use [KDE Connect/MConnect integration for Gnome Shell](https://github.com/andyholmes/gnome-shell-extension-mconnect). It's a full integrated extension with the same features.
+
 After changes on KDE Connect this will work only in KDE Connect 1.0.0 and up which can be problematic on Linux distributions released before August 2016.
 
 Installation
@@ -47,6 +49,9 @@ sudo apt update
 sudo apt install kdeconnect indicator-kdeconnect
 ```
 
+- Flatpack
+ Flatpack source can be found [here](https://github.com/flathub/com.github.bajoja.indicator-kdeconnect)
+
 - From the Source
  Check the INSTALL file
 
@@ -56,10 +61,11 @@ Usage Suggestions
 
  1. Add KDE Connect Indicator to your startup applications, on your System Setting if is not.
  2. Nautilus, Nemo, Caja, Pantheon-files and Thunar users have native extensions installed by default, make sure you have,
-    `python-nautilus`, `python-nemo` or `python-caja` instelled to use it.
+    `python-nautilus`, `python-nemo` or `python-caja` installed to use it.
  3. If your files manager is not supported by extensions create a action entry with `kdeconnect-send %F` as command.
     Or you can use the script present on the [scripts folder](https://github.com/Bajoja/indicator-kdeconnect/tree/master/scripts/kdeconnect-send), adding it to your file manager script folder.
  4. If you having troubles under Wayland install this [script](https://github.com/Bajoja/indicator-kdeconnect/tree/master/scripts/wayland). 
+
 
 Please report issues and suggestion [here](https://github.com/Bajoja/indicator-kdeconnect/issues)
 

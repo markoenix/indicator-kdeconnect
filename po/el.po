@@ -7,234 +7,240 @@ msgstr ""
 "Project-Id-Version: indicator-kdeconnect\n"
 "Report-Msgid-Bugs-To: steevenlopes@outlook.com\n"
 "POT-Creation-Date: 2016-11-18 18:46+0200\n"
-"PO-Revision-Date: 2017-09-05 16:48+0000\n"
-"Last-Translator: Mladen Pejaković <pejakm@autistici.org>\n"
-"Language-Team: Serbian <https://hosted.weblate.org/projects/indicator-kde-"
-"connect/translations/sr/>\n"
-"Language: sr\n"
+"PO-Revision-Date: 2017-12-30 14:30+0000\n"
+"Last-Translator: postsorino <postsorino@krutt.org>\n"
+"Language-Team: Greek <https://hosted.weblate.org/projects/indicator-kde-"
+"connect/translations/el/>\n"
+"Language: el\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<="
-"4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 2.17-dev\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 2.19-dev\n"
 
 #: src/FirstTimeWizard.vala:50
 msgid "<b>Are you ready for your first device pairing?</b>\n\n"
 msgstr ""
-"<b>Да ли сте спремни за прво упаривање уређаја?</b>\n"
+"<b>Είστε έτοιμοι να κάνετε την πρώτη σας σύζευξη;</b>\n"
 "\n"
 
 #: src/FirstTimeWizard.vala:51
 msgid "Now connect your devices using wifi connection.\n"
-msgstr "Сада повежите ваше уређаје бежичном везом.\n"
+msgstr "Συνδέστε τις συσκευές σας με wifi.\n"
 
 #: src/FirstTimeWizard.vala:52
 msgid "Tethering should work too!\n"
-msgstr "Тетеринг ће такође радити!\n"
+msgstr "Το φορητό σημείο πρόσβασης (tethering)  πρέπει επίσης τα λειτουργεί!\n"
 
 #: src/FirstTimeWizard.vala:53
 msgid "If you have Firewall running, please open port 1714-1764 for TCP and UDP\n\n"
 msgstr ""
-"Ако вам ради Ватробран, отворите портове 1714-1764 за ТЦП и УДП\n"
+"Αν έχετε ενεργό τοίχος προστασίας (firewall) παρακαλώ ανοίξτε τις θύρες 1714 "
+"έως 1764 των TCP και UDP\n"
 "\n"
 
 #: src/FirstTimeWizard.vala:54
 msgid "Launch KDE Connect in your Android which you can download from "
-msgstr "Покрените КДЕ конект на свом Андроид уређају а можете га преузети на "
+msgstr "Εκτελέστε το KDE Connect στη συσκευή Android απ'όπου θα κατεβάσετε "
 
 #: src/FirstTimeWizard.vala:56
 msgid "Google Play</a>"
-msgstr "Гугл Плеју</a>"
+msgstr "Google Play </a>"
 
 #: src/FirstTimeWizard.vala:65
 msgid "Everytime there is a new device connected, a new indicator will appear in your panel.\n"
-msgstr "Када се нови уређај повеже, нови индикатор ће се појавити на панелу\n"
+msgstr ""
+"Κάθε φορά που μια καινούργια συσκευή θα συνδέεται, ένα νέο εικονίδιο θα "
+"εμφανίζεται στο panel.\n"
 
 #: src/FirstTimeWizard.vala:66
 msgid "There, you can pair and see its status\n\n"
 msgstr ""
-"Овде, можете упарити и видети његово стање\n"
+"Εκεί, μπορείτε να κάνετε σύζευξη και να δείτε την κατάστασή της\n"
 "\n"
 
 #: src/FirstTimeWizard.vala:67
 msgid "<b>Now try to pair your device</b>"
-msgstr "<b>Сада покушајте упаривање уређаја</b>"
+msgstr "<b>Τώρα προσπαθήστε να κάνετε σύζευξη με τη συσκευή σας</b>"
 
 #: src/FirstTimeWizard.vala:76
 msgid "<b>Great! your device is all set</b>\n\n"
 msgstr ""
-"<b>Одлично! Ваш уређај је подешен</b>\n"
+"<b>Τέλεια! Η συσκευή σας είναι ρυθμισμένη</b>\n"
 "\n"
 
 #: src/FirstTimeWizard.vala:77
 msgid "Now you can enable or disable modules on KDE Connect settings.\n"
-msgstr "Сада можете укључивати модуле у КДЕ конект поставкама.\n"
+msgstr ""
+"Τώρα μπορείτε να ενεργοποιήσετε ή να απενεργοποιήσετε διάφορες δυνατότητες "
+"(modules) στις Ρυθμίσεις του KDE Connect.\n"
 
 #: src/FirstTimeWizard.vala:78
 msgid "Indicator already added to autostart.\n"
-msgstr "Индикатор је већ додат у аутостарт.\n"
+msgstr ""
+"Το εικονίδιο έχει ήδη προστεθεί στη \"Έναρξη με την εκκίνηση\" του "
+"υπολογιστή\n"
 
 #: src/FirstTimeWizard.vala:79
 msgid "Enjoy!"
-msgstr "Уживајте!"
+msgstr "Χαρείτε το!"
 
 #: src/KDEConnectManager.vala:119
 msgid "cannot connect to KDE Connect DBus service"
-msgstr "не могу да се повежем на Д-бус сервис КДЕ конекта"
+msgstr "Δεν είναι δυνατή η σύνδεση στην υπηρεσία KDE Connect DBus"
 
 #: src/Device.vala:524
 msgid "Encryption information not found"
-msgstr "Подаци о шифровању нису пронађени"
+msgstr "Δεν βρέθηκαν πληροφορίες κρυπτογράφησης"
 
 #: src/DeviceIndicator.vala:41
 msgid "Browse device"
-msgstr "Прегледај уређај"
+msgstr "Περιήγηση στην συσκευή"
 
 #: src/DeviceIndicator.vala:43
 msgid "Send file(s)"
-msgstr "Шаљи фајлове"
+msgstr "Αποστολή αρχείου/ων"
 
 #: src/DeviceIndicator.vala:47
 msgid "Send SMS"
-msgstr "Шаљи СМС"
+msgstr "Αποστολή SMS"
 
 #: src/DeviceIndicator.vala:51
 msgid "Find my phone"
-msgstr "Нађи мој телефон"
+msgstr "Εύρεση τηλεφώνου"
 
 #: src/DeviceIndicator.vala:55
 msgid "Request pairing"
-msgstr "Захтевај упаривање"
+msgstr "Αίτηση σύζευξης"
 
 #: src/DeviceIndicator.vala:58
 msgid "Unpair"
-msgstr "Распари"
+msgstr "Αποσύζευξη"
 
 #: src/DeviceIndicator.vala:100
 msgid "Select file(s)"
-msgstr "Одабери фајлове"
+msgstr "Επιλογή αρχείου/ων"
 
 #: src/DeviceIndicator.vala:103 src/contractor/Contractor.vala:24 src/settings/Settings.vala:47 src/Sms.py:237
 msgid "Cancel"
-msgstr "Откажи"
+msgstr "Ακύρωση"
 
 #: src/DeviceIndicator.vala:105 
 msgid "Select"
-msgstr "Изабери"
+msgstr "Επιλογή"
 
 #: src/DeviceIndicator.vala:201
 msgid "Battery : "
-msgstr "Батерија: "
+msgstr "Στάθμη μπαταρίας : "
 
 #: src/DeviceIndicator.vala:203
 msgid " (charging)"
-msgstr " (пуни се)"
+msgstr " (φόρτιση)"
 
 #: src/DeviceIndicator.vala:210
 msgid "Device Reachable and Trusted"
-msgstr "Уређај доступан и поуздан"
+msgstr "Έμπιστη και Προσπελάσιμη συσκευή"
 
 #: src/DeviceIndicator.vala:212
 msgid "Device Reachable but Not Trusted"
-msgstr "Уређај доступан али непоуздан"
+msgstr "Προσπελάσιμη αλλά Μη Έμπιστη συσκευή"
 
 #: src/DeviceIndicator.vala:215
 msgid "Device Trusted but not Reachable"
-msgstr "Уређај поуздан али недоступан"
+msgstr "Έμπιστη αλλά Μη Προσπελάσιμη συσκευή"
 
 #: src/DeviceIndicator.vala:217
 msgid "Device Not Reachable and Not Trusted"
-msgstr "Уређај недоступан и непоуздан"
+msgstr "Η συσκευή είναι Μη Προσπελάσιμη και Μη Έμπιστη"
 
 #: src/contractor/Contractor.vala:15
 msgid "Send to"
-msgstr "Пошаљи на"
+msgstr "Αποστολή προς"
 
 #: src/contractor/Contractor.vala:25 src/Sms.py:220
 msgid "Send"
-msgstr "Пошаљи"
+msgstr "Αποστολή"
 
 #: src/contractor/Contractor.vala:84
 msgid "File(s) not found"
-msgstr "Фајлови нису нађени"
+msgstr "Το/α αρχείο/α δεν βρέθηκαν"
 
 #: src/contractor/Contractor.vala:143
 msgid "There's %u file(s) to be send"
-msgstr "Фајлова за слање: %u"
+msgstr "%u αρχείο/α προς αποστολή"
 
 #: src/Sms.py:184
 msgid "Compose SMS"
-msgstr "Напиши СМС"
+msgstr "Γράψιμο SMS"
 
 #: src/Sms.py:199
 msgid "Phone number"
-msgstr "Број телефона"
+msgstr "Νούμερο τηλεφώνου"
 
 #: src/Sms.vala:60
 msgid "Message body: "
-msgstr "Текст поруке: "
+msgstr "Κείμενο μηνύματος: "
 
 #: src/Sms.py:44
 msgid "Authorization succesfull. You can close this window."
-msgstr "Пријављивање успешно. Можете затворити овај прозор."
+msgstr "Επιτυχής εξουσιοδότηση. Μπορείτε να κλείσετε αυτό το παράθυρο."
 
 #: src/Sms.py:48
 msgid "Authorization failed. Please close this window and try again."
-msgstr "Пријављивање неуспешно. Затворите овај прозор и покушајте поново."
+msgstr "Η εξουσιοδότηση απέτυχε. Κλειστε αυτό το παράθυρο και προσπαθήστε ξανά."
 
 #: src/Sms.py:303
 msgid "Sync starting"
-msgstr "Синхронизација започета"
+msgstr "Εκκίνηση συγχρονισμού"
 
 #: src/Sms.py:303
 msgid "Synchronizing contacts"
-msgstr "Синхронизујем контакте"
+msgstr "Συγχρονισμός επαφών"
 
 #: src/Sms.py:317
 msgid "Sync done"
-msgstr "Синхронизација завршена"
+msgstr "Ο συγχρονισμός τελείωσε"
 
 #: src/Sms.py:318
 msgid "Synchronized contacts"
-msgstr "Синхронизовани контакти"
+msgstr "Συγχρονισμένες επαφές"
 
 #: src/settings/Settings.vala:50
 msgid "Apply"
-msgstr "Примени"
+msgstr "Εφαρμογή"
 
 #: src/settings/Settings.vala:59
 msgid "Visibility"
-msgstr "Видљивост"
+msgstr "Ορατότητα"
 
 #: src/settings/Settings.vala:61
 msgid "Icons"
-msgstr "Иконе"
+msgstr "Εικονίδια"
 
 #: src/settings/Settings.vala:97
 msgid "Show only paired devices: "
-msgstr "Прикажи само упарене уређаје: "
+msgstr "Να φαίνονται μόνο οι συσκευές που έχει γίνει σύζευξη: "
 
 #: src/settings/Settings.vala:128
 msgid "Show custom icons for Elementary OS: "
-msgstr "Прикажи посебну икону за Елементари ОС: "
+msgstr "Προσαρμοσμένα εικονίδια για το Elementary OS: "
 
 #: src/settings/Settings.vala:152
 msgid "Delete Google Contacts: "
-msgstr "Обриши Гугл контакте: "
+msgstr "Διαγραφή των Google επαφών: "
 
 #: data/extensions/kdeconnect-send-nautilus.py:47 data/extensions/kdeconncet-send-nemo.py:47 data/extensions/kdeconnect-send-caja.py:47
 msgid "Check the device {device_name}"
-msgstr "Провери уређај {device_name}"
+msgstr "Έλεγχος της συσκευής {device_name}"
 
 #: data/extensions/kdeconnect-send-nautilus.py:48 data/extensions/kdeconncet-send-nemo.py:48 data/extensions/kdeconnect-send-caja.py:48
 msgid "Sending {num_files} file(s)"
-msgstr "Шаљем фајлове"
+msgstr "Στέλνονται {num_files} αρχείο/α"
 
 #: data/extensions/kdeconnect-send-nautilus.py:79 data/extensions/kdeconncet-send-nemo.py:79 data/extensions/kdeconnect-send-caja.py:79
 msgid "KDEConnect Send To"
-msgstr "КДЕ конект шаље на"
+msgstr "KDEConnect  αποστολή προς"
 
 #: data/extensions/kdeconnect-send-nautilus.py:80 data/extensions/kdeconncet-send-nemo.py:80 data/extensions/kdeconnect-send-caja.py:80
 msgid "send file(s) with kdeconnect"
-msgstr "шаљи фајлове помоћу КДЕ конекта"
+msgstr "αποστολή αρχείου/ων με το kdeconnect"

@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: indicator-kdeconnect\n"
 "Report-Msgid-Bugs-To: steevenlopes@outlook.com\n"
 "POT-Creation-Date: 2017-04-20 12:49+0100\n"
-"PO-Revision-Date: 2017-05-14 02:09+0000\n"
-"Last-Translator: Steeven Lopes <steevenlopes@outlook.com>\n"
+"PO-Revision-Date: 2017-07-31 17:47+0000\n"
+"Last-Translator: Maxim Taranov <png2378@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/indicator-kde-"
 "connect/translations/ru/>\n"
 "Language: ru_RU\n"
@@ -19,19 +19,19 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<="
 "4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 2.14-dev\n"
+"X-Generator: Weblate 2.16-dev\n"
 
 #: src/FirstTimeWizard.vala:50
 msgid ""
 "<b>Are you ready for your first device pairing?</b>\n"
 "\n"
 msgstr ""
-"<b>Вы готовы для первого сопряжения вашего устройства?</b>\n"
+"<b>Вы готовы для первого сопряжения ваших устройств?</b>\n"
 "\n"
 
 #: src/FirstTimeWizard.vala:51
 msgid "Now connect your devices using wifi connection.\n"
-msgstr "Теперь подключите  ваше устройство используя соединение WiFi.\n"
+msgstr "Теперь подключите ваше устройство, используя соединение WiFi.\n"
 
 #: src/FirstTimeWizard.vala:52
 msgid "Tethering should work too!\n"
@@ -42,13 +42,12 @@ msgid ""
 "If you have Firewall running, please open port 1714-1764 for TCP and UDP\n"
 "\n"
 msgstr ""
-"Если у вас используется файрвол, пожалуйста откройте порты 1714-1764 TCP и "
-"UDP\n"
+"Если вы используете файрвол, откройте порты 1714-1764 для TCP и UDP\n"
 "\n"
 
 #: src/FirstTimeWizard.vala:54
 msgid "Launch KDE Connect in your Android which you can download from "
-msgstr "Запустите KDE Connect на своем Android, преварительно загрузив с "
+msgstr "Запустите KDE Connect на Android, предварительно загрузив его с "
 
 #: src/FirstTimeWizard.vala:56
 msgid "Google Play</a>"
@@ -59,8 +58,7 @@ msgid ""
 "Everytime there is a new device connected, a new indicator will appear in "
 "your panel.\n"
 msgstr ""
-"Если новое устройство будет подключено, то появится новый индикатор на "
-"панели.\n"
+"Если новое устройство будет подключено, на панели появится новый индикатор.\n"
 
 #: src/FirstTimeWizard.vala:66
 msgid ""
@@ -136,7 +134,7 @@ msgstr "Выбрать файл(ы)"
 #: src/DeviceIndicator.vala:103 src/contractor/Contractor.vala:24 src/settings/Settings.vala:47
 #: src/Sms.py:237
 msgid "Cancel"
-msgstr "Отмена"
+msgstr "Отменить"
 
 #: src/DeviceIndicator.vala:105
 msgid "Select"
@@ -144,7 +142,7 @@ msgstr "Выбрать"
 
 #: src/DeviceIndicator.vala:201
 msgid "Battery : "
-msgstr "Батарея : "
+msgstr "Батарея: "
 
 #: src/DeviceIndicator.vala:203
 msgid " (charging)"
@@ -180,7 +178,7 @@ msgstr "Файл не найден"
 
 #: src/contractor/Contractor.vala:143
 msgid "There's %u file(s) to be send"
-msgstr "Эти файлы %u будут отправлены"
+msgstr "Эти файлы (%u) будут отправлены"
 
 #: src/Sms.py:184
 msgid "Compose SMS"
@@ -195,63 +193,52 @@ msgid "Message body: "
 msgstr "Текст сообщения: "
 
 #: src/Sms.py:44
-#, fuzzy
 msgid "Authorization succesfull. You can close this window."
 msgstr "Авторизация завершена. Вы можете закрыть это окно."
 
 #: src/Sms.py:48
-#, fuzzy
 msgid "Authorization failed. Please close this window and try again."
 msgstr "Авторизация не удалась. Закройте это окно и повторите попытку."
 
 #: src/Sms.py:303
-#, fuzzy
 msgid "Sync starting"
-msgstr "Синхронный запуск"
+msgstr "Запуск синхронизации"
 
 #: src/Sms.py:303
-#, fuzzy
 msgid "Synchronizing contacts"
 msgstr "Синхронизация контактов"
 
 #: src/Sms.py:317
 msgid "Sync done"
-msgstr "Синхронизация выполнена"
+msgstr "Синхронизация завершена"
 
 #: src/Sms.py:318
-#, fuzzy
 msgid "Synchronized contacts"
 msgstr "Синхронизированные контакты"
 
 #: src/settings/Settings.vala:50
-#, fuzzy
 msgid "Apply"
-msgstr "Подать заявление"
+msgstr "Применить"
 
 #: src/settings/Settings.vala:59
-#, fuzzy
 msgid "Visibility"
-msgstr "видимость"
+msgstr "Видимость"
 
 #: src/settings/Settings.vala:61
-#, fuzzy
 msgid "Icons"
 msgstr "Иконки"
 
 #: src/settings/Settings.vala:97
-#, fuzzy
 msgid "Show only paired devices: "
 msgstr "Показывать только спаренные устройства: "
 
 #: src/settings/Settings.vala:128
-#, fuzzy
 msgid "Show custom icons for Elementary OS: "
-msgstr "Показать пользовательские значки для Elementary OS: "
+msgstr "Показывать свои значки для elementary OS: "
 
 #: src/settings/Settings.vala:152
-#, fuzzy
 msgid "Delete Google Contacts: "
-msgstr "Удаление Google Контактов: "
+msgstr "Удалить контакты Google: "
 
 #: data/extensions/kdeconnect-send-nautilus.py:47
 #: data/extensions/kdeconncet-send-nemo.py:47
@@ -268,9 +255,8 @@ msgstr "Отправка {num_files} файла(-ов)"
 #: data/extensions/kdeconnect-send-nautilus.py:79
 #: data/extensions/kdeconncet-send-nemo.py:79
 #: data/extensions/kdeconnect-send-caja.py:79
-#, fuzzy
 msgid "KDEConnect Send To"
-msgstr "KDEConnect Отправить"
+msgstr "Отправить через KDEConnect"
 
 #: data/extensions/kdeconnect-send-nautilus.py:80
 #: data/extensions/kdeconncet-send-nemo.py:80

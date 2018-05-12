@@ -11,7 +11,7 @@ set (LOCALEDIR ${CMAKE_INSTALL_PREFIX}/share/locale)
 set (PKGDATADIR "${DATADIR}/indicator-kdeconnect")
 set (RELEASE_NAME "beta")
 set (VERSION_INFO "Indicator for KDE Connect daemon")
-set (VERSION "0.9.0")
+set (VERSION "0.9.4")
 
 # set gettexttranslate
 set (GettextTranslate_GMO_BINARY TRUE)
@@ -53,7 +53,6 @@ vala_precompile(INDICATOR_VALA_C ${INDICATOR_EXEC}
 	src/DeviceIndicator.vala
 	src/FirstTimeWizard.vala
 	src/StartupManager.vala
-	src/settings/InOut.vala
 	PACKAGES
 	gtk+-3.0
 	appindicator3-0.1
@@ -73,7 +72,7 @@ install (TARGETS ${INDICATOR_EXEC} RUNTIME DESTINATION bin)
 # contractor binary
 set (CONTRACTOR_EXEC "kdeconnect-send")
 vala_precompile(VALA_C ${CONTRACTOR_EXEC}
-	src/contractor/Contractor.vala
+	src/kdeconnectsend/KDEConnectSend.vala
 	src/Device.vala
 	PACKAGES
 	gtk+-3.0
@@ -90,7 +89,6 @@ install (TARGETS ${CONTRACTOR_EXEC} RUNTIME DESTINATION bin)
 set (SETTINGS_EXEC "indicator-kdeconnect-settings")
 vala_precompile(VALA_C ${SETTINGS_EXEC}
 	src/settings/Settings.vala
-	src/settings/InOut.vala
 	PACKAGES
 	gtk+-3.0
 )
