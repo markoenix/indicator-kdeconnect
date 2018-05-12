@@ -17,16 +17,32 @@ namespace KDEConnectIndicator{
 		private Button cancel_button;
 		private Button send_button;
 		private Button reload_button;
+		private Button multiselect_button;
 		private StyleContext style_context;
 		private TreeView tv;
 		private Gtk.ListStore list_store;
 		private DBusConnection conn;
 		private TreeSelection ts;
-		private SList<Device> device_list;
+		private SList<Device> device_list;		
+		Gtk.CellRendererToggle toggle;
+		Gtk.TreeViewColumn column1;
+		Gtk.TreeViewColumn column2;
+		Gtk.CellRendererText text;
+		private bool multiselection = false;
+		Gtk.TreeIter iter;
+		private enum Columns {
+			TEXT,
+			TOGGLE,			
+			N_COLUMNS
+		}
+	
 
 		public SendDialog () {
 			Object (application_id: "com.bajoja.kdeconnect-send",
 				flags: ApplicationFlags.HANDLES_OPEN);
+		}
+		~SendDialog() {
+			iter.free();
 		}
 
 		protected override void activate () {
@@ -88,19 +104,39 @@ namespace KDEConnectIndicator{
 									    Gtk.IconSize.LARGE_TOOLBAR);
 			this.headerBar.pack_end (reload_button);
 
+			this.multiselect_button = new Gtk.Button.from_icon_name ("document-save-as",
+										Gtk.IconSize.LARGE_TOOLBAR);
+			this.headerBar.pack_start (multiselect_button);										
+
 			Box content = new Box (Gtk.Orientation.VERTICAL, 0);
 
 			content.pack_start (new Label (_("There's %u file(s) to be send")
-						       .printf (files.length ())), false, true, 10);
+						        .printf (files.length ())), false, true, 10);
 
-			this.tv = new TreeView ();
+			this.list_store = new Gtk.ListStore (Columns.N_COLUMNS, typeof(string), typeof(bool));
+			this.tv = new TreeView.with_model (this.list_store);
+
+			this.toggle = new Gtk.CellRendererToggle ();			
+
+			this.column1 = new Gtk.TreeViewColumn ();
+			this.column1.pack_start (toggle, false);
+			this.column1.add_attribute (toggle, "active", Columns.TOGGLE);
+			this.tv.append_column (column1);			
+			this.column1.set_visible(this.multiselection);
+
+			this.text = new Gtk.CellRendererText ();
+
+			this.column2 = new Gtk.TreeViewColumn ();
+			this.column2.pack_start (text, false);
+			this.column2.add_attribute (text, "text", Columns.TEXT);
+			this.tv.append_column (column2);
+ 
+			this.tv.set_headers_visible (false);
+
 			this.ts = this.tv.get_selection();
 			this.ts.set_mode(Gtk.SelectionMode.MULTIPLE);
 			this.tv.headers_visible = false;
-			   
-			CellRendererText cell = new CellRendererText ();
-            this.tv.insert_column_with_attributes (-1,"Device",cell,"text",0);
-			
+						
 			content.pack_start (tv);
 
             this.window.set_titlebar (headerBar);
@@ -110,13 +146,28 @@ namespace KDEConnectIndicator{
 		}
 
 		private void create_signals (){
-			this.tv.cursor_changed.connect (() => {
-				this.send_button.sensitive = (get_selected().length () > 0);
+			this.toggle.toggled.connect ((toggle, path) => {
+				Gtk.TreePath tree_path = new Gtk.TreePath.from_string (path);
+				this.list_store.get_iter (out iter, tree_path);
+				this.list_store.set (iter, Columns.TOGGLE, !toggle.active);
+
+				this.send_button.sensitive = (get_selected().length () > 0);	
+				message("Intfo %d",(int)get_selected().length ());
 			});
 
-			this.tv.row_activated.connect ((path, column) => {
-                tv.set_cursor (path, null, false);
-            	send_items ();
+			this.tv.cursor_changed.connect (() => {
+				this.send_button.sensitive = (get_selected().length () > 0);		
+				message("info %d",(int)get_selected().length ());
+			});
+
+			this.tv.row_activated.connect ((path, column) => {				
+				if(!this.multiselection) {
+					this.tv.set_cursor (path, null, false);
+					send_items ();
+				}
+				else {
+
+				}		            	
            	});
 
 			this.cancel_button.clicked.connect (() => {
@@ -130,19 +181,45 @@ namespace KDEConnectIndicator{
 			this.reload_button.clicked.connect (() => {
 				reload_device_list ();
 			});
+
+			this.multiselect_button.clicked.connect  (() => {
+				this.multiselection = !this.multiselection;
+				//this.tv.set_activate_on_single_click(this.multiselection);
+				this.column1.set_visible(this.multiselection);			
+				if(this.multiselection) {
+					this.multiselect_button.set_relief (Gtk.ReliefStyle.NORMAL);					
+				}
+				else {
+					this.multiselect_button.set_relief (Gtk.ReliefStyle.NONE);
+				}								
+				message("Multisection %s",multiselection.to_string());
+			});
 		}
 
 		private SList<int> get_selected (){
-
             SList<int> selected_devices = new SList<int> ();
 
-			TreeModel tm;
+			if(!this.multiselection){
+				TreeModel tm;
+            	List<TreePath> selected_paths = this.ts.get_selected_rows (out tm);
 
-            List<TreePath> selected_paths = this.ts.get_selected_rows (out tm);
-
-			foreach (TreePath path in selected_paths){
-				if(path != null)
-					selected_devices.append (int.parse (path.to_string ()));
+				foreach (TreePath path in selected_paths){
+					if(path != null)
+						selected_devices.append (int.parse (path.to_string ()));
+				}
+			}
+			else{
+				int i = 0;
+				for (bool next = list_store.get_iter_first (out iter); next; next = list_store.iter_next (ref iter)) {
+					Value /*val1,*/ val2;
+					//list_store.get_value (iter, 0, out val1);
+					list_store.get_value (iter, 1, out val2);
+					//stdout.printf ("Entry: %s\t%s\n", (string) val1, ((bool) val2).to_string());
+					if((bool) val2){
+						selected_devices.append (i);
+					}	
+					i++;					
+				}
 			}
 
             return selected_devices.copy ();
@@ -185,24 +262,23 @@ namespace KDEConnectIndicator{
        			message (e.message);
    	 		}
 
-			this.list_store = new Gtk.ListStore (1,typeof(string));
-   			this.device_list = new SList<Device> ();
+			
+			this.device_list = new SList<Device> ();
 
        		foreach (string id in id_list) {
        			var d = new Device ("/modules/kdeconnect/devices/"+id);
        			if (d.is_reachable && d.is_trusted) {
-           			device_list.append (d);
-           			Gtk.TreeIter iter;
-           			this.list_store.append (out iter);
-           			message (d.name);
-           			this.list_store.set (iter, 0, d.name);
+					device_list.append (d);
+					message (d.name);
+           			this.list_store.append (out iter);           			
+           			this.list_store.set (iter, 0, d.name, 1, false);
        			}
       		}
 
        		set_device_list (this.list_store);
 		}
 
-		private void send_items (){
+		private void send_items (){			
 			SList<int> selected_devs = get_selected ();
 
             foreach (File file in files){
