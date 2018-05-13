@@ -3,121 +3,15 @@
  * This software is licensed under the GNU Lesser General Public License
  * (version 2.1 or later).  See the COPYING file in this distribution.
  */
+using Utils;
+
 namespace KDEConnectIndicator {
     public class Device {
         private DBusConnection conn;
         private DBusProxy device_proxy;
         private string path;
         private SList<uint> subs_identifier;
-        private GLib.Settings settings;
-        
-        private string _name;
-        public string name {
-            get {
-                try {
-                     var return_variant = conn.call_sync (
-                             "org.kde.kdeconnect",
-                             path,
-                             "org.freedesktop.DBus.Properties",
-                             "Get",
-                             new Variant ("(ss)","org.kde.kdeconnect.device","name"),
-                             null,
-                             DBusCallFlags.NONE,
-                             -1,
-                             null
-                             );
-                     Variant s = return_variant.get_child_value (0);
-                     Variant v = s.get_variant ();
-                     string d = v.get_string ();
-                     _name = "%s".printf(Uri.unescape_string (d, null));
-                } catch (Error e) {
-                    message (e.message);
-                }
-                return _name;
-            }
-        }
-        
-        private string _id;
-        public string id {
-        	get {
-        	     string device_path = "/modules/kdeconnect/devices/";
-            	 _id = this.path.replace(device_path, "");
-
-            	 return _id;
-            }
-        }
-
-        private string _icon;
-        public string icon {
-	        get {
-		        try {
-		             var return_variant = conn.call_sync (
-			        "org.kde.kdeconnect",
-			        path,
-			        "org.freedesktop.DBus.Properties",
-			        "Get",
-			        new Variant("(ss)","org.kde.kdeconnect.device","statusIconName"),
-			        null,
-			        DBusCallFlags.NONE,
-			        -1,
-			        null
-	                );
-
-                    Variant s = return_variant.get_child_value (0);
-                    Variant v = s.get_variant ();
-                    string d = v.get_string ();
-                    string icon = "%s".printf(Uri.unescape_string (d, null));
-
-                    _icon = icon;
-
-	    	    } catch (Error e) {
-		            message (e.message);
-                }
-            
-		        return _icon;
-	        }
-        }
-        
-        public int battery {
-            get {
-                if (!has_plugin ("kdeconnect_battery"))
-                    return -1;
-
-                try {
-                      var return_variant = conn.call_sync (
-                              "org.kde.kdeconnect",
-                              path,
-                              "org.kde.kdeconnect.device.battery",
-                              "charge",
-                              null,
-                              null,
-                              DBusCallFlags.NONE,
-                              -1,
-                              null
-                              );
-                      Variant i = return_variant.get_child_value (0);
-                     
-                      if (i!=null)
-                          return i.get_int32 ();
-                } catch (Error e) {
-                    message (e.message);
-                }
-                
-                return -1;
-            }
-        }
-
-        public bool to_hidde{
-        	get {
-        	     return this.settings.get_boolean ("visibilitiy");
-        	}
-        }
-
-        public bool to_list_dir{
-        	get {
-        	     return this.settings.get_boolean ("list-device-dir");
-        	}
-        }
+        private GLib.Settings settings;    
 
         public Device (string path) {
             message ("device : %s",path);
@@ -245,25 +139,113 @@ namespace KDEConnectIndicator {
             }
         }
 
-        public void send_file (string url) {
-            try {
-                if (!has_plugin ("kdeconnect_share"))
-                    return;
-                conn.call_sync (
-                        "org.kde.kdeconnect",
-                        path+"/share",
-                        "org.kde.kdeconnect.device.share",
-                        "shareUrl",
-                        new Variant ("(s)",url),
-                        null,
-                        DBusCallFlags.NONE,
-                        -1,
-                        null
-                        );
-            } catch (Error e) {
-                message (e.message);
+        private string _name;
+        public string name {
+            get {
+                try {
+                     var return_variant = conn.call_sync (
+                             "org.kde.kdeconnect",
+                             path,
+                             "org.freedesktop.DBus.Properties",
+                             "Get",
+                             new Variant ("(ss)","org.kde.kdeconnect.device","name"),
+                             null,
+                             DBusCallFlags.NONE,
+                             -1,
+                             null
+                             );
+                     Variant s = return_variant.get_child_value (0);
+                     Variant v = s.get_variant ();
+                     string d = v.get_string ();
+                     _name = "%s".printf(Uri.unescape_string (d, null));
+                } catch (Error e) {
+                    message (e.message);
+                }
+                return _name;
             }
         }
+        
+        private string _id;
+        public string id {
+        	get {
+        	     string device_path = "/modules/kdeconnect/devices/";
+            	 _id = this.path.replace(device_path, "");
+
+            	 return _id;
+            }
+        }
+
+        private string _icon;
+        public string icon {
+	        get {
+		        try {
+		             var return_variant = conn.call_sync (
+			        "org.kde.kdeconnect",
+			        path,
+			        "org.freedesktop.DBus.Properties",
+			        "Get",
+			        new Variant("(ss)","org.kde.kdeconnect.device","statusIconName"),
+			        null,
+			        DBusCallFlags.NONE,
+			        -1,
+			        null
+	                );
+
+                    Variant s = return_variant.get_child_value (0);
+                    Variant v = s.get_variant ();
+                    string d = v.get_string ();
+                    string icon = "%s".printf(Uri.unescape_string (d, null));
+
+                    _icon = icon;
+
+	    	    } catch (Error e) {
+		            message (e.message);
+                }
+            
+		        return _icon;
+	        }
+        }
+        
+        public int battery {
+            get {
+                if (!has_plugin ("kdeconnect_battery"))
+                    return -1;
+
+                try {
+                      var return_variant = conn.call_sync (
+                              "org.kde.kdeconnect",
+                              path,
+                              "org.kde.kdeconnect.device.battery",
+                              "charge",
+                              null,
+                              null,
+                              DBusCallFlags.NONE,
+                              -1,
+                              null
+                              );
+                      Variant i = return_variant.get_child_value (0);
+                     
+                      if (i!=null)
+                          return i.get_int32 ();
+                } catch (Error e) {
+                    message (e.message);
+                }
+                
+                return -1;
+            }
+        }
+
+        public bool to_hidde{
+        	get {
+        	     return this.settings.get_boolean ("visibilitiy");
+        	}
+        }
+
+        public bool to_list_dir{
+        	get {
+        	     return this.settings.get_boolean ("list-device-dir");
+        	}
+        }        
         
         public bool is_trusted {
 	        get {
@@ -322,6 +304,52 @@ namespace KDEConnectIndicator {
 		        }
                 
                 return false; // default to false if something went wrong
+            }
+        }
+
+        private string _mount_point;
+        private string mount_point {
+            get {
+                try {
+                    var return_variant = conn.call_sync (
+                            "org.kde.kdeconnect",
+                            path+"/sftp",
+                            "org.kde.kdeconnect.device.sftp",
+                            "mountPoint",
+                            null,
+                            null,
+                            DBusCallFlags.NONE,
+                             -1,
+                            null
+                            );
+                    Variant i = return_variant.get_child_value (0);
+                    _mount_point= i.dup_string ();
+                    return _mount_point;
+                } catch (Error e) {
+                    message (e.message);
+                }
+            
+                return "";
+            }
+        }
+
+        public void send_file (string url) {
+            try {
+                if (!has_plugin ("kdeconnect_share"))
+                    return;
+                conn.call_sync (
+                        "org.kde.kdeconnect",
+                        path+"/share",
+                        "org.kde.kdeconnect.device.share",
+                        "shareUrl",
+                        new Variant ("(s)",url),
+                        null,
+                        DBusCallFlags.NONE,
+                        -1,
+                        null
+                        );
+            } catch (Error e) {
+                message (e.message);
             }
         }
         
@@ -419,7 +447,7 @@ namespace KDEConnectIndicator {
                 open_file (open_path.length == 0 ? mount_point : open_path);
             else {
                 mount();
-                Timeout.add (1500, ()=> { // idle for a few second to let sftp kickin
+                Timeout.add (1000, ()=> { // idle for a few second to let sftp kickin
                         open_file (open_path.length == 0 ? mount_point : open_path);
                         return false;
                 });
@@ -448,32 +476,6 @@ namespace KDEConnectIndicator {
             return false;
         }
         
-        private string _mount_point;
-        private string mount_point {
-            get {
-                try {
-                    var return_variant = conn.call_sync (
-                            "org.kde.kdeconnect",
-                            path+"/sftp",
-                            "org.kde.kdeconnect.device.sftp",
-                            "mountPoint",
-                            null,
-                            null,
-                            DBusCallFlags.NONE,
-                             -1,
-                            null
-                            );
-                    Variant i = return_variant.get_child_value (0);
-                    _mount_point= i.dup_string ();
-                    return _mount_point;
-                } catch (Error e) {
-                    message (e.message);
-                }
-            
-                return "";
-            }
-        }
-
         public void mount (bool mount_and_wait=false) {
             try {
                 if (!has_plugin ("kdeconnect_sftp"))
@@ -529,7 +531,7 @@ namespace KDEConnectIndicator {
             }
         }
         
-        public HashTable<string, string> get_directories () {
+        public Array<Pair<string,string>> get_directories () {
             try {
                 var return_variant = conn.call_sync (
                             "org.kde.kdeconnect",
@@ -543,8 +545,8 @@ namespace KDEConnectIndicator {
                             null
                             );
 
-		        HashTable<string, string> directories = new HashTable<string, string> (str_hash, str_equal);
-
+		        //HashTable<string, string> directories = new HashTable<string, string> (str_hash, str_equal);
+                var directories = new Array<Pair<string,string>>();
                 Variant variant = return_variant.get_child_value (0);
                 VariantIter iter = variant.iterator ();
 
@@ -552,7 +554,9 @@ namespace KDEConnectIndicator {
                 string? key = null;
 
 	            while (iter.next ("{sv}", &key, &val))
-    			    directories.insert (key, val.dup_string ());		    
+                    directories.append_val (new Pair<string,string>(key, val.dup_string ()));	
+                    
+                message ("Founded Directories %d",(int) directories.length);
             
                 return directories;
 
@@ -560,7 +564,7 @@ namespace KDEConnectIndicator {
             	message (e.message);
             }
         
-            return new HashTable<string, string> (str_hash, str_equal);
+            return new Array<Pair<string, string>>();
         }
 
         private bool open_file (string path) {

@@ -3,6 +3,9 @@
  * This software is licensed under the GNU Lesser General Public License
  * (version 2.1 or later).  See the COPYING file in this distribution.
  */
+
+using Utils;
+
 namespace KDEConnectIndicator {
     public class DeviceIndicator {
         public string path;
@@ -174,7 +177,7 @@ namespace KDEConnectIndicator {
             });
 
             if (device.to_list_dir &&
-                device.get_directories().size () > 0) {
+                device.get_directories().length > 0) {
                 
                 device.mount(true);
 
@@ -183,14 +186,15 @@ namespace KDEConnectIndicator {
 
 			    browse_items = new SList<Gtk.MenuItem> ();
 
-			    HashTable<string, string> directories = device.get_directories();	        	    
+			    var directories = device.get_directories();	        	    
 
-			    directories.@foreach ((key, val) => {    				    
-                    browse_items.append (new Gtk.MenuItem.with_label (val));
+			    for (int i = 0; i < directories.length ; i++) {
+                    var pair = directories.index (i); 		    
+                    browse_items.append (new Gtk.MenuItem.with_label (pair.get_secound()));
                         
                     Gtk.MenuItem tmpMenuItem = null;
 
-                    if (browse_items.length ()  > 0)
+                    if (browse_items.length()  > 0)
                         tmpMenuItem = browse_items.nth_data(browse_items.length () - 1); 
                     else
                         tmpMenuItem = browse_items.nth_data(0);
@@ -199,9 +203,9 @@ namespace KDEConnectIndicator {
 
                     tmpMenuItem.activate.connect (() => {
                         device.mount(true);
-        		        device.browse (key);
+        		        device.browse (pair.get_first ());
                     });
-                });		    			    
+                }		    			    
             }
             else {
                 browse_item.activate.connect (() => {

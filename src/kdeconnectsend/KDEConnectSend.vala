@@ -23,7 +23,6 @@ namespace KDEConnectIndicator{
 		private Gtk.ListStore list_store;
 		private DBusConnection conn;
 		private TreeSelection ts;
-<<<<<<< HEAD
 		private SList<Device> device_list;		
 		Gtk.CellRendererToggle toggle;
 		Gtk.TreeViewColumn column1;
@@ -32,10 +31,6 @@ namespace KDEConnectIndicator{
 		private bool multiselection = false;
 		Gtk.TreeIter iter;
 		private enum Columns {TEXT, TOGGLE,	N_COLUMNS}
-=======
-		private SList<Device> device_list;
-		private bool multiselection = false;
->>>>>>> extension
 
 		public SendDialog () {
 			Object (application_id: "com.bajoja.kdeconnect-send",
@@ -105,11 +100,7 @@ namespace KDEConnectIndicator{
 									    Gtk.IconSize.LARGE_TOOLBAR);
 			this.headerBar.pack_end (reload_button);
 
-<<<<<<< HEAD
 			this.multiselect_button = new Gtk.Button.from_icon_name ("media-playlist-shuffle",
-=======
-			this.multiselect_button = new Gtk.Button.from_icon_name ("document-save-as",
->>>>>>> extension
 										Gtk.IconSize.LARGE_TOOLBAR);
 			this.headerBar.pack_start (multiselect_button);										
 
@@ -160,38 +151,15 @@ namespace KDEConnectIndicator{
 			});
 
 			this.tv.cursor_changed.connect (() => {
-<<<<<<< HEAD
 				if(!this.multiselection)
 					this.send_button.sensitive = (get_selected().length () > 0);						
-=======
-				this.send_button.sensitive = (get_selected().length () > 0);		
->>>>>>> extension
 			});
 
 			this.tv.row_activated.connect ((path, column) => {				
 				if(!this.multiselection) {
 					this.tv.set_cursor (path, null, false);
 					send_items ();
-<<<<<<< HEAD
 				}	            	
-=======
-				}
-				else {
-					TreeModel model;
-					TreeIter iter;
-					var teste =this.ts.get_selected_rows(out model);
-					teste.append(path);
-
-					foreach(TreePath o in teste)
-					{
-						this.ts.select_path(o);
-					}
-					//this.ts.select_path(path);
-
-					//this.ts.select_path(teste.nth_data(0));
-					//this.ts.select_iter
-				}		            	
->>>>>>> extension
            	});
 
 			this.cancel_button.clicked.connect (() => {
@@ -205,22 +173,6 @@ namespace KDEConnectIndicator{
 			this.reload_button.clicked.connect (() => {
 				reload_device_list ();
 			});
-<<<<<<< HEAD
-=======
-
-			this.multiselect_button.clicked.connect  (() => {
-				this.multiselection = !this.multiselection;
-				message(multiselection.to_string());
-				if(this.multiselection) {
-					this.multiselect_button.set_relief (Gtk.ReliefStyle.NORMAL);					
-				}
-				else {
-					this.multiselect_button.set_relief (Gtk.ReliefStyle.NONE);
-				}				
-				this.tv.set_activate_on_single_click(this.multiselection);
-			});
-		}
->>>>>>> extension
 
 			this.multiselect_button.clicked.connect  (() => {
 				this.multiselection = !this.multiselection;				
@@ -313,46 +265,6 @@ namespace KDEConnectIndicator{
 				//this.window.close ();
 				//TODO: Substituir isto por uma msg box de ero
 			}
-<<<<<<< HEAD
-=======
-
-			string[] id_list = {};
-        	try {
-            	var return_variant = conn.call_sync (
-            	      		"org.kde.kdeconnect",
-                    		"/modules/kdeconnect",
-                    		"org.kde.kdeconnect.daemon",
-                    		"devices",
-                    		new Variant ("(b)", true),
-                	   		null,
-                    		DBusCallFlags.NONE,
-                    		-1,
-                    		null
-                    		);
-
-            	Variant i = return_variant.get_child_value (0);
-    			id_list = i.dup_strv ();
-
-   			} catch (Error e) {
-       			message (e.message);
-   	 		}
-
-			this.list_store = new Gtk.ListStore (1, typeof(string));
-			this.device_list = new SList<Device> ();
-
-       		foreach (string id in id_list) {
-       			var d = new Device ("/modules/kdeconnect/devices/"+id);
-       			if (d.is_reachable && d.is_trusted) {
-					device_list.append (d);
-					message (d.name);
-           			Gtk.TreeIter iter;
-           			this.list_store.append (out iter);           			
-           			this.list_store.set (iter, 0, d.name);
-       			}
-      		}
-
-       		set_device_list (this.list_store);
->>>>>>> extension
 		}
 
 		private void send_items (){			
