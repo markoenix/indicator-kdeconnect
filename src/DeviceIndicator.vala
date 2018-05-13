@@ -25,7 +25,8 @@ namespace KDEConnectIndicator {
         private Gtk.SeparatorMenuItem separator;
         private Gtk.SeparatorMenuItem separator2;
         private Gtk.SeparatorMenuItem separator3;
-        private SList<Gtk.MenuItem> browse_items;        
+        private SList<Gtk.MenuItem> browse_items;   
+        private ulong handler_browse_item;     
 
         public DeviceIndicator (string path) {
             this.path = path;
@@ -149,24 +150,24 @@ namespace KDEConnectIndicator {
                 update_battery_item ();
             });
             
-            device.pairing_error.connect (()=>{
+            device.pairing_error.connect (() => {
                 update_pair_item ();
                 update_status_item ();
             });
             
-            device.plugins_changed.connect (()=>{
+            device.plugins_changed.connect (() => {
                 update_battery_item ();
                 update_pair_item ();
             });
             
-            device.reachable_status_changed.connect (()=>{
+            device.reachable_status_changed.connect (() => {
                 update_visibility ();
                 update_pair_item ();
                 update_status_item ();
                 update_icon_item ();
             });
             
-            device.trusted_changed.connect ((trusted)=>{
+            device.trusted_changed.connect ((trusted) => {
                 if (!trusted)
                     update_visibility ();
 
@@ -174,46 +175,17 @@ namespace KDEConnectIndicator {
                 update_status_item ();
                 update_battery_item ();
                 update_icon_item ();
-            });
+            });           
 
-            if (device.to_list_dir &&
-                device.get_directories().length > 0) {
-                
-                device.mount(true);
+            device.mounted.connect ( () => {
+                update_browse_items();
+            });   
+            
+            device.unmounted.connect ( () => {
+                update_browse_items();
+            });   
 
-            	browse_submenu = new Gtk.Menu ();
-            	browse_item.set_submenu (browse_submenu);
-
-			    browse_items = new SList<Gtk.MenuItem> ();
-
-			    var directories = device.get_directories();	        	    
-
-			    for (int i = 0; i < directories.length ; i++) {
-                    var pair = directories.index (i); 		    
-                    browse_items.append (new Gtk.MenuItem.with_label (pair.get_secound()));
-                        
-                    Gtk.MenuItem tmpMenuItem = null;
-
-                    if (browse_items.length()  > 0)
-                        tmpMenuItem = browse_items.nth_data(browse_items.length () - 1); 
-                    else
-                        tmpMenuItem = browse_items.nth_data(0);
-
-                    browse_submenu.append (tmpMenuItem);
-
-                    tmpMenuItem.activate.connect (() => {
-                        device.mount(true);
-        		        device.browse (pair.get_first ());
-                    });
-                }		    			    
-            }
-            else {
-                browse_item.activate.connect (() => {
-            		device.mount(true);
-                	device.browse ();
-            	});
-            }              
-
+            update_browse_items();
             update_visibility ();
             update_name_item ();
             update_battery_item ();
@@ -303,6 +275,68 @@ namespace KDEConnectIndicator {
             separator.visible = browse_item.visible || send_item.visible;
             separator2.visible = sms_item.visible;
             separator3.visible = ring_item.visible;
+        }
+
+        private void update_browse_items () {
+            message ("Signal reciveid");
+        
+                if (this.handler_browse_item > 0)
+                    browse_item.disconnect(this.handler_browse_item);
+
+                    if (device.to_list_dir && !device.is_mounted ())
+                        device.mount(false);
+
+                var directories = device.get_directories();                             
+
+                if (device.to_list_dir &&
+                    directories.length > 0) {
+                    
+                //browse_item.disconnect(this.handler_browse_item);
+                //browse_item = new Gtk.MenuItem.with_label (_("Browse device"));
+                //browse_item.set_submenu (null);
+
+                browse_submenu = new Gtk.Menu ();   
+                
+                //browse_items = new SList<Gtk.MenuItem> ();
+                //browse_submenu.set_submenu (browse_items);                                                        	    
+
+                for (int i = 0; i < directories.length; i++) {
+                    var pair = directories.index (i); 		                        
+                    message(pair.get_secound());
+                    //message("%d", (int)browse_items.length () );
+                    //var tmpMenuItem = new Gtk.MenuItem.with_label (pair.get_secound());
+
+                    //browse_submenu.add (tmpMenuItem);
+                    //  if (browse_items.length()  > 0)
+                    //      tmpMenuItem = browse_items.nth_data(browse_items.length () - 1); 
+                    //  else
+                    //      tmpMenuItem = browse_items.nth_data(0);
+
+                    var tmpMenuItem = new Gtk.MenuItem.with_label (pair.get_secound());                    
+
+                    //  browse_submenu.index(i).activate.connect (() => {
+                    //      //device.mount(false);
+                    //      device.browse (pair.get_first ());
+                    //  });
+
+                    tmpMenuItem.activate.connect (() => {
+                        //device.mount(false);
+                        device.browse (pair.get_first ());
+                    });
+
+                    browse_submenu.add (tmpMenuItem);
+                }	  
+
+                browse_item.set_submenu (browse_submenu);	
+ 			    
+            }
+            else {
+                this.handler_browse_item = browse_item.activate.connect (() => {
+                    browse_item.set_submenu (null);
+                    device.mount(true);
+                    device.browse ();
+                });
+            }               
         }
     }
 }
