@@ -48,6 +48,8 @@ namespace KDEConnectIndicator {
             menu.append (browse_item);
             send_item = new Gtk.MenuItem.with_label (_("Send file(s)"));
             menu.append (send_item);
+            send_url = new Gtk.MenuItem.with_label (_("Send URL"));
+            menu.append (send_url);
             separator = new Gtk.SeparatorMenuItem ();
             menu.append (separator);
             sms_item = new Gtk.MenuItem.with_label (_("Send SMS"));
@@ -113,6 +115,11 @@ namespace KDEConnectIndicator {
                 }
                 
                 chooser.close ();
+            });
+
+            send_url.activate.connect (() => {
+                var send_url_dialog = new Utils.SendURL(this.device.send_file);
+                send_url_dialog.show ();
             });
             
             sms_item.activate.connect (() => {
@@ -262,7 +269,6 @@ namespace KDEConnectIndicator {
         }
         
         private void update_status_item () {
-
             if (device.is_reachable) {
                 if (device.is_trusted) {
                     status_item.label = _("Device Reachable and Trusted");

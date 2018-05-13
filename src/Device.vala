@@ -333,6 +333,33 @@ namespace KDEConnectIndicator {
             }
         }
 
+        private string _encryption_info;
+	    public string encryption_info {
+	        get {
+                try {
+                    var return_variant = conn.call_sync (
+                                "org.kde.kdeconnect",
+                                path,
+                                "org.kde.kdeconnect.device",
+                                "encryptionInfo",
+                                null,
+                                null,
+                                DBusCallFlags.NONE,
+                                -1,
+                                null
+                                );
+
+                    Variant i = return_variant.get_child_value (0);
+                
+                    return _encryption_info = i.dup_string ();
+                } catch (Error e) {
+                    message (e.message);
+                }
+                
+                return _encryption_info = _("Encryption information not found");
+            }
+	    }
+
         public void send_file (string url) {
             try {
                 if (!has_plugin ("kdeconnect_share"))
@@ -544,8 +571,7 @@ namespace KDEConnectIndicator {
                             -1,
                             null
                             );
-
-		        //HashTable<string, string> directories = new HashTable<string, string> (str_hash, str_equal);
+		        
                 var directories = new Array<Pair<string,string>>();
                 Variant variant = return_variant.get_child_value (0);
                 VariantIter iter = variant.iterator ();
@@ -596,34 +622,7 @@ namespace KDEConnectIndicator {
 	        } catch (Error e) {
 		        message (e.message);
 	        }
-        }
-
-	    private string _encryption_info;
-	    public string encryption_info {
-	        get {
-                try {
-                    var return_variant = conn.call_sync (
-                                "org.kde.kdeconnect",
-                                path,
-                                "org.kde.kdeconnect.device",
-                                "encryptionInfo",
-                                null,
-                                null,
-                                DBusCallFlags.NONE,
-                                -1,
-                                null
-                                );
-
-                    Variant i = return_variant.get_child_value (0);
-                
-                    return _encryption_info = i.dup_string ();
-                } catch (Error e) {
-                    message (e.message);
-                }
-                
-                return _encryption_info = _("Encryption information not found");
-            }
-	    }
+        }	    
 
 	    public void send_sms (string phone_number, string message_body){
 	        try {

@@ -54,6 +54,7 @@ vala_precompile(INDICATOR_VALA_C ${INDICATOR_EXEC}
 	src/FirstTimeWizard.vala
 	src/StartupManager.vala
 	src/utils/Pair.vala
+	src/utils/Dialogs.vala
 	PACKAGES	
 	gtk+-3.0
 	appindicator3-0.1
@@ -76,6 +77,7 @@ vala_precompile(VALA_C ${CONTRACTOR_EXEC}
 	src/kdeconnectsend/KDEConnectSend.vala
 	src/Device.vala
 	src/utils/Pair.vala
+	src/utils/Dialogs.vala
 	PACKAGES
 	gtk+-3.0
 )
