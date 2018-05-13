@@ -15,6 +15,7 @@ namespace KDEConnectIndicator {
         private Gtk.MenuItem browse_item;
         private Gtk.Menu browse_submenu;
         private Gtk.MenuItem send_item;
+        private Gtk.MenuItem send_url;
         private Gtk.MenuItem ring_item;
         private Gtk.MenuItem pair_item;
         private Gtk.MenuItem unpair_item;

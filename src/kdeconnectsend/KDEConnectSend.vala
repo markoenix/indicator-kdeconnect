@@ -96,6 +96,7 @@ namespace KDEConnectIndicator{
 			this.send_button.sensitive = false;
 			this.headerBar.pack_end (send_button);
 
+			//TODO: Add tooltip to the this buttons
 			this.reload_button = new Gtk.Button.from_icon_name ("reload",
 									    Gtk.IconSize.LARGE_TOOLBAR);
 			this.headerBar.pack_end (reload_button);
