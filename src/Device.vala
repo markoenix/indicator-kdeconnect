@@ -247,6 +247,12 @@ namespace KDEConnectIndicator {
         	}
         }        
         
+        public bool show_send_url{
+        	get {
+        	     return this.settings.get_boolean ("show-send-url");
+        	}
+        }  
+
         public bool is_trusted {
 	        get {
 		        try {
@@ -508,8 +514,8 @@ namespace KDEConnectIndicator {
                 if (!has_plugin ("kdeconnect_sftp"))
                     return;
 
-		    if (mount_and_wait)
-                conn.call_sync (
+		        if (mount_and_wait)
+                    conn.call_sync (
                         "org.kde.kdeconnect",
                         path+"/sftp",
                         "org.kde.kdeconnect.device.sftp",
@@ -520,8 +526,8 @@ namespace KDEConnectIndicator {
                         -1,
                         null
                         );
-            else
-                conn.call_sync (
+                else
+                    conn.call_sync (
                         "org.kde.kdeconnect",
                         path+"/sftp",
                         "org.kde.kdeconnect.device.sftp",
