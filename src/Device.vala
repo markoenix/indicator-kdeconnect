@@ -3,14 +3,142 @@
  * This software is licensed under the GNU Lesser General Public License
  * (version 2.1 or later).  See the COPYING file in this distribution.
  */
+using Utils;
+
 namespace KDEConnectIndicator {
     public class Device {
         private DBusConnection conn;
         private DBusProxy device_proxy;
         private string path;
         private SList<uint> subs_identifier;
-        private GLib.Settings settings;
-        
+        private GLib.Settings settings;    
+
+        public Device (string path) {
+            message ("device : %s",path);
+            this.path = path;
+
+            this.settings = new Settings("com.bajoja.indicator-kdeconnect");
+
+            try {
+                 conn = Bus.get_sync (BusType.SESSION);
+            } catch (Error e) {
+                 error (e.message);
+            }
+
+            try {
+                 device_proxy = new DBusProxy.sync (
+                         conn,
+                         DBusProxyFlags.NONE,
+                         null,
+                         "org.kde.kdeconnect",
+                         path,
+                         "org.kde.kdeconnect.device",
+                         null
+                         );
+            } catch (Error e) {
+                message (e.message);
+            }
+
+            uint id;
+            subs_identifier = new SList<uint> ();
+            id = conn.signal_subscribe (
+                    "org.kde.kdeconnect",
+                    "org.kde.kdeconnect.device",
+                    "pairingError",
+                    path,
+                    null,
+                    DBusSignalFlags.NONE,
+                    string_signal_cb
+                    );
+            subs_identifier.append (id);
+
+            id = conn.signal_subscribe (
+                    "org.kde.kdeconnect",
+                    "org.kde.kdeconnect.device",
+                    "pluginsChanged",
+                    path,
+                    null,
+                    DBusSignalFlags.NONE,
+                    void_signal_cb
+                    );
+            subs_identifier.append (id);
+
+            id = conn.signal_subscribe (
+                    "org.kde.kdeconnect",
+                    "org.kde.kdeconnect.device",
+                    "reachableStatusChanged",
+                    path,
+                    null,
+                    DBusSignalFlags.NONE,
+                    void_signal_cb
+                    );
+            subs_identifier.append (id);
+
+            id = conn.signal_subscribe (
+                    "org.kde.kdeconnect",
+                    "org.kde.kdeconnect.device",
+                    "trustedChanged",
+                    path,
+                    null,
+                    DBusSignalFlags.NONE,
+                    boolean_signal_cb
+                    );
+            subs_identifier.append (id);
+
+            id = conn.signal_subscribe (
+                    "org.kde.kdeconnect",
+                    "org.kde.kdeconnect.device.battery",
+                    "chargeChanged",
+                    path,
+                    null,
+                    DBusSignalFlags.NONE,
+                    int32_signal_cb
+                    );
+            subs_identifier.append (id);
+
+            id = conn.signal_subscribe (
+                    "org.kde.kdeconnect",
+                    "org.kde.kdeconnect.device.battery",
+                    "stateChanged",
+                    path,
+                    null,
+                    DBusSignalFlags.NONE,
+                    boolean_signal_cb
+                    );
+            subs_identifier.append (id);
+
+            id = conn.signal_subscribe (
+                    "org.kde.kdeconnect",
+                    "org.kde.kdeconnect.device.sftp",
+                    "mounted",
+                    path+"/sftp",
+                    null,
+                    DBusSignalFlags.NONE,
+                    void_signal_cb
+                    );
+            subs_identifier.append (id);
+
+            id = conn.signal_subscribe (
+                    "org.kde.kdeconnect",
+                    "org.kde.kdeconnect.device.sftp",
+                    "unmounted",
+                    path+"/sftp",
+                    null,
+                    DBusSignalFlags.NONE,
+                    void_signal_cb
+                    );
+            subs_identifier.append (id);            
+        }
+
+        ~Device () {
+            if (is_mounted ())
+                unmount ();
+
+            foreach (uint i in subs_identifier) {
+                conn.signal_unsubscribe (i);
+            }
+        }
+
         private string _name;
         public string name {
             get {
@@ -117,153 +245,7 @@ namespace KDEConnectIndicator {
         	get {
         	     return this.settings.get_boolean ("list-device-dir");
         	}
-        }
-
-        public Device (string path) {
-            message ("device : %s",path);
-            this.path = path;
-
-            try {
-                 conn = Bus.get_sync (BusType.SESSION);
-            } catch (Error e) {
-                 error (e.message);
-            }
-
-            try {
-                 device_proxy = new DBusProxy.sync (
-                         conn,
-                         DBusProxyFlags.NONE,
-                         null,
-                         "org.kde.kdeconnect",
-                         path,
-                         "org.kde.kdeconnect.device",
-                         null
-                         );
-            } catch (Error e) {
-                message (e.message);
-            }
-
-            uint id;
-            subs_identifier = new SList<uint> ();
-            id = conn.signal_subscribe (
-                    "org.kde.kdeconnect",
-                    "org.kde.kdeconnect.device",
-                    "pairingError",
-                    path,
-                    null,
-                    DBusSignalFlags.NONE,
-                    string_signal_cb
-                    );
-            subs_identifier.append (id);
-
-            id = conn.signal_subscribe (
-                    "org.kde.kdeconnect",
-                    "org.kde.kdeconnect.device",
-                    "pluginsChanged",
-                    path,
-                    null,
-                    DBusSignalFlags.NONE,
-                    void_signal_cb
-                    );
-            subs_identifier.append (id);
-
-            id = conn.signal_subscribe (
-                    "org.kde.kdeconnect",
-                    "org.kde.kdeconnect.device",
-                    "reachableStatusChanged",
-                    path,
-                    null,
-                    DBusSignalFlags.NONE,
-                    void_signal_cb
-                    );
-            subs_identifier.append (id);
-
-            id = conn.signal_subscribe (
-                    "org.kde.kdeconnect",
-                    "org.kde.kdeconnect.device",
-                    "trustedChanged",
-                    path,
-                    null,
-                    DBusSignalFlags.NONE,
-                    boolean_signal_cb
-                    );
-            subs_identifier.append (id);
-
-            id = conn.signal_subscribe (
-                    "org.kde.kdeconnect",
-                    "org.kde.kdeconnect.device.battery",
-                    "chargeChanged",
-                    path,
-                    null,
-                    DBusSignalFlags.NONE,
-                    int32_signal_cb
-                    );
-            subs_identifier.append (id);
-
-            id = conn.signal_subscribe (
-                    "org.kde.kdeconnect",
-                    "org.kde.kdeconnect.device.battery",
-                    "stateChanged",
-                    path,
-                    null,
-                    DBusSignalFlags.NONE,
-                    boolean_signal_cb
-                    );
-            subs_identifier.append (id);
-
-            id = conn.signal_subscribe (
-                    "org.kde.kdeconnect",
-                    "org.kde.kdeconnect.device.sftp",
-                    "mounted",
-                    path,
-                    null,
-                    DBusSignalFlags.NONE,
-                    void_signal_cb
-                    );
-            subs_identifier.append (id);
-
-            id = conn.signal_subscribe (
-                    "org.kde.kdeconnect",
-                    "org.kde.kdeconnect.device.sftp",
-                    "unmounted",
-                    path,
-                    null,
-                    DBusSignalFlags.NONE,
-                    void_signal_cb
-                    );
-            subs_identifier.append (id);
-
-            this.settings = new Settings("com.bajoja.indicator-kdeconnect");
-        }
-
-        ~Device () {
-            if (is_mounted ())
-                unmount ();
-
-            foreach (uint i in subs_identifier) {
-                conn.signal_unsubscribe (i);
-            }
-        }
-
-        public void send_file (string url) {
-            try {
-                if (!has_plugin ("kdeconnect_share"))
-                    return;
-                conn.call_sync (
-                        "org.kde.kdeconnect",
-                        path+"/share",
-                        "org.kde.kdeconnect.device.share",
-                        "shareUrl",
-                        new Variant ("(s)",url),
-                        null,
-                        DBusCallFlags.NONE,
-                        -1,
-                        null
-                        );
-            } catch (Error e) {
-                message (e.message);
-            }
-        }
+        }        
         
         public bool is_trusted {
 	        get {
@@ -322,6 +304,52 @@ namespace KDEConnectIndicator {
 		        }
                 
                 return false; // default to false if something went wrong
+            }
+        }
+
+        private string _mount_point;
+        private string mount_point {
+            get {
+                try {
+                    var return_variant = conn.call_sync (
+                            "org.kde.kdeconnect",
+                            path+"/sftp",
+                            "org.kde.kdeconnect.device.sftp",
+                            "mountPoint",
+                            null,
+                            null,
+                            DBusCallFlags.NONE,
+                             -1,
+                            null
+                            );
+                    Variant i = return_variant.get_child_value (0);
+                    _mount_point= i.dup_string ();
+                    return _mount_point;
+                } catch (Error e) {
+                    message (e.message);
+                }
+            
+                return "";
+            }
+        }
+
+        public void send_file (string url) {
+            try {
+                if (!has_plugin ("kdeconnect_share"))
+                    return;
+                conn.call_sync (
+                        "org.kde.kdeconnect",
+                        path+"/share",
+                        "org.kde.kdeconnect.device.share",
+                        "shareUrl",
+                        new Variant ("(s)",url),
+                        null,
+                        DBusCallFlags.NONE,
+                        -1,
+                        null
+                        );
+            } catch (Error e) {
+                message (e.message);
             }
         }
         
@@ -414,7 +442,7 @@ namespace KDEConnectIndicator {
         public void browse (string open_path="") {
             if (!has_plugin ("kdeconnect_sftp"))
                 return;
-
+            message("Open the path %s", open_path.length == 0 ? mount_point : open_path);
             if (is_mounted ())
 <<<<<<< HEAD
             	open_file (mount_point+open_path);
@@ -426,7 +454,7 @@ namespace KDEConnectIndicator {
                 open_file (open_path.length == 0 ? mount_point : open_path);
             else {
                 mount();
-                Timeout.add (1500, ()=> { // idle for a few second to let sftp kickin
+                Timeout.add (1000, ()=> { // idle for a few second to let sftp kickin
                         open_file (open_path.length == 0 ? mount_point : open_path);
 >>>>>>> master
                         return false;
@@ -456,32 +484,6 @@ namespace KDEConnectIndicator {
             return false;
         }
         
-        private string _mount_point;
-        private string mount_point {
-            get {
-                try {
-                    var return_variant = conn.call_sync (
-                            "org.kde.kdeconnect",
-                            path+"/sftp",
-                            "org.kde.kdeconnect.device.sftp",
-                            "mountPoint",
-                            null,
-                            null,
-                            DBusCallFlags.NONE,
-                             -1,
-                            null
-                            );
-                    Variant i = return_variant.get_child_value (0);
-                    _mount_point= i.dup_string ();
-                    return _mount_point;
-                } catch (Error e) {
-                    message (e.message);
-                }
-            
-                return "";
-            }
-        }
-
         public void mount (bool mount_and_wait=false) {
             try {
                 if (!has_plugin ("kdeconnect_sftp"))
@@ -537,7 +539,7 @@ namespace KDEConnectIndicator {
             }
         }
         
-        public HashTable<string, string> get_directories () {
+        public Array<Pair<string,string>> get_directories () {
             try {
                 var return_variant = conn.call_sync (
                             "org.kde.kdeconnect",
@@ -551,8 +553,8 @@ namespace KDEConnectIndicator {
                             null
                             );
 
-		        HashTable<string, string> directories = new HashTable<string, string> (str_hash, str_equal);
-
+		        //HashTable<string, string> directories = new HashTable<string, string> (str_hash, str_equal);
+                var directories = new Array<Pair<string,string>>();
                 Variant variant = return_variant.get_child_value (0);
                 VariantIter iter = variant.iterator ();
 
@@ -560,7 +562,9 @@ namespace KDEConnectIndicator {
                 string? key = null;
 
 	            while (iter.next ("{sv}", &key, &val))
-    			    directories.insert (key, val.dup_string ());		    
+                    directories.append_val (new Pair<string,string>(key, val.dup_string ()));	
+                    
+                message ("Founded Directories %d",(int) directories.length);
             
                 return directories;
 
@@ -568,7 +572,7 @@ namespace KDEConnectIndicator {
             	message (e.message);
             }
         
-            return new HashTable<string, string> (str_hash, str_equal);
+            return new Array<Pair<string, string>>();
         }
 
         private bool open_file (string path) {
