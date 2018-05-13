@@ -177,6 +177,26 @@ namespace KDEConnectIndicator {
 
 			//----------------------------------------------------//
 
+			Label label3 = new Label (_("Show option to send URL: "));
+
+			Switch switch3 = new Switch ();
+			switch3.set_active (settings.get_boolean ("show-send-url"));
+
+			switch3.notify["active"].connect (() => {
+				settings.set_boolean ("show-send-url", switch3.active);
+			});
+
+			Box hbox3 = new Box (Gtk.Orientation.HORIZONTAL, 50);
+
+			hbox3.pack_start (label3, true, true, 0);
+			hbox3.pack_start (switch3, true, true, 0);
+
+			ListBoxRow boxrow3 = new ListBoxRow ();
+
+			boxrow3.add (hbox3);
+
+			//---------------------------------------------------//
+
 			ListBox list_box = new ListBox ();
 			list_box.set_selection_mode (Gtk.SelectionMode.NONE);
 
@@ -234,6 +254,7 @@ namespace KDEConnectIndicator {
 
 			list_box.add (boxrow1);
 			list_box.add (boxrow2);
+			list_box.add (boxrow3);
 
 			Box vbox = new Box (Gtk.Orientation.HORIZONTAL, 0);
         	vbox.pack_start (list_box, true, true, 0);

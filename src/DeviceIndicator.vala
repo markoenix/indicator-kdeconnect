@@ -30,6 +30,7 @@ namespace KDEConnectIndicator {
         private Gtk.Menu browse_items_submenu;        
 >>>>>>> filesystem
         private Gtk.MenuItem send_item;
+        private Gtk.MenuItem send_url;
         private Gtk.MenuItem ring_item;
         private Gtk.MenuItem pair_item;
         private Gtk.MenuItem unpair_item;
@@ -38,7 +39,6 @@ namespace KDEConnectIndicator {
         private Gtk.SeparatorMenuItem separator2;
         private Gtk.SeparatorMenuItem separator3;        
         private Gtk.SeparatorMenuItem separator4;
-        private ulong handler_browse_item;     
 
         public DeviceIndicator (string path) {
             this.path = path;
@@ -48,7 +48,7 @@ namespace KDEConnectIndicator {
             indicator = new AppIndicator.Indicator (path,
                     				                device.icon,
                                                     AppIndicator.IndicatorCategory.HARDWARE);
-
+                                                    
             name_item = new Gtk.MenuItem ();
             menu.append (name_item);
 <<<<<<< HEAD
@@ -211,12 +211,11 @@ namespace KDEConnectIndicator {
             });
 
             browse_items = new Gtk.MenuItem.with_label (_("Browse device"));  
-            browse_items.set_reserve_indicator (true);
-            browse_items_submenu = new Gtk.Menu();     
-           
-            browse_items_submenu.append (new Gtk.MenuItem());                            
+            menu.append (browse_items);
+            browse_items_submenu = new Gtk.Menu(); 
+                                      
             browse_items.set_submenu (browse_items_submenu);
-            menu.append (browse_items);    
+                
 
             
             send_item = new Gtk.MenuItem.with_label (_("Send file(s)"));
@@ -244,8 +243,18 @@ namespace KDEConnectIndicator {
                 
                 chooser.close ();
             });
-            
-            
+
+            if(device.show_send_url) {
+                send_url = new  Gtk.MenuItem.with_label (_("Send URL"));
+
+                menu.append (send_url);
+
+                send_url.activate.connect (() => {
+                    var send_url_dialog = new Utils.SendURL(this.device.send_file);
+                    send_url_dialog.show ();
+                });
+            }            
+                                
             separator = new Gtk.SeparatorMenuItem ();
             menu.append (separator);
             
@@ -337,9 +346,9 @@ namespace KDEConnectIndicator {
                 update_browse_items();
             });   
             
-            device.unmounted.connect ( () => {
-                update_browse_items();
-            });   
+            //  device.unmounted.connect ( () => {
+            //      update_browse_items();
+            //  });   
 
             update_browse_items();
             update_visibility ();
@@ -349,8 +358,9 @@ namespace KDEConnectIndicator {
             update_pair_item ();
 
             menu.show_all ();
+
             indicator.set_menu (menu);
-        }
+        }                
         
         public void device_visibility_changed (bool visible) {
             message ("%s visibilitiy changed to %s", device.name, visible?"true":"false");
@@ -389,7 +399,6 @@ namespace KDEConnectIndicator {
         }
         
         private void update_status_item () {
-
             if (device.is_reachable) {
                 if (device.is_trusted) {
                     status_item.label = _("Device Reachable and Trusted");
@@ -433,7 +442,7 @@ namespace KDEConnectIndicator {
             separator3.visible = ring_item.visible;
 
             if (device.to_list_dir &&
-                device.get_directories().length > 0) {                
+                device.get_directories().length > 0) {  
                 browse_items.visible = true;
                 browse_item.visible = false;  
             }
@@ -449,23 +458,28 @@ namespace KDEConnectIndicator {
             if (device.to_list_dir && !device.is_mounted ())
                 device.mount(false);
 
-            var directories = device.get_directories();                             
+            var directories = device.get_directories();       
+            
+            //browse_items_submenu = new Gtk.Menu(); 
+                                      
+                                 
 
             if (device.to_list_dir &&
-                directories.length > 0) {
-                //browse_items_submenu = new Gtk.Menu();
+                directories.length > 0) {                
                 for (int i = 0; i < directories.length; i++) {
                     var pair = directories.index (i); 		                        
                     message(pair.get_secound());
-                    browse_items_submenu = new Gtk.Menu();
+                    //browse_items_submenu = new Gtk.Menu();
                     var tmpMenuItem = new Gtk.MenuItem.with_label (pair.get_secound());                    
                 
                     tmpMenuItem.activate.connect (() => {                        
                         device.browse (pair.get_first ());
                     });
 
-                    browse_items_submenu.append (tmpMenuItem);
-                }	               			    
+                    browse_items_submenu.prepend (tmpMenuItem);
+                }	    
+                
+                browse_items.set_submenu (browse_items_submenu); 
             }
 
             update_pair_item ();
