@@ -24,12 +24,12 @@ namespace KDEConnectIndicator{
 		private DBusConnection conn;
 		private TreeSelection ts;
 		private SList<Device> device_list;		
-		Gtk.CellRendererToggle toggle;
-		Gtk.TreeViewColumn column1;
-		Gtk.TreeViewColumn column2;
-		Gtk.CellRendererText text;
+		private CellRendererToggle toggle;
+		private TreeViewColumn column1;
+		private TreeViewColumn column2;
+		private CellRendererText text;
 		private bool multiselection = false;
-		Gtk.TreeIter iter;
+		private TreeIter iter;
 		private enum Columns {TEXT, TOGGLE,	N_COLUMNS}
 
 		public SendDialog () {
@@ -147,12 +147,12 @@ namespace KDEConnectIndicator{
 				this.list_store.get_iter (out iter, tree_path);
 				this.list_store.set (iter, Columns.TOGGLE, !toggle.active);
 				if(this.multiselection)
-					this.send_button.sensitive = (get_selected().length () > 0);					
+					this.send_button.sensitive = (get_selected().length > 0);					
 			});
 
 			this.tv.cursor_changed.connect (() => {
 				if(!this.multiselection)
-					this.send_button.sensitive = (get_selected().length () > 0);						
+					this.send_button.sensitive = (get_selected().length > 0);						
 			});
 
 			this.tv.row_activated.connect ((path, column) => {				
@@ -178,7 +178,7 @@ namespace KDEConnectIndicator{
 				this.multiselection = !this.multiselection;				
 				this.column1.set_visible (this.multiselection);			
 				if(this.multiselection) {
-					this.send_button.sensitive = (get_selected().length () > 0);	
+					this.send_button.sensitive = (get_selected().length > 0);	
 					this.multiselect_button.set_relief (Gtk.ReliefStyle.NORMAL);					
 				}
 				else {
@@ -188,16 +188,18 @@ namespace KDEConnectIndicator{
 			});
 		}
 
-		private SList<int> get_selected () {
-            SList<int> selected_devices = new SList<int> ();
+		private Array<int> get_selected () {
+            Array<int> selected_devices = new Array<int> ();
 
 			if(!this.multiselection) {
 				TreeModel tm;
             	List<TreePath> selected_paths = this.ts.get_selected_rows (out tm);
 
 				foreach (TreePath path in selected_paths) {
-					if(path != null)
-						selected_devices.append (int.parse (path.to_string ()));
+					if(path != null){
+						var tmp = int.parse (path.to_string ());
+						selected_devices.append_val (tmp);
+					}						
 				}
 			}
 			else{
@@ -208,15 +210,17 @@ namespace KDEConnectIndicator{
 					list_store.get_value (iter, 1, out val2);
 					message ("Entry: %s\t%s\n", (string) val1, ((bool) val2).to_string());
 					if((bool) val2)
-						selected_devices.append (i);					
+						selected_devices.append_val  (i);					
 					i++;					
 				}
 			}
 
-            return selected_devices.copy ();
+            return selected_devices;
 		}
 
 		private void reload_device_list() {
+			this.list_store.clear ();
+
 			try{
 				conn = Bus.get_sync (BusType.SESSION);				
 
@@ -241,9 +245,7 @@ namespace KDEConnectIndicator{
 					   message (e.message);
 				}	
 				
-				this.device_list = new SList<Device> ();
-				
-				this.list_store.clear ();
+				this.device_list = new SList<Device> ();							
 	
 				foreach (string id in id_list) {
 				    var d = new Device ("/modules/kdeconnect/devices/"+id);
@@ -261,18 +263,26 @@ namespace KDEConnectIndicator{
 				Gtk.TreePath path = new Gtk.TreePath.from_indices (0, -1);
 				tv.set_cursor (path, null, false);
 			} catch (Error e){
-				message (e.message);
-				//this.window.close ();
-				//TODO: Substituir isto por uma msg box de ero
+				message (e.message);				
+            	var msg = new Gtk.MessageDialog (null,
+                				 				 Gtk.DialogFlags.MODAL,
+                	                 	 		 Gtk.MessageType.WARNING,
+                	                	 		 Gtk.ButtonsType.OK,
+                		                 	 	 "msg");
+
+    			msg.set_markup (_("Error on reload devices"));
+
+            	msg.destroy.connect (Gtk.main_quit);
+            	msg.run ();
 			}
 		}
 
 		private void send_items (){			
-			SList<int> selected_devs = get_selected ();
+			Array<int> selected_devs = get_selected ();
 
             foreach (File file in files){
-    			foreach (int selected in selected_devs){
-        			Device selected_dev = this.device_list.nth_data (selected);
+    			for (int i = 0; i < selected_devs.length ; i++) {
+        			Device selected_dev = this.device_list.nth_data (selected_devs.index (i));
             		selected_dev.send_file (file.get_uri ());
        			}
        		}
