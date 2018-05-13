@@ -111,7 +111,7 @@ namespace KDEConnectIndicator {
                     "org.kde.kdeconnect",
                     "org.kde.kdeconnect.device.sftp",
                     "mounted",
-                    path,
+                    path+"/sftp",
                     null,
                     DBusSignalFlags.NONE,
                     void_signal_cb
@@ -122,7 +122,7 @@ namespace KDEConnectIndicator {
                     "org.kde.kdeconnect",
                     "org.kde.kdeconnect.device.sftp",
                     "unmounted",
-                    path,
+                    path+"/sftp",
                     null,
                     DBusSignalFlags.NONE,
                     void_signal_cb
@@ -469,7 +469,7 @@ namespace KDEConnectIndicator {
         public void browse (string open_path="") {
             if (!has_plugin ("kdeconnect_sftp"))
                 return;
-
+            message("Open the path %s", open_path.length == 0 ? mount_point : open_path);
             if (is_mounted ())
                 open_file (open_path.length == 0 ? mount_point : open_path);
             else {

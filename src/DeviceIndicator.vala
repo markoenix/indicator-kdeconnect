@@ -16,7 +16,8 @@ namespace KDEConnectIndicator {
         private Gtk.MenuItem battery_item;
         private Gtk.MenuItem status_item;
         private Gtk.MenuItem browse_item;
-        private Gtk.Menu browse_submenu;
+        private Gtk.MenuItem browse_items;
+        private Gtk.Menu browse_items_submenu;        
         private Gtk.MenuItem send_item;
         private Gtk.MenuItem send_url;
         private Gtk.MenuItem ring_item;
@@ -25,8 +26,9 @@ namespace KDEConnectIndicator {
         private Gtk.MenuItem sms_item;
         private Gtk.SeparatorMenuItem separator;
         private Gtk.SeparatorMenuItem separator2;
-        private Gtk.SeparatorMenuItem separator3;
-        private SList<Gtk.MenuItem> browse_items;        
+        private Gtk.SeparatorMenuItem separator3;        
+        private Gtk.SeparatorMenuItem separator4;
+        private ulong handler_browse_item;     
 
         public DeviceIndicator (string path) {
             this.path = path;
@@ -39,6 +41,7 @@ namespace KDEConnectIndicator {
 
             name_item = new Gtk.MenuItem ();
             menu.append (name_item);
+<<<<<<< HEAD
             battery_item = new Gtk.MenuItem();
             menu.append (battery_item);
             status_item = new Gtk.MenuItem ();
@@ -64,6 +67,8 @@ namespace KDEConnectIndicator {
             menu.append (pair_item);
             unpair_item = new Gtk.MenuItem.with_label (_("Unpair"));
             menu.append (unpair_item);
+=======
+>>>>>>> filesystem
 
             name_item.activate.connect (() => {
                 try {
@@ -77,12 +82,18 @@ namespace KDEConnectIndicator {
 	    	        message (e.message);
 	    	    }
 	        });
+
+            battery_item = new Gtk.MenuItem();
+            menu.append (battery_item);
             
-	        //  battery_item.activate.connect (() => {
+            //  battery_item.activate.connect (() => {
 	    	    
 	        //  });
-
-	        status_item.activate.connect (() => {
+            
+            status_item = new Gtk.MenuItem ();
+            menu.append (status_item);
+            
+            status_item.activate.connect (() => {
 		        try {
                     Process.spawn_async (null,
                             			 new string[]{"kcmshell5", "kcm_kdeconnect"},
@@ -94,6 +105,28 @@ namespace KDEConnectIndicator {
                     message (e.message);
                 }
 	        });
+            
+            separator4 = new Gtk.SeparatorMenuItem ();
+            menu.append (separator4);
+
+            browse_item = new Gtk.MenuItem.with_label (_("Browse device"));                                      
+            menu.append (browse_item);  
+            
+            browse_item.activate.connect (() => {                                        
+                device.browse ();
+            });
+
+            browse_items = new Gtk.MenuItem.with_label (_("Browse device"));  
+            browse_items.set_reserve_indicator (true);
+            browse_items_submenu = new Gtk.Menu();     
+           
+            browse_items_submenu.append (new Gtk.MenuItem());                            
+            browse_items.set_submenu (browse_items_submenu);
+            menu.append (browse_items);    
+
+            
+            send_item = new Gtk.MenuItem.with_label (_("Send file(s)"));
+            menu.append (send_item);
 
             send_item.activate.connect (() => {
                 var chooser = new Gtk.FileChooserDialog (_("Select file(s)"),
@@ -122,6 +155,14 @@ namespace KDEConnectIndicator {
                 send_url_dialog.show ();
             });
             
+            
+            separator = new Gtk.SeparatorMenuItem ();
+            menu.append (separator);
+            
+            
+            sms_item = new Gtk.MenuItem.with_label (_("Send SMS"));
+            menu.append (sms_item);
+
             sms_item.activate.connect (() => {
             	try{
 		            Process.spawn_async (null,
@@ -137,17 +178,35 @@ namespace KDEConnectIndicator {
             	}
             });
 
+            
+            separator2 = new Gtk.SeparatorMenuItem ();
+            menu.append (separator2);
+            
+            ring_item = new Gtk.MenuItem.with_label (_("Find my phone"));
+            menu.append (ring_item);
+
             ring_item.activate.connect (() => {
 		        device.find_my_phone ();
 	        });
-			
+            
+            separator3 = new Gtk.SeparatorMenuItem ();
+            menu.append (separator3);
+            
+            pair_item = new Gtk.MenuItem.with_label (_("Request pairing"));
+            menu.append (pair_item);
+
             pair_item.activate.connect (() => {
                 device.request_pair ();
             });
             
+            unpair_item = new Gtk.MenuItem.with_label (_("Unpair"));
+            menu.append (unpair_item);            
+            
             unpair_item.activate.connect (() => {
                 device.unpair ();
-            });
+            });	        
+
+            //---------------------------------------------------------------//
 
             device.charge_changed.connect ((charge) => {
                 update_battery_item ();
@@ -157,24 +216,24 @@ namespace KDEConnectIndicator {
                 update_battery_item ();
             });
             
-            device.pairing_error.connect (()=>{
+            device.pairing_error.connect (() => {
                 update_pair_item ();
                 update_status_item ();
             });
             
-            device.plugins_changed.connect (()=>{
+            device.plugins_changed.connect (() => {
                 update_battery_item ();
                 update_pair_item ();
             });
             
-            device.reachable_status_changed.connect (()=>{
+            device.reachable_status_changed.connect (() => {
                 update_visibility ();
                 update_pair_item ();
                 update_status_item ();
                 update_icon_item ();
             });
             
-            device.trusted_changed.connect ((trusted)=>{
+            device.trusted_changed.connect ((trusted) => {
                 if (!trusted)
                     update_visibility ();
 
@@ -182,46 +241,17 @@ namespace KDEConnectIndicator {
                 update_status_item ();
                 update_battery_item ();
                 update_icon_item ();
-            });
+            });           
 
-            if (device.to_list_dir &&
-                device.get_directories().length > 0) {
-                
-                device.mount(true);
+            device.mounted.connect ( () => {
+                update_browse_items();
+            });   
+            
+            device.unmounted.connect ( () => {
+                update_browse_items();
+            });   
 
-            	browse_submenu = new Gtk.Menu ();
-            	browse_item.set_submenu (browse_submenu);
-
-			    browse_items = new SList<Gtk.MenuItem> ();
-
-			    var directories = device.get_directories();	        	    
-
-			    for (int i = 0; i < directories.length ; i++) {
-                    var pair = directories.index (i); 		    
-                    browse_items.append (new Gtk.MenuItem.with_label (pair.get_secound()));
-                        
-                    Gtk.MenuItem tmpMenuItem = null;
-
-                    if (browse_items.length()  > 0)
-                        tmpMenuItem = browse_items.nth_data(browse_items.length () - 1); 
-                    else
-                        tmpMenuItem = browse_items.nth_data(0);
-
-                    browse_submenu.append (tmpMenuItem);
-
-                    tmpMenuItem.activate.connect (() => {
-                        device.mount(true);
-        		        device.browse (pair.get_first ());
-                    });
-                }		    			    
-            }
-            else {
-                browse_item.activate.connect (() => {
-            		device.mount(true);
-                	device.browse ();
-            	});
-            }              
-
+            update_browse_items();
             update_visibility ();
             update_name_item ();
             update_battery_item ();
@@ -310,6 +340,44 @@ namespace KDEConnectIndicator {
             separator.visible = browse_item.visible || send_item.visible;
             separator2.visible = sms_item.visible;
             separator3.visible = ring_item.visible;
+
+            if (device.to_list_dir &&
+                device.get_directories().length > 0) {                
+                browse_items.visible = true;
+                browse_item.visible = false;  
+            }
+            else {
+                browse_items.visible = false;
+                browse_item.visible = true;  
+            }
+        }
+
+        private void update_browse_items () {
+            message ("Signal reciveid");                        
+
+            if (device.to_list_dir && !device.is_mounted ())
+                device.mount(false);
+
+            var directories = device.get_directories();                             
+
+            if (device.to_list_dir &&
+                directories.length > 0) {
+                //browse_items_submenu = new Gtk.Menu();
+                for (int i = 0; i < directories.length; i++) {
+                    var pair = directories.index (i); 		                        
+                    message(pair.get_secound());
+                    browse_items_submenu = new Gtk.Menu();
+                    var tmpMenuItem = new Gtk.MenuItem.with_label (pair.get_secound());                    
+                
+                    tmpMenuItem.activate.connect (() => {                        
+                        device.browse (pair.get_first ());
+                    });
+
+                    browse_items_submenu.append (tmpMenuItem);
+                }	               			    
+            }
+
+            update_pair_item ();
         }
     }
 }
