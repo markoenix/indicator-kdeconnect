@@ -477,19 +477,11 @@ namespace KDEConnectIndicator {
                 return;
             message("Open the path %s", open_path.length == 0 ? mount_point : open_path);
             if (is_mounted ())
-<<<<<<< HEAD
-            	open_file (mount_point+open_path);
-            else {
-                mount();
-                Timeout.add (1000, ()=> { // idle for a few second to let sftp kickin
-                        open_file (mount_point+open_path);
-=======
                 open_file (open_path.length == 0 ? mount_point : open_path);
             else {
                 mount();
                 Timeout.add (1000, ()=> { // idle for a few second to let sftp kickin
                         open_file (open_path.length == 0 ? mount_point : open_path);
->>>>>>> master
                         return false;
                 });
             }
