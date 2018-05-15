@@ -80,21 +80,39 @@ namespace KDEConnectIndicator {
             separator4 = new Gtk.SeparatorMenuItem ();
             menu.append (separator4);
 
-            browse_item = new Gtk.MenuItem.with_label (_("Browse device"));                                      
-            menu.append (browse_item);  
-            
-            browse_item.activate.connect (() => {                                        
-                device.browse ();
-            });
+            if(device.to_list_dir && device.try_to_get_paths()) {                
+                message ("Path getted");
+                browse_item = new Gtk.MenuItem.with_label (_("Browse device"));
+                menu.append (browse_item);    
+                browse_items_submenu = new Gtk.Menu();
+                    
+                var directories = device.get_directories();                                                                                              
+                
+                for (int i = 0; i < directories.length; i++) {
+                    var pair = directories.index (i); 		                        
+                    message(pair.get_secound());
+                    
+                    var tmpMenuItem = new Gtk.MenuItem.with_label (pair.get_secound());                    
+                
+                    tmpMenuItem.activate.connect (() => {                        
+                        device.browse (pair.get_first ());
+                    });
 
-            browse_items = new Gtk.MenuItem.with_label (_("Browse device"));  
-            menu.append (browse_items);
-            browse_items_submenu = new Gtk.Menu(); 
-                                      
-            browse_items.set_submenu (browse_items_submenu);
-            
-            //TODO: Check why is not working on menu items for browse
+                    browse_items_submenu.prepend (tmpMenuItem);
+                }	    
+                
+                browse_item.set_submenu (browse_items_submenu);                                 
+            }
+            else {
+                browse_item = new Gtk.MenuItem.with_label (_("Browse device"));                                      
+                menu.append (browse_item);  
+                
+                browse_item.activate.connect (() => {                                        
+                    device.browse ();
+                });
+            }
 
+            //TODO: Don't work on signal change because it not build menu on runtime 
             
             send_item = new Gtk.MenuItem.with_label (_("Send file(s)"));
             menu.append (send_item);
@@ -220,14 +238,13 @@ namespace KDEConnectIndicator {
             });           
 
             device.mounted.connect ( () => {
-                update_browse_items();
+
             });   
             
             device.unmounted.connect ( () => {
-                update_browse_items();
-            });   
 
-            update_browse_items();
+            });   
+            
             update_visibility ();
             update_name_item ();
             update_battery_item ();
@@ -317,43 +334,6 @@ namespace KDEConnectIndicator {
             separator.visible = browse_item.visible || send_item.visible;
             separator2.visible = sms_item.visible;
             separator3.visible = ring_item.visible;           
-        }
-
-        private void update_browse_items () {
-            message ("Signal reciveid");                        
-
-            if (device.to_list_dir && !device.is_mounted ())
-                device.mount(false);
-
-            var directories = device.get_directories();                                                                                              
-
-            if (device.to_list_dir &&
-                directories.length > 0) {                
-                for (int i = 0; i < directories.length; i++) {
-                    var pair = directories.index (i); 		                        
-                    message(pair.get_secound());
-                    
-                    var tmpMenuItem = new Gtk.MenuItem.with_label (pair.get_secound());                    
-                
-                    tmpMenuItem.activate.connect (() => {                        
-                        device.browse (pair.get_first ());
-                    });
-
-                    browse_items_submenu.prepend (tmpMenuItem);
-                }	    
-                
-                browse_items.set_submenu (browse_items_submenu); 
-
-                if (device.to_list_dir &&
-                    device.get_directories().length > 0) {  
-                    browse_items.visible = true;
-                    browse_item.visible = false;  
-                }
-                else {
-                    browse_items.visible = false;
-                    browse_item.visible = true;  
-                }
-            }            
-        }
+        }        
     }
 }

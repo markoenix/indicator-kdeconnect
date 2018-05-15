@@ -649,7 +649,25 @@ namespace KDEConnectIndicator {
 	        } catch (Error e) {
 	            message (e.message);
 	        }
-	    }
+        }
+        
+        public bool try_to_get_paths(){
+            this.mount();
+
+            int max_trying = 4;
+            while (max_trying != -1) {
+                message ("Trying to get paths %d", max_trying);
+                Thread.usleep (1000);
+                if(this.is_mounted ()) {
+                    this.get_directories ().length > 0;
+                    return true;
+                }
+
+                max_trying--;
+            }
+
+            return false;            
+        }
 
         public void int32_signal_cb (DBusConnection con, string sender, string object,
                                      string interface, string signal_name, Variant parameter) {            
