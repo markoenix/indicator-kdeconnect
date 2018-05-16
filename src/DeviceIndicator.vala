@@ -121,7 +121,7 @@ namespace KDEConnectIndicator {
             if(device.show_send_url) {
                 send_menu = new Gtk.MenuItem.with_label (_("Send"));
                 send_submenu = new Gtk.Menu ();
-                
+
                 send_menu.set_submenu (send_submenu);
 
                 send_submenu.append (send_item);
@@ -287,17 +287,26 @@ namespace KDEConnectIndicator {
             if (device.is_reachable) {
                 if (device.is_trusted) {
                     status_item.label = _("Device Reachable and Trusted");
+                    try {Utils.InOut.write_status (device.id, device.name);}
+                    catch (Error e){message(e.message);}
+                    
                 }
                 else {
                     status_item.label = _("Device Reachable but Not Trusted");
+                    try {Utils.InOut.delete_status (device.id, device.name);}
+                    catch (Error e){message(e.message);}       
                 }
             } 
             else {
                 if (device.is_trusted) {
                     status_item.label = _("Device Trusted but not Reachable");
+                    try {Utils.InOut.delete_status (device.id, device.name);}
+                    catch (Error e){message(e.message);}       
                 }
                 else {
-    	            status_item.label = _("Device Not Reachable and Not Trusted");
+                    status_item.label = _("Device Not Reachable and Not Trusted");
+                    try {Utils.InOut.delete_status (device.id, device.name);}
+                    catch (Error e){message(e.message);}                    
 	    	        // is this even posible?
                 }
             }

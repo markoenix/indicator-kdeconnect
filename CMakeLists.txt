@@ -55,10 +55,11 @@ vala_precompile(INDICATOR_VALA_C ${INDICATOR_EXEC}
 	src/StartupManager.vala
 	src/utils/Pair.vala
 	src/utils/Dialogs.vala
+	src/utils/InOut.vala
 	PACKAGES	
 	gtk+-3.0
 	appindicator3-0.1
-	       )
+	)
 
 # tell cmake what to call the executable we just made
 add_definitions(-Wno-deprecated-declarations)
