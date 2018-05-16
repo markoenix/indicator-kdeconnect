@@ -89,12 +89,9 @@ namespace KDEConnectIndicator {
                 device.browse ();
             });
 
-            update_broswe_items ();
-
-            //TODO: Don't work on signal change because it not build menu on runtime 
+            update_broswe_items ();            
             
-            send_item = new Gtk.MenuItem.with_label (_("Send file(s)"));
-            
+            send_item = new Gtk.MenuItem.with_label (_("Send file(s)"));            
 
             send_item.activate.connect (() => {
                 var chooser = new Gtk.FileChooserDialog (_("Select file(s)"),
@@ -162,7 +159,6 @@ namespace KDEConnectIndicator {
 		            message (e.message);
             	}
             });
-
             
             separator2 = new Gtk.SeparatorMenuItem ();
             menu.append (separator2);
@@ -337,8 +333,7 @@ namespace KDEConnectIndicator {
         }        
 
         private void update_broswe_items () {
-            message("signal received");
-            //browse_item = new Gtk.MenuItem.with_label (_("Browse device")); 
+            message("signal received");            
             var directories = device.get_directories();   
 
             if(device.to_list_dir && directories.length > 0) {  
@@ -358,19 +353,10 @@ namespace KDEConnectIndicator {
 
                     browse_items_submenu.append (tmpMenuItem);
                 }	    
-                
-                
-                browse_items_submenu.show_all ();  
-                //browse_item.show_all();                            
+                                
+                browse_items_submenu.show_all ();                  
             }
-            else {
-                //browse_item = new Gtk.MenuItem.with_label (_("Browse device"));                                      
-                //menu.append (browse_item);  
-                
-                //  browse_item.activate.connect (() => {                                        
-                //      device.browse ();
-                //  });
-                
+            else {                
                 if(this.handler_broswer == 0) {
                     this.handler_broswer = browse_item.activate.connect (() => {                                        
                         device.browse ();
@@ -381,7 +367,6 @@ namespace KDEConnectIndicator {
             }
 
             browse_item.show_all();
-        }
-        
+        }        
     }
 }
