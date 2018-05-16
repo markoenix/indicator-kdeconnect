@@ -6,7 +6,7 @@
 
 namespace Utils {
 	public class InOut{
-		public static unowned string visible_devices = "/tmp/devices";
+		public static unowned string visible_devices = "/tmp/indicator_kdeconnect/devices";
 
 		public static int write_status (string id, string name) throws GLib.IOError {
 			var file = File.new_for_path (InOut.visible_devices);
