@@ -4,6 +4,7 @@
  * (version 2.1 or later).  See the COPYING file in this distribution.
  */
 using Gtk;
+using Dialogs;
 
 [CCode(cname="GETTEXT_PACKAGE")] extern const string GETTEXT_PACKAGE;
 [CCode(cname="LOCALEDIR")] extern const string LOCALEDIR;
@@ -19,6 +20,7 @@ namespace KDEConnectIndicator {
 		private StyleContext style_context;
 		private Stack stack;
 		private StackSwitcher stack_switcher;
+		private bool need_restart;
 
 
 		public SettingsDialog () {
@@ -27,8 +29,14 @@ namespace KDEConnectIndicator {
 		}
 
 		protected override void activate () {
-			this.settings = new GLib.Settings("com.bajoja.indicator-kdeconnect");
-			create_window ();
+			try {
+				this.settings = new GLib.Settings("com.bajoja.indicator-kdeconnect");
+				create_window ();
+			}
+			catch (Error e)  {
+				new Dialogs.ErrorMessage.show_message ("Configuration file not found.");
+				message(e.message);
+			}			
 		}
 
 		private void create_window () {
@@ -78,7 +86,8 @@ namespace KDEConnectIndicator {
 
 			this.ok_button.clicked.connect (() => {
 				this.settings.apply ();
-				restart();
+				if (need_restart)
+					restart();
 				this.window.close ();
 			});
 		}
@@ -86,9 +95,9 @@ namespace KDEConnectIndicator {
 		private void restart () {
 			string std_out;
 
-			message("Getting PID");
+			message("Getting PID to restart");
 
-            try{
+            try {
 			    Process.spawn_sync (null,
 			              			new string[]{"pidof",
 			     	         		             "indicator-kdeconnect"},
@@ -98,16 +107,17 @@ namespace KDEConnectIndicator {
 			                        out std_out,
 			    					null,
 			    					null);
-	    	} catch (Error e){
+			} 
+			catch (Error e) {
 			    message (e.message);
 			}
 
 			if (std_out != ""){
-       			message("Kill PID");
+       			message("Killing PID");
 
     		int pid = int.parse(std_out);
 
-    		try{
+    		try {
 	    	    Process.spawn_sync (null,
 	        		    	        new string[]{"kill",
 		    	                    pid.to_string()},
@@ -117,21 +127,24 @@ namespace KDEConnectIndicator {
 			                        out std_out,
 			    				    null,
 			    				    null);
-	    	} catch (Error e){
+			} 
+			catch (Error e) {
 			    message (e.message);
 			}
 			
 			message("Restart process");
-            try{
+
+            try {
 		        Process.spawn_async (null,
 		                			 new string[]{"indicator-kdeconnect"},
 				         			 null,
 				        			 SpawnFlags.SEARCH_PATH,
 					                 null,
 				                     null);
-	    		} catch (Error e) {
+			} 
+			catch (Error e) {
 		    	    message (e.message);
-				}
+			}
         	}
 		}
 
@@ -139,11 +152,23 @@ namespace KDEConnectIndicator {
 			Label label1 = new Label (_("Show only paired devices: "));
 
 			Switch switch1 = new Switch ();
-			switch1.set_active (settings.get_boolean ("visibilitiy"));
+			try {
+				switch1.set_active (settings.get_boolean ("visibilitiy"));
 
-			switch1.notify["active"].connect (() => {
-				settings.set_boolean ("visibilitiy", switch1.active);
-			});
+				switch1.notify["active"].connect (() => {
+					try {
+						settings.set_boolean ("visibilitiy", switch1.active);
+						need_restart = !need_restart;
+					}
+					catch (Error e)  {				
+						message(e.message);
+					}					
+				});
+			}
+			catch (Error e)  {				
+				message(e.message);
+			}	
+			
 
 			Box hbox1 = new Box (Gtk.Orientation.HORIZONTAL, 50);
 
@@ -159,11 +184,17 @@ namespace KDEConnectIndicator {
 			Label label2 = new Label (_("Show device directories: "));
 
 			Switch switch2 = new Switch ();
-			switch2.set_active (settings.get_boolean ("list-device-dir"));
 
-			switch2.notify["active"].connect (() => {
-				settings.set_boolean ("list-device-dir", switch2.active);
-			});
+			try {
+				switch2.set_active (settings.get_boolean ("list-device-dir"));
+
+				switch2.notify["active"].connect (() => {
+					settings.set_boolean ("list-device-dir", switch2.active);
+				});
+			}
+			catch (Error e)  {				
+				message(e.message);
+			}	
 
 			Box hbox2 = new Box (Gtk.Orientation.HORIZONTAL, 50);
 
@@ -179,11 +210,17 @@ namespace KDEConnectIndicator {
 			Label label3 = new Label (_("Show option to send URL: "));
 
 			Switch switch3 = new Switch ();
-			switch3.set_active (settings.get_boolean ("show-send-url"));
 
-			switch3.notify["active"].connect (() => {
-				settings.set_boolean ("show-send-url", switch3.active);
-			});
+			try {
+				switch3.set_active (settings.get_boolean ("show-send-url"));
+
+				switch3.notify["active"].connect (() => {
+					settings.set_boolean ("show-send-url", switch3.active);
+				});
+			}
+			catch (Error e)  {				
+				message(e.message);
+			}	
 
 			Box hbox3 = new Box (Gtk.Orientation.HORIZONTAL, 50);
 

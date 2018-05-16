@@ -55,7 +55,7 @@ vala_precompile(INDICATOR_VALA_C ${INDICATOR_EXEC}
 	src/StartupManager.vala
 	src/utils/Pair.vala
 	src/utils/Dialogs.vala
-	src/utils/InOut.vala
+	src/utils/InOut.vala	
 	PACKAGES	
 	gtk+-3.0
 	appindicator3-0.1
@@ -94,6 +94,7 @@ install (TARGETS ${CONTRACTOR_EXEC} RUNTIME DESTINATION bin)
 set (SETTINGS_EXEC "indicator-kdeconnect-settings")
 vala_precompile(VALA_C ${SETTINGS_EXEC}
 	src/settings/Settings.vala
+	src/utils/Dialogs.vala
 	PACKAGES
 	gtk+-3.0
 )

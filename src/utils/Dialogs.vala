@@ -3,7 +3,32 @@
  * This software is licensed under the GNU Lesser General Public License
  * (version 2.1 or later).  See the COPYING file in this distribution.
  */
-namespace Utils {
+namespace Dialogs {
+	public class ErrorMessage {
+		Gtk.MessageDialog msg = null;
+		
+		public ErrorMessage(string message) {
+			msg = new Gtk.MessageDialog (null,
+											 Gtk.DialogFlags.MODAL,
+			                                 Gtk.MessageType.WARNING,
+			                                 Gtk.ButtonsType.OK,
+			                                 "msg");
+	
+			msg.set_markup (_(message));
+	
+			msg.destroy.connect (Gtk.main_quit);			
+		}
+
+		public ErrorMessage.show_message(string message) {
+			new ErrorMessage(message).show ();
+		}
+		
+		public void show(){
+			if(msg != null)
+				msg.run ();
+		}
+	}
+
     public class SendURL: Gtk.ApplicationWindow {
         public delegate void SendUrl(string url);              
 	    private Gtk.HeaderBar headerbar;
@@ -15,7 +40,7 @@ namespace Utils {
         private Gtk.StyleContext style_context;        
         private SendUrl send_url;
 
-	    public SendURL(SendUrl send_url){            
+	    public SendURL(SendUrl send_url) {            
             this.send_url = send_url;
  		    this.set_default_size (600, 0);
 		    this.window_position = Gtk.WindowPosition.CENTER;

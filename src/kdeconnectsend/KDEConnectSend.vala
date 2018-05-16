@@ -4,6 +4,7 @@
  * (version 2.1 or later).  See the COPYING file in this distribution.
  */
 using Gtk;
+using Dialogs;
 
 [CCode(cname="GETTEXT_PACKAGE")] extern const string GETTEXT_PACKAGE;
 [CCode(cname="LOCALEDIR")] extern const string LOCALEDIR;
@@ -44,17 +45,8 @@ namespace KDEConnectIndicator{
 		protected override void activate () {
 			if (files.length () == 0) {
 				message ("file(s) doesnt exist(s) or not found");
-
-            	var msg = new Gtk.MessageDialog (null,
-                				 				 Gtk.DialogFlags.MODAL,
-                	                 	 		 Gtk.MessageType.WARNING,
-                	                	 		 Gtk.ButtonsType.OK,
-                		                 	 	 "msg");
-
-    			msg.set_markup (_("File(s) not found"));
-
-            	msg.destroy.connect (Gtk.main_quit);
-            	msg.run ();
+				
+				new Dialogs.ErrorMessage.show_message ("File(s) not found");
 			}
 			else{
 				create_window ();
@@ -263,18 +255,10 @@ namespace KDEConnectIndicator{
 				// select first item
 				Gtk.TreePath path = new Gtk.TreePath.from_indices (0, -1);
 				tv.set_cursor (path, null, false);
-			} catch (Error e){
+			} catch (Error e) {
 				message (e.message);				
-            	var msg = new Gtk.MessageDialog (null,
-                				 				 Gtk.DialogFlags.MODAL,
-                	                 	 		 Gtk.MessageType.WARNING,
-                	                	 		 Gtk.ButtonsType.OK,
-                		                 	 	 "msg");
 
-    			msg.set_markup (_("Error on reload devices"));
-
-            	msg.destroy.connect (Gtk.main_quit);
-            	msg.run ();
+				new Dialogs.ErrorMessage.show_message ("Error on reload devices");
 			}
 		}
 

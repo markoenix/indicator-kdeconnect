@@ -11,13 +11,28 @@ namespace KDEConnectIndicator {
         private DBusProxy device_proxy;
         private string path;
         private SList<uint> subs_identifier;
-        private GLib.Settings settings;    
+        private GLib.Settings settings;          
 
         public Device (string path) {
             message ("device : %s",path);
             this.path = path;
 
             this.settings = new Settings("com.bajoja.indicator-kdeconnect");
+
+            try {    
+                settings.changed["list_device_dir"].connect (() => {
+                    settings_changed_cb ("list-device-dir");
+                    message ("Settings list_device_dir Change");
+                });
+    
+                settings.changed["show-send-url"].connect (() => {
+                    settings_changed_cb ("show-send-url");
+                    message ("Settings show_send_url Change");
+                });    
+            } 
+            catch (Error e) {
+                message(e.message);
+            }            
 
             try {
                  conn = Bus.get_sync (BusType.SESSION);
@@ -237,19 +252,37 @@ namespace KDEConnectIndicator {
 
         public bool to_hidde{
         	get {
-        	     return this.settings.get_boolean ("visibilitiy");
+                try{
+                    return this.settings.get_boolean ("visibilitiy");
+                }
+                catch (Error e) {
+                    message(e.message);
+                    return false;
+                }           	     
         	}
         }
 
         public bool to_list_dir{
         	get {
-        	     return this.settings.get_boolean ("list-device-dir");
+                try{
+                    return this.settings.get_boolean ("list-device-dir");
+                }
+                catch (Error e) {
+                    message(e.message);
+                    return false;
+                }           	     
         	}
         }        
         
         public bool show_send_url{
         	get {
-        	     return this.settings.get_boolean ("show-send-url");
+                try{
+                    return this.settings.get_boolean ("show-send-url");
+                }
+                catch (Error e) {
+                    message(e.message);
+                    return false;
+                }        	     
         	}
         }  
 
@@ -300,7 +333,7 @@ namespace KDEConnectIndicator {
 
                     if(v!=null)
 			            if(to_hidde)
-			   	            return is_trusted? v.get_boolean () : false;
+			   	            return is_trusted ? v.get_boolean () : false;
 			            else
 			   	            return v.get_boolean ();
 		            else
@@ -709,14 +742,18 @@ namespace KDEConnectIndicator {
                 break;
             }
         }
+        public void settings_changed_cb (string item) {
+            settings_changed (item);        
+        }
 		
         public signal void charge_changed (int charge);
         public signal void pairing_error (string error);
         public signal void trusted_changed (bool trusted);
         public signal void plugins_changed ();
         public signal void reachable_status_changed ();
+        public signal void state_changed (bool state);
+        public signal void settings_changed (string item);
         public signal void mounted ();
         public signal void unmounted ();
-        public signal void state_changed (bool state);
     }
 }

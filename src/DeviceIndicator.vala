@@ -5,6 +5,7 @@
  */
 
 using Utils;
+using Dialogs;
 
 namespace KDEConnectIndicator {
     public class DeviceIndicator {
@@ -16,9 +17,7 @@ namespace KDEConnectIndicator {
         private Gtk.MenuItem battery_item;
         private Gtk.MenuItem status_item;
         private Gtk.MenuItem browse_item;
-        private Gtk.Menu browse_items_submenu;
-        private Gtk.MenuItem send_menu;
-        private Gtk.Menu send_submenu;      
+        private Gtk.Menu browse_items_submenu;     
         private Gtk.MenuItem send_item;
         private Gtk.MenuItem send_url;
         private Gtk.MenuItem ring_item;
@@ -89,9 +88,10 @@ namespace KDEConnectIndicator {
                 device.browse ();
             });
 
-            update_broswe_items ();            
+            update_broswe_items ();          
             
             send_item = new Gtk.MenuItem.with_label (_("Send file(s)"));            
+            menu.append (send_item);
 
             send_item.activate.connect (() => {
                 var chooser = new Gtk.FileChooserDialog (_("Select file(s)"),
@@ -115,33 +115,17 @@ namespace KDEConnectIndicator {
                 chooser.close ();
             });
 
-            if(device.show_send_url) {
-                send_menu = new Gtk.MenuItem.with_label (_("Send"));
-                send_submenu = new Gtk.Menu ();
-
-                send_menu.set_submenu (send_submenu);
-
-                send_submenu.append (send_item);
-
-                send_url = new  Gtk.MenuItem.with_label (_("Send URL"));
+            send_url = new  Gtk.MenuItem.with_label (_("Send URL"));                    
+            menu.append (send_url);
                 
-                send_submenu.append(send_url);
-                
-                send_url.activate.connect (() => {
-                    var send_url_dialog = new Utils.SendURL(this.device.send_file);
-                    send_url_dialog.show ();
-                });
-
-                menu.append (send_menu);
-            }
-            else {
-                menu.append (send_item);
-            }            
+            send_url.activate.connect (() => {
+                var send_url_dialog = new Dialogs.SendURL(this.device.send_file);
+                send_url_dialog.show ();
+            });                        
                                 
             separator = new Gtk.SeparatorMenuItem ();
             menu.append (separator);
-            
-            
+                        
             sms_item = new Gtk.MenuItem.with_label (_("Send SMS"));
             menu.append (sms_item);
 
@@ -222,7 +206,19 @@ namespace KDEConnectIndicator {
                 update_status_item ();
                 update_battery_item ();
                 update_icon_item ();
-            });           
+            }); 
+            
+            device.settings_changed.connect ((item) => {
+                switch (item) {
+                    case "list-device-dir":
+                        update_broswe_items ();
+                    break;
+                     
+                    case "show-send-url":
+                        send_url.set_visible (device.show_send_url);
+                    break;
+                } 
+            });
 
             device.mounted.connect ( () => {
                 update_broswe_items ();
@@ -239,6 +235,8 @@ namespace KDEConnectIndicator {
             update_pair_item ();
 
             menu.show_all ();
+
+            send_url.set_visible (device.show_send_url);
 
             indicator.set_menu (menu);
         }                
@@ -367,6 +365,6 @@ namespace KDEConnectIndicator {
             }
 
             browse_item.show_all();
-        }        
+        } 
     }
 }

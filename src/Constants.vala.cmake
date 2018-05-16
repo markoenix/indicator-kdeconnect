@@ -7,5 +7,6 @@ namespace Constants {
     public const string VERSION = "@VERSION@";
     public const string VERSION_INFO = "@VERSION_INFO@";
     public const string PLUGINDIR = "@PLUGINDIR@";
+    public const string TMPDIR = "@TMPDIR@";
 }
 
