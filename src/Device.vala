@@ -18,24 +18,19 @@ namespace KDEConnectIndicator {
             this.path = path;
 
             this.settings = new Settings("com.bajoja.indicator-kdeconnect");
-
-            try {    
-                settings.changed["list_device_dir"].connect (() => {
-                    settings_changed_cb ("list-device-dir");
-                    message ("Settings list_device_dir Change");
-                });
+            
+            settings.changed["list_device_dir"].connect (() => {
+                settings_changed_cb ("list-device-dir");
+                message ("Settings list_device_dir Change");
+            });
     
-                settings.changed["show-send-url"].connect (() => {
-                    settings_changed_cb ("show-send-url");
-                    message ("Settings show_send_url Change");
-                });    
-            } 
-            catch (Error e) {
-                message(e.message);
-            }            
+            settings.changed["show-send-url"].connect (() => {
+                settings_changed_cb ("show-send-url");
+                message ("Settings show_send_url Change");
+            });               
 
             try {
-                 conn = Bus.get_sync (BusType.SESSION);
+                conn = Bus.get_sync (BusType.SESSION);
             } catch (Error e) {
                  error (e.message);
             }
@@ -70,6 +65,18 @@ namespace KDEConnectIndicator {
             id = conn.signal_subscribe (
                     "org.kde.kdeconnect",
                     "org.kde.kdeconnect.device",
+                    "nameChanged",
+                    path,
+                    null,
+                    DBusSignalFlags.NONE,
+                    string_signal_cb
+                    );
+            subs_identifier.append (id);
+
+
+            id = conn.signal_subscribe (
+                    "org.kde.kdeconnect",
+                    "org.kde.kdeconnect.device",
                     "pluginsChanged",
                     path,
                     null,
@@ -93,6 +100,17 @@ namespace KDEConnectIndicator {
                     "org.kde.kdeconnect",
                     "org.kde.kdeconnect.device",
                     "trustedChanged",
+                    path,
+                    null,
+                    DBusSignalFlags.NONE,
+                    boolean_signal_cb
+                    );
+            subs_identifier.append (id);
+
+            id = conn.signal_subscribe (
+                    "org.kde.kdeconnect",
+                    "org.kde.kdeconnect.device",
+                    "hasPairingRequestsChanged",
                     path,
                     null,
                     DBusSignalFlags.NONE,
@@ -142,7 +160,51 @@ namespace KDEConnectIndicator {
                     DBusSignalFlags.NONE,
                     void_signal_cb
                     );
-            subs_identifier.append (id);            
+            subs_identifier.append (id); 
+            
+            id = conn.signal_subscribe (
+                    "org.kde.kdeconnect",
+                    "org.kde.kdeconnect.device.notifications",
+                    "notificationPosted",
+                    path,
+                    null,
+                    DBusSignalFlags.NONE,
+                    void_signal_cb
+                    );
+            subs_identifier.append (id);
+
+            id = conn.signal_subscribe (
+                    "org.kde.kdeconnect",
+                    "org.kde.kdeconnect.device.notifications",
+                    "notificationRemoved",
+                    path,
+                    null,
+                    DBusSignalFlags.NONE,
+                    string_signal_cb
+                    );
+            subs_identifier.append (id);
+
+            id = conn.signal_subscribe (
+                    "org.kde.kdeconnect",
+                    "org.kde.kdeconnect.device.notifications",
+                    "notificationPosted",
+                    path,
+                    null,
+                    DBusSignalFlags.NONE,
+                    string_signal_cb
+                    );
+            subs_identifier.append (id);
+
+            id = conn.signal_subscribe (
+                    "org.kde.kdeconnect",
+                    "org.kde.kdeconnect.device.notifications",
+                    "allNotificationRemoved",
+                    path,
+                    null,
+                    DBusSignalFlags.NONE,
+                    string_signal_cb
+                    );
+            subs_identifier.append (id);
         }
 
         ~Device () {
@@ -251,38 +313,20 @@ namespace KDEConnectIndicator {
         }
 
         public bool to_hidde{
-        	get {
-                try{
-                    return this.settings.get_boolean ("visibilitiy");
-                }
-                catch (Error e) {
-                    message(e.message);
-                    return false;
-                }           	     
+        	get {                
+                return this.settings.get_boolean ("visibilitiy");         	     
         	}
         }
 
         public bool to_list_dir{
         	get {
-                try{
-                    return this.settings.get_boolean ("list-device-dir");
-                }
-                catch (Error e) {
-                    message(e.message);
-                    return false;
-                }           	     
+                return this.settings.get_boolean ("list-device-dir");                           	     
         	}
         }        
         
         public bool show_send_url{
-        	get {
-                try{
-                    return this.settings.get_boolean ("show-send-url");
-                }
-                catch (Error e) {
-                    message(e.message);
-                    return false;
-                }        	     
+        	get {                
+                return this.settings.get_boolean ("show-send-url");     	     
         	}
         }  
 
@@ -397,7 +441,34 @@ namespace KDEConnectIndicator {
                 
                 return _encryption_info = _("Encryption information not found");
             }
-	    }
+        }
+            
+        public bool has_pairing_request {
+            get {
+		        try {
+		            var return_variant = conn.call_sync (
+		     		        "org.kde.kdeconnect",
+				            path,
+				            "org.kde.kdeconnect.device",
+				            "hasPairingRequests",
+				            null,
+				            null,
+				            DBusCallFlags.NONE,
+				            -1,
+				            null
+				            );
+
+		            Variant i = return_variant.get_child_value (0);
+                    
+                    if (i!=null)
+			            return i.get_boolean ();
+                } 
+                catch (Error e) {
+		            message (e.message);
+                }                
+                return false; // default to false if something went wrong
+	        }
+        }        
 
         public void send_file (string url) {
             try {
@@ -663,6 +734,42 @@ namespace KDEConnectIndicator {
 	        }
         }	    
 
+        public void accept_pairing () {            
+            try {
+                conn.call_sync (
+                        "org.kde.kdeconnect",
+                        path,
+                        "org.kde.kdeconnect.device",
+                        "acceptPairing",
+                        null,
+                        null,
+                        DBusCallFlags.NONE,
+                        -1,
+                        null
+                        );
+            } catch (Error e) {
+                message (e.message);
+            }            
+        }
+
+        public void reject_pairing () {        
+            try {
+                conn.call_sync (
+                        "org.kde.kdeconnect",
+                        path,
+                        "org.kde.kdeconnect.device",
+                        "rejectPairing",
+                        null,
+                        null,
+                        DBusCallFlags.NONE,
+                        -1,
+                        null
+                        );
+            } catch (Error e) {
+                message (e.message);
+            }            
+        }
+
 	    public void send_sms (string phone_number, string message_body){
 	        try {
 		        if (!has_plugin ("kdeconnect_telephony"))
@@ -682,21 +789,75 @@ namespace KDEConnectIndicator {
 	        } catch (Error e) {
 	            message (e.message);
 	        }
-        }    
+        }  
+        
+        public Array<string> active_notifications () {
+            var notificationList = new Array<string>();
+
+            try {
+                var return_variant = conn.call_sync (
+                        "org.kde.kdeconnect",
+                        path,
+                        "org.kde.kdeconnect.device.notifications",
+                        "activeNotifications",
+                        null,
+                        null,
+                        DBusCallFlags.NONE,
+                        -1,
+                        null
+                        );
+                                
+                Variant variant = return_variant.get_child_value (0);
+                VariantIter iter = variant.iterator ();        
+                Variant? val = null;
+        
+                while ((val = iter.next_value ())!= null){
+                    message (val.get_string ());
+                    notificationList.append_val (val.get_string ());
+                }                    
+                
+            } catch (Error e) {
+                message (e.message);
+            }
+
+            return notificationList;
+        }
+
+        public void send_reply (string replyId, string msg) {
+            try {
+                var return_variant = conn.call_sync (
+                        "org.kde.kdeconnect",
+                        path,
+                        "org.kde.kdeconnect.device",
+                        "sendReply",
+                        new Variant ("(ss)", replyId, msg),
+                        null,
+                        DBusCallFlags.NONE,
+                        -1,
+                        null
+                        );            
+            } catch (Error e) {
+                message (e.message);
+            }            
+        }
 
         public void int32_signal_cb (DBusConnection con, string sender, string object,
                                      string interface, string signal_name, Variant parameter) {            
             int param = (int)parameter.get_child_value (0).get_int32 ();
             
+            message ("Signal %s, Value %d", signal_name, param);
+            
             switch (signal_name) {
                 case "chargeChanged" :
                     charge_changed ((int)param);
-                    break;
+                break;
             }
         }
 
         public void void_signal_cb (DBusConnection con, string sender, string object,
                                     string interface, string signal_name, Variant parameter) {
+            
+            message ("Signal %s, Value void", signal_name);
             
             switch (signal_name) {
                 case "pluginsChanged" :
@@ -714,6 +875,10 @@ namespace KDEConnectIndicator {
                 case "unmounted" :
                     unmounted ();
                 break;
+
+                case "allNotificationsRemoved" :
+                    message ("Notificações removidas");
+                break;                    
             }
         }
 
@@ -721,6 +886,8 @@ namespace KDEConnectIndicator {
                                        string interface, string signal_name, Variant parameter) {
             bool param = parameter.get_child_value (0).get_boolean ();
             
+            message ("Signal %s, Value %s", signal_name, param.to_string ());
+
             switch (signal_name) {
                 case "stateChanged" :
                     state_changed (param);
@@ -729,16 +896,38 @@ namespace KDEConnectIndicator {
                 case "trustedChanged" :
                     trusted_changed (param);
                 break;
+
+                case "hasPairingRequestsChanged" :
+                    has_pairing_requests_Changed (param);
+                break;
             }
         }
 
         public void string_signal_cb (DBusConnection con, string sender, string object,
                                       string interface, string signal_name, Variant parameter) {
-            string param = parameter.get_child_value (0).get_string ();
+            string param = (string)parameter.get_child_value (0).get_string ();
             
+            message ("Signal %s, Value %s", signal_name, param);
+
             switch (signal_name) {
                 case "pairingError" :
                     pairing_error (param);
+                break;
+
+                case "nameChanged" :
+                    name_changed (param);
+                break;
+
+                case "notificationPosted" :
+                    
+                break;
+
+                case "notificationRemoved" :
+                    
+                break;
+
+                case "notificationUpdated":
+                    
                 break;
             }
         }
@@ -753,6 +942,8 @@ namespace KDEConnectIndicator {
         public signal void reachable_status_changed ();
         public signal void state_changed (bool state);
         public signal void settings_changed (string item);
+        public signal void name_changed (string name);
+        public signal void has_pairing_requests_Changed (bool hasPairing);
         public signal void mounted ();
         public signal void unmounted ();
     }

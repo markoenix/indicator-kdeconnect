@@ -19,7 +19,7 @@ _ = gettext.gettext
 class KDEConnectSendExtension(GObject.GObject, Caja.MenuProvider):
 
     def __init__(self):
-        self.devices_file = "/tmp/indicator_kdeconnect/devices"
+        self.devices_file = "/tmp/indicator_kdeconnect_devices"
 
     """Inicialize translations to a domain"""
     def setup_gettext(self):

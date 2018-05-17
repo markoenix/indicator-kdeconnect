@@ -12,6 +12,7 @@ set (PKGDATADIR "${DATADIR}/indicator-kdeconnect")
 set (RELEASE_NAME "beta")
 set (VERSION_INFO "Indicator for KDE Connect daemon")
 set (VERSION "0.9.4")
+set (TMPDIR "/tmp/")
 
 # set gettexttranslate
 set (GettextTranslate_GMO_BINARY TRUE)

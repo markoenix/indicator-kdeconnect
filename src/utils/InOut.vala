@@ -6,10 +6,10 @@
 
 namespace Utils {
 	public class InOut{
-		public static unowned string visible_devices = "/tmp/indicator_kdeconnect/devices";
+		public static unowned string visible_devices = "indicator_kdeconnect_devices";
 
 		public static int write_status (string id, string name) throws GLib.IOError {
-			var file = File.new_for_path (InOut.visible_devices);
+			var file = File.new_for_path (Constants.TMPDIR+InOut.visible_devices);
 	
 			if (!file.query_exists ()) {
 				message ("File '%s' doesn't exist.\n", file.get_path ());
@@ -65,7 +65,7 @@ namespace Utils {
 		}
 	
 		public static int delete_status (string id, string name) throws GLib.IOError {
-			var file = File.new_for_path (InOut.visible_devices);
+			var file = File.new_for_path (Constants.TMPDIR+InOut.visible_devices);
 	
 			if (!file.query_exists ()) {
 				message ("File '%s' doesn't exist.\n", file.get_path ());

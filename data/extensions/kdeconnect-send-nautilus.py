@@ -19,7 +19,7 @@ _ = gettext.gettext
 class KDEConnectSendExtension(GObject.GObject, Nautilus.MenuProvider):
 
     def __init__(self):
-        self.devices_file = "/tmp/devices"
+        self.devices_file = "/tmp/indicator_kdeconnect_devices"
 
     """Inicialize translations to a domain"""
     def setup_gettext(self):
@@ -39,8 +39,8 @@ class KDEConnectSendExtension(GObject.GObject, Nautilus.MenuProvider):
         with open(self.devices_file, 'r') as file:
             data = file.readline()
             while data:
-            	devices.append(data)
-             	data = file.readline()
+               	devices.append(data)
+                data = file.readline()
 
         devices_a=[]
         for device in devices:
@@ -112,7 +112,7 @@ class KDEConnectSendExtension(GObject.GObject, Nautilus.MenuProvider):
 
         if len(devices) > 1:
             item = Nautilus.MenuItem(name='KDEConnectSendExtension::SendFileToMultipleDevices',
-            			     label='Multiple Devices')
+            			             label='Multiple Devices')
 	    item.connect('activate', self.send_to_multiple_devices, files)
      	    sub_menu.append_item(item)
 
