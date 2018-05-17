@@ -231,7 +231,33 @@ namespace KDEConnectIndicator {
 
 			boxrow3.add (hbox3);
 
-			//---------------------------------------------------//
+			//---------------------------------------------------//			
+
+			Label label4 = new Label (_("Show option for notifications: "));
+
+			Switch switch4 = new Switch ();
+
+			try {
+				switch4.set_active (settings.get_boolean ("show-notifications"));
+
+				switch4.notify["active"].connect (() => {
+					settings.set_boolean ("show-notifications", switch4.active);
+				});
+			}
+			catch (Error e)  {				
+				message(e.message);
+			}	
+
+			Box hbox4 = new Box (Gtk.Orientation.HORIZONTAL, 50);
+
+			hbox4.pack_start (label4, true, true, 0);
+			hbox4.pack_start (switch4, true, true, 0);
+
+			ListBoxRow boxrow4 = new ListBoxRow ();
+
+			boxrow4.add (hbox4);
+
+			//----------------------------------------------------//
 
 			ListBox list_box = new ListBox ();
 			list_box.set_selection_mode (Gtk.SelectionMode.NONE);
@@ -239,6 +265,7 @@ namespace KDEConnectIndicator {
 			list_box.add (boxrow1);
 			list_box.add (boxrow2);
 			list_box.add (boxrow3);	
+			list_box.add (boxrow4);
 
 			//----------------------------------------------------//
 
