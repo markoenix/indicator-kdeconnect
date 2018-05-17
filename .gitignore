@@ -6,3 +6,4 @@ debian/indicator-kdeconnect*
 *~
 /src/Constants.vala
 .buildconfig
+uncrustify.cfg

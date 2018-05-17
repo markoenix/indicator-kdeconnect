@@ -15,6 +15,7 @@ namespace KDEConnectIndicator {
         private AppIndicator.Indicator indicator;
         private Gtk.MenuItem name_item;
         private Gtk.MenuItem battery_item;
+        private Gtk.MenuItem notifications_item;
         private Gtk.MenuItem status_item;
         private Gtk.MenuItem browse_item;
         private Gtk.Menu browse_submenu_item;     
@@ -57,12 +58,20 @@ namespace KDEConnectIndicator {
                 }
 	        });
 
-            battery_item = new Gtk.MenuItem();
+            battery_item = new Gtk.MenuItem ();
             menu.append (battery_item);
             
             //  battery_item.activate.connect (() => {
 	    	    
-	        //  });
+            //  });
+            
+            notifications_item = new Gtk.MenuItem ();
+            menu.append (notifications_item);
+
+            notifications_item.activate.connect ( () => {
+                update_notifications_item ();
+            });
+
             
             status_item = new Gtk.MenuItem ();
             menu.append (status_item);
@@ -198,6 +207,10 @@ namespace KDEConnectIndicator {
                 update_status_item ();
                 update_all_items ();
             });
+
+            device.notifications_changed.connect ( (id, event) => {
+                update_notifications_item ();
+            });
             
             device.pairing_error.connect (() => {
                 update_all_items ();                
@@ -254,13 +267,15 @@ namespace KDEConnectIndicator {
             });
 
             menu.show_all ();
-            
+                        
             update_name_item ();
-            update_visibility ();            
+            update_visibility ();               
             update_battery_item ();
+            update_notifications_item ();
             update_status_item ();
             update_all_items ();
         
+            notifications_item.set_visible (device.show_notifications);
             send_url_item.set_visible (device.show_send_url);
 
             indicator.set_menu (menu);
@@ -407,5 +422,10 @@ namespace KDEConnectIndicator {
 
             browse_item.show_all();
         } 
+
+        private void update_notifications_item (){
+            message ("Notifications  %d", (int)device.active_notifications().length);
+            notifications_item.label = _("Notifications : ") + "(%d)".printf ((int)device.active_notifications().length);
+        }
     }
 }

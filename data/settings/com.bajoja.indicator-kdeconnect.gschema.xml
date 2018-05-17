@@ -26,10 +26,18 @@
     </key>
 
     <key name="show-send-url" type="b">
-      <default>true</default>
+      <default>false</default>
       <summary>Show option to send URL</summary>
       <description>
         Show option to send URL
+      </description>
+    </key>
+
+    <key name="show-notifications" type="b">
+      <default>true</default>
+      <summary>Show option to show notification</summary>
+      <description>
+        Show option to show notification
       </description>
     </key>
 

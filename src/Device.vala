@@ -27,7 +27,12 @@ namespace KDEConnectIndicator {
             settings.changed["show-send-url"].connect (() => {
                 settings_changed_cb ("show-send-url");
                 message ("Settings show_send_url Change");
-            });               
+            });        
+            
+            settings.changed["show-notifications"].connect (() => {
+                settings_changed_cb ("how-notifications");
+                message ("Settings show-notifications Change");
+            });     
 
             try {
                 conn = Bus.get_sync (BusType.SESSION);
@@ -312,23 +317,29 @@ namespace KDEConnectIndicator {
             }
         }
 
-        public bool to_hidde{
+        public bool to_hidde {
         	get {                
                 return this.settings.get_boolean ("visibilitiy");         	     
         	}
         }
 
-        public bool to_list_dir{
+        public bool to_list_dir {
         	get {
                 return this.settings.get_boolean ("list-device-dir");                           	     
         	}
         }        
         
-        public bool show_send_url{
+        public bool show_send_url { 
         	get {                
                 return this.settings.get_boolean ("show-send-url");     	     
         	}
         }  
+
+        public bool show_notifications {
+            get {                
+                return this.settings.get_boolean ("show-notifications");     	     
+        	}
+        }
 
         public bool is_trusted {
 	        get {
@@ -814,8 +825,7 @@ namespace KDEConnectIndicator {
                 while ((val = iter.next_value ())!= null){
                     message (val.get_string ());
                     notificationList.append_val (val.get_string ());
-                }                    
-                
+                }                                    
             } catch (Error e) {
                 message (e.message);
             }
@@ -877,7 +887,7 @@ namespace KDEConnectIndicator {
                 break;
 
                 case "allNotificationsRemoved" :
-                    message ("Notificações removidas");
+                    notifications_changed ("" ,"allNotificationsRemoved");
                 break;                    
             }
         }
@@ -919,11 +929,11 @@ namespace KDEConnectIndicator {
                 break;
 
                 case "notificationPosted" :
-                    
+                    notifications_changed (param, "notificationPosted");
                 break;
 
                 case "notificationRemoved" :
-                    
+                    notifications_changed (param, "notificationRemoved");
                 break;
 
                 case "notificationUpdated":
@@ -944,6 +954,7 @@ namespace KDEConnectIndicator {
         public signal void settings_changed (string item);
         public signal void name_changed (string name);
         public signal void has_pairing_requests_Changed (bool hasPairing);
+        public signal void notifications_changed (string id, string event);
         public signal void mounted ();
         public signal void unmounted ();
     }
