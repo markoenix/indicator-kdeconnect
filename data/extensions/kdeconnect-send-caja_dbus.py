@@ -18,6 +18,7 @@ import urllib, gettext, locale
 
 # use of _ to set messages to be translated
 _ = gettext.gettext
+timeout = 350
 
 class KDEConnectSendExtension(GObject.GObject, Caja.MenuProvider):
 
@@ -67,7 +68,7 @@ class KDEConnectSendExtension(GObject.GObject, Caja.MenuProvider):
 
         for file in files:
             variant = GLib.Variant('(s)', (file.get_uri(),))
-            device_proxy.call_sync('shareUrl', variant, 0, -1, None)
+            device_proxy.call_sync('shareUrl', variant, 0, timeout, None)
 
         self.setup_gettext()
         Notify.init("KDEConnect-send")
