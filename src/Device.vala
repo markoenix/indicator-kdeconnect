@@ -825,7 +825,7 @@ namespace KDEConnectIndicator {
 
         public void send_reply (string replyId, string msg) {
             try {
-                var return_variant = conn.call_sync (
+                conn.call_sync (
                         "org.kde.kdeconnect",
                         path,
                         "org.kde.kdeconnect.device",

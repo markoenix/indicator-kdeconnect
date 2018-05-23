@@ -18,6 +18,7 @@ import urllib, gettext, locale
 
 # use of _ to set messages to be translated
 _ = gettext.gettext
+timeout = 350
 
 class KDEConnectSendExtension(GObject.GObject, Nemo.MenuProvider):
 
@@ -48,7 +49,7 @@ class KDEConnectSendExtension(GObject.GObject, Nemo.MenuProvider):
             onlyReachable = True             
             onlyPaired = True        
             variant = GLib.Variant('(bb)', (onlyReachable, onlyPaired))                        
-            devices = self.dbus.call_sync('deviceNames', variant, 0, -1, None)                    
+            devices = self.dbus.call_sync('deviceNames', variant, 0, timeout, None)                    
             devices = devices.unpack()[0]            
             return devices
         except Exception as e:
