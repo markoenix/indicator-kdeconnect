@@ -8,18 +8,31 @@
 import gi
 gi.require_version('Nautilus', '3.0')
 gi.require_version('Notify', '0.7')
-from gi.repository import Nautilus, GObject, Notify
+gi.require_version('Gio', '2.0')
+gi.require_version('GLib', '2.0')
+gi.require_version('GObject', '2.0')
+from gi.repository import Nautilus, GObject, Notify, Gio, GLib
 from subprocess import Popen
 from os.path import isfile
-import urllib, re, gettext, locale
+import urllib, gettext, locale
 
 # use of _ to set messages to be translated
 _ = gettext.gettext
+timeout = 350
 
 class KDEConnectSendExtension(GObject.GObject, Nautilus.MenuProvider):
 
     def __init__(self):
-        self.devices_file = "/tmp/indicator_kdeconnect_devices"
+        GObject.GObject.__init__(self)
+
+        self.dbus = Gio.DBusProxy.new_for_bus_sync(
+            Gio.BusType.SESSION,
+            Gio.DBusProxyFlags.NONE,
+            None,
+            'org.kde.kdeconnect',
+            '/modules/kdeconnect',
+            'org.kde.kdeconnect.daemon',
+            None)   
 
     """Inicialize translations to a domain"""
     def setup_gettext(self):
@@ -28,38 +41,39 @@ class KDEConnectSendExtension(GObject.GObject, Nautilus.MenuProvider):
             gettext.bindtextdomain("indicator-kdeconnect", "/usr/share/locale")
             gettext.textdomain("indicator-kdeconnect")
         except:
-            pass
+            pass 
 
     """Get a list of reachable devices"""
     def get_reachable_devices(self):
-        if not isfile(self.devices_file):
-            return
-
-        devices = []
-        with open(self.devices_file, 'r') as file:
-            data = file.readline()
-            while data:
-               	devices.append(data)
-                data = file.readline()
-
-        devices_a=[]
-        for device in devices:
-            device_name = re.search("(?<=-\s).+(?=:\s)", device).group(0)
-            device_id = re.search("(?<=:\s)[_a-z0-9]+", device).group(0).strip()
-            devices_a.append({ "name": device_name, "id": device_id })
-        return devices_a
+        try:
+            onlyReachable = True             
+            onlyPaired = True        
+            variant = GLib.Variant('(bb)', (onlyReachable, onlyPaired))                        
+            devices = self.dbus.call_sync('deviceNames', variant, 0, timeout, None)                    
+            devices = devices.unpack()[0]            
+            return devices
+        except Exception as e:
+            raise Exception(e)        
 
     """Send a files with kdeconnect"""
     def send_files(self, menu, files, device_id, device_name):
+        device_proxy = Gio.DBusProxy.new_for_bus_sync(
+            Gio.BusType.SESSION,
+            Gio.DBusProxyFlags.NONE,
+            None,
+            'org.kde.kdeconnect',
+            '/modules/kdeconnect/devices/'+device_id+'/share',
+            'org.kde.kdeconnect.device.share',
+            None)
+
         for file in files:
-            filename = urllib.unquote(file.get_uri()[7:])
-            Popen(["kdeconnect-cli", "-d", device_id, "--share", filename])
+            variant = GLib.Variant('(s)', (file.get_uri(),))
+            device_proxy.call_sync('shareUrl', variant, 0, -1, None)
 
         self.setup_gettext()
         Notify.init("KDEConnect-send")
         Notify.Notification.new(_("Check the device {device_name}").format(device_name=device_name),
-                                _("Sending {num_files} file(s)").format(num_files=len(files))
-                                ).show()
+                                _("Sending {num_files} file(s)").format(num_files=len(files))).show()
 
     """Open Multiple Send Window"""
     def send_to_multiple_devices(self, menu, files):
@@ -68,8 +82,7 @@ class KDEConnectSendExtension(GObject.GObject, Nautilus.MenuProvider):
 
         for file in files:
             args.append(urllib.unquote(file.get_uri()[7:]))
-
-        print args
+                
         Popen(args)
 
     """Send selected files"""
@@ -78,14 +91,14 @@ class KDEConnectSendExtension(GObject.GObject, Nautilus.MenuProvider):
 
     """Get files that user selected"""
     def get_file_items(self, window, files):
-	"""Ensure there are reachable devices"""
+        """Ensure there are reachable devices"""
         try:
-            devices = self.get_reachable_devices()
+            devices = self.get_reachable_devices()        
         except Exception as e:
             raise Exception("Error while getting reachable devices")
 
         """if there is no reacheable devices don't show this on context menu"""
-        if not devices:
+        if len(devices) == 0:
             return
 
         """Ensure that user only select files"""
@@ -104,16 +117,17 @@ class KDEConnectSendExtension(GObject.GObject, Nautilus.MenuProvider):
 
         menu.set_submenu(sub_menu)
 
-        for device in devices:
-            item = Nautilus.MenuItem(name='KDEConnectSendExtension::SendFileTo'+device["id"],
-                                     label=device["name"])
-            item.connect('activate', self.send_files, files, device["id"], device["name"])
+        for deviceId, deviceName in devices.items():            
+            item = Nautilus.MenuItem(name='KDEConnectSendExtension::SendFileTo'+deviceId,
+                                     label=deviceName)
+            item.connect('activate', self.send_files, files, deviceId, deviceName)
             sub_menu.append_item(item)
 
         if len(devices) > 1:
             item = Nautilus.MenuItem(name='KDEConnectSendExtension::SendFileToMultipleDevices',
-            			             label='Multiple Devices')
-	    item.connect('activate', self.send_to_multiple_devices, files)
-     	    sub_menu.append_item(item)
+            			             label='Multiple Devices')	    
+            item.connect('activate', self.send_to_multiple_devices, files)
+     	
+            sub_menu.append_item(item)
 
         return menu,

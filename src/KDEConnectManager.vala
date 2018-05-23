@@ -9,8 +9,7 @@ namespace KDEConnectIndicator {
     public class KDEConnectManager {
         private DBusConnection conn;
         private SList<DeviceIndicator> device_list;
-        private SList<uint> subs_identifier;    
-        private File file;            
+        private SList<uint> subs_identifier;                      
 
         public KDEConnectManager () {
             try {
@@ -33,18 +32,6 @@ namespace KDEConnectIndicator {
                 max_trying--;
             }
             message ("KDE Connect daemon found");
-
-            file = File.new_for_path (Constants.TMPDIR+InOut.visible_devices);
-
-            try {
-        	    if (!file.query_exists ())
-        	        file.create (FileCreateFlags.NONE);
-                else
-                    message ("Devices file not creates");
-	        }
-	        catch (Error e) {
-		        message("%s",e.message);
-	        }
 
             device_list = new SList<DeviceIndicator> ();
             populate_devices ();
@@ -103,14 +90,6 @@ namespace KDEConnectIndicator {
         }
 
         ~KDEConnectManager () {
-            try {
-                //var file = File.new_for_path (KDEConnectIndicator.InOut.visible_devices);
-                if (file != null && file.query_exists ())
-                    file.delete ();
-            } catch (Error e) {
-                message (e.message);
-            }
-
             try {
                 conn.call_sync (
                     "org.kde.kdeconnect",

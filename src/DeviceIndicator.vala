@@ -308,26 +308,18 @@ namespace KDEConnectIndicator {
         private void update_status_item () {
             if (device.is_reachable) {
                 if (device.is_trusted) {
-                    status_item.label = _("Device Reachable and Trusted");
-                    try {Utils.InOut.write_status (device.id, device.name);}
-                    catch (Error e){message(e.message);}                    
+                    status_item.label = _("Device Reachable and Trusted");                   
                 }
                 else {
-                    status_item.label = _("Device Reachable but Not Trusted");
-                    try {Utils.InOut.delete_status (device.id, device.name);}
-                    catch (Error e){message(e.message);}       
+                    status_item.label = _("Device Reachable but Not Trusted");     
                 }
             } 
             else {
                 if (device.is_trusted) {
-                    status_item.label = _("Device Trusted but not Reachable");
-                    try {Utils.InOut.delete_status (device.id, device.name);}
-                    catch (Error e){message(e.message);}       
+                    status_item.label = _("Device Trusted but not Reachable");    
                 }
                 else {
-                    status_item.label = _("Device Not Reachable and Not Trusted");
-                    try {Utils.InOut.delete_status (device.id, device.name);}
-                    catch (Error e){message(e.message);}                    
+                    status_item.label = _("Device Not Reachable and Not Trusted");                   
 	    	        // is this even posible?
                 }
             }
