@@ -1,0 +1,4 @@
+[Module]
+Module=@file@
+Name=@name@
+Description=@desc@
