@@ -7,7 +7,14 @@
 using Gee;
 
 namespace IndicatorKDEConnect {  
-    public class DeviceManager : Object, IDevice, ISignals, IBattery {
+    public class DeviceManager : Object, 
+                                 ISignals,
+                                 IDevice,                                   
+                                 IBattery,
+                                 IFindMyPhone,
+                                 IShare,
+                                 ITelephony,
+                                 ISftp {
         private DBusConnection conn;
         private DBusProxy proxy;
         private string path;
@@ -210,14 +217,14 @@ namespace IndicatorKDEConnect {
                     return charge (ref conn,
                                    path);
             }
-        }
+        }        
 
-        public void _accept_pairing() {
+        public void _accept_pairing () {
             accept_pairing (ref conn, 
                             path);
         }
 
-        public void _reject_pairing() {
+        public void _reject_pairing () {
             reject_pairing (ref conn, 
                             path);
         }
@@ -227,15 +234,14 @@ namespace IndicatorKDEConnect {
                     path);
         }
 
-        public void _request_pair() {
+        public void _request_pair () {
             request_pair (ref conn,
                           path);
         }
 
-        public bool _has_plugin (string plugin) {
-            return has_plugin (ref conn,
-                               path,
-                               plugin);
+        public void _ring () {
+            ring(ref conn,
+                 path);
         }
 
         public bool _battery_charging () {
@@ -244,5 +250,17 @@ namespace IndicatorKDEConnect {
             else 
                 return is_charging(ref conn, path);
         }
+
+        public void _share_url (string url) {
+            share (ref conn,
+                   path,
+                   url);
+        }
+
+        public bool _has_plugin (string plugin) {
+            return has_plugin (ref conn,
+                               path,
+                               plugin);
+        }        
     }
 }

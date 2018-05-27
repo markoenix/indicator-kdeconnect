@@ -16,6 +16,11 @@ namespace IndicatorKDEConnect {
 
         private Gtk.MenuItem battery_item;
 
+        private Gtk.MenuItem share_files_item;
+        private Gtk.MenuItem share_url_item;
+
+        private Gtk.MenuItem ring_item;
+
         private Gtk.MenuItem accept_pair_item;
         private Gtk.MenuItem reject_pair_item;
         
@@ -24,6 +29,8 @@ namespace IndicatorKDEConnect {
 
         private Gtk.SeparatorMenuItem accept_reject_separator;
         private Gtk.SeparatorMenuItem unpair_request_separator;
+        private Gtk.SeparatorMenuItem utils_separator;
+        private Gtk.SeparatorMenuItem share_separator;
 
         public Device (string path) {
             debug ("Creating indicator for %s", path);
@@ -40,9 +47,47 @@ namespace IndicatorKDEConnect {
             /*Info Group */
             name_item = new Gtk.MenuItem.with_label (deviceManager.name);
             indicator_menu.append (name_item);        
-
+            
             battery_item = new Gtk.MenuItem ();
-            indicator_menu.append (battery_item);  
+            indicator_menu.append (battery_item);
+            
+            /*File Group */
+            share_separator = new Gtk.SeparatorMenuItem ();
+            indicator_menu.append (share_separator); 
+
+            share_files_item = new Gtk.MenuItem.with_label ("Send file(s)");
+
+            share_files_item.activate.connect (() => {
+                dialog_file_selector ();              
+            });
+
+            indicator_menu.append (share_files_item);
+            
+            share_url_item = new Gtk.MenuItem.with_label ("Send URL");
+
+            share_url_item.activate.connect (() => {
+                var send_url_dialog = new SendURL ();
+
+                send_url_dialog.send_callback.connect ((url)=> {
+                    deviceManager._share_url (url);
+                });
+                
+                send_url_dialog.show ();                        
+            });
+
+            indicator_menu.append (share_url_item); 
+            
+            /*Utils Group */   
+            utils_separator = new Gtk.SeparatorMenuItem ();
+            indicator_menu.append (utils_separator); 
+
+            ring_item = new Gtk.MenuItem.with_label ("Find Device");
+
+            ring_item.activate.connect (() => {
+                deviceManager._ring ();
+            });
+
+            indicator_menu.append (ring_item);        
             
             /*Accept Reject pair Group */
             accept_reject_separator = new Gtk.SeparatorMenuItem ();
@@ -90,11 +135,17 @@ namespace IndicatorKDEConnect {
             });
 
             deviceManager.battery_charge_changed.connect ((charge) => {
-                //update_battery_item (charge);
+                update_battery_item (charge);
             });
 
             deviceManager.battery_state_changed.connect ((state) => {
-                //update_battery_itemupdate_battery_item (null, state);
+                update_battery_item (null, state);
+            });
+
+            deviceManager.plugins_changed.connect (() => {
+                update_battery_item ();
+                upadate_utils_group ();
+                upadate_file_share_group ();
             });
 
             deviceManager.trusted_status_changed.connect ((trusted) => {
@@ -115,7 +166,9 @@ namespace IndicatorKDEConnect {
             update_indicator_status ();
             update_battery_item ();
             update_pairing_reject_group ();
-            update_unpair_request_group ();            
+            update_unpair_request_group ();  
+            upadate_utils_group ();  
+            upadate_file_share_group ();        
         }   
 
         ~Device () {
@@ -150,7 +203,7 @@ namespace IndicatorKDEConnect {
                 _charge = (int)charge;
 
             if (charging == null) 
-                _charging = deviceManager._battery_charging();            
+                _charging = deviceManager._battery_charging ();            
             else
                 _charging = (bool)charging;
             
@@ -159,6 +212,21 @@ namespace IndicatorKDEConnect {
             
             if (_charging)
                 battery_item.label += _(" (charging)");                             
+        }
+
+        private void upadate_utils_group () {
+            if (!deviceManager._has_plugin ("kdeconnect_findmyphone")) {
+                ring_item.visible = false;     
+                utils_separator.visible = false;
+            }
+        }
+
+        private void upadate_file_share_group () {
+            if (!deviceManager._has_plugin ("kdeconnect_share")) {
+                share_files_item.visible = false;
+                share_url_item.visible = false;  
+                share_separator.visible = false;          
+            }
         }
 
         private void update_pairing_reject_group (bool? mode = null) {
@@ -209,6 +277,27 @@ namespace IndicatorKDEConnect {
         public void visibility_changed (bool visible) {
             debug ("Device visibility change to %s", visible ? "ACTIVE" : "PASSIVE");
             update_indicator_status (visible);
+        }
+
+        private void dialog_file_selector () {
+            var chooser = new Gtk.FileChooserDialog (_("Select file(s)"),
+               					                     null,
+               					                     Gtk.FileChooserAction.OPEN,
+               					                     _("Cancel"),
+               					                     Gtk.ResponseType.CANCEL,
+               					                     _("Select"),
+               					                     Gtk.ResponseType.OK);
+                
+            chooser.select_multiple = true;
+                
+            if (chooser.run () == Gtk.ResponseType.OK) {
+                SList<string> uris = chooser.get_uris ();
+	            uris.@foreach ((item) => {
+        	        deviceManager._share_url(item);
+	            });
+            }
+              
+            chooser.close ();  
         }
 
         public bool equals_path (string path) {

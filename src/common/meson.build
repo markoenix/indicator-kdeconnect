@@ -42,6 +42,10 @@ module_source = [join_paths(meson.current_build_dir(), 'config-header.vala'),
                  'idaemonplugin.vala',
                  'ideviceplugin.vala',
                  'ibatteryplugin.vala',
+                 'ifindmyphoneplugin.vala',
+                 'ishareplugin.vala',
+                 'itelephonyplugin.vala',
+                 'isftpplugin.vala',
                  'isignals.vala'] 
 
 indicator_kdeconnect_lib = shared_library(module_lib_name,

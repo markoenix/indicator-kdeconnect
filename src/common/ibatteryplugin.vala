@@ -25,10 +25,11 @@ namespace IndicatorKDEConnect {
                 return_value = i.get_int32 ();
             } 
             catch (Error e) {
-                message (e.message);
+                debug (e.message);
             }
-          return return_value;
-        }         
+            return return_value;
+        }
+                 
         protected bool is_charging (ref DBusConnection conn, 
                                     string path) {                    
             var return_value = false;
@@ -48,7 +49,7 @@ namespace IndicatorKDEConnect {
                                 
                 return_value = i.get_boolean ();
             } catch (Error e) {
-                message (e.message);
+                debug (e.message);
             }
             return return_value;
         }

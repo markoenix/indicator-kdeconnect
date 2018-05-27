@@ -115,6 +115,7 @@ namespace IndicatorKDEConnect {
             catch (Error e) {
                 debug (e.message);
             }
+            debug ("Device %s, Plugin %s, Exists %s", path, plugin, return_value.to_string ());
             return return_value;
         }
 
@@ -133,7 +134,8 @@ namespace IndicatorKDEConnect {
             } 
             catch (Error e) {
                 debug (e.message);
-            }            
+            }          
+            debug ("Device %s, Accept pairing request", path);  
         }
 
         protected virtual void reject_pairing (ref DBusConnection conn,
@@ -151,7 +153,8 @@ namespace IndicatorKDEConnect {
             } 
             catch (Error e) {
                 debug (e.message);
-            }            
+            }          
+            debug ("Device %s, Reject pairing request", path);  
         }
 
         protected virtual void unpair (ref DBusConnection conn,
@@ -169,7 +172,8 @@ namespace IndicatorKDEConnect {
             } 
             catch (Error e) {
                 debug (e.message);
-            }            
+            }       
+            debug ("Device %s, Unpair request", path);     
         }
 
         protected virtual void request_pair (ref DBusConnection conn,
@@ -187,7 +191,8 @@ namespace IndicatorKDEConnect {
             } 
             catch (Error e) {
                 debug (e.message);
-            }            
+            }      
+            debug ("Device %s, request pairing", path);       
         }
 
         protected virtual void property (ref DBusConnection conn,
@@ -221,8 +226,9 @@ namespace IndicatorKDEConnect {
                 }                                                                         
             } 
             catch (Error e) {
-                message (e.message);
-            }            
+                debug (e.message);
+            }
+            debug ("Device %s, propertie request %s", path, return_value.strdup_contents ());             
         }
 
         /*Callbacks */
