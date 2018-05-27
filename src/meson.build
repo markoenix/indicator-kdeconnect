@@ -10,7 +10,8 @@ module_template = files('module.in')
 
 module_list = [  
   'common',
-  'indicator'
+  'indicator',
+  'sendvia'
 ]
 foreach module : module_list
   subdir(module)

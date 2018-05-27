@@ -42,7 +42,8 @@ namespace IndicatorKDEConnect {
                 opt_context.set_help_enabled (true);
                 opt_context.add_main_entries (options, null);
                 opt_context.parse (ref args);
-            } catch (OptionError e) {
+            } 
+            catch (OptionError e) {
                 message ("%s\n", e.message);
                 message ("Run '%s --help' to see a full list of available command line options.\n", args[0]);
                 return 1;
@@ -51,7 +52,8 @@ namespace IndicatorKDEConnect {
             if (version) {
                 message ("%s %s\n", Config.PACKAGE_NAME, Config.PACKAGE_VERSION);
                 return 0;
-            } else if (kdeconnect_api_version) {
+            } 
+            else if (kdeconnect_api_version) {
                 message ("%s\n", Config.PACKAGE_API_VERSION);
                 return 0;
             }

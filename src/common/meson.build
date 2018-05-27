@@ -39,6 +39,7 @@ lib_deps = [
 module_source = [join_paths(meson.current_build_dir(), 'config-header.vala'),
                  'dialogs.vala',
                  'utils.vala',
+                 'devicemanager.vala',
                  'idaemonplugin.vala',
                  'ideviceplugin.vala',
                  'ibatteryplugin.vala',
