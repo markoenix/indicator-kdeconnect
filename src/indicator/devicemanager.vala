@@ -7,157 +7,117 @@
 using Gee;
 
 namespace IndicatorKDEConnect {  
-    public class DeviceManager : Object, IDeviceManager {
+    public class DeviceManager : Object, IDevice, ISignals, IBattery {
         private DBusConnection conn;
-        private DBusProxy device_proxy;
+        private DBusProxy proxy;
         private string path;
         private HashSet<uint> subs_identifier;
 
+        private string _id;
+        private string _name;
+        private string _icon;
+
         public DeviceManager (string path) {
+            debug ("Creating manager for %s", path);
             this.path = path;
 
             try {
-                conn = Bus.get_sync (BusType.SESSION);
-                
-                device_proxy = new DBusProxy.sync (conn,
-                                                   DBusProxyFlags.NONE,
-                                                   null,
-                                                   "org.kde.kdeconnect",
-                                                   path,
-                                                   "org.kde.kdeconnect.device",
-                                                   null);
+                conn = Bus.get_sync (BusType.SESSION);                
+
+                proxy = device_proxy (ref conn, 
+                                      path);
+
+                subs_identifier = new HashSet<uint> ();
                 
                 uint id;
-                subs_identifier = new HashSet<uint> ();
-                /* Signals For Device */
-                id = conn.signal_subscribe ("org.kde.kdeconnect",
-                                            "org.kde.kdeconnect.device",
-                                            "hasPairingRequestsChanged",
-                                            path,
-                                            null,
-                                            DBusSignalFlags.NONE,
-                                            boolean_signal_cb);
+                            
+                id = subscribe_has_pairing_requests_changed (ref conn,
+                                                             path);
                 subs_identifier.add (id);
 
-                id = conn.signal_subscribe ("org.kde.kdeconnect",
-                                            "org.kde.kdeconnect.device",
-                                            "nameChanged",
-                                            path,
-                                            null,
-                                            DBusSignalFlags.NONE,
-                                            string_signal_cb);
+                id = subscribe_name_changed (ref conn,
+                                             path);
                 subs_identifier.add (id);
 
-                id = conn.signal_subscribe ("org.kde.kdeconnect",
-                                            "org.kde.kdeconnect.device",
-                                            "pairingError",
-                                            path,
-                                            null,
-                                            DBusSignalFlags.NONE,
-                                            string_signal_cb);
+                id = subscribe_pairing_error (ref conn,
+                                              path);
                 subs_identifier.add (id);
                                        
-                id = conn.signal_subscribe ("org.kde.kdeconnect",
-                                            "org.kde.kdeconnect.device",
-                                            "pluginsChanged",
-                                            path,
-                                            null,
-                                            DBusSignalFlags.NONE,
-                                            void_signal_cb);
+                id = subscribe_plugins_changed (ref conn,
+                                                path);
                 subs_identifier.add (id);
                                        
-                id = conn.signal_subscribe ("org.kde.kdeconnect",
-                                            "org.kde.kdeconnect.device",
-                                            "reachableStatusChanged",
-                                            path,
-                                            null,
-                                            DBusSignalFlags.NONE,
-                                            void_signal_cb);
+                id = subscribe_reachable_status_changed (ref conn, 
+                                                path);
                 subs_identifier.add (id);
                                        
-                id = conn.signal_subscribe ("org.kde.kdeconnect",
-                                            "org.kde.kdeconnect.device",
-                                            "trustedChanged",
-                                            path,
-                                            null,
-                                            DBusSignalFlags.NONE,
-                                            boolean_signal_cb);
+                id = subscribe_trusted_changed (ref conn,
+                                                path);
                 subs_identifier.add (id);
-
-                /*Signals for Battery Module*/  
-                id = conn.signal_subscribe ("org.kde.kdeconnect",
-                                            "org.kde.kdeconnect.device.battery",
-                                            "chargeChanged",
-                                            path,
-                                            null,
-                                            DBusSignalFlags.NONE,
-                                            int32_signal_cb);
+                
+                id = subscribe_battery_charge_changed (ref conn,
+                                                       path);
                 subs_identifier.add (id);
                                        
-                id = conn.signal_subscribe ("org.kde.kdeconnect",
-                                            "org.kde.kdeconnect.device.battery",
-                                            "stateChanged",
-                                            path,
-                                            null,
-                                            DBusSignalFlags.NONE,
-                                            boolean_signal_cb);
+                id = subscribe_battery_state_changed (ref conn,
+                                                      path);
                 subs_identifier.add (id);
                 
                 /*Signals for Notifications */
-                id = conn.signal_subscribe ("org.kde.kdeconnect",
-                                            "org.kde.kdeconnect.device.notifications",
-                                            "notificationPosted",
-                                            path,
-                                            null,
-                                            DBusSignalFlags.NONE,
-                                            void_signal_cb);
-                subs_identifier.add (id);
+                //  id = conn.signal_subscribe ("org.kde.kdeconnect",
+                //                              "org.kde.kdeconnect.device.notifications",
+                //                              "notificationPosted",
+                //                              path,
+                //                              null,
+                //                              DBusSignalFlags.NONE,
+                //                              void_signal_cb);
+                //  subs_identifier.add (id);
 
-                id = conn.signal_subscribe ("org.kde.kdeconnect",
-                                            "org.kde.kdeconnect.device.notifications",
-                                            "notificationRemoved",
-                                            path,
-                                            null,
-                                            DBusSignalFlags.NONE,
-                                            string_signal_cb);
-                subs_identifier.add (id);
+                //  id = conn.signal_subscribe ("org.kde.kdeconnect",
+                //                              "org.kde.kdeconnect.device.notifications",
+                //                              "notificationRemoved",
+                //                              path,
+                //                              null,
+                //                              DBusSignalFlags.NONE,
+                //                              string_signal_cb);
+                //  subs_identifier.add (id);
 
-                id = conn.signal_subscribe ("org.kde.kdeconnect",
-                                            "org.kde.kdeconnect.device.notifications",
-                                            "notificationPosted",
-                                            path,
-                                            null,
-                                            DBusSignalFlags.NONE,
-                                            string_signal_cb);
-                subs_identifier.add (id);
+                //  id = conn.signal_subscribe ("org.kde.kdeconnect",
+                //                              "org.kde.kdeconnect.device.notifications",
+                //                              "notificationPosted",
+                //                              path,
+                //                              null,
+                //                              DBusSignalFlags.NONE,
+                //                              string_signal_cb);
+                //  subs_identifier.add (id);
 
-                id = conn.signal_subscribe ("org.kde.kdeconnect",
-                                            "org.kde.kdeconnect.device.notifications",
-                                            "allNotificationRemoved",
-                                            path,
-                                            null,
-                                            DBusSignalFlags.NONE,
-                                            string_signal_cb);
-                subs_identifier.add (id);
+                //  id = conn.signal_subscribe ("org.kde.kdeconnect",
+                //                              "org.kde.kdeconnect.device.notifications",
+                //                              "allNotificationRemoved",
+                //                              path,
+                //                              null,
+                //                              DBusSignalFlags.NONE,
+                //                              string_signal_cb);
+                //  subs_identifier.add (id);
 
-                /*Signals for SFTP Module */
-                id = conn.signal_subscribe ("org.kde.kdeconnect",
-                                            "org.kde.kdeconnect.device.sftp",
-                                            "mounted",
-                                            path+"/sftp",
-                                            null,
-                                            DBusSignalFlags.NONE,
-                                            void_signal_cb);
-                subs_identifier.add (id);
+                //  /*Signals for SFTP Module */
+                //  id = conn.signal_subscribe ("org.kde.kdeconnect",
+                //                              "org.kde.kdeconnect.device.sftp",
+                //                              "mounted",
+                //                              path+"/sftp",
+                //                              null,
+                //                              DBusSignalFlags.NONE,
+                //                              void_signal_cb);
+                //  subs_identifier.add (id);
                                        
-                id = conn.signal_subscribe ("org.kde.kdeconnect",
-                                            "org.kde.kdeconnect.device.sftp",
-                                            "unmounted",
-                                            path+"/sftp",
-                                            null,
-                                            DBusSignalFlags.NONE,
-                                            void_signal_cb);
-                subs_identifier.add (id);                                                 
+                //  id = conn.signal_subscribe ("org.kde.kdeconnect",
+                //                              "org.kde.kdeconnect.device.sftp",
+                //                              "unmounted",
+                //                              path+"/sftp",
+                //                              null,
+                //                              DBusSignalFlags.NONE,
+                //                              void_signal_cb);
+                //  subs_identifier.add (id);                                                 
             }
             catch (Error e) {
                 debug (e.message);
@@ -170,29 +130,119 @@ namespace IndicatorKDEConnect {
             });
         }
 
-        /*Device Methods */
-        public bool has_plugin (string plugin) {
-            var return_value = false;
-            try {
-                var return_variant = conn.call_sync ("org.kde.kdeconnect",
-                                                     path,
-                                                     "org.kde.kdeconnect.device",
-                                                     "hasPlugin",
-                                                     new Variant ("(s)", plugin),
-                                                     null,
-                                                     DBusCallFlags.NONE,
-                                                     -1,
-                                                     null);
-                
-                Variant i = return_variant.get_child_value (0);
+        public string name {
+            get {
+                var val = Value (typeof (string)); 
 
-                if (i!=null)
-                    return_value = i.get_boolean ();
-            } 
-            catch (Error e) {
-                debug (e.message);
+                property (ref conn, 
+                          path, 
+                          "name",
+                          ref val);
+
+                _name = (string)val;
+                return _name;
             }
-            return return_value;
+        }
+
+        public string id {
+        	get {
+        	     string device_path = "/modules/kdeconnect/devices/";
+            	 _id = this.path.replace(device_path, "");
+
+            	 return _id;
+            }
+        }
+
+        public string icon {
+	        get {
+                var val = Value (typeof (string)); 
+                property (ref conn, 
+                          path, 
+                          "statusIconName",
+                          ref val);
+
+                _icon = (string)val;
+                return _icon;
+            }
+        }
+
+        public bool is_reachable {
+            get {
+                var val = Value (typeof (bool)); 
+                property (ref conn, 
+                          path, 
+                          "isReachable",
+                          ref val);
+
+                return (bool)val;                
+            }
+        }
+
+        public bool has_pairing_requests {
+            get {
+                var val = Value (typeof (bool)); 
+                property (ref conn, 
+                          path, 
+                          "hasPairingRequests",
+                          ref val);
+
+                return (bool)val;                
+            }
+        }
+
+        public bool is_trusted {
+            get {
+                var val = Value (typeof (bool)); 
+                property (ref conn, 
+                          path, 
+                          "isTrusted",
+                          ref val);
+
+                return (bool)val;                
+            }
+        }
+
+        public int battery_charge {
+            get {
+                if (!_has_plugin ("kdeconnect_battery"))
+                    return -1;
+                else
+                    return charge (ref conn,
+                                   path);
+            }
+        }
+
+        public void _accept_pairing() {
+            accept_pairing (ref conn, 
+                            path);
+        }
+
+        public void _reject_pairing() {
+            reject_pairing (ref conn, 
+                            path);
+        }
+
+        public void _unpair () {
+            unpair (ref conn,
+                    path);
+        }
+
+        public void _request_pair() {
+            request_pair (ref conn,
+                          path);
+        }
+
+        public bool _has_plugin (string plugin) {
+            return has_plugin (ref conn,
+                               path,
+                               plugin);
+        }
+
+        public bool _battery_charging () {
+            if (!_has_plugin ("kdeconnect_battery"))
+                return false;
+            else 
+                return is_charging(ref conn, path);
         }
     }
 }

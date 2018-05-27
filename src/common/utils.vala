@@ -6,7 +6,6 @@
 
 namespace IndicatorKDEConnect {    
     public class Utils : Object {
-
         public static bool run_kdeconnect_deamon () {
             var return_value = false;
 
@@ -42,6 +41,7 @@ namespace IndicatorKDEConnect {
             }   
 
             return return_value;
-        }        
+        }    
+                
     }
 }

@@ -6,12 +6,12 @@
 namespace IndicatorKDEConnect {
     public interface IDaemon : Object {    
         /*Contracts */        
-        public abstract void add_device (string path);
-        public abstract void remove_device (string path);
-        public abstract void distribute_visibility_changes (string path, bool visible);
+        protected abstract void add_device (string path);
+        protected abstract void remove_device (string path);
+        protected abstract void distribute_visibility_changes (string path, bool visible);
 
         /*Methods */
-        public DBusProxy daemon_proxy (ref DBusConnection conn) {
+        protected virtual DBusProxy daemon_proxy (ref DBusConnection conn) {
             DBusProxy proxy = null;
             try {
                 proxy = new DBusProxy.sync (conn,
@@ -28,47 +28,52 @@ namespace IndicatorKDEConnect {
             return proxy;
         }
 
-        public string[] devices (ref DBusConnection conn,
+        protected virtual string[] devices (ref DBusConnection conn,
                                  bool only_reachable = false) {
             string[] devices = {}; 
             try {
-
+                var return_variant = conn.call_sync ("org.kde.kdeconnect",
+                                                     "/modules/kdeconnect",
+                                                     "org.kde.kdeconnect.daemon",
+                                                     "devices",
+                                                     new Variant ("(b)", 
+                                                                  only_reachable),
+                                                     null,
+                                                     DBusCallFlags.NONE,
+                                                     -1,
+                                                     null);
+                Variant i = return_variant.get_child_value (0);
+                devices = i.dup_strv ();                                                                                                                   
             }   
             catch (Error e) {
                 debug (e.message);
-            }                                                                                                      
-            var return_variant = conn.call_sync ("org.kde.kdeconnect",
-                                                 "/modules/kdeconnect",
-                                                 "org.kde.kdeconnect.daemon",
-                                                 "devices",
-                                                 new Variant ("(b)", 
-                                                              only_reachable),
-                                                 null,
-                                                 DBusCallFlags.NONE,
-                                                 -1,
-                                                 null);
-
-            Variant i = return_variant.get_child_value (0);
-            devices = i.dup_strv ();                
-            
+            }                                                                                                                  
             return devices;
         }  
 
-        public void acquire_discovery_mode (ref DBusConnection conn) {
-            conn.call_sync ("org.kde.kdeconnect",
-                            "/modules/kdeconnect",
-                            "org.kde.kdeconnect.daemon",
-                            "acquireDiscoveryMode",
-                            new Variant ("(s)", 
-                                         "Indicator-KDEConnect"),
-                            null,
-                            DBusCallFlags.NONE,
-                            -1,
-                            null);    
+        protected virtual void discovery_mode (ref DBusConnection conn,
+                                    bool acquire = true) {
+            try {
+                conn.call_sync ("org.kde.kdeconnect",
+                                "/modules/kdeconnect",
+                                "org.kde.kdeconnect.daemon",
+                                acquire ? 
+                                "acquireDiscoveryMode" :
+                                "releaseDiscoveryMode",
+                                new Variant ("(s)", 
+                                             "Indicator-KDEConnect"),
+                                null,
+                                DBusCallFlags.NONE,
+                                -1,
+                                null);    
+            }
+            catch (Error e) {
+                debug (e.message);
+            }
         }
 
         /*Signals Subscribind */
-        public virtual uint subscribe_device_added (ref DBusConnection conn) {
+        protected virtual uint subscribe_device_added (ref DBusConnection conn) {
 			return conn.signal_subscribe ("org.kde.kdeconnect",
                                           "org.kde.kdeconnect.daemon",
                                           "deviceAdded",
@@ -78,7 +83,7 @@ namespace IndicatorKDEConnect {
                                           device_added_cb);
         }
 
-        public virtual uint subscribe_device_removed (ref DBusConnection conn) {
+        protected virtual uint subscribe_device_removed (ref DBusConnection conn) {
             return conn.signal_subscribe ("org.kde.kdeconnect",
                                           "org.kde.kdeconnect.daemon",
                                           "deviceRemoved",
@@ -88,7 +93,7 @@ namespace IndicatorKDEConnect {
                                           device_removed_cb);
         }
 
-        public virtual uint subscribe_device_visibility_changed (ref DBusConnection conn) {
+        protected virtual uint subscribe_device_visibility_changed (ref DBusConnection conn) {
 			return conn.signal_subscribe ("org.kde.kdeconnect",
                                           "org.kde.kdeconnect.daemon",
                                           "deviceVisibilityChanged",
@@ -100,7 +105,7 @@ namespace IndicatorKDEConnect {
 
         /*Signals Callbacks*/
 
-        public virtual void device_added_cb (DBusConnection con, 
+        protected virtual void device_added_cb (DBusConnection con, 
                                              string sender, 
                                              string object,
                                              string interface, 
@@ -112,7 +117,7 @@ namespace IndicatorKDEConnect {
             device_added (path);
         }
 
-        public virtual void device_removed_cb (DBusConnection con, 
+        protected virtual void device_removed_cb (DBusConnection con, 
                                                string sender, 
                                                string object,
                                                string interface, 
@@ -124,7 +129,7 @@ namespace IndicatorKDEConnect {
             device_removed (path);
         }
 
-        public virtual void device_visibility_changed_cb (DBusConnection con, 
+        protected virtual void device_visibility_changed_cb (DBusConnection con, 
                                                           string sender, 
                                                           string object,
                                                           string interface, 
@@ -137,7 +142,7 @@ namespace IndicatorKDEConnect {
             device_visibility_changed (sring_param, bool_param);
         }
 
-        public virtual void pairing_requests_changed_cb (DBusConnection con, 
+        protected virtual void pairing_requests_changed_cb (DBusConnection con, 
                                                          string sender, 
                                                          string object,
                                                          string interface, 

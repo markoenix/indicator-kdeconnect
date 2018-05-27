@@ -11,9 +11,7 @@ module_deps = [
 module_source = ['main.vala', 
                  'kdeconnectmanager.vala', 
                  'device.vala',
-                 'devicemanager.vala',
-                 'idevicemanager.vala',
-                 'utils.vala']
+                 'devicemanager.vala']
 
 module_exec = executable(module_exec_name, 
                          sources: module_source,

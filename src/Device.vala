@@ -6,7 +6,7 @@
 using Utils;
 
 namespace KDEConnectIndicator {
-    public class Device {
+    public class Device.l {
         private DBusConnection conn;
         private DBusProxy device_proxy;
         private string path;

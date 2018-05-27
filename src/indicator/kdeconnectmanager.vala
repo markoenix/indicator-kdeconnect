@@ -10,17 +10,15 @@ namespace IndicatorKDEConnect {
     public class KDEConnectManager : Object, IDaemon {
         private DBusConnection conn;        
         private HashSet<Device> devices_connected;
-        private HashSet<uint> subs_identifier;                    
+        private HashSet<uint> subs_identifier;                 
 
         public KDEConnectManager () {
             try {
                 conn = Bus.get_sync (BusType.SESSION);
 
-                if (assert_kdeconnect_service ()) {                    
+                if (assert_kdeconnect_service ()) {                               
                     devices_connected = new HashSet<Device> ();
-                    subs_identifier = new HashSet<uint>();
-
-                    fill_devices ();               
+                    subs_identifier = new HashSet<uint>();                                
 
                     uint id;                    
 
@@ -39,8 +37,10 @@ namespace IndicatorKDEConnect {
                     id = subscribe_device_removed (ref conn);
 
                     subs_identifier.add (id);
+
+                    fill_devices ();   
             
-                                                     
+                    discovery_mode (ref conn, true);                     
                 }
                 else {
                     new ErrorMessage.show_message("Cannot connect to KDEConnect DBus Service");
@@ -57,16 +57,11 @@ namespace IndicatorKDEConnect {
                 conn.signal_unsubscribe (item);
             });
 
-            conn.call_sync ("org.kde.kdeconnect",
-                            "/modules/kdeconnect",
-                            "org.kde.kdeconnect.daemon",
-                            "releaseDiscoveryMode",
-                            new Variant ("(s)", "Indicator-KDEConnect"),
-                            null,
-                            DBusCallFlags.NONE,
-                            -1,
-                            null); 
-        }
+            devices_connected.clear ();
+            subs_identifier.clear ();
+
+            discovery_mode (ref conn, false);    
+        }       
 
         private bool assert_kdeconnect_service () {            
             var return_value = false;            
@@ -92,14 +87,8 @@ namespace IndicatorKDEConnect {
         private bool is_daemon_running () {
             var return_value = false;
 
-            try {
-                var device_proxy = daemon_proxy (ref conn);
-
-                return_value = (device_proxy.get_name_owner () != null);
-            } 
-            catch (Error e) {
-                debug (e.message);
-            }
+            var device_proxy = daemon_proxy (ref conn);
+            return_value = (device_proxy.get_name_owner () != null);
 
             return return_value;
         }
@@ -125,17 +114,22 @@ namespace IndicatorKDEConnect {
         public void remove_device (string path) {
             message ("Device removed from list of devices, %s", path);
             foreach (var dev in devices_connected) {
-                if (dev.path == path) {
+                if (dev.equals_path (path)) {
                     devices_connected.remove (dev);
                     break;
                 }
             }
         }
 
-        public void distribute_visibility_changes (string path,
+        public void distribute_visibility_changes (string path, 
                                                    bool visible) {
             message ("Device %s visibility change to %s", path, visible.to_string ());
-
+            foreach (var item in devices_connected) {                
+                if (item.equals_id (path)){
+                    item.visibility_changed (visible);
+                    return;
+                }                            
+            }              
         }    
     }
 }
