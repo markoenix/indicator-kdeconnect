@@ -9,24 +9,22 @@ namespace IndicatorKDEConnect {
                               string path) {
             var return_value = -1;                            
             try {
-                var return_variant = conn.call_sync (
-                        "org.kde.kdeconnect",
-                        path,
-                        "org.kde.kdeconnect.device.battery",
-                        "charge",
-                        null,
-                        null,
-                        DBusCallFlags.NONE,
-                        -1,
-                        null
-                        );
-                Variant i = return_variant.get_child_value (0);
-               
+                var return_variant = conn.call_sync ("org.kde.kdeconnect",
+                                                     path,
+                                                     "org.kde.kdeconnect.device.battery",
+                                                     "charge",
+                                                     null,
+                                                     null,
+                                                     DBusCallFlags.NONE,
+                                                     -1,
+                                                     null);
+                Variant i = return_variant.get_child_value (0);               
                 return_value = i.get_int32 ();
             } 
             catch (Error e) {
                 debug (e.message);
             }
+            debug ("Device %s, charge %d", path, return_value);  
             return return_value;
         }
                  
@@ -34,23 +32,21 @@ namespace IndicatorKDEConnect {
                                     string path) {                    
             var return_value = false;
             try {
-                var return_variant = conn.call_sync (
-                        "org.kde.kdeconnect",
-                        path,
-                        "org.kde.kdeconnect.device.battery",
-                        "isCharging",
-                        null,
-                        null,
-                        DBusCallFlags.NONE,
-                        -1,
-                        null
-                        );
-                Variant i = return_variant.get_child_value (0);
-                                
+                var return_variant = conn.call_sync ("org.kde.kdeconnect",
+                                                     path,
+                                                     "org.kde.kdeconnect.device.battery",
+                                                     "isCharging",
+                                                     null,
+                                                     null,
+                                                     DBusCallFlags.NONE,
+                                                     -1,
+                                                     null);
+                Variant i = return_variant.get_child_value (0);                                
                 return_value = i.get_boolean ();
             } catch (Error e) {
                 debug (e.message);
             }
+            debug ("Device %s, Is charging %s", path, return_value.to_string ());  
             return return_value;
         }
 

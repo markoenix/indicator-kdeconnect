@@ -16,8 +16,11 @@ namespace IndicatorKDEConnect {
 
         private Gtk.MenuItem battery_item;
 
+        private Gtk.MenuItem broswe_item;
         private Gtk.MenuItem share_files_item;
         private Gtk.MenuItem share_url_item;
+        private Gtk.Menu broswe_items_sub_menu;
+        private Gtk.MenuItem broswe_items;
 
         private Gtk.MenuItem ring_item;
 
@@ -54,6 +57,26 @@ namespace IndicatorKDEConnect {
             /*File Group */
             share_separator = new Gtk.SeparatorMenuItem ();
             indicator_menu.append (share_separator); 
+
+            broswe_item = new Gtk.MenuItem.with_label ("Browse");
+
+            broswe_item.activate.connect (() => {
+                deviceManager.browse ();
+            });
+
+            indicator_menu.append (broswe_item);
+
+            /* */
+            broswe_items = new Gtk.MenuItem.with_label ("Browse");
+
+            broswe_items_sub_menu = new Gtk.Menu ();
+
+            broswe_items.set_submenu (broswe_items_sub_menu);
+
+            //build_browse_sub_paths ();
+
+            indicator_menu.append (broswe_items);
+            /* */
 
             share_files_item = new Gtk.MenuItem.with_label ("Send file(s)");
 
@@ -160,6 +183,14 @@ namespace IndicatorKDEConnect {
                 set_pairing_request_mode (has_pairing);
             });
 
+            deviceManager.mounted.connect (() => {
+                build_browse_sub_paths ();
+            });
+
+            deviceManager.unmounted.connect (() => {
+                
+            });
+
             /*Role updates */
             indicator_menu.show_all ();  
 
@@ -215,18 +246,23 @@ namespace IndicatorKDEConnect {
         }
 
         private void upadate_utils_group () {
-            if (!deviceManager._has_plugin ("kdeconnect_findmyphone")) {
-                ring_item.visible = false;     
-                utils_separator.visible = false;
-            }
+            var _findmyphone = deviceManager._has_plugin ("kdeconnect_findmyphone");
+            
+            utils_separator.visible = _findmyphone;
+            ring_item.visible = _findmyphone;                         
         }
 
         private void upadate_file_share_group () {
-            if (!deviceManager._has_plugin ("kdeconnect_share")) {
-                share_files_item.visible = false;
-                share_url_item.visible = false;  
-                share_separator.visible = false;          
-            }
+            var _share = deviceManager._has_plugin ("kdeconnect_share");
+            var _sftp = deviceManager._has_plugin ("kdeconnect_sftp");
+
+            share_separator.visible = _share || _sftp; 
+
+            share_files_item.visible = _share;
+            share_url_item.visible = _share;  
+                                             
+            broswe_item.visible = _sftp;  
+            broswe_items.visible = _sftp;                                              
         }
 
         private void update_pairing_reject_group (bool? mode = null) {
@@ -277,6 +313,27 @@ namespace IndicatorKDEConnect {
         public void visibility_changed (bool visible) {
             debug ("Device visibility change to %s", visible ? "ACTIVE" : "PASSIVE");
             update_indicator_status (visible);
+        }
+
+        private void build_browse_sub_paths () {
+            var directories = deviceManager._get_directories();   
+
+            if(directories.length () > 0) {
+                directories.@foreach ((pair)=>{
+                    message(pair.get_secound());
+
+                    var tmpMenuItem = new Gtk.MenuItem.with_label (pair.get_secound());
+                    
+                    tmpMenuItem.activate.connect (() => {                        
+                        deviceManager.browse (pair.get_first ());
+                    });
+                    
+                    broswe_items_sub_menu.append (tmpMenuItem);
+                });                                                               	    
+                                
+                broswe_items_sub_menu.show_all ();  
+                broswe_items.show_all ();             
+            }            
         }
 
         private void dialog_file_selector () {

@@ -37,7 +37,8 @@ namespace IndicatorKDEConnect {
                                 DBusCallFlags.NONE,
                                 -1,
                                 null);             
-            } catch (Error e) {
+            } 
+            catch (Error e) {
                 debug (e.message);
             }            
         } 

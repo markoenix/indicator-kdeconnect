@@ -11,7 +11,8 @@ using IndicatorKDEConnect;
 
 namespace SendViaKDEConnect{
 	private SList<File> files;
-	//TODO: Implementar um dinamismo ao adicionar de novos dispositivos
+	//TODO: Implementar sinais para quando apenas dispositivos encontraveis 
+	//e confi<veis forem adicionadar e reload apartir interface
 	class SendDialog : Gtk.Application {
 		private static bool version;
         private static bool kdeconnect_api_version;

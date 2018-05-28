@@ -257,10 +257,45 @@ namespace IndicatorKDEConnect {
                    url);
         }
 
+        public SList<Pair<string,string>> _get_directories () {
+            return get_directories (ref conn,
+                                    path);
+        }
+
+        public void browse (string path_to_open="") {
+            if (!_has_plugin ("kdeconnect_sftp"))
+                return;
+
+            string _mount_point = mount_point (ref conn,
+                                               path);
+
+            message("Open the path %s", path_to_open.length == 0 ? 
+                                        _mount_point : 
+                                        path_to_open);
+            if (is_mounted (ref conn,
+                            path)) {
+                Utils.open_file (path_to_open.length == 0 ? 
+                                 _mount_point : 
+                                 path_to_open);
+            }
+            else {
+                mount(ref conn,
+                      path);
+                Timeout.add (1000, ()=> { // idle for a few second to let sftp kickin
+                    Utils.open_file (path_to_open.length == 0 ? 
+                                     _mount_point : 
+                                     path_to_open);
+                    return false;
+                });
+            }
+        }
+
         public bool _has_plugin (string plugin) {
             return has_plugin (ref conn,
                                path,
                                plugin);
-        }        
+        }
+        
+        
     }
 }

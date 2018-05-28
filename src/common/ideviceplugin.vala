@@ -108,9 +108,7 @@ namespace IndicatorKDEConnect {
                                                      null);
                 
                 Variant i = return_variant.get_child_value (0);
-
-                if (i!=null)
-                    return_value = i.get_boolean ();
+                return_value = i.get_boolean ();
             } 
             catch (Error e) {
                 debug (e.message);
