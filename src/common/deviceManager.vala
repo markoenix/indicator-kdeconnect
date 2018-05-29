@@ -8,6 +8,7 @@ using Gee;
 
 namespace IndicatorKDEConnect {  
     public class DeviceManager : Object, 
+                                 ISettings,
                                  ISignals,
                                  IDevice,                                   
                                  IBattery,
@@ -19,6 +20,7 @@ namespace IndicatorKDEConnect {
         private DBusProxy proxy;
         private string path;
         private HashSet<uint> subs_identifier;
+        private Settings settings;
 
         private string _id;
         private string _name;
@@ -69,7 +71,16 @@ namespace IndicatorKDEConnect {
                 id = subscribe_battery_state_changed (ref conn,
                                                       path);
                 subs_identifier.add (id);
-                
+
+                this.settings = new Settings("com.indicator-kdeconnect.daemon");
+
+                subscribe_property_bool (ref settings,
+                                         "browse-items");
+                subscribe_property_bool (ref settings,
+                                         "send-url");
+                subscribe_property_bool (ref settings,
+                                         "find-my-device");
+
                 /*Signals for Notifications */
                 //  id = conn.signal_subscribe ("org.kde.kdeconnect",
                 //                              "org.kde.kdeconnect.device.notifications",
@@ -294,6 +305,11 @@ namespace IndicatorKDEConnect {
             return has_plugin (ref conn,
                                path,
                                plugin);
+        }
+
+        public bool _get_property_bool(string property) {
+            return get_property_bool (ref settings,
+                                      property);
         }
         
         

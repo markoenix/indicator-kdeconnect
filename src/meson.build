@@ -11,7 +11,8 @@ module_template = files('module.in')
 module_list = [  
   'common',
   'indicator',
-  'sendvia'
+  'sendvia',
+  'settings'
 ]
 foreach module : module_list
   subdir(module)

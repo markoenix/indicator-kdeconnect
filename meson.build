@@ -12,6 +12,8 @@ short_description = 'AppIndicator for KDEConnect'
 
 api_version = '1.3'
 
+meson_dir = meson.current_source_dir()
+
 as_version = meson.project_version() # set in project() below
 ver_arr = as_version.split('.')
 

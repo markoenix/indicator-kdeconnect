@@ -44,7 +44,7 @@ namespace SendViaKDEConnect{
 		private enum Columns {TEXT, TOGGLE,	N_COLUMNS}
 
 		public SendDialog () {
-			Object (application_id: "com.bajoja.kdeconnect-send",
+			Object (application_id: "com.indicator-kdeconnect.sendviakdeconnect",
 				flags: ApplicationFlags.HANDLES_OPEN);
 		}
 

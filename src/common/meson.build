@@ -39,15 +39,16 @@ lib_deps = [
 module_source = [join_paths(meson.current_build_dir(), 'config-header.vala'),
                  'dialogs.vala',
                  'utils.vala',
-                 'devicemanager.vala',
-                 'idaemonplugin.vala',
-                 'ideviceplugin.vala',
-                 'ibatteryplugin.vala',
-                 'ifindmyphoneplugin.vala',
-                 'ishareplugin.vala',
-                 'itelephonyplugin.vala',
-                 'isftpplugin.vala',
-                 'isignals.vala'] 
+                 'deviceManager.vala',
+                 'iSettings.vala',
+                 'iDaemonPlugin.vala',
+                 'iDevicePlugin.vala',
+                 'iBatteryPlugin.vala',
+                 'iFindMyPhonePlugin.vala',
+                 'iSharePlugin.vala',
+                 'iTelephonyPlugin.vala',
+                 'iSftpPlugin.vala',
+                 'iSignals.vala'] 
 
 indicator_kdeconnect_lib = shared_library(module_lib_name,
                            sources: module_source,                     
@@ -70,3 +71,7 @@ pkg.generate(
     'datadir=${datarootdir}',
   ],
 )
+
+#GSettings
+install_data('indicator-kdeconnect.gschema.xml', install_dir: join_paths(get_option('datadir'), 'glib-2.0', 'schemas'))
+meson.add_install_script(join_paths(meson_dir, 'meson_post_install.py'))

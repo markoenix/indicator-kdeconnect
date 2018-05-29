@@ -1,15 +1,7 @@
 <schemalist>
-  <schema id="com.bajoja.indicator-kdeconnect" path="/com/bajoja/indicator/" gettext-domain="indicator-kdeconnect">
+  <schema id="com.indicator-kdeconnect.daemon" path="/com/indicator_kdeconnect/daemon/" gettext-domain="indicator-kdeconnect">
 
-    <key name="icons" type="s">
-      <default>""</default>
-      <summary>Icons</summary>
-      <description>
-        The default icons to be used
-      </description>
-    </key>
-
-    <key name="visibilitiy" type="b">
+    <key name="only-paired-devices" type="b">
       <default>false</default>
       <summary>Show only paired devices</summary>
       <description>
@@ -17,15 +9,23 @@
       </description>
     </key>
 
-    <key name="list-device-dir" type="b">
-      <default>false</default>
+    <key name="browse-items" type="b">
+      <default>true</default>
       <summary>Show directory list</summary>
       <description>
         Show directory list of the device
       </description>
     </key>
 
-    <key name="show-send-url" type="b">
+    <key name="send-url" type="b">
+      <default>true</default>
+      <summary>Show option to send URL</summary>
+      <description>
+        Show option to send URL
+      </description>
+    </key>
+
+    <key name="find-my-device" type="b">
       <default>true</default>
       <summary>Show option to send URL</summary>
       <description>

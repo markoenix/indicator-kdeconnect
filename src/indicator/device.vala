@@ -191,6 +191,10 @@ namespace IndicatorKDEConnect {
                 
             });
 
+            deviceManager.setting_changed.connect ((property) => {
+                update_items_based_on_settings (property);
+            });
+
             /*Role updates */
             indicator_menu.show_all ();  
 
@@ -199,7 +203,8 @@ namespace IndicatorKDEConnect {
             update_pairing_reject_group ();
             update_unpair_request_group ();  
             upadate_utils_group ();  
-            upadate_file_share_group ();        
+            upadate_file_share_group ();  
+            update_items_based_on_settings ();      
         }   
 
         ~Device () {
@@ -313,6 +318,50 @@ namespace IndicatorKDEConnect {
         public void visibility_changed (bool visible) {
             debug ("Device visibility change to %s", visible ? "ACTIVE" : "PASSIVE");
             update_indicator_status (visible);
+        }
+
+        public void update_items_based_on_settings (string? property = null) {            
+            if (property != null) {
+                switch (property) {
+                    case "browse-items" :                        
+                        if (deviceManager._get_property_bool (property))
+                            broswe_items.show ();         
+                        else
+                            broswe_items.hide ();
+                            
+                    break;
+    
+                    case "send-url" :
+                        if (deviceManager._get_property_bool (property))
+                            share_url_item.show ();
+                        else
+                            share_url_item.hide ();
+                    break;
+    
+                    case "find-my-device" :
+                        if (deviceManager._get_property_bool (property))
+                            ring_item.show ();
+                        else    
+                            ring_item.hide ();
+                    break;
+                }
+            }
+            else {
+                if (deviceManager._get_property_bool ("browse-items"))
+                    broswe_items.show ();         
+                else
+                    broswe_items.hide ();
+
+                if (deviceManager._get_property_bool ("send-url"))
+                    share_url_item.show ();
+                else
+                    share_url_item.hide ();
+                
+                if (deviceManager._get_property_bool ("find-my-device"))
+                    ring_item.show ();
+                else    
+                    ring_item.hide ();
+            }
         }
 
         private void build_browse_sub_paths () {
