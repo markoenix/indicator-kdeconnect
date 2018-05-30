@@ -22,7 +22,7 @@ indicator_kdeconnect_conf.set_quoted('PACKAGE_LOCALEDIR', join_paths('/usr/lib/'
                   description: 'Define to locale dir of this package.')
 indicator_kdeconnect_conf.set_quoted('SETTINGS_PATH', '/apps/indicator-kdeconnect/',
                   description: 'Define to root path of gsettings for this package.')
-indicator_kdeconnect_conf.set_quoted('SETTINGS_NAME', 'org.indicator-kdeconnect',
+indicator_kdeconnect_conf.set_quoted('SETTINGS_NAME', 'com.indicator-kdeconnect.daemon',
                   description: 'Define to root bus name for this package.')
 
 configure_file(output: 'config-header.vala',

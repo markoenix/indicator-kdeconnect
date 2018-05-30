@@ -49,8 +49,9 @@ namespace IndicatorKDEConnect {
 				                    out std_out,
 				                    null,
 				                    null);
-	        } catch (Error e){
-		        message (e.message);
+            } 
+            catch (Error e){
+		        debug (e.message);
             }
 
             if (std_out != null)
@@ -60,8 +61,9 @@ namespace IndicatorKDEConnect {
                     try {
                         Process.spawn_command_line_sync (f.get_path ());
                         return_value = true;
-                    } catch (Error e) {
-                        message (e.message);
+                    } 
+                    catch (Error e) {
+                        debug (e.message);
                     }
                 }
             }   
@@ -77,10 +79,100 @@ namespace IndicatorKDEConnect {
                 list.append (file);
                 return handler.launch (list, 
                                        null);                
-            } catch (Error e) {
-                message (e.message);
+            } 
+            catch (Error e) {
+                debug (e.message);
             }
             return false;
         }
+
+        public static void run_sms_python (string device_id) {
+            try{
+                Process.spawn_async (null,
+                                     new string[]{Config.PACKAGE_DATADIR+
+                                                  "/"+
+                                                  Config.PACKAGE_NAME+
+                                                  "/sms.py",
+                                                  "-d",
+                                                  device_id},
+                                     null,
+                                     SpawnFlags.SEARCH_PATH,
+                                     null,
+                                     null);
+            } 
+            catch (Error e) {
+                debug (e.message);
+            }
+        }
+
+        public static void run_settings () {
+            try{
+                Process.spawn_async (null,
+                                     new string[]{"settings-ind-kdec"},
+                                     null,
+                                     SpawnFlags.SEARCH_PATH,
+                                     null,
+                                     null);
+            } 
+            catch (Error e) {
+                debug (e.message);
+            }
+        }
+
+        //  private static void restart () {
+		//  	string std_out;
+
+		//  	message ("Getting PID to restart");
+
+        //      try {
+		//  	    Process.spawn_sync (null,
+		//  	              			new string[]{"pidof",
+		//  	     	         		             "indicator-kdeconnect"},
+		//  	    					null,
+		//  	    					SpawnFlags.SEARCH_PATH,
+		//  	    					null,
+		//  	                        out std_out,
+		//  	    					null,
+		//  	    					null);
+		//  	} 
+		//  	catch (Error e) {
+		//  	    debug (e.message);
+		//  	}
+
+		//  	if (std_out != ""){
+       	//  		message("Killing PID");
+
+    	//  		int pid = int.parse(std_out);
+
+    	//  		try {
+	    //  	    	Process.spawn_sync (null,
+	    //      		    	        	new string[]{"kill",
+		//      	                    	pid.to_string()},
+		//  	    			        	null,
+		//  	    			        	SpawnFlags.SEARCH_PATH,
+		//  	    			        	null,
+		//  	                        	out std_out,
+		//  	    				    	null,
+		//  	    				    	null);
+		//  		} 
+		//  		catch (Error e) {
+		//  	    	debug (e.message);
+		//  		}
+			
+		//  		message("Restart process");
+
+        //      	try {
+		//          	Process.spawn_async (null,
+		//                  			 	new string[]{"indicator-kdeconnect"},
+		//  		         			 	null,
+		//  		        			 	SpawnFlags.SEARCH_PATH,
+		//  			                 	null,
+		//  		                     	null);
+		//  		} 
+		//  		catch (Error e) {
+		//      		debug (e.message);
+		//  		} 
+		//  	}       	
+		//  }
     }
 }

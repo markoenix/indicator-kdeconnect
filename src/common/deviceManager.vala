@@ -72,12 +72,16 @@ namespace IndicatorKDEConnect {
                                                       path);
                 subs_identifier.add (id);
 
-                this.settings = new Settings("com.indicator-kdeconnect.daemon");
+                this.settings = new Settings(Config.SETTINGS_NAME);
 
+                subscribe_property_bool (ref settings,
+                                         "only-paired-devices");
                 subscribe_property_bool (ref settings,
                                          "browse-items");
                 subscribe_property_bool (ref settings,
                                          "send-url");
+                subscribe_property_bool (ref settings,
+                                         "send-sms");
                 subscribe_property_bool (ref settings,
                                          "find-my-device");
 

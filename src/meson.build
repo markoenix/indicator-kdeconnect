@@ -12,7 +12,8 @@ module_list = [
   'common',
   'indicator',
   'sendvia',
-  'settings'
+  'settings',
+  'extensions'
 ]
 foreach module : module_list
   subdir(module)

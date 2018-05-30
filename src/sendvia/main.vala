@@ -4,6 +4,7 @@
  * (version 2.1 or later).  See the COPYING file in this distribution.
  */
 using Gtk;
+using Gee;
 using IndicatorKDEConnect;
 
 [CCode(cname="GETTEXT_PACKAGE")] extern const string GETTEXT_PACKAGE;
@@ -13,7 +14,7 @@ namespace SendViaKDEConnect{
 	private SList<File> files;
 	//TODO: Implementar sinais para quando apenas dispositivos encontraveis 
 	//e confi<veis forem adicionadar e reload apartir interface
-	class SendDialog : Gtk.Application {
+	class SendDialog : Gtk.Application, IDaemon {
 		private static bool version;
         private static bool kdeconnect_api_version;
         private static bool debug = false;
@@ -34,22 +35,45 @@ namespace SendViaKDEConnect{
 		private Gtk.ListStore list_store;
 		private DBusConnection conn;
 		private TreeSelection ts;
-		private SList<DeviceManager> device_list;		
+		private HashSet<DeviceManager> device_list;		
 		private CellRendererToggle toggle;
 		private TreeViewColumn column1;
 		private TreeViewColumn column2;
 		private CellRendererText text;
 		private bool multiselection = false;
 		private TreeIter iter;
+		private HashSet<uint> subs_identifier;
 		private enum Columns {TEXT, TOGGLE,	N_COLUMNS}
 
 		public SendDialog () {
 			Object (application_id: "com.indicator-kdeconnect.sendviakdeconnect",
 				flags: ApplicationFlags.HANDLES_OPEN);
+
+			try {
+				conn = Bus.get_sync (BusType.SESSION);
+				device_list = new HashSet<DeviceManager> ();
+                subs_identifier = new HashSet<uint> ();
+                
+                uint id;                            
+                id = subscribe_device_added (ref conn);
+				subs_identifier.add (id);
+				
+				id = subscribe_device_removed (ref conn);
+				subs_identifier.add (id);
+				
+				id = subscribe_device_visibility_changed (ref conn);
+				subs_identifier.add (id);							
+			}
+			catch (Error e) {
+				message (e.message);
+			}						
 		}
 
 		~SendDialog() {
 			iter.free();
+			subs_identifier.@foreach ( (item) =>  {
+                conn.signal_unsubscribe (item); 
+            });
 		}
 
 		protected override void activate () {
@@ -196,7 +220,7 @@ namespace SendViaKDEConnect{
 
 			if(!this.multiselection) {
 				TreeModel tm;
-            	List<TreePath> selected_paths = this.ts.get_selected_rows (out tm);
+            	GLib.List<TreePath> selected_paths = this.ts.get_selected_rows (out tm);
 
 				foreach (TreePath path in selected_paths) {
 					if(path != null){
@@ -224,36 +248,15 @@ namespace SendViaKDEConnect{
 		private void reload_device_list() {
 			this.list_store.clear ();
 
-			try{
-				conn = Bus.get_sync (BusType.SESSION);				
-
-				string[] id_list = {};
-				try {
-					var return_variant = conn.call_sync (
-								  "org.kde.kdeconnect",
-								"/modules/kdeconnect",
-								"org.kde.kdeconnect.daemon",
-								"devices",
-								new Variant ("(b)", true),
-								   null,
-								DBusCallFlags.NONE,
-								-1,
-								null
-								);
-	
-					Variant i = return_variant.get_child_value (0);
-					id_list = i.dup_strv ();
-	
-				   } catch (Error e) {
-					   message (e.message);
-				}	
+				string[] id_list = devices(ref conn, 
+				                           true);
 				
-				this.device_list = new SList<DeviceManager> ();							
+				//this.device_list = new HashSet<DeviceManager> ();							
 	
 				foreach (string id in id_list) {
 				    var d = new DeviceManager ("/modules/kdeconnect/devices/"+id);
 				    if (d.is_reachable && d.is_trusted) {
-						device_list.append (d);
+						device_list.add (d);
 						message (d.name);
 					    this.list_store.append (out iter);           			
 					    this.list_store.set (iter, 0, d.name, 1, false);
@@ -265,11 +268,44 @@ namespace SendViaKDEConnect{
 				// select first item
 				Gtk.TreePath path = new Gtk.TreePath.from_indices (0, -1);
 				tv.set_cursor (path, null, false);
-			} catch (Error e) {
-				message (e.message);				
+		}
 
-				new ErrorMessage.show_message ("Error on reload devices");
+		private void add_device (string path) {
+			var d = new DeviceManager ("/modules/kdeconnect/devices/"+path);
+			if (d.is_reachable && 
+				d.is_trusted &&
+				!device_list.contains (d)) {
+				device_list.add (d);
+				message (d.name);
+				this.list_store.append (out iter);           			
+				this.list_store.set (iter, 0, d.name, 1, false);
 			}
+		}
+
+		private void remove_device (string path) {
+			var d = new DeviceManager ("/modules/kdeconnect/devices/"+path);
+			if (device_list.size > 0 && 
+			    device_list.contains (d)) {
+				device_list.remove (d);
+				for (bool next = list_store.get_iter_first (out iter); 
+					 next; 
+					 next = list_store.iter_next (ref iter)) {
+					Value val1;
+					list_store.get_value (iter, 0, out val1);
+					if((string)val1 == d.name){
+						list_store.remove (ref iter);
+						break;
+					}					
+				}				
+			}
+		}
+
+		private void  distribute_visibility_changes  (string path,
+													  bool visible) {
+			if (visible)
+				add_device (path);
+			else
+				remove_device (path);														
 		}
 
 		private void send_items (){			
@@ -277,8 +313,8 @@ namespace SendViaKDEConnect{
 
             foreach (File file in files){
     			for (int i = 0; i < selected_devs.length ; i++) {
-        			DeviceManager selected_dev = this.device_list.nth_data (selected_devs.index (i));
-            		selected_dev._share_url (file.get_uri ());
+        			//  DeviceManager selected_dev = this.device_list.nth_data (selected_devs.index (i));
+            		//  selected_dev._share_url (file.get_uri ());
        			}
        		}
 

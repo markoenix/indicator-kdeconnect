@@ -1,2 +1,2 @@
 Add a new icon to represent device need attention, like battery is low;
-Add a variable to handle a apply to settings;
+Redesign setting (Remove Cancel Button and add only Ok button, replace by checkboxes);

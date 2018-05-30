@@ -29,7 +29,7 @@ namespace IndicatorKDEConnect {
         }
 
         protected virtual string[] devices (ref DBusConnection conn,
-                                 bool only_reachable = false) {
+                                            bool only_reachable = false) {
             string[] devices = {}; 
             try {
                 var return_variant = conn.call_sync ("org.kde.kdeconnect",
@@ -130,11 +130,11 @@ namespace IndicatorKDEConnect {
         }
 
         protected virtual void device_visibility_changed_cb (DBusConnection con, 
-                                                          string sender, 
-                                                          string object,
-                                                          string interface, 
-                                                          string signal_name, 
-                                                          Variant parameter) {
+                                                             string sender, 
+                                                             string object,
+                                                             string interface, 
+                                                             string signal_name, 
+                                                             Variant parameter) {
             string sring_param = parameter.get_child_value (0).get_string ();
             bool bool_param = parameter.get_child_value (1).get_boolean ();
         

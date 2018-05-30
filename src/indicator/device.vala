@@ -17,10 +17,12 @@ namespace IndicatorKDEConnect {
         private Gtk.MenuItem battery_item;
 
         private Gtk.MenuItem broswe_item;
-        private Gtk.MenuItem share_files_item;
-        private Gtk.MenuItem share_url_item;
         private Gtk.Menu broswe_items_sub_menu;
         private Gtk.MenuItem broswe_items;
+        private Gtk.MenuItem share_files_item;
+        private Gtk.MenuItem share_url_item;
+
+        private Gtk.MenuItem send_sms_item;
 
         private Gtk.MenuItem ring_item;
 
@@ -34,6 +36,7 @@ namespace IndicatorKDEConnect {
         private Gtk.SeparatorMenuItem unpair_request_separator;
         private Gtk.SeparatorMenuItem utils_separator;
         private Gtk.SeparatorMenuItem share_separator;
+        private Gtk.SeparatorMenuItem telephony_separator;
 
         public Device (string path) {
             debug ("Creating indicator for %s", path);
@@ -49,6 +52,9 @@ namespace IndicatorKDEConnect {
 
             /*Info Group */
             name_item = new Gtk.MenuItem.with_label (deviceManager.name);
+            name_item.activate.connect (() => {
+                Utils.run_settings ();
+            });
             indicator_menu.append (name_item);        
             
             battery_item = new Gtk.MenuItem ();
@@ -73,12 +79,12 @@ namespace IndicatorKDEConnect {
 
             broswe_items.set_submenu (broswe_items_sub_menu);
 
-            //build_browse_sub_paths ();
+            build_browse_sub_paths ();
 
             indicator_menu.append (broswe_items);
             /* */
 
-            share_files_item = new Gtk.MenuItem.with_label ("Send file(s)");
+            share_files_item = new Gtk.MenuItem.with_label ("Send File(s)");
 
             share_files_item.activate.connect (() => {
                 dialog_file_selector ();              
@@ -99,6 +105,21 @@ namespace IndicatorKDEConnect {
             });
 
             indicator_menu.append (share_url_item); 
+
+            /*Telephony Group */
+            telephony_separator = new Gtk.SeparatorMenuItem ();
+            indicator_menu.append (telephony_separator); 
+
+            send_sms_item = new Gtk.SeparatorMenuItem ();
+            indicator_menu.append (send_sms_item); 
+
+            send_sms_item = new Gtk.MenuItem.with_label ("Send SMS");
+
+            send_sms_item.activate.connect (() => {
+                Utils.run_sms_python (deviceManager.id);
+            });
+
+            indicator_menu.append (send_sms_item);  
             
             /*Utils Group */   
             utils_separator = new Gtk.SeparatorMenuItem ();
@@ -204,7 +225,8 @@ namespace IndicatorKDEConnect {
             update_unpair_request_group ();  
             upadate_utils_group ();  
             upadate_file_share_group ();  
-            update_items_based_on_settings ();      
+            update_items_based_on_settings ();  
+            upadate_telephony_group ();    
         }   
 
         ~Device () {
@@ -270,6 +292,13 @@ namespace IndicatorKDEConnect {
             broswe_items.visible = _sftp;                                              
         }
 
+        private void upadate_telephony_group () {
+            var _telephony = deviceManager._has_plugin ("kdeconnect_telephony");
+
+            telephony_separator.visible = 
+            telephony_separator.visible = _telephony;
+        }
+
         private void update_pairing_reject_group (bool? mode = null) {
             if (mode == null)
                 mode = deviceManager.has_pairing_requests;
@@ -305,7 +334,8 @@ namespace IndicatorKDEConnect {
         
         private void update_indicator_status (bool? visible = null) {
             if (visible == null)
-                visible = deviceManager.is_reachable;            
+                visible = deviceManager.is_reachable && 
+                          !deviceManager._get_property_bool ("only-paired-devices");            
 
             if (visible)
                 indicator.set_status (AppIndicator.IndicatorStatus.ACTIVE);
@@ -323,12 +353,15 @@ namespace IndicatorKDEConnect {
         public void update_items_based_on_settings (string? property = null) {            
             if (property != null) {
                 switch (property) {
+                    case "only-paired-devices" :                        
+                        update_indicator_status ();                          
+                    break;
+
                     case "browse-items" :                        
                         if (deviceManager._get_property_bool (property))
                             broswe_items.show ();         
                         else
-                            broswe_items.hide ();
-                            
+                            broswe_items.hide ();                            
                     break;
     
                     case "send-url" :
@@ -336,6 +369,13 @@ namespace IndicatorKDEConnect {
                             share_url_item.show ();
                         else
                             share_url_item.hide ();
+                    break;
+
+                    case "send-sms" :
+                        if (deviceManager._get_property_bool (property))
+                            send_sms_item.show ();
+                        else    
+                            send_sms_item.hide ();
                     break;
     
                     case "find-my-device" :
@@ -368,6 +408,7 @@ namespace IndicatorKDEConnect {
             var directories = deviceManager._get_directories();   
 
             if(directories.length () > 0) {
+                broswe_items_sub_menu = new Gtk.Menu ();
                 directories.@foreach ((pair)=>{
                     message(pair.get_secound());
 

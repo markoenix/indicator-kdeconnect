@@ -36,7 +36,7 @@ namespace IndicatorKDEConnectSettings {
 		}
 
 		protected override void activate () {			
-			this.settings = new GLib.Settings("com.indicator-kdeconnect.daemon");
+			this.settings = new GLib.Settings(Config.SETTINGS_NAME);
 			create_window ();		
 		}
 
@@ -87,66 +87,8 @@ namespace IndicatorKDEConnectSettings {
 
 			this.ok_button.clicked.connect (() => {
 				this.settings.apply ();
-				if (need_restart)
-					restart();
 				this.window.close ();
 			});
-		}
-
-		private void restart () {
-			string std_out;
-
-			message("Getting PID to restart");
-
-            try {
-			    Process.spawn_sync (null,
-			              			new string[]{"pidof",
-			     	         		             "indicator-kdeconnect"},
-			    					null,
-			    					SpawnFlags.SEARCH_PATH,
-			    					null,
-			                        out std_out,
-			    					null,
-			    					null);
-			} 
-			catch (Error e) {
-			    message (e.message);
-			}
-
-			if (std_out != ""){
-       			message("Killing PID");
-
-    			int pid = int.parse(std_out);
-
-    			try {
-	    	    	Process.spawn_sync (null,
-	        		    	        	new string[]{"kill",
-		    	                    	pid.to_string()},
-			    			        	null,
-			    			        	SpawnFlags.SEARCH_PATH,
-			    			        	null,
-			                        	out std_out,
-			    				    	null,
-			    				    	null);
-				} 
-				catch (Error e) {
-			    	message (e.message);
-				}
-			
-				message("Restart process");
-
-            	try {
-		        	Process.spawn_async (null,
-		                			 	new string[]{"indicator-kdeconnect"},
-				         			 	null,
-				        			 	SpawnFlags.SEARCH_PATH,
-					                 	null,
-				                     	null);
-				} 
-				catch (Error e) {
-		    		message (e.message);
-				} 
-			}       	
 		}	
 
 		private Box create_visibility_setts () {
@@ -157,8 +99,7 @@ namespace IndicatorKDEConnectSettings {
 			switch1.set_active (settings.get_boolean ("only-paired-devices"));
 
 			switch1.notify["active"].connect (() => {				
-				settings.set_boolean ("only-paired-devices", switch1.active);
-				need_restart = !need_restart;					
+				settings.set_boolean ("only-paired-devices", switch1.active);								
 			});
 			
 			Box hbox1 = new Box (Gtk.Orientation.HORIZONTAL, 50);
@@ -172,7 +113,7 @@ namespace IndicatorKDEConnectSettings {
 
 			//----------------------------------------------------//
 
-			Label label2 = new Label (_("Show device directories: "));
+			Label label2 = new Label (_("Show Menu Directories: "));
 
 			Switch switch2 = new Switch ();
 
@@ -193,7 +134,7 @@ namespace IndicatorKDEConnectSettings {
 
 			//----------------------------------------------------//
 
-			Label label3 = new Label (_("Show option to send URL: "));
+			Label label3 = new Label (_("Show Menu Send URL: "));
 
 			Switch switch3 = new Switch ();
 		
@@ -214,12 +155,57 @@ namespace IndicatorKDEConnectSettings {
 
 			//---------------------------------------------------//
 
+
+			Label label4 = new Label (_("Show Menu Find Phone: "));
+
+			Switch switch4 = new Switch ();
+		
+    		switch4.set_active (settings.get_boolean ("find-my-device"));
+
+			switch4.notify["active"].connect (() => {
+				settings.set_boolean ("find-my-device", switch4.active);
+			});	
+
+			Box hbox4 = new Box (Gtk.Orientation.HORIZONTAL, 50);
+
+			hbox4.pack_start (label4, true, true, 0);
+			hbox4.pack_start (switch4, true, true, 0);
+
+			ListBoxRow boxrow4 = new ListBoxRow ();
+
+			boxrow4.add (hbox4);
+
+			//---------------------------------------------------//
+
+			Label label5 = new Label (_("Show Menu Send SMS: "));
+
+			Switch switch5 = new Switch ();
+		
+    		switch5.set_active (settings.get_boolean ("send-sms"));
+
+			switch5.notify["active"].connect (() => {
+				settings.set_boolean ("send-sms", switch5.active);
+			});	
+
+			Box hbox5 = new Box (Gtk.Orientation.HORIZONTAL, 50);
+
+			hbox5.pack_start (label5, true, true, 0);
+			hbox5.pack_start (switch5, true, true, 0);
+
+			ListBoxRow boxrow5 = new ListBoxRow ();
+
+			boxrow5.add (hbox5);
+
+			//---------------------------------------------------//
+
 			ListBox list_box = new ListBox ();
 			list_box.set_selection_mode (Gtk.SelectionMode.NONE);
 
 			list_box.add (boxrow1);
 			list_box.add (boxrow2);
 			list_box.add (boxrow3);	
+			list_box.add (boxrow5);
+			list_box.add (boxrow4);
 
 			//----------------------------------------------------//
 

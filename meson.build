@@ -12,8 +12,6 @@ short_description = 'AppIndicator for KDEConnect'
 
 api_version = '1.3'
 
-meson_dir = meson.current_source_dir()
-
 as_version = meson.project_version() # set in project() below
 ver_arr = as_version.split('.')
 
@@ -29,8 +27,8 @@ if buildtype.startswith('debug')
     add_global_arguments('--define=DEBUG_BUILD', language : 'vala')
 endif
 
-# The subdir where plugin files should be installed, with respect to prefix
-executable_subdir = join_paths(get_option('datadir'), meson.project_name(), 'plugins')
+meson_dir = meson.current_source_dir()
+executable_subdir = join_paths(get_option('datadir'), meson.project_name())
 
 # The name of the shared library.  Note that a "lib" prefix will be
 # added automatically on systems where that is the convention.
