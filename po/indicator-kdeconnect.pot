@@ -226,3 +226,32 @@ msgstr ""
 #: data/extensions/kdeconnect-send-nautilus.py:80 data/extensions/kdeconncet-send-nemo.py:80 data/extensions/kdeconnect-send-caja.py:80
 msgid "send file(s) with KDE Connect"
 msgstr ""
+
+#: src/sendvia/main.vala:126 
+msgid "Reload the list of devices"
+msgstr ""
+
+#: src/sendvia/main.vala:132
+msgid "Enable alternative multi device selection"
+msgstr ""
+
+
+#: src/settings/main.vala:101
+msgid "Show Menu Directories: "
+msgstr ""
+
+#: src/settings/main.vala:143
+msgid "Show Menu Send URL: "
+msgstr ""
+
+#: src/settings/main.vala:143
+msgid "Show Menu Find Phone: "
+msgstr ""
+
+#: src/settings/main.vala:143
+msgid "Show Menu Send SMS: "
+msgstr ""
+
+#: src/settings/main.vala:143
+msgid "Show Menu Info: "
+msgstr ""

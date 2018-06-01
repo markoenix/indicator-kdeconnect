@@ -264,5 +264,13 @@ msgstr "KDEConnect Enviar Para"
 msgid "send file(s) with kdeconnect"
 msgstr "enviar ficheiro(s) com kdeconnect"
 
+#: src/sendvia/main.vala:126 
+msgid "Reload the list of devices"
+msgstr "Recarregar lista de dispositivos"
+
+#: src/sendvia/main.vala:132
+msgid "Enable alternative multi device selection"
+msgstr "Habilitar modo alternativo de selecionar multiplos dispositivos"
+
 #~ msgid "Phone number: "
 #~ msgstr "Telefone: "

@@ -16,6 +16,8 @@ namespace IndicatorKDEConnect {
 
         private Gtk.MenuItem battery_item;
 
+        private Gtk.MenuItem info_item;
+
         private Gtk.MenuItem broswe_item;
         private Gtk.Menu broswe_items_sub_menu;
         private Gtk.MenuItem broswe_items;
@@ -55,7 +57,11 @@ namespace IndicatorKDEConnect {
             name_item.activate.connect (() => {
                 Utils.run_settings ();
             });
-            indicator_menu.append (name_item);        
+            indicator_menu.append (name_item); 
+            
+            info_item = new Gtk.MenuItem ();
+
+            indicator_menu.append (info_item); 
             
             battery_item = new Gtk.MenuItem ();
             indicator_menu.append (battery_item);
@@ -188,8 +194,7 @@ namespace IndicatorKDEConnect {
 
             deviceManager.plugins_changed.connect (() => {
                 update_battery_item ();
-                upadate_utils_group ();
-                upadate_file_share_group ();
+                update_all_pluggin_items ();
             });
 
             deviceManager.trusted_status_changed.connect ((trusted) => {
@@ -219,27 +224,43 @@ namespace IndicatorKDEConnect {
             /*Role updates */
             indicator_menu.show_all ();  
 
+            update_items_based_on_settings ();
+            update_info_item ();
             update_indicator_status ();
             update_battery_item ();
             update_pairing_reject_group ();
-            update_unpair_request_group ();  
-            upadate_utils_group ();  
-            upadate_file_share_group ();  
-            update_items_based_on_settings ();  
-            upadate_telephony_group ();    
+            update_unpair_request_group ();                           
+            update_all_pluggin_items (); 
+                             
         }   
 
         ~Device () {
 
         }
 
+        private void update_icon_item () {
+            indicator.set_icon_full (deviceManager.icon, 
+                                     "indicator-kdeconnect");
+        }
+
         private void update_name_item (string name) {
             name_item.label = deviceManager.name;
         }
 
-        private void update_icon_item() {
-            indicator.set_icon_full (deviceManager.icon, 
-                                     "indicator-kdeconnect");
+        private void update_info_item () {            
+            if (deviceManager.is_reachable) {
+                if (deviceManager.is_trusted) {
+                    info_item.label = _("Device Reachable and Trusted");                   
+                }
+                else {
+                    info_item.label = _("Device Reachable but Not Trusted");     
+                }
+            } 
+            else {
+                if (deviceManager.is_trusted) {
+                    info_item.label = _("Device Trusted but not Reachable");    
+                }
+            }            
         }
 
         private void update_battery_item (int? charge = null, 
@@ -272,37 +293,57 @@ namespace IndicatorKDEConnect {
                 battery_item.label += _(" (charging)");                             
         }
 
-        private void upadate_utils_group () {
-            var _findmyphone = deviceManager._has_plugin ("kdeconnect_findmyphone");
+        private void update_indicator_status (bool? visible = null) {
+            if (visible == null)
+                visible = deviceManager.is_reachable;// && 
+                          //!deviceManager._get_property_bool ("only-paired-devices");            
+
+            if (visible)
+                indicator.set_status (AppIndicator.IndicatorStatus.ACTIVE);
+            else
+                indicator.set_status (AppIndicator.IndicatorStatus.PASSIVE);
             
-            utils_separator.visible = _findmyphone;
-            ring_item.visible = _findmyphone;                         
+            update_icon_item ();
+            update_info_item ();
         }
 
-        private void upadate_file_share_group () {
+        private void update_all_pluggin_items () {
+            var _trusted = deviceManager.is_trusted;
+            //var _reachable = deviceManager.is_reachable;
+
+            /* Informations */
+            update_battery_item ();
+
+            /* Share and SFTP */
             var _share = deviceManager._has_plugin ("kdeconnect_share");
             var _sftp = deviceManager._has_plugin ("kdeconnect_sftp");
 
-            share_separator.visible = _share || _sftp; 
+            share_separator.visible = (_share || _sftp) && _trusted; 
 
-            share_files_item.visible = _share;
-            share_url_item.visible = _share;  
+            share_files_item.visible = 
+            share_url_item.visible = _share && _trusted;  
                                              
-            broswe_item.visible = _sftp;  
-            broswe_items.visible = _sftp;                                              
-        }
-
-        private void upadate_telephony_group () {
+            broswe_item.visible =   
+            broswe_items.visible = _sftp && _trusted;    
+            
+            /* Telephony */
             var _telephony = deviceManager._has_plugin ("kdeconnect_telephony");
 
             telephony_separator.visible = 
-            telephony_separator.visible = _telephony;
+            send_sms_item.visible = _telephony && _trusted;
+
+            /* Utils */
+            var _findmyphone = deviceManager._has_plugin ("kdeconnect_findmyphone");
+            
+            utils_separator.visible = 
+            ring_item.visible = _findmyphone; 
         }
 
         private void update_pairing_reject_group (bool? mode = null) {
             if (mode == null)
                 mode = deviceManager.has_pairing_requests;
 
+            request_pair_item.visible = !((bool)mode); 
             accept_pair_item.visible = 
             reject_pair_item.visible = 
             accept_reject_separator.visible = mode;
@@ -312,7 +353,7 @@ namespace IndicatorKDEConnect {
             if (mode == null)
                 mode = deviceManager.is_trusted;
 
-            request_pair_item.visible = !(bool)mode;                
+            request_pair_item.visible = !((bool)mode);                
             unpair_pair_item.visible =         
             unpair_request_separator.visible = mode;
         }
@@ -329,20 +370,7 @@ namespace IndicatorKDEConnect {
 
         private void set_trusted_change_mode (bool trusted) {
             update_unpair_request_group (trusted);
-
-        }
-        
-        private void update_indicator_status (bool? visible = null) {
-            if (visible == null)
-                visible = deviceManager.is_reachable && 
-                          !deviceManager._get_property_bool ("only-paired-devices");            
-
-            if (visible)
-                indicator.set_status (AppIndicator.IndicatorStatus.ACTIVE);
-            else
-                indicator.set_status (AppIndicator.IndicatorStatus.PASSIVE);
-            
-            update_icon_item ();
+            update_all_pluggin_items ();
         }
 
         public void visibility_changed (bool visible) {
@@ -355,6 +383,13 @@ namespace IndicatorKDEConnect {
                 switch (property) {
                     case "only-paired-devices" :                        
                         update_indicator_status ();                          
+                    break;
+
+                    case "info-item" :
+                        if (deviceManager._get_property_bool (property))
+                            info_item.show ();         
+                        else
+                            info_item.hide ();                          
                     break;
 
                     case "browse-items" :                        
@@ -387,6 +422,16 @@ namespace IndicatorKDEConnect {
                 }
             }
             else {
+                if (deviceManager._get_property_bool ("only-paired-devices"))
+                    broswe_items.show ();         
+                else
+                    broswe_items.hide ();
+
+                if (deviceManager._get_property_bool ("info-item"))
+                    info_item.show ();         
+                else
+                    info_item.hide ();
+
                 if (deviceManager._get_property_bool ("browse-items"))
                     broswe_items.show ();         
                 else
@@ -396,6 +441,11 @@ namespace IndicatorKDEConnect {
                     share_url_item.show ();
                 else
                     share_url_item.hide ();
+                    
+                if (deviceManager._get_property_bool ("send-sms"))
+                    send_sms_item.show ();
+                else    
+                    send_sms_item.hide ();
                 
                 if (deviceManager._get_property_bool ("find-my-device"))
                     ring_item.show ();
@@ -405,6 +455,14 @@ namespace IndicatorKDEConnect {
         }
 
         private void build_browse_sub_paths () {
+            if (!deviceManager.is_sftp_mounted) {
+                deviceManager.mount_sftp ();
+
+                Timeout.add (3000, ()=> { 
+                    return false;
+                });
+            }
+
             var directories = deviceManager._get_directories();   
 
             if(directories.length () > 0) {

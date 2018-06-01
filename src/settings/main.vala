@@ -6,9 +6,6 @@
 using Gtk;
 using IndicatorKDEConnect;
 
-[CCode(cname="GETTEXT_PACKAGE")] extern const string GETTEXT_PACKAGE;
-[CCode(cname="LOCALEDIR")] extern const string LOCALEDIR;
-
 namespace IndicatorKDEConnectSettings {
 	class SettingsDialog : Gtk.Application {
 		private static bool version;
@@ -23,12 +20,12 @@ namespace IndicatorKDEConnectSettings {
 		private GLib.Settings settings;
 		private ApplicationWindow window;
 		private HeaderBar headerBar;
-		private Button cancel_button;
+		//private Button cancel_button;
 		private Button ok_button;
 		private StyleContext style_context;
 		private Stack stack;
 		private StackSwitcher stack_switcher;
-		private bool need_restart;		
+		//private bool need_restart;		
 		
 		public SettingsDialog () {
 			Object (application_id: "com.indicator-kdeconnect.settings",
@@ -48,8 +45,8 @@ namespace IndicatorKDEConnectSettings {
 
 			this.headerBar = new Gtk.HeaderBar ();
 
-			this.cancel_button = new Gtk.Button.with_label (_("Cancel"));
-			this.headerBar.pack_start (cancel_button);
+			//this.cancel_button = new Gtk.Button.with_label (_("Cancel"));
+			//this.headerBar.pack_start (cancel_button);
 
 			this.ok_button = new Gtk.Button.with_label (_("Apply"));
 			this.style_context = ok_button.get_style_context ();
@@ -60,16 +57,25 @@ namespace IndicatorKDEConnectSettings {
 
 			this.stack.set_transition_type (Gtk.StackTransitionType.SLIDE_LEFT_RIGHT);
 
-			this.stack.add_titled(create_visibility_setts (), "visibility", _("Visibility"));
+			this.stack.add_titled(create_visibility_setts (), 
+								  "visibility", 
+								  _("Visibility"));
 
-			this.stack.add_titled (create_sms_setts (), "sms", _("SMS"));
+			this.stack.add_titled (create_sms_setts (), 
+								   "sms", 
+								   _("SMS"));
 
         	this.stack_switcher = new StackSwitcher ();
         	this.stack_switcher.halign = Gtk.Align.CENTER;
 			this.stack_switcher.set_stack (stack);
 
-			Box title = new Box (Gtk.Orientation.VERTICAL, 0);
-        	title.pack_start (stack_switcher, false, false, 0);
+			Box title = new Box (Gtk.Orientation.VERTICAL, 
+								 0);
+								 
+			title.pack_start (stack_switcher, 
+							  false, 
+							  false, 
+							  0);
 
         	create_signals ();
 
@@ -81,9 +87,9 @@ namespace IndicatorKDEConnectSettings {
 		}
 
 		private void create_signals () {
-			this.cancel_button.clicked.connect (() => {				
-				this.window.close ();
-			});
+			//  this.cancel_button.clicked.connect (() => {				
+			//  	this.window.close ();
+			//  });
 
 			this.ok_button.clicked.connect (() => {
 				this.settings.apply ();
@@ -99,13 +105,21 @@ namespace IndicatorKDEConnectSettings {
 			switch1.set_active (settings.get_boolean ("only-paired-devices"));
 
 			switch1.notify["active"].connect (() => {				
-				settings.set_boolean ("only-paired-devices", switch1.active);								
+				settings.set_boolean ("only-paired-devices", 
+				                      switch1.active);								
 			});
 			
 			Box hbox1 = new Box (Gtk.Orientation.HORIZONTAL, 50);
 
-			hbox1.pack_start (label1, true, true, 0);
-			hbox1.pack_start (switch1, true, true, 0);
+			hbox1.pack_start (label1, 
+							  true, 
+							  true, 
+							  0);
+
+			hbox1.pack_start (switch1, 
+							  true,
+							  true, 
+							  0);
 
 			ListBoxRow boxrow1 = new ListBoxRow ();
 
@@ -120,13 +134,21 @@ namespace IndicatorKDEConnectSettings {
 			switch2.set_active (settings.get_boolean ("browse-items"));
 
 			switch2.notify["active"].connect (() => {
-				settings.set_boolean ("browse-items", switch2.active);
+				settings.set_boolean ("browse-items", 
+				                      switch2.active);
 			});	
 
 			Box hbox2 = new Box (Gtk.Orientation.HORIZONTAL, 50);
 
-			hbox2.pack_start (label2, true, true, 0);
-			hbox2.pack_start (switch2, true, true, 0);
+			hbox2.pack_start (label2, 
+							  true, 
+							  true, 
+							  0);
+
+			hbox2.pack_start (switch2, 
+							  true, 
+							  true, 
+							  0);
 
 			ListBoxRow boxrow2 = new ListBoxRow ();
 
@@ -141,13 +163,21 @@ namespace IndicatorKDEConnectSettings {
     		switch3.set_active (settings.get_boolean ("send-url"));
 
 			switch3.notify["active"].connect (() => {
-				settings.set_boolean ("send-url", switch3.active);
+				settings.set_boolean ("send-url", 
+									  switch3.active);
 			});	
 
 			Box hbox3 = new Box (Gtk.Orientation.HORIZONTAL, 50);
 
-			hbox3.pack_start (label3, true, true, 0);
-			hbox3.pack_start (switch3, true, true, 0);
+			hbox3.pack_start (label3, 
+							  true, 
+							  true, 
+							  0);
+
+			hbox3.pack_start (switch3,			  
+							  true, 
+							  true, 
+							  0);
 
 			ListBoxRow boxrow3 = new ListBoxRow ();
 
@@ -163,13 +193,21 @@ namespace IndicatorKDEConnectSettings {
     		switch4.set_active (settings.get_boolean ("find-my-device"));
 
 			switch4.notify["active"].connect (() => {
-				settings.set_boolean ("find-my-device", switch4.active);
+				settings.set_boolean ("find-my-device", 
+				                      switch4.active);
 			});	
 
 			Box hbox4 = new Box (Gtk.Orientation.HORIZONTAL, 50);
 
-			hbox4.pack_start (label4, true, true, 0);
-			hbox4.pack_start (switch4, true, true, 0);
+			hbox4.pack_start (label4, 
+							  true, 
+							  true, 
+							  0);
+
+			hbox4.pack_start (switch4, 
+							  true, 
+							  true, 
+							  0);
 
 			ListBoxRow boxrow4 = new ListBoxRow ();
 
@@ -184,13 +222,21 @@ namespace IndicatorKDEConnectSettings {
     		switch5.set_active (settings.get_boolean ("send-sms"));
 
 			switch5.notify["active"].connect (() => {
-				settings.set_boolean ("send-sms", switch5.active);
+				settings.set_boolean ("send-sms", 
+									  switch5.active);
 			});	
 
 			Box hbox5 = new Box (Gtk.Orientation.HORIZONTAL, 50);
 
-			hbox5.pack_start (label5, true, true, 0);
-			hbox5.pack_start (switch5, true, true, 0);
+			hbox5.pack_start (label5, 
+							  true, 
+							  true, 
+							  0);
+
+			hbox5.pack_start (switch5, 
+							  true, 
+							  true, 
+							  0);
 
 			ListBoxRow boxrow5 = new ListBoxRow ();
 
@@ -198,10 +244,40 @@ namespace IndicatorKDEConnectSettings {
 
 			//---------------------------------------------------//
 
+			Label label6 = new Label (_("Show Menu Info: "));
+
+			Switch switch6 = new Switch ();
+		
+    		switch6.set_active (settings.get_boolean ("info-item"));
+
+			switch6.notify["active"].connect (() => {
+				settings.set_boolean ("info-item", 
+									  switch6.active);
+			});	
+
+			Box hbox6 = new Box (Gtk.Orientation.HORIZONTAL, 50);
+
+			hbox6.pack_start (label6, 
+							  true, 
+							  true, 
+							  0);
+
+			hbox6.pack_start (switch6, 
+							  true, 
+							  true, 
+							  0);
+
+			ListBoxRow boxrow6 = new ListBoxRow ();
+
+			boxrow6.add (hbox6);
+
+			//---------------------------------------------------//
+
 			ListBox list_box = new ListBox ();
 			list_box.set_selection_mode (Gtk.SelectionMode.NONE);
-
+			
 			list_box.add (boxrow1);
+			list_box.add (boxrow6);
 			list_box.add (boxrow2);
 			list_box.add (boxrow3);	
 			list_box.add (boxrow5);
@@ -209,8 +285,12 @@ namespace IndicatorKDEConnectSettings {
 
 			//----------------------------------------------------//
 
-			Box vbox = new Box (Gtk.Orientation.HORIZONTAL, 0);
-        	vbox.pack_start (list_box, true, true, 0);
+			Box vbox = new Box (Gtk.Orientation.HORIZONTAL, 
+			                    0);
+			vbox.pack_start (list_box, 
+							 true, 
+							 true, 
+							 0);
 
         	return vbox;
 		}
@@ -231,7 +311,8 @@ namespace IndicatorKDEConnectSettings {
 			File contacts = File.new_for_path (_contacts);
 			File token = File.new_for_path (_token);
 
-			if (contacts.query_exists () || token.query_exists ())
+			if (contacts.query_exists () || 
+			    token.query_exists ())
 				button1.sensitive = true;
 
 			button1.clicked.connect (() => {
@@ -262,24 +343,42 @@ namespace IndicatorKDEConnectSettings {
 			ListBox list_box = new ListBox ();
 			list_box.set_selection_mode (Gtk.SelectionMode.NONE);
 
-			Box hbox1 = new Box (Gtk.Orientation.HORIZONTAL, 50);
+			Box hbox1 = new Box (Gtk.Orientation.HORIZONTAL, 
+			                     50);
 
 			ListBoxRow boxrow1 = new ListBoxRow ();
 
 			boxrow1.add (hbox1);
 
-			hbox1.pack_start (label1, true, true, 0);
-			hbox1.pack_start (button1, true, true, 0);
+			hbox1.pack_start (label1, 
+							  true, 
+							  true, 
+							  0);
+
+			hbox1.pack_start (button1, 
+							  true, 
+							  true, 
+							  0);
 
 			list_box.add (boxrow1);
 
-			Box vbox = new Box (Gtk.Orientation.HORIZONTAL, 0);
-        	vbox.pack_start (list_box, true, true, 0);
+			Box vbox = new Box (Gtk.Orientation.HORIZONTAL, 
+								0);
+								
+			vbox.pack_start (list_box, 
+							 true, 
+							 true, 
+							 0);
 
         	return vbox;
         }
 
         static int main (string[] args) {
+			GLib.Intl.setlocale (GLib.LocaleCategory.ALL, "");
+			GLib.Intl.textdomain (Config.GETTEXT_PACKAGE);
+			GLib.Intl.bindtextdomain (Config.GETTEXT_PACKAGE, Config.PACKAGE_LOCALEDIR);
+			GLib.Intl.bind_textdomain_codeset (Config.GETTEXT_PACKAGE, "UTF-8");
+
 			try {
 				var opt_context = new OptionContext ("- settings-ind-kdec");
 				opt_context.set_help_enabled (true);

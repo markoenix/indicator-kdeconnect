@@ -1,5 +1,5 @@
 <schemalist>
-  <schema id="com.indicator-kdeconnect.daemon" path="/com/indicator_kdeconnect/daemon/" gettext-domain="indicator-kdeconnect">
+  <schema id="com.indicator-kdeconnect" path="/com/indicator_kdeconnect/" gettext-domain="indicator-kdeconnect">
 
     <key name="only-paired-devices" type="b">
       <default>false</default>
@@ -9,17 +9,25 @@
       </description>
     </key>
 
+    <key name="info-item" type="b">
+      <default>true</default>
+      <summary>Show info menu</summary>
+      <description>
+        Show info menu
+      </description>
+    </key>
+
     <key name="browse-items" type="b">
       <default>true</default>
-      <summary>Show directory list</summary>
+      <summary>Show browse items</summary>
       <description>
-        Show directory list of the device
+        Show browse items
       </description>
     </key>
 
     <key name="send-url" type="b">
       <default>true</default>
-      <summary>Show option to send URL</summary>
+      <summary>Show send URL</summary>
       <description>
         Show option to send URL
       </description>
@@ -27,17 +35,17 @@
 
     <key name="send-sms" type="b">
       <default>true</default>
-      <summary>Show option to send URL</summary>
+      <summary>Show send SMS</summary>
       <description>
-        Show option to send URL
+        Show send SMS item
       </description>
     </key>
 
     <key name="find-my-device" type="b">
       <default>true</default>
-      <summary>Show option to send URL</summary>
+      <summary>Show find my device menu</summary>
       <description>
-        Show option to send URL
+        Show find my device menu
       </description>
     </key>
 

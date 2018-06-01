@@ -1,5 +1,7 @@
 to compile you should have
-        cmake
+    meson
+	ninja
+	libgee
 	gtk+-3.0-dev
 	libappindicator3-dev
 	valac
@@ -12,7 +14,7 @@ on Ubuntu:
 -> sudo apt install python3-requests-oauthlib
 -> sudo apt install python-nautilus (if you use Nautilus) 
                     python-nemo (if you use Nemo)
- 		    python-caja (if you use Caja)  
+ 		    		python-caja (if you use Caja)  
 
 on Fedora:
 -> sudo dnf install gtk3-devel
@@ -21,8 +23,8 @@ on Fedora:
 -> sudo dnf install vala-devel
 -> sudo dnf install python3-requests-oauthlib
 -> sudo dnf install nautilus-python (if you use Nautilus)
-		    nemo-python (if you use Nemo)
-		    caja-python (if you use Caja)
+		    		nemo-python (if you use Nemo)
+		    		caja-python (if you use Caja)
 
 
 Obviously you should install kdeconnect 1.0.0 or up to use the features
@@ -30,9 +32,9 @@ Obviously you should install kdeconnect 1.0.0 or up to use the features
 compile:
 	mkdir build
 	cd build
-	cmake .. -DCMAKE_INSTALL_PREFIX=/usr
-	make
-	sudo make install
+	meson .. --prefix=/usr/  --libdir=/usr/lib/
+	ninja 
+	sudo ninja install
 
 uninstall: 
 	sudo make uninstall

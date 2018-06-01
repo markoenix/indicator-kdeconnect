@@ -77,6 +77,8 @@ namespace IndicatorKDEConnect {
                 subscribe_property_bool (ref settings,
                                          "only-paired-devices");
                 subscribe_property_bool (ref settings,
+                                         "info-item");
+                subscribe_property_bool (ref settings,
                                          "browse-items");
                 subscribe_property_bool (ref settings,
                                          "send-url");
@@ -232,7 +234,17 @@ namespace IndicatorKDEConnect {
                     return charge (ref conn,
                                    path);
             }
-        }        
+        }  
+        
+        public bool is_sftp_mounted {
+            get {
+                if (!_has_plugin ("kdeconnect_sftp"))
+                    return false;
+                else
+                    return is_mounted (ref conn,
+                                       path); 
+            }
+        }
 
         public void _accept_pairing () {
             accept_pairing (ref conn, 
@@ -272,9 +284,25 @@ namespace IndicatorKDEConnect {
                    url);
         }
 
+        public void _share_uris (SList<File> files) {
+            files.@foreach ((item)=> {
+                share (ref conn,
+                       path,
+                       item.get_uri ());
+            });            
+        }
+
         public SList<Pair<string,string>> _get_directories () {
             return get_directories (ref conn,
                                     path);
+        }
+
+        public void mount_sftp () {
+            if (!_has_plugin ("kdeconnect_sftp"))
+                return;
+
+            mount(ref conn,
+                path);        
         }
 
         public void browse (string path_to_open="") {
@@ -287,15 +315,13 @@ namespace IndicatorKDEConnect {
             message("Open the path %s", path_to_open.length == 0 ? 
                                         _mount_point : 
                                         path_to_open);
-            if (is_mounted (ref conn,
-                            path)) {
+            if (is_sftp_mounted) {
                 Utils.open_file (path_to_open.length == 0 ? 
                                  _mount_point : 
                                  path_to_open);
             }
             else {
-                mount(ref conn,
-                      path);
+                mount_sftp ();
                 Timeout.add (1000, ()=> { // idle for a few second to let sftp kickin
                     Utils.open_file (path_to_open.length == 0 ? 
                                      _mount_point : 

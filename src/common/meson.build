@@ -16,13 +16,13 @@ indicator_kdeconnect_conf.set_quoted('PACKAGE_VERSION', meson.project_version(),
                   description: 'Define to the version of this package.')
 indicator_kdeconnect_conf.set_quoted('VERSION', meson.project_version(),
                   description: 'Version number of package')
-indicator_kdeconnect_conf.set_quoted('PACKAGE_DATADIR', join_paths('/usr/lib/', get_option('datadir')),
+indicator_kdeconnect_conf.set_quoted('PACKAGE_DATADIR', join_paths(get_option('prefix'), get_option('datadir')),
                   description: 'Define to datadir of this package.')
-indicator_kdeconnect_conf.set_quoted('PACKAGE_LOCALEDIR', join_paths('/usr/lib/', get_option('datadir'), 'locale'),
+indicator_kdeconnect_conf.set_quoted('PACKAGE_LOCALEDIR', join_paths(get_option('prefix'), get_option('datadir'), 'locale'),
                   description: 'Define to locale dir of this package.')
 indicator_kdeconnect_conf.set_quoted('SETTINGS_PATH', '/apps/indicator-kdeconnect/',
                   description: 'Define to root path of gsettings for this package.')
-indicator_kdeconnect_conf.set_quoted('SETTINGS_NAME', 'com.indicator-kdeconnect.daemon',
+indicator_kdeconnect_conf.set_quoted('SETTINGS_NAME', 'com.indicator-kdeconnect',
                   description: 'Define to root bus name for this package.')
 
 configure_file(output: 'config-header.vala',
