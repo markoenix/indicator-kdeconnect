@@ -281,8 +281,8 @@ namespace SendViaKDEConnect{
 		private void reload_device_list() {
 			this.list_store.clear ();
 
-			string[] id_list = devices(ref conn, 
-			                           true);
+			string[] id_list = devices (ref conn, 
+			                            true);
 								
 			this.device_list.clear ();											
 
@@ -308,16 +308,16 @@ namespace SendViaKDEConnect{
 		}
 
 		private void add_device (string path) {
-			reload_device_list();
+			reload_device_list ();
 		}
 
 		private void remove_device (string path) {
-			reload_device_list();
+			reload_device_list ();
 		}
 
 		private void  distribute_visibility_changes  (string path,
 													  bool visible) {
-			reload_device_list();														
+			reload_device_list ();														
 		}
 
 		private void send_items (){			

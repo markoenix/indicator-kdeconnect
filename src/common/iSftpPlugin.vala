@@ -137,9 +137,10 @@ namespace IndicatorKDEConnect {
             return return_value;
         }
 
-        protected virtual SList<Pair<string,string>> get_directories (ref DBusConnection conn,
+        protected virtual Variant get_directories (ref DBusConnection conn,
                                                                       string path) {
-            var directories = new SList<Pair<string,string>>();
+            //var directories = new SList<Pair<string,string>>();
+            Variant return_value = null;
             try {
                 var return_variant = conn.call_sync ("org.kde.kdeconnect",
                                                      path+"/sftp",
@@ -152,19 +153,14 @@ namespace IndicatorKDEConnect {
                                                      null);		        
                 
                 Variant variant = return_variant.get_child_value (0);
-                VariantIter iter = variant.iterator ();
-
-                Variant? val = null;
-                string? key = null;
-
-	            while (iter.next ("{sv}", ref key, ref val))
-                    directories.append (new Pair<string,string>(key, val.dup_string ()));	
-                    
-                message ("Founded Directories %d", (int)directories.length ());                        
+                
+                return_value = variant;
+                                
+                //message ("Founded Directories %d", (int)directories.length ());                        
             } catch (Error e) {
             	message (e.message);
             }        
-            return directories;
+            return return_value;
         }
 
         

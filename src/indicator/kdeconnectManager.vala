@@ -43,7 +43,7 @@ namespace IndicatorKDEConnect {
                     discovery_mode (ref conn, true);                     
                 }
                 else {
-                    new ErrorMessage.show_message("Cannot connect to KDEConnect DBus Service");
+                    new ErrorMessage.show_message(_("Cannot connect to KDEConnect DBus Service"));
                     return;
                 }
             } 
@@ -104,7 +104,11 @@ namespace IndicatorKDEConnect {
 
             if (devices_connected.size == 0)
                 message ("No trusted device found, open KDE Connect in your phone to start pairing");
-        }          
+        }  
+        
+        public int get_number_connected_devices () {
+            return devices_connected.size;
+        }
         
         public void add_device (string path) {
             message ("Device added To list of devices, %s", path);            

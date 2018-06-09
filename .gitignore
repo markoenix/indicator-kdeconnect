@@ -4,5 +4,5 @@ debian/files
 debian/indicator-kdeconnect*
 *.swp
 *~
-/src/Constants.vala
 .buildconfig
+uncrustify.cfg

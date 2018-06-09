@@ -1,6 +1,6 @@
 # Executable type
 
-module_exec_name = 'settings-ind-kdec'
+module_exec_name = 'settings-indicator-kdeconnect'
 
 module_deps = [
   modules_deps,

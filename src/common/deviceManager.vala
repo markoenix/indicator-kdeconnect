@@ -244,7 +244,7 @@ namespace IndicatorKDEConnect {
                     return is_mounted (ref conn,
                                        path); 
             }
-        }
+        }        
 
         public void _accept_pairing () {
             accept_pairing (ref conn, 
@@ -292,9 +292,40 @@ namespace IndicatorKDEConnect {
             });            
         }
 
-        public SList<Pair<string,string>> _get_directories () {
-            return get_directories (ref conn,
-                                    path);
+        public SList<Pair<string,string>> _get_directories (bool cached_version = true) {
+            var return_variant = get_directories (ref conn,
+                                                  path);
+
+            var directories = Utils.unvariant_data (return_variant);
+            message ("Founded Directories %d", (int)directories.length ());
+            try {
+                if (directories.length () > 0) {
+                    debug ("Saving folders data");
+                    Json.Node root = Json.gvariant_serialize (return_variant);
+                    Json.Generator generator = new Json.Generator ();
+                    generator.set_root (root);
+                    int saved = Utils.serialize_folders (id, generator.to_data (null));                    
+                    debug ("Data folder saved : %d", saved);
+                }                
+                else {
+                    if (cached_version) {
+                        debug ("Reading data from folders");
+                        string data = Utils.unserialize_folders (id);
+                        if (data != null) {
+                            Json.Parser parser = new Json.Parser ();
+                            parser.load_from_data (data);
+                            Json.Node node = parser.get_root ();
+                            Variant variant = Json.gvariant_deserialize (node, null);
+                            directories = Utils.unvariant_data (variant);
+                        }
+                    }
+                }           
+            }
+            catch (Error e) {
+                debug (e.message);
+            }
+                                                
+            return directories;
         }
 
         public void mount_sftp () {

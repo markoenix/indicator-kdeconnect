@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=KDE Connect Indicator Settings
 Comment=Settings panel for KDE Connect Indicator
-Exec=settings-ind-kdec
+Exec=settings-indicator-kdeconnect
 Terminal=false
 Type=Application
 StartupNotify=true

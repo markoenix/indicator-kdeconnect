@@ -1,9 +1,0 @@
-src/FirstTimeWizard.vala
-src/KDEConnectManager.vala
-src/Device.vala
-src/DeviceIndicator.vala
-src/contractor/Contractor.vala
-src/Sms.vala
-data/extensions/kdeconnect-send-nautilus.py
-data/extensions/kdeconnect-send-nemo.py
-data/extensions/kdeconnect-send-caja.py

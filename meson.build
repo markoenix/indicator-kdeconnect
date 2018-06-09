@@ -1,6 +1,6 @@
 project('indicator-kdeconnect', 'vala', 'c',
         version : '0.9.4',
-        license : 'GPLv3')
+        license : 'GPL-2.1+')
 
 # Project web site
 project_web = 'https://github.com/Bajoja/indicator-kdeconnect'
@@ -35,7 +35,7 @@ executable_subdir = join_paths(get_option('datadir'), meson.project_name())
 package_name = meson.project_name() + '-' + api_version
 
 # Name of the GObject Introspection repository for the library.
-gir_name = 'Gconnect-' + api_version
+gir_name = 'indicator-kdeconnect-' + api_version
 
 doc_subdir = join_paths(get_option('datadir'), 'doc', meson.project_name())
 install_data('CHANGES.md', 'README.md',
@@ -46,21 +46,22 @@ install_data('COPYING',
              install_dir: licenses_subdir)
 
 subdir('src')
+
 xgettext = find_program('xgettext', required : false)
 if xgettext.found()
   subdir('po')
 endif
 
-if get_option('documentation')
-  valadoc = find_program('valadoc', required: false)
-  if valadoc.found()
+subdir('data')
+
+#if get_option('documentation')
+#  valadoc = find_program('valadoc', required: false)
+#  if valadoc.found()
 #     subdir('doc')
-  endif
-endif
+#  endif
+#endif
 
 #if get_option('test')
 #  check_dep = dependency('check')
 #   subdir('tests')
 #endif
-
-

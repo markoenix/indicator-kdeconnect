@@ -119,60 +119,86 @@ namespace IndicatorKDEConnect {
             }
         }
 
-        //  private static void restart () {
-		//  	string std_out;
+        public static SList<Pair<string,string>> unvariant_data (Variant variant) {
+            var directories = new SList<Pair<string,string>>();
+            
+            VariantIter iter = variant.iterator ();                
+                
+            Variant? val = null;
+            string? key = null;
 
-		//  	message ("Getting PID to restart");
+	        while (iter.next ("{sv}", ref key, ref val)) {
+                if (val != null && key != null)
+                    directories.append (new Pair<string,string>(val.dup_string (), 
+                                                                key));
+            }                    
+                        
+            return directories;
+        }
 
-        //      try {
-		//  	    Process.spawn_sync (null,
-		//  	              			new string[]{"pidof",
-		//  	     	         		             "indicator-kdeconnect"},
-		//  	    					null,
-		//  	    					SpawnFlags.SEARCH_PATH,
-		//  	    					null,
-		//  	                        out std_out,
-		//  	    					null,
-		//  	    					null);
-		//  	} 
-		//  	catch (Error e) {
-		//  	    debug (e.message);
-		//  	}
+        public static int serialize_folders (string id, string data) {
+            var return_value = 0;				    
+            try {
+                var file = File.new_for_path (GLib.Environment. get_user_data_dir()+
+                                              "/indicator-kdeconnect/"+                                              
+                                              "folders_"+
+                                              id+
+                                              ".json");
+	
+                if (file.query_exists ()) {
+                    debug ("File '%s' exists exist.\n", file.get_path ());
+                    file.delete ();                    
+                }
+                else {
+                    debug ("File doesn't exist '%s'\n", file.get_path ());
+                }
+        
+                var dos = new DataOutputStream (file.create (FileCreateFlags.REPLACE_DESTINATION));
+        
+                uint8[] _byte_data = data.data;
+                long written = 0;
+                while (written < _byte_data.length) {
+                    written += dos.write (_byte_data[written:_byte_data.length]);
+                }      
+                return_value = (int)written;          
+            }
+            catch (Error e) {
+                debug (e.message);
+            }
+            return return_value;
+        }
 
-		//  	if (std_out != ""){
-       	//  		message("Killing PID");
+        public static string unserialize_folders (string id) {
+            var return_value = "";				    
+            try {
+                var file = File.new_for_path (GLib.Environment. get_user_data_dir()+
+                                              "/indicator-kdeconnect/"+                                              
+                                              "folders_"+
+                                              id+
+                                              ".json");
+	
+                if (file.query_exists ()) {
+                    debug ("File '%s' exists exist.\n", file.get_path ());
 
-    	//  		int pid = int.parse(std_out);
+                    var dis = new DataInputStream (file.read ());
+                    
+                    string line;
+                    var sb = new StringBuilder ();
 
-    	//  		try {
-	    //  	    	Process.spawn_sync (null,
-	    //      		    	        	new string[]{"kill",
-		//      	                    	pid.to_string()},
-		//  	    			        	null,
-		//  	    			        	SpawnFlags.SEARCH_PATH,
-		//  	    			        	null,
-		//  	                        	out std_out,
-		//  	    				    	null,
-		//  	    				    	null);
-		//  		} 
-		//  		catch (Error e) {
-		//  	    	debug (e.message);
-		//  		}
-			
-		//  		message("Restart process");
+                    while ((line = dis.read_line (null)) != null) {
+                        sb.append (line);
+                    }
 
-        //      	try {
-		//          	Process.spawn_async (null,
-		//                  			 	new string[]{"indicator-kdeconnect"},
-		//  		         			 	null,
-		//  		        			 	SpawnFlags.SEARCH_PATH,
-		//  			                 	null,
-		//  		                     	null);
-		//  		} 
-		//  		catch (Error e) {
-		//      		debug (e.message);
-		//  		} 
-		//  	}       	
-		//  }
+                    return_value = sb.str;
+                }
+                else {
+                    debug ("File doesn't exist '%s'\n", file.get_path ());
+                }             
+            }
+            catch (Error e) {
+                debug (e.message);
+            }
+            return return_value;
+        }
     }
 }

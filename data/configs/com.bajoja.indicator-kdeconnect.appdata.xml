@@ -17,19 +17,19 @@
     </p>
     <p>Features:</p>
     <ul>
-    	<li>Indicator in the panel which show your devices, with its name, status, and battery;</li>
-    	<li>Menu to request for pairing and unpairing;</li>
-    	<li>Menu to start SFTP and open a file browser;</li>
-    	<li>Menu to send files;</li>
-    	<li>Menu to send SMS;</li>
-    	<li>Menu to ring and find your phone;</li>
-    	<li>From the device name menu you can get encryption information;</li>
-    	<li>From the device status menu item you can open KDE Connect settings;</li>
-    	<li>A small program, kdeconnect-send to help sending files and choosing device;</li>
-    	<li>A .contractor file, so you can send files from any of elementary OS's applications;</li>
-    	<li>A .desktop file, so you can send files from file manager like Thunar;</li>
-    	<li>Python extensions for Nautilus, Nemo and Caja, you can send files directly from them;</li>
-    	<li>Custom device icons for Ubuntu, Gnome and Elementary OS.</li>
+      <li>Indicator in the panel which show your devices, with its name, status, and battery.</li>
+      <li>Menu to request for pairing and unpairing.</li>
+      <li>Menu to accept ans reject pairing</li>
+      <li>Menu to start SFTP and open a file browser.</li>
+      <li>Menu to send files.</li>
+      <li>Menu to send URLs.</li>
+      <li>Menu to send SMS.</li>
+      <li>Menu to ring and find your phone.</li>
+      <li>From the device battery menu item you can open KDE Connect settings.</li>
+      <li>A small program, `sendvia-kdeconnect` to help sending files and choosing device.</li>
+      <li>A .contractor file, so you can send files from any of elementary OS's applications.</li>
+      <li>A .desktop file, so you can send files from file manager like Thunar.</li>
+      <li>Python extensions for Nautilus, Nemo and Caja, you can send files directly from them.</li>
     </ul>
     <p>
 	Any desktop that supports KStatusNotifierItem/AppIndicator icons should just work:

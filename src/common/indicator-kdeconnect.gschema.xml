@@ -18,7 +18,7 @@
     </key>
 
     <key name="browse-items" type="b">
-      <default>true</default>
+      <default>false</default>
       <summary>Show browse items</summary>
       <description>
         Show browse items

@@ -16,6 +16,7 @@ namespace IndicatorKDEConnect {
             { null }
         };
         private KDEConnectManager kdeconnectManager;
+        private FirstTimeWizard ftw;
 
         public Application () {
             Object (application_id: "com.indicator-kdeconnect.daemon",
@@ -25,13 +26,16 @@ namespace IndicatorKDEConnect {
         protected override void startup () {
             base.startup ();            
 
-            kdeconnectManager = new KDEConnectManager();
+            kdeconnectManager = new KDEConnectManager();            
 
             new MainLoop ().run ();
         }
 
         protected override void activate () {
-
+            if (kdeconnectManager.get_number_connected_devices () == 0)
+                ftw = new FirstTimeWizard (kdeconnectManager);
+            else
+                message ("User already know how to pair, dont show FirstTimeWizard");
         }
 
         static int main (string[] args) {
@@ -50,7 +54,8 @@ namespace IndicatorKDEConnect {
             }
     
             if (version) {
-                message ("%s %s\n", Config.PACKAGE_NAME, Config.PACKAGE_VERSION);
+                message ("%s %s\n", Config.PACKAGE_NAME, 
+                                    Config.PACKAGE_VERSION);
                 return 0;
             } 
             else if (kdeconnect_api_version) {
