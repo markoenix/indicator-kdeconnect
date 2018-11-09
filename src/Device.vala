@@ -841,6 +841,24 @@ namespace KDEConnectIndicator {
             }            
         }
 
+        public void remotekeyboard (string key, int specialKey, bool shift, bool ctrl, bool alt) {
+	    try{
+                conn.call_sync ( // TODO try async call
+ 	            "org.kde.kdeconnect",
+                    path+"/remotekeyboard",
+                    "org.kde.kdeconnect.device.remotekeyboard",
+                    "sendKeyPress",
+                    new Variant ("(sibbbb)", key, specialKey, shift, ctrl, alt, false),
+                    null,
+                    DBusCallFlags.NONE,
+                    -1,
+                    null
+                    );
+	    } catch (Error e) {
+                message (e.message);
+	    }
+        }
+
         public void int32_signal_cb (DBusConnection con, string sender, string object,
                                      string interface, string signal_name, Variant parameter) {            
             int param = (int)parameter.get_child_value (0).get_int32 ();

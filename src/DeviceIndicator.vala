@@ -20,6 +20,7 @@ namespace KDEConnectIndicator {
         private Gtk.Menu browse_submenu_item;     
         private Gtk.MenuItem send_item;
         private Gtk.MenuItem send_url_item;
+        private Gtk.MenuItem remotekeyboard_item;
         private Gtk.MenuItem ring_item;
         private Gtk.MenuItem sms_item;
         private Gtk.MenuItem accept_pair_item;
@@ -123,8 +124,17 @@ namespace KDEConnectIndicator {
             send_url_item.activate.connect (() => {
                 var send_url_item_dialog = new Dialogs.SendURL(this.device.send_file);
                 send_url_item_dialog.show ();
-            });                        
-                                
+            });
+
+
+            remotekeyboard_item = new  Gtk.MenuItem.with_label (_("Remote Keyboard"));                    
+            menu.append (remotekeyboard_item);
+                
+            remotekeyboard_item.activate.connect (() => {
+                new RemoteKeyboardWindow(this.device.remotekeyboard).show ();
+            });
+
+
             separator = new Gtk.SeparatorMenuItem ();
             menu.append (separator);
                         
@@ -264,6 +274,8 @@ namespace KDEConnectIndicator {
             send_url_item.set_visible (device.show_send_url);
 
             indicator.set_menu (menu);
+
+
         }                
         
         public void device_visibility_changed (bool visible) {
@@ -366,7 +378,7 @@ namespace KDEConnectIndicator {
                 ring_item.sensitive = reachable;
             }             
             
-            separator.visible = browse_item.visible || send_item.visible || send_url_item.visible;
+            separator.visible = browse_item.visible || send_item.visible || send_url_item.visible || remotekeyboard_item.visible;
             separator2.visible = sms_item.visible;
             separator3.visible = ring_item.visible;           
         }        

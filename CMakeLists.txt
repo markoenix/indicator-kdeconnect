@@ -57,6 +57,7 @@ vala_precompile(INDICATOR_VALA_C ${INDICATOR_EXEC}
 	src/utils/Pair.vala
 	src/utils/Dialogs.vala
 	src/utils/InOut.vala	
+	src/RemoteKeyboardWindow.vala
 	PACKAGES	
 	gtk+-3.0
 	appindicator3-0.1
