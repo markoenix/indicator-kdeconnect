@@ -57,5 +57,13 @@
       </description>
     </key>
 
+    <key name="remote-keyboard" type="b">
+      <default>false</default>
+      <summary>Show Remote Keybord menu</summary>
+      <description>
+        Show Remote Keybord menu
+      </description>
+    </key>
+
   </schema>
 </schemalist>

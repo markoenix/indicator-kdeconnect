@@ -381,10 +381,12 @@ namespace IndicatorKDEConnect {
             /* Utils */
             var _findmyphone = deviceManager._has_plugin (Constants.PLUGIN_FINDMYPHONE);
             var _remotekeyboard = deviceManager._has_plugin (Constants.PLUGIN_REMOTE_KEYBOARD);
+            var _ping = deviceManager._has_plugin (Constants.PLUGIN_PING);
 
-            utils_separator.visible = (_findmyphone || _remotekeyboard) && _trusted;
+            utils_separator.visible = (_findmyphone || _remotekeyboard || _ping) && _trusted;
             ring_item.visible = _findmyphone;
             remotekeyboard_item.visible = _remotekeyboard;
+            ping_items.visible = _ping;
         }
 
         private void update_pairing_reject_group (bool? mode = null) {
@@ -392,8 +394,7 @@ namespace IndicatorKDEConnect {
                 mode = deviceManager.has_pairing_requests;
 
             request_pair_item.visible = !((bool)mode); 
-            accept_pair_item.visible = 
-            reject_pair_item.visible = 
+            accept_pair_item.visible =             
             accept_reject_separator.visible = mode;
         }
 
@@ -478,6 +479,13 @@ namespace IndicatorKDEConnect {
                         else
                             ping_items.hide ();
                     break;
+
+                    case Constants.SETTINGS_REMOTE_KEYBOARD :
+                        if (deviceManager._get_property_bool (property))
+                            remotekeyboard_item.show ();
+                        else
+                            remotekeyboard_item.hide ();
+                    break;
                 }
             }
             else {
@@ -489,14 +497,15 @@ namespace IndicatorKDEConnect {
                 else
                     info_item.hide ();
 
-                if (deviceManager._get_property_bool (Constants.SETTINGS_BRROWSE_ITEMS)) {
-                            broswe_items.show ();
-                            broswe_item.hide ();
-                        }
-                        else {
-                            broswe_item.show ();
-                            broswe_items.hide ();
-                        }
+                if (deviceManager._get_property_bool (Constants.SETTINGS_BRROWSE_ITEMS)) 
+                {
+                    broswe_items.show ();
+                    broswe_item.hide ();
+                }
+                else {
+                    broswe_item.show ();
+                    broswe_items.hide ();
+                }
 
                 if (deviceManager._get_property_bool (Constants.SETTINGS_SEND_URL))
                     share_url_item.show ();
@@ -517,6 +526,11 @@ namespace IndicatorKDEConnect {
                     ping_items.show ();
                 else
                     ping_items.hide ();
+
+                if (deviceManager._get_property_bool (Constants.SETTINGS_REMOTE_KEYBOARD))
+                    remotekeyboard_item.show ();
+                else
+                    remotekeyboard_item.hide ();                
             }
         }
 

@@ -93,13 +93,8 @@ namespace IndicatorKDEConnect {
             return return_value;
         }
 
-        private bool is_daemon_running () {
-            var return_value = false;
-
-            var device_proxy = daemon_proxy (ref conn);
-            return_value = (device_proxy.get_name_owner () != null);
-
-            return return_value;
+        private bool is_daemon_running () {            
+            return (daemon_proxy (ref conn).get_name_owner () != null);            
         }
 
         private void fill_devices () {

@@ -243,17 +243,41 @@ namespace IndicatorKDEConnect {
 
 			//---------------------------------------------------//
 
+			var checkBtn8 = new Gtk.CheckButton.with_label (_("Show Remote Keybord"));
+
+			checkBtn8.set_active (settings.get_boolean (Constants.SETTINGS_REMOTE_KEYBOARD));
+
+			checkBtn8.notify["active"].connect (() => {
+				message ("Setting Remote Keyboard %s", checkBtn8.active.to_string ());
+				settings.set_boolean (Constants.SETTINGS_REMOTE_KEYBOARD,
+									  checkBtn8.active);
+			});
+
+			Box hbox8 = new Box (Gtk.Orientation.HORIZONTAL, 50);
+
+			hbox8.pack_start (checkBtn8,
+							  true, 
+							  true, 
+							  0);
+
+			ListBoxRow boxrow8 = new ListBoxRow ();
+
+			boxrow8.add (hbox8);
+
+			//---------------------------------------------------//
+
 			ListBox list_box = new ListBox ();
 			list_box.set_selection_mode (Gtk.SelectionMode.NONE);
 			
 			list_box.add (boxrow1);
-			list_box.add (boxrow6);
 			list_box.add (boxrow2);
 			list_box.add (boxrow3);	
-			list_box.add (boxrow7);
-			list_box.add (boxrow5);
 			list_box.add (boxrow4);
-
+			list_box.add (boxrow5);
+			list_box.add (boxrow6);						
+			list_box.add (boxrow7);
+			list_box.add (boxrow8);
+			
 			//----------------------------------------------------//
 
 			Box vbox = new Box (Gtk.Orientation.HORIZONTAL,

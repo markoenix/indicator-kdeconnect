@@ -90,6 +90,8 @@ namespace IndicatorKDEConnect {
                                          Constants.SETTINGS_FIND_PHONE);
                 subscribe_property_bool (ref settings,
                                          Constants.SETTINGS_PING_ITEMS);
+                subscribe_property_bool (ref settings,
+                                         Constants.SETTINGS_REMOTE_KEYBOARD);                                        
 
                 /*Signals for Notifications */
                 //  id = conn.signal_subscribe ("org.kde.kdeconnect",
