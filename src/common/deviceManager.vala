@@ -13,9 +13,11 @@ namespace IndicatorKDEConnect {
                                  IDevice,                                   
                                  IBattery,
                                  IFindMyPhone,
+                                 IPing,
                                  IShare,
                                  ITelephony,
-                                 ISftp {
+                                 ISftp,
+                                 IRemoteKeyboard {
         private DBusConnection conn;
         private DBusProxy proxy;
         private string path;
@@ -27,7 +29,7 @@ namespace IndicatorKDEConnect {
         private string _icon;
 
         public DeviceManager (string path) {
-            debug ("Creating manager for %s", path);
+            debug (@"Creating manager for $path");
             this.path = path;
 
             try {
@@ -75,17 +77,19 @@ namespace IndicatorKDEConnect {
                 this.settings = new Settings(Config.SETTINGS_NAME);
 
                 subscribe_property_bool (ref settings,
-                                         "only-paired-devices");
+                                         Constants.SETTINGS_PAIRED_DEVICES);
                 subscribe_property_bool (ref settings,
-                                         "info-item");
+                                         Constants.SETTINGS_INFO_ITEM);
                 subscribe_property_bool (ref settings,
-                                         "browse-items");
+                                         Constants.SETTINGS_BRROWSE_ITEMS);
                 subscribe_property_bool (ref settings,
-                                         "send-url");
+                                         Constants.SETTINGS_SEND_URL);
                 subscribe_property_bool (ref settings,
-                                         "send-sms");
+                                         Constants.SETTINGS_SEND_SMS);
                 subscribe_property_bool (ref settings,
-                                         "find-my-device");
+                                         Constants.SETTINGS_FIND_PHONE);
+                subscribe_property_bool (ref settings,
+                                         Constants.SETTINGS_PING_ITEMS);
 
                 /*Signals for Notifications */
                 //  id = conn.signal_subscribe ("org.kde.kdeconnect",
@@ -170,8 +174,7 @@ namespace IndicatorKDEConnect {
 
         public string id {
         	get {
-        	     string device_path = "/modules/kdeconnect/devices/";
-            	 _id = this.path.replace(device_path, "");
+            	 _id = this.path.replace(Constants.DEVICE_PATH, "");
 
             	 return _id;
             }
@@ -228,7 +231,7 @@ namespace IndicatorKDEConnect {
 
         public int battery_charge {
             get {
-                if (!_has_plugin ("kdeconnect_battery"))
+                if (!_has_plugin (Constants.PLUGIN_BATTERY))
                     return -1;
                 else
                     return charge (ref conn,
@@ -238,7 +241,7 @@ namespace IndicatorKDEConnect {
         
         public bool is_sftp_mounted {
             get {
-                if (!_has_plugin ("kdeconnect_sftp"))
+                if (!_has_plugin (Constants.PLUGIN_SFTP))
                     return false;
                 else
                     return is_mounted (ref conn,
@@ -272,9 +275,9 @@ namespace IndicatorKDEConnect {
         }
 
         public bool _battery_charging () {
-            if (!_has_plugin ("kdeconnect_battery"))
+            if (!_has_plugin (Constants.PLUGIN_BATTERY))
                 return false;
-            else 
+            else
                 return is_charging(ref conn, path);
         }
 
@@ -297,7 +300,7 @@ namespace IndicatorKDEConnect {
                                                   path);
 
             var directories = Utils.unvariant_data (return_variant);
-            message ("Founded Directories %d", (int)directories.length ());
+            debug ("Founded Directories %d", (int)directories.length ());
             try {
                 if (directories.length () > 0) {
                     debug ("Saving folders data");
@@ -305,7 +308,7 @@ namespace IndicatorKDEConnect {
                     Json.Generator generator = new Json.Generator ();
                     generator.set_root (root);
                     int saved = Utils.serialize_folders (id, generator.to_data (null));                    
-                    debug ("Data folder saved : %d", saved);
+                    debug (@"Data folder saved : $saved");
                 }                
                 else {
                     if (cached_version) {
@@ -329,7 +332,7 @@ namespace IndicatorKDEConnect {
         }
 
         public void mount_sftp () {
-            if (!_has_plugin ("kdeconnect_sftp"))
+            if (!_has_plugin (Constants.PLUGIN_SFTP))
                 return;
 
             mount(ref conn,
@@ -337,13 +340,13 @@ namespace IndicatorKDEConnect {
         }
 
         public void browse (string path_to_open="") {
-            if (!_has_plugin ("kdeconnect_sftp"))
+            if (!_has_plugin (Constants.PLUGIN_SFTP))
                 return;
 
             string _mount_point = mount_point (ref conn,
                                                path);
 
-            message("Open the path %s", path_to_open.length == 0 ? 
+            debug ("Open the path %s", path_to_open.length == 0 ?
                                         _mount_point : 
                                         path_to_open);
             if (is_sftp_mounted) {
@@ -353,9 +356,9 @@ namespace IndicatorKDEConnect {
             }
             else {
                 mount_sftp ();
-                Timeout.add (1000, ()=> { // idle for a few second to let sftp kickin
+                Timeout.add (1500, () => { // idle for a few second to let sftp kickin
                     Utils.open_file (path_to_open.length == 0 ? 
-                                     _mount_point : 
+                                     _mount_point :
                                      path_to_open);
                     return false;
                 });
@@ -373,6 +376,21 @@ namespace IndicatorKDEConnect {
                                       property);
         }
         
+        public void _send_ping(string? message = null) {
+            send_ping (ref conn,
+                              path,
+                              message);
+        }
         
+        public void _remote_keyboard (string key, int specialKey, bool shift, bool ctrl, bool alt)
+        {
+            remote_keyboard(ref conn,
+            path,
+                                    key,
+                                    specialKey,
+                                    shift,
+                                    ctrl,
+                                    alt);
+        }
     }
 }

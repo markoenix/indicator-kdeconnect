@@ -7,7 +7,8 @@
 using Gee;
 
 namespace IndicatorKDEConnect {
-    public class KDEConnectManager : Object, IDaemon {
+    public class KDEConnectManager : Object,
+                                     IDaemon {
         private DBusConnection conn;        
         private HashSet<Device> devices_connected;
         private HashSet<uint> subs_identifier;                 
@@ -23,19 +24,27 @@ namespace IndicatorKDEConnect {
                     uint id;                    
 
                     id = subscribe_device_added (ref conn);
+
+                    debug (@"Subscription ID: $id");
                 
                     subs_identifier.add (id);
 
                     id = subscribe_device_removed (ref conn);
+
+                    debug (@"Subscription ID: $id");
 
                     subs_identifier.add (id);
 
                     id = subscribe_device_visibility_changed (ref conn);
                 
+                    debug (@"Subscription ID: $id");
+
                     subs_identifier.add (id);
 
                     id = subscribe_device_removed (ref conn);
 
+                    debug (@"Subscription ID: $id");
+                    
                     subs_identifier.add (id);
 
                     fill_devices ();   
@@ -97,26 +106,26 @@ namespace IndicatorKDEConnect {
             string[] devs = devices (ref conn);
 
             foreach (var dev in devs) {
-                var path = "/modules/kdeconnect/devices/"+dev;            
+                var path = Constants.DEVICE_PATH + dev;
                 devices_connected.add (new Device (path));
-                message ("Device Indicator created: %s", path);
+                debug (@"Device Indicator created: $path");
             }
 
             if (devices_connected.size == 0)
-                message ("No trusted device found, open KDE Connect in your phone to start pairing");
-        }  
+                debug ("No trusted device found, open KDE Connect in your phone to start pairing");
+        }
         
         public int get_number_connected_devices () {
             return devices_connected.size;
         }
         
         public void add_device (string path) {
-            message ("Device added To list of devices, %s", path);            
+            debug (@"Device added To list of devices, $path");
             devices_connected.add (new Device (path));
         }
         
         public void remove_device (string path) {
-            message ("Device removed from list of devices, %s", path);
+            debug (@"Device removed from list of devices, $path");
             foreach (var dev in devices_connected) {
                 if (dev.equals_path (path)) {
                     devices_connected.remove (dev);
@@ -127,13 +136,13 @@ namespace IndicatorKDEConnect {
 
         public void distribute_visibility_changes (string path, 
                                                    bool visible) {
-            message ("Device %s visibility change to %s", path, visible.to_string ());
-            foreach (var item in devices_connected) {                
+            debug (@"Device $path visibility change to %s", visible.to_string ());
+            foreach (var item in devices_connected) {
                 if (item.equals_id (path)){
                     item.visibility_changed (visible);
                     return;
-                }                            
-            }              
+                }
+            }
         }    
     }
 }

@@ -12,9 +12,7 @@ module_template = files('module.in')
 
 module_list = [  
   'common',
-  'indicator',
-  'sendvia',
-  'settings',
+  'indicator',    
   'extensions'
 ]
 foreach module : module_list

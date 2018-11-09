@@ -4,14 +4,15 @@
  * (version 2.1 or later).  See the COPYING file in this distribution.
  */
 namespace IndicatorKDEConnect {
-    public interface IBattery : Object, ISignals {
+    public interface IBattery : Object,
+                                ISignals {
         protected int charge (ref DBusConnection conn, 
                               string path) {
             var return_value = -1;                            
             try {
-                var return_variant = conn.call_sync ("org.kde.kdeconnect",
+                var return_variant = conn.call_sync (Constants.KDECONNECT_DEAMON,
                                                      path,
-                                                     "org.kde.kdeconnect.device.battery",
+                                                     Constants.KDECONNECT_DEAMON_BATTERY,
                                                      "charge",
                                                      null,
                                                      null,
@@ -24,7 +25,7 @@ namespace IndicatorKDEConnect {
             catch (Error e) {
                 debug (e.message);
             }
-            debug ("Device %s, charge %d", path, return_value);  
+            debug (@"Device $path, charge $return_value");
             return return_value;
         }
                  
@@ -32,9 +33,9 @@ namespace IndicatorKDEConnect {
                                     string path) {                    
             var return_value = false;
             try {
-                var return_variant = conn.call_sync ("org.kde.kdeconnect",
+                var return_variant = conn.call_sync (Constants.KDECONNECT_DEAMON,
                                                      path,
-                                                     "org.kde.kdeconnect.device.battery",
+                                                     Constants.KDECONNECT_DEAMON_BATTERY,
                                                      "isCharging",
                                                      null,
                                                      null,
@@ -46,14 +47,15 @@ namespace IndicatorKDEConnect {
             } catch (Error e) {
                 debug (e.message);
             }
-            debug ("Device %s, Is charging %s", path, return_value.to_string ());  
+            debug (@"Device $path, Is charging %s", return_value.to_string ());
             return return_value;
         }
 
         protected virtual uint subscribe_battery_charge_changed (ref DBusConnection conn, 
                                                                  string path) {
-            return conn.signal_subscribe ("org.kde.kdeconnect",
-                                          "org.kde.kdeconnect.device.battery",
+            debug ("Subscribing battery charge");
+            return conn.signal_subscribe (Constants.KDECONNECT_DEAMON,
+                                          Constants.KDECONNECT_DEAMON_BATTERY,
                                           "chargeChanged",
                                           path,
                                           null,
@@ -63,8 +65,9 @@ namespace IndicatorKDEConnect {
 
         protected virtual uint subscribe_battery_state_changed (ref DBusConnection conn, 
                                                                 string path) {
-            return conn.signal_subscribe ("org.kde.kdeconnect",
-                                          "org.kde.kdeconnect.device.battery",
+            debug ("Subscribing battery state");
+            return conn.signal_subscribe (Constants.KDECONNECT_DEAMON,
+                                          Constants.KDECONNECT_DEAMON_BATTERY,
                                           "stateChanged",
                                           path,
                                           null,
@@ -79,22 +82,22 @@ namespace IndicatorKDEConnect {
                                         string signal_name, 
                                         Variant parameter) {
             int param = (int)parameter.get_child_value (0).get_int32 ();
-            debug ("Battery Signal: %s, Value: %d", signal_name, param);
+            debug (@"Battery Signal: $signal_name, Value: $param");
             battery_charge_changed (param);
         }
 
-        protected void boolean_signal_cb (DBusConnection con, 
-                                       string sender, 
-                                       string object,
-                                       string interface, 
-                                       string signal_name, 
-                                       Variant parameter) {        
+        protected void boolean_signal_cb (DBusConnection con,
+                                          string sender,
+                                          string object,
+                                          string interface,
+                                          string signal_name,
+                                          Variant parameter) {
             bool param = parameter.get_child_value (0).get_boolean ();
-            debug ("Battery Signal: %s, Value: %s", signal_name, param.to_string ());        
+            debug (@"Battery Signal: $signal_name, Value: %s", param.to_string ());
             battery_state_changed (param);
         }
 
-        public signal void battery_charge_changed (int charge);  
+        public signal void battery_charge_changed (int charge);
         public signal void battery_state_changed (bool state);  
     }
 }

@@ -2,6 +2,9 @@ project('indicator-kdeconnect', 'vala', 'c',
         version : '0.9.4',
         license : 'GPL-2.1+')
 
+project_settings = 'settings-indicator-kdeconnect'  
+project_send_extension = 'sendvia-kdeconnect'      
+
 # Project web site
 project_web = 'https://github.com/Bajoja/indicator-kdeconnect'
 # Where to report bugs; usually either an e-mail address or an issue
@@ -38,7 +41,8 @@ package_name = meson.project_name() + '-' + api_version
 gir_name = 'indicator-kdeconnect-' + api_version
 
 doc_subdir = join_paths(get_option('datadir'), 'doc', meson.project_name())
-install_data('CHANGES.md', 'README.md',
+install_data('CHANGES.md', 
+             'README.md',
              install_dir: doc_subdir)
 
 licenses_subdir = join_paths(get_option('datadir'), 'licenses', meson.project_name())

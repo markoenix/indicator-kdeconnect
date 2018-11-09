@@ -20,7 +20,7 @@ import urllib, gettext, locale
 _ = gettext.gettext
 timeout = 350
 
-class KDEConnectSendExtension(GObject.GObject, Caja.MenuProvider):
+class SendViaExtension(GObject.GObject, Caja.MenuProvider):
 
     def __init__(self):
 	    GObject.GObject.__init__(self)
@@ -108,7 +108,7 @@ class KDEConnectSendExtension(GObject.GObject, Caja.MenuProvider):
 
         self.setup_gettext()
         """If user only select file(s) create menu and sub menu"""
-        menu = Caja.MenuItem(name = 'KdeConnectSendExtension::KDEConnectSend',
+        menu = Caja.MenuItem(name = 'SendViaExtension::SendViaKDEConnect',
                              label = _('KDEConnect Send To'),
                              tip = _('send file(s) with kdeconnect'),
                              icon = 'kdeconnect')
@@ -118,13 +118,13 @@ class KDEConnectSendExtension(GObject.GObject, Caja.MenuProvider):
         menu.set_submenu(sub_menu)
 
         for deviceId, deviceName in devices.items():
-            item = Caja.MenuItem(name='KDEConnectSendExtension::SendFileTo'+deviceId,
+            item = Caja.MenuItem(name='SendViaExtension::SendFileTo'+deviceId,
                                  label=deviceName)
             item.connect('activate', self.send_files, files, deviceId, deviceName)
             sub_menu.append_item(item)
 
         if len(devices) > 1:
-            item = Caja.MenuItem(name='KDEConnectSendExtension::SendFileToMultipleDevices',
+            item = Caja.MenuItem(name='SendViaExtension::SendFileToMultipleDevices',
             			         label='Multiple Devices')
             item.connect('activate', self.send_to_multiple_devices, files)
      	

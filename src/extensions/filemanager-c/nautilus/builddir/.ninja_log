@@ -1,0 +1,10 @@
+# ninja log v5
+437	492	1528566295	libsendvia_kdeconnect.so	2e913534dba8fc29
+0	437	1528566295	sendvia_kdeconnect@sha/sendvia-kdeconnect.c.o	2baf2c1b0d1963c1
+0	411	1528566295	sendvia_kdeconnect@sha/sendvia-kdeconnect-module.c.o	8b5d03682caa14e7
+0	262	1528566295	build.ninja	ff89de9e6c75aa5f
+2	426	1527120080	kdeconnect_send@sha/kdeconnect-send.c.o	3483ab5443a69750
+407	461	1528566223	libkdeconnect_send.so	7c145ed6de9f0d33
+2	542	1527120080	kdeconnect_send@sha/kdeconnect-send-module.c.o	d6aa66c1eaf9f70f
+4	383	1528566223	kdeconnect_send@sha/sendvia-kdeconnect-module.c.o	a05000c647a45834
+4	407	1528566223	kdeconnect_send@sha/sendvia-kdeconnect.c.o	4d7cd6ebbfa89429

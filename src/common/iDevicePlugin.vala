@@ -13,9 +13,9 @@ namespace IndicatorKDEConnect {
                 proxy = new DBusProxy.sync (conn,
                                             DBusProxyFlags.NONE,
                                             null,
-                                            "org.kde.kdeconnect",
+                                            Constants.KDECONNECT_DEAMON,
                                             path,
-                                            "org.kde.kdeconnect.device",
+                                            Constants.KDECONNECT_DEAMON_DEVICE,
                                             null);
             }
             catch (Error e) {
@@ -27,8 +27,9 @@ namespace IndicatorKDEConnect {
         /*Signals Subscribes */
         protected virtual uint subscribe_has_pairing_requests_changed (ref DBusConnection conn, 
                                                                        string path) {
-            return conn.signal_subscribe ("org.kde.kdeconnect",
-                                          "org.kde.kdeconnect.device",
+            debug ("Subscribing pairing request");
+            return conn.signal_subscribe (Constants.KDECONNECT_DEAMON,
+                                          Constants.KDECONNECT_DEAMON_DEVICE,
                                           "hasPairingRequestsChanged",
                                           path,
                                           null,
@@ -38,8 +39,9 @@ namespace IndicatorKDEConnect {
 
         protected virtual uint subscribe_name_changed (ref DBusConnection conn, 
                                                        string path) {
-            return conn.signal_subscribe ("org.kde.kdeconnect",
-                                          "org.kde.kdeconnect.device",
+            debug ("Subscribing name change");
+            return conn.signal_subscribe (Constants.KDECONNECT_DEAMON,
+                                          Constants.KDECONNECT_DEAMON_DEVICE,
                                           "nameChanged",
                                           path,
                                           null,
@@ -49,8 +51,9 @@ namespace IndicatorKDEConnect {
 
         protected virtual uint subscribe_pairing_error (ref DBusConnection conn, 
                                                         string path) {
-            return conn.signal_subscribe ("org.kde.kdeconnect",
-                                          "org.kde.kdeconnect.device",
+            debug ("Subscribing pairing error");
+            return conn.signal_subscribe (Constants.KDECONNECT_DEAMON,
+                                          Constants.KDECONNECT_DEAMON_DEVICE,
                                           "pairingError",
                                           path,
                                           null,
@@ -60,8 +63,9 @@ namespace IndicatorKDEConnect {
 
         protected virtual uint subscribe_plugins_changed (ref DBusConnection conn, 
                                                           string path) {
-            return conn.signal_subscribe ("org.kde.kdeconnect",
-                                          "org.kde.kdeconnect.device",
+            debug ("Subscribing plugins change");
+            return conn.signal_subscribe (Constants.KDECONNECT_DEAMON,
+                                          Constants.KDECONNECT_DEAMON_DEVICE,
                                           "pluginsChanged",
                                           path,
                                           null,
@@ -71,8 +75,9 @@ namespace IndicatorKDEConnect {
 
         protected virtual uint subscribe_reachable_status_changed (ref DBusConnection conn, 
                                                                    string path) {
-            return conn.signal_subscribe ("org.kde.kdeconnect",
-                                          "org.kde.kdeconnect.device",
+            debug ("Subscribing status change");
+            return conn.signal_subscribe (Constants.KDECONNECT_DEAMON,
+                                          Constants.KDECONNECT_DEAMON_DEVICE,
                                           "reachableChanged",
                                           path,
                                           null,
@@ -82,8 +87,9 @@ namespace IndicatorKDEConnect {
 
         protected virtual uint subscribe_trusted_changed (ref DBusConnection conn, 
                                                           string path) {
-            return conn.signal_subscribe ("org.kde.kdeconnect",
-                                          "org.kde.kdeconnect.device",
+            debug ("Subscribing trusted change");
+            return conn.signal_subscribe (Constants.KDECONNECT_DEAMON,
+                                          Constants.KDECONNECT_DEAMON_DEVICE,
                                           "trustedChanged",
                                           path,
                                           null,
@@ -97,9 +103,9 @@ namespace IndicatorKDEConnect {
                                            string plugin) {
             var return_value = false;
             try {
-                var return_variant = conn.call_sync ("org.kde.kdeconnect",
+                var return_variant = conn.call_sync (Constants.KDECONNECT_DEAMON,
                                                      path,
-                                                     "org.kde.kdeconnect.device",
+                                                     Constants.KDECONNECT_DEAMON_DEVICE,
                                                      "hasPlugin",
                                                      new Variant ("(s)", plugin),
                                                      null,
@@ -113,16 +119,16 @@ namespace IndicatorKDEConnect {
             catch (Error e) {
                 debug (e.message);
             }
-            debug ("Device %s, Plugin %s, Exists %s", path, plugin, return_value.to_string ());
+            debug (@"Device $path, Plugin $plugin, Exists %s", return_value.to_string ());
             return return_value;
         }
 
         protected virtual void accept_pairing (ref DBusConnection conn,
                                                string path) {            
             try {
-                conn.call_sync ("org.kde.kdeconnect",
+                conn.call_sync (Constants.KDECONNECT_DEAMON,
                                 path,
-                                "org.kde.kdeconnect.device",
+                                Constants.KDECONNECT_DEAMON_DEVICE,
                                 "acceptPairing",
                                 null,
                                 null,
@@ -133,15 +139,15 @@ namespace IndicatorKDEConnect {
             catch (Error e) {
                 debug (e.message);
             }          
-            debug ("Device %s, Accept pairing request", path);  
+            debug (@"Device $path, Accept pairing request");
         }
 
         protected virtual void reject_pairing (ref DBusConnection conn,
                                                string path) {            
             try {
-                conn.call_sync ("org.kde.kdeconnect",
+                conn.call_sync (Constants.KDECONNECT_DEAMON,
                                 path,
-                                "org.kde.kdeconnect.device",
+                                Constants.KDECONNECT_DEAMON_DEVICE,
                                 "rejectPairing",
                                 null,
                                 null,
@@ -152,15 +158,15 @@ namespace IndicatorKDEConnect {
             catch (Error e) {
                 debug (e.message);
             }          
-            debug ("Device %s, Reject pairing request", path);  
+            debug (@"Device $path, Reject pairing request");
         }
 
         protected virtual void unpair (ref DBusConnection conn,
                                        string path) {            
             try {
-                conn.call_sync ("org.kde.kdeconnect",
+                conn.call_sync (Constants.KDECONNECT_DEAMON,
                                 path,
-                                "org.kde.kdeconnect.device",
+                                Constants.KDECONNECT_DEAMON_DEVICE,
                                 "unpair",
                                 null,
                                 null,
@@ -171,15 +177,15 @@ namespace IndicatorKDEConnect {
             catch (Error e) {
                 debug (e.message);
             }       
-            debug ("Device %s, Unpair request", path);     
+            debug (@"Device $path, Unpair request");
         }
 
         protected virtual void request_pair (ref DBusConnection conn,
                                              string path) {            
             try {
-                conn.call_sync ("org.kde.kdeconnect",
+                conn.call_sync (Constants.KDECONNECT_DEAMON,
                                 path,
-                                "org.kde.kdeconnect.device",
+                                Constants.KDECONNECT_DEAMON_DEVICE,
                                 "requestPair",
                                 null,
                                 null,
@@ -190,27 +196,27 @@ namespace IndicatorKDEConnect {
             catch (Error e) {
                 debug (e.message);
             }      
-            debug ("Device %s, request pairing", path);       
+            debug (@"Device $path, request pairing");
         }
 
         protected virtual void property (ref DBusConnection conn,
-                                        string path, 
-                                        string property_name,
-                                        ref Value return_value) {            
+                                         string path,
+                                         string property_name,
+                                         ref Value return_value) {
                                                          
             try {
-                var return_variant = conn.call_sync ("org.kde.kdeconnect",
+                var return_variant = conn.call_sync (Constants.KDECONNECT_DEAMON,
                                                      path,
-                                                     "org.freedesktop.DBus.Properties",
+                                                     Constants.KDECONNECT_DEBUS_PROP,
                                                      "Get",
                                                      new Variant ("(ss)",
-                                                                  "org.kde.kdeconnect.device",
+                                                                  Constants.KDECONNECT_DEAMON_DEVICE,
                                                                   property_name),
                                                      null,
                                                      DBusCallFlags.NONE,
                                                      -1,
                                                      null);
-                Variant v = return_variant.get_child_value (0).get_variant ();                    
+                Variant v = return_variant.get_child_value (0).get_variant ();
                                                           
                 switch (return_value.type()) {
                     case Type.STRING:
@@ -226,18 +232,18 @@ namespace IndicatorKDEConnect {
             catch (Error e) {
                 debug (e.message);
             }
-            debug ("Device %s, propertie request %s", path, return_value.strdup_contents ());             
+            debug (@"Device $path, propertie request %s", return_value.strdup_contents ());
         }
 
         /*Callbacks */
         protected void void_signal_cb (DBusConnection con, 
-                                    string sender, 
-                                    string object,
-                                    string interface, 
-                                    string signal_name, 
-                                    Variant parameter) {        
+                                       string sender,
+                                       string object,
+                                       string interface,
+                                       string signal_name,
+                                       Variant parameter) {
 
-            debug ("Device Signal: %s, Value: None", signal_name);
+            debug (@"Device Signal: $signal_name, Value: None");
             
             switch (signal_name) {
                 case "pluginsChanged":
@@ -247,13 +253,13 @@ namespace IndicatorKDEConnect {
         }        
 
         protected void string_signal_cb (DBusConnection con, 
-                                      string sender, 
-                                      string object,
-                                      string interface, 
-                                      string signal_name, 
-                                      Variant parameter) {
+                                         string sender,
+                                         string object,
+                                         string interface,
+                                         string signal_name,
+                                         Variant parameter) {
             string param = parameter.get_child_value (0).get_string ();
-            debug ("Device Signal: %s, Value: %s", signal_name, param);
+            debug (@"Device Signal: $signal_name, Value: $param");
             
             switch (signal_name) {
                 case "nameChanged":
@@ -267,14 +273,14 @@ namespace IndicatorKDEConnect {
         }
 
         protected void boolean_signal_cb (DBusConnection con, 
-                                       string sender, 
-                                       string object,
-                                       string interface, 
-                                       string signal_name, 
-                                       Variant parameter) {        
+                                          string sender,
+                                          string object,
+                                          string interface,
+                                          string signal_name,
+                                          Variant parameter) {
             bool param = parameter.get_child_value (0).get_boolean ();
-            
-            debug ("Device Signal: %s, Value: %s", signal_name, param.to_string ());
+
+            debug (@"Device Signal: $signal_name, Value: %s", param.to_string ());
             
             switch (signal_name) {                                        
                 case "trustedChanged" :

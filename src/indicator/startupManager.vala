@@ -31,13 +31,13 @@ namespace IndicatorKDEConnect {
                         startup_folder.make_directory_with_parents ();
                     
                     if (desktop_file.copy (startup_file, FileCopyFlags.NONE))
-                        message ("autostart file installed in %s", startup_file.get_path ());
+                        debug ("autostart file installed in %s", startup_file.get_path ());
                 } catch (Error e) {
                     message (e.message);
                 }
             } 
             else
-                message ("Cant find .desktop file in %s", desktop_file.get_path ());
+                debug ("Cant find .desktop file in %s", desktop_file.get_path ());
         }
     }
 }

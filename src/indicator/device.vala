@@ -27,6 +27,10 @@ namespace IndicatorKDEConnect {
         private Gtk.MenuItem send_sms_item;
 
         private Gtk.MenuItem ring_item;
+        private Gtk.Menu ping_items_sub_menu;
+        private Gtk.MenuItem ping_items;
+
+        private Gtk.MenuItem remotekeyboard_item;
 
         private Gtk.MenuItem accept_pair_item;
         private Gtk.MenuItem reject_pair_item;
@@ -41,7 +45,7 @@ namespace IndicatorKDEConnect {
         private Gtk.SeparatorMenuItem telephony_separator;
 
         public Device (string path) {
-            debug ("Creating indicator for %s", path);
+            debug (@"Creating indicator for $path");
             this.path = path;
             deviceManager = new DeviceManager(path);
 
@@ -55,7 +59,8 @@ namespace IndicatorKDEConnect {
             /*Info Group */
             name_item = new Gtk.MenuItem.with_label (deviceManager.name);
             name_item.activate.connect (() => {
-                Utils.run_settings ();
+                var settings = new SettingsDialog ();
+                settings.run ();
             });
             indicator_menu.append (name_item); 
             
@@ -87,7 +92,7 @@ namespace IndicatorKDEConnect {
 
             indicator_menu.append (broswe_items);
 
-            build_browse_sub_paths ();            
+            build_browse_sub_paths ();
             /* */
 
             share_files_item = new Gtk.MenuItem.with_label (_("Send File(s)"));
@@ -100,14 +105,14 @@ namespace IndicatorKDEConnect {
             
             share_url_item = new Gtk.MenuItem.with_label (_("Send URL"));
 
-            share_url_item.activate.connect (() => {
-                var send_url_dialog = new SendURL ();
+            share_url_item.activate.connect ( () => {
+                var send_text_dialog = new SendGenericText (_("Send URL"), _("URL"));
 
-                send_url_dialog.send_callback.connect ((url)=> {
+                send_text_dialog.send_callback.connect ( (url) => {
                     deviceManager._share_url (url);
                 });
                 
-                send_url_dialog.show ();                        
+                send_text_dialog.show ();
             });
 
             indicator_menu.append (share_url_item); 
@@ -137,7 +142,49 @@ namespace IndicatorKDEConnect {
                 deviceManager._ring ();
             });
 
-            indicator_menu.append (ring_item);        
+            indicator_menu.append (ring_item);
+
+            ping_items = new Gtk.MenuItem.with_label (_("Ping"));
+
+            ping_items_sub_menu = new Gtk.Menu ();
+
+            ping_items.set_submenu (ping_items_sub_menu);
+
+            indicator_menu.append (ping_items);
+
+            var ping1 = new Gtk.MenuItem.with_label (_("Ping"));
+
+            ping1.activate.connect (() => {
+                deviceManager._send_ping ();
+            });
+
+            ping_items_sub_menu.append (ping1);
+
+            var ping2 = new Gtk.MenuItem.with_label (_("Ping Message"));
+
+            ping2.activate.connect (() => {
+                var send_text_dialog = new SendGenericText (_("Ping Message"), _("Message"));
+
+                send_text_dialog.send_callback.connect ( (text) => {
+                    deviceManager._send_ping (text);
+                });
+
+                send_text_dialog.show ();
+            });
+
+            ping_items_sub_menu.append (ping2);
+
+            remotekeyboard_item = new  Gtk.MenuItem.with_label (_("Remote Keyboard"));
+
+            remotekeyboard_item.activate.connect ( () => {
+                var remote_keyboard_window = new RemoteKeyboardWindow();
+                remote_keyboard_window.send_callback.connect ( (key, specialKey, shift, ctrl, alt) => {
+                    deviceManager._remote_keyboard (key, specialKey, shift, ctrl, alt);
+                });
+                remote_keyboard_window.show ();
+            });
+
+            indicator_menu.append (remotekeyboard_item);
             
             /*Accept Reject pair Group */
             accept_reject_separator = new Gtk.SeparatorMenuItem ();
@@ -224,13 +271,13 @@ namespace IndicatorKDEConnect {
             /*Role updates */
             indicator_menu.show_all ();  
 
-            update_items_based_on_settings ();
             update_info_item ();
             update_indicator_status ();
             update_battery_item ();
             update_pairing_reject_group ();
             update_unpair_request_group ();                           
-            update_all_pluggin_items ();                              
+            update_all_pluggin_items ();
+            update_items_based_on_settings ();
         }   
 
         ~Device () {
@@ -264,7 +311,7 @@ namespace IndicatorKDEConnect {
 
         private void update_battery_item (int? charge = null, 
                                           bool? charging = null) {
-            if (!deviceManager._has_plugin ("kdeconnect_battery")) {
+            if (!deviceManager._has_plugin (Constants.PLUGIN_BATTERY)) {
                 battery_item.visible = false;
                 return;
             }
@@ -295,7 +342,7 @@ namespace IndicatorKDEConnect {
         private void update_indicator_status (bool? visible = null) {
             if (visible == null)
                 visible = deviceManager.is_reachable && 
-                          !deviceManager._get_property_bool ("only-paired-devices");            
+                          !deviceManager._get_property_bool (Constants.SETTINGS_PAIRED_DEVICES);
 
             if (visible)
                 indicator.set_status (AppIndicator.IndicatorStatus.ACTIVE);
@@ -314,8 +361,8 @@ namespace IndicatorKDEConnect {
             update_battery_item ();
 
             /* Share and SFTP */
-            var _share = deviceManager._has_plugin ("kdeconnect_share");
-            var _sftp = deviceManager._has_plugin ("kdeconnect_sftp");
+            var _share = deviceManager._has_plugin (Constants.PLUGIN_SHARE);
+            var _sftp = deviceManager._has_plugin (Constants.PLUGIN_SFTP);
 
             share_separator.visible = (_share || _sftp) && _trusted; 
 
@@ -323,19 +370,21 @@ namespace IndicatorKDEConnect {
             share_url_item.visible = _share && _trusted;  
                                              
             broswe_item.visible =   
-            broswe_items.visible = broswe_item.visible = _sftp && _trusted;    
+            broswe_items.visible = (_sftp && _trusted);
             
             /* Telephony */
-            var _telephony = deviceManager._has_plugin ("kdeconnect_telephony");
+            var _telephony = deviceManager._has_plugin (Constants.PLUGIN_TELEPHONY);
 
             telephony_separator.visible = 
             send_sms_item.visible = _telephony && _trusted;
 
             /* Utils */
-            var _findmyphone = deviceManager._has_plugin ("kdeconnect_findmyphone");
-            
-            utils_separator.visible = 
-            ring_item.visible = _findmyphone; 
+            var _findmyphone = deviceManager._has_plugin (Constants.PLUGIN_FINDMYPHONE);
+            var _remotekeyboard = deviceManager._has_plugin (Constants.PLUGIN_REMOTE_KEYBOARD);
+
+            utils_separator.visible = (_findmyphone || _remotekeyboard) && _trusted;
+            ring_item.visible = _findmyphone;
+            remotekeyboard_item.visible = _remotekeyboard;
         }
 
         private void update_pairing_reject_group (bool? mode = null) {
@@ -377,117 +426,126 @@ namespace IndicatorKDEConnect {
             update_indicator_status (visible);
         }
 
-        public void update_items_based_on_settings (string? property = null) {            
+        public void update_items_based_on_settings (string? property = null) {
             if (property != null) {
                 switch (property) {
-                    case "only-paired-devices" :                        
+                    case Constants.SETTINGS_PAIRED_DEVICES :
                         update_indicator_status ();                          
                     break;
 
-                    case "info-item" :
+                    case Constants.SETTINGS_INFO_ITEM :
                         if (deviceManager._get_property_bool (property))
                             info_item.show ();         
                         else
                             info_item.hide ();                          
                     break;
 
-                    case "browse-items" :                        
+                    case Constants.SETTINGS_BRROWSE_ITEMS :
                         if (deviceManager._get_property_bool (property)) {
-                            broswe_items.show ();         
+                            broswe_items.show ();
                             broswe_item.hide ();
                         }                            
                         else {
                             broswe_items.hide ();
-                            broswe_item.show ();                            
-                        }                            
+                            broswe_item.show ();
+                        }
                     break;
     
-                    case "send-url" :
+                    case Constants.SETTINGS_SEND_URL :
                         if (deviceManager._get_property_bool (property))
                             share_url_item.show ();
                         else
                             share_url_item.hide ();
                     break;
 
-                    case "send-sms" :
+                    case Constants.SETTINGS_SEND_SMS :
                         if (deviceManager._get_property_bool (property))
                             send_sms_item.show ();
                         else    
                             send_sms_item.hide ();
                     break;
     
-                    case "find-my-device" :
+                    case Constants.SETTINGS_FIND_PHONE :
                         if (deviceManager._get_property_bool (property))
                             ring_item.show ();
                         else    
                             ring_item.hide ();
                     break;
+
+                    case Constants.SETTINGS_PING_ITEMS :
+                        if (deviceManager._get_property_bool (property))
+                            ping_items.show ();
+                        else
+                            ping_items.hide ();
+                    break;
                 }
             }
             else {
-                if (deviceManager._get_property_bool ("only-paired-devices"))
+                if (deviceManager._get_property_bool (Constants.SETTINGS_INFO_ITEM))
                     update_indicator_status ();
 
-                if (deviceManager._get_property_bool ("info-item"))
+                if (deviceManager._get_property_bool (Constants.SETTINGS_INFO_ITEM))
                     info_item.show ();         
                 else
                     info_item.hide ();
-                
-                if (deviceManager._get_property_bool ("browse-items")) {
-                    broswe_items.show ();         
-                    broswe_item.hide ();
-                }                            
-                else {
-                    broswe_items.hide ();
-                    broswe_item.show ();                            
-                }     
 
-                if (deviceManager._get_property_bool ("send-url"))
+                if (deviceManager._get_property_bool (Constants.SETTINGS_BRROWSE_ITEMS)) {
+                            broswe_items.show ();
+                            broswe_item.hide ();
+                        }
+                        else {
+                            broswe_item.show ();
+                            broswe_items.hide ();
+                        }
+
+                if (deviceManager._get_property_bool (Constants.SETTINGS_SEND_URL))
                     share_url_item.show ();
                 else
                     share_url_item.hide ();
                     
-                if (deviceManager._get_property_bool ("send-sms"))
+                if (deviceManager._get_property_bool (Constants.SETTINGS_SEND_SMS))
                     send_sms_item.show ();
                 else    
                     send_sms_item.hide ();
                 
-                if (deviceManager._get_property_bool ("find-my-device"))
+                if (deviceManager._get_property_bool (Constants.SETTINGS_FIND_PHONE))
                     ring_item.show ();
                 else    
                     ring_item.hide ();
+
+                if (deviceManager._get_property_bool (Constants.SETTINGS_PING_ITEMS))
+                    ping_items.show ();
+                else
+                    ping_items.hide ();
             }
         }
 
-        private void build_browse_sub_paths () {
+        private async void build_browse_sub_paths () {
             if (!deviceManager.is_sftp_mounted) {
                 deviceManager.mount_sftp ();
 
                 //TODO: Por isto numa tread
+                // Thread.usleep (500);
                 Timeout.add (1000, ()=> { 
                     return false;
                 });
             }
 
-            var directories = deviceManager._get_directories();   
+            var directories = deviceManager._get_directories();
 
             if(directories.length () > 0) {
-                //broswe_items_sub_menu = new Gtk.Menu ();
-                directories.@foreach ((pair)=>{
-                    message("%s, %s", pair.get_first (), 
-                                      pair.get_secound ());
+                directories.@foreach ( (pair) => {
+                    debug ("%s, %s", pair.get_first (),
+                                     pair.get_secound ());
 
                     var tmpMenuItem = new Gtk.MenuItem.with_label (pair.get_first ());
                     
-                    tmpMenuItem.activate.connect (() => {                        
+                    tmpMenuItem.activate.connect ( () => {
                         deviceManager.browse (pair.get_secound ());
                     });
                     
                     broswe_items_sub_menu.append (tmpMenuItem);
-                });                                                               	    
-                                
-                //broswe_items_sub_menu.show_all ();  
-                //broswe_items.show_all ();             
+                });
             }            
         }
 
@@ -499,13 +557,13 @@ namespace IndicatorKDEConnect {
                					                     Gtk.ResponseType.CANCEL,
                					                     _("Select"),
                					                     Gtk.ResponseType.OK);
-                
+
             chooser.select_multiple = true;
                 
             if (chooser.run () == Gtk.ResponseType.OK) {
                 SList<string> uris = chooser.get_uris ();
-	            uris.@foreach ((item) => {
-        	        deviceManager._share_url(item);
+	            uris.@foreach ( (item) => {
+        	        deviceManager._share_url (item);
 	            });
             }
               

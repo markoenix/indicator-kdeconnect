@@ -4,13 +4,15 @@
  * (version 2.1 or later).  See the COPYING file in this distribution.
  */
 namespace IndicatorKDEConnect {
-    public interface IFindMyPhone : Object, ISignals {
-        protected void ring (ref DBusConnection conn, 
-                             string path) {                                        
+    public interface IFindMyPhone : Object, 
+                                    ISignals {
+        protected virtual void ring (ref DBusConnection conn, 
+                                     string path) {                                        
             try {
-                conn.call_sync ("org.kde.kdeconnect",
+                debug ("Calling Find My Phone");
+                conn.call_sync (Constants.KDECONNECT_DEAMON,
                                 path+"/findmyphone",
-                                "org.kde.kdeconnect.device.findmyphone",
+                                Constants.KDECONNECT_DEAMON_FINDPHONE,
                                 "ring",
                                 null,
                                 null,

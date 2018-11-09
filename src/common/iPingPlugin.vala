@@ -4,15 +4,24 @@
  * (version 2.1 or later).  See the COPYING file in this distribution.
  */
 namespace IndicatorKDEConnect {
-    public interface IPing : Object, ISignals {
-        protected void send_ping (ref DBusConnection conn, 
-                                  string path) {                                        
+    public interface IPing : Object,
+                       ISignals {
+        protected virtual void send_ping (ref DBusConnection conn,
+                                          string path,
+                                          string? message = null) {
             try {
-                conn.call_sync ("org.kde.kdeconnect",
-                                path,
-                                "org.kde.kdeconnect.device.ping",
+                debug ("Sending a Ping");
+
+                Variant pingMessage = null;
+                if(message != null)
+                    pingMessage = new Variant ("(s)",
+                                               message);
+
+                conn.call_sync (Constants.KDECONNECT_DEAMON,
+                                path+"/ping",
+                                Constants.KDECONNECT_DEAMON_PING,
                                 "sendPing",
-                                null,
+                                pingMessage,
                                 null,
                                 DBusCallFlags.NONE,
                                 -1,
@@ -21,26 +30,6 @@ namespace IndicatorKDEConnect {
             catch (Error e) {
                 debug (e.message);
             }          
-        }         
-
-        protected void send_ping (ref DBusConnection conn, 
-                                  string path,
-                                  string message) {                            
-            try {
-                conn.call_sync ("org.kde.kdeconnect",
-                                path+"/ping",
-                                "org.kde.kdeconnect.device.ping",
-                                "send",
-                                new Variant ("(s)", 
-                                             message),
-                                null,
-                                DBusCallFlags.NONE,
-                                -1,
-                                null);             
-            } 
-            catch (Error e) {
-                debug (e.message);
-            }            
-        } 
+        }
     }
 }

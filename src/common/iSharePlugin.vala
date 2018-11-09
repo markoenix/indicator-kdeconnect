@@ -4,14 +4,16 @@
  * (version 2.1 or later).  See the COPYING file in this distribution.
  */
 namespace IndicatorKDEConnect {
-    public interface IShare : Object, ISignals {
-        protected void share (ref DBusConnection conn, 
-                              string path,
-                              string url) {                                        
+    public interface IShare : Object, 
+                              ISignals {
+        protected virtual void share (ref DBusConnection conn, 
+                                      string path,
+                                      string url) {                                        
             try {
-                conn.call_sync ("org.kde.kdeconnect",
+                debug ("Sharing a file");
+                conn.call_sync (Constants.KDECONNECT_DEAMON,
                                 path+"/share",
-                                "org.kde.kdeconnect.device.share",
+                                Constants.KDECONNECT_DEAMON_SHARE,
                                 "shareUrl",
                                 new Variant ("(s)",
                                              url),
@@ -22,7 +24,7 @@ namespace IndicatorKDEConnect {
             } 
             catch (Error e) {
                 debug (e.message);
-            }          
-        }                
+            }
+        }
     }
 }

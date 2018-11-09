@@ -9,9 +9,9 @@ namespace IndicatorKDEConnect {
                                                string path) {
             var return_value = false;            
             try {
-                var return_variant = conn.call_sync ("org.kde.kdeconnect",
+                var return_variant = conn.call_sync (Constants.KDECONNECT_DEAMON,
                                                      path+"/sftp",
-                                                     "org.kde.kdeconnect.device.sftp",
+                                                     Constants.KDECONNECT_DEAMON_SFTP,
                                                      "mountAndWait",
                                                      null,
                                                      null,
@@ -32,9 +32,9 @@ namespace IndicatorKDEConnect {
         protected virtual void mount (ref DBusConnection conn,
                                       string path) {            
             try {
-                conn.call_sync ("org.kde.kdeconnect",
+                conn.call_sync (Constants.KDECONNECT_DEAMON,
                                 path+"/sftp",
-                                "org.kde.kdeconnect.device.sftp",
+                                Constants.KDECONNECT_DEAMON_SFTP,
                                 "mount",
                                 null,
                                 null,
@@ -45,15 +45,15 @@ namespace IndicatorKDEConnect {
             catch (Error e) {
                 debug (e.message);
             }          
-            debug ("Device %s, mount", path);  
+            debug (@"Device $path, mount");
         }
                 
         protected virtual void unmount (ref DBusConnection conn,
                                         string path) {
             try {
-                conn.call_sync ("org.kde.kdeconnect",
+                conn.call_sync (Constants.KDECONNECT_DEAMON,
                                 path+"/sftp",
-                                "org.kde.kdeconnect.device.sftp",
+                                Constants.KDECONNECT_DEAMON_SFTP,
                                 "unmount",
                                 null,
                                 null,
@@ -64,16 +64,16 @@ namespace IndicatorKDEConnect {
             catch (Error e) {
                 debug (e.message);
             }          
-            debug ("Device %s, mount", path);            
+            debug (@"Device $path, mount");
         }
                       
         protected virtual bool start_browsing (ref DBusConnection conn,
                                                string path) {
             var return_value = false;            
             try {
-                var return_variant = conn.call_sync ("org.kde.kdeconnect",
+                var return_variant = conn.call_sync (Constants.KDECONNECT_DEAMON,
                                                      path+"/sftp",
-                                                     "org.kde.kdeconnect.device.sftp",
+                                                     Constants.KDECONNECT_DEAMON_SFTP,
                                                      "startBrowsing",
                                                      null,
                                                      null,
@@ -95,9 +95,9 @@ namespace IndicatorKDEConnect {
                                               string path) {
             var return_value = "";            
             try {
-                var return_variant = conn.call_sync ("org.kde.kdeconnect",
+                var return_variant = conn.call_sync (Constants.KDECONNECT_DEAMON,
                                                      path+"/sftp",
-                                                     "org.kde.kdeconnect.device.sftp",
+                                                     Constants.KDECONNECT_DEAMON_SFTP,
                                                      "mountPoint",
                                                      null,
                                                      null,
@@ -111,7 +111,7 @@ namespace IndicatorKDEConnect {
             catch (Error e) {
                 debug (e.message);
             }          
-            debug ("Device %s, mount point %s", path, return_value);
+            debug (@"Device $path, mount point $return_value");
             return return_value;  
         }
 
@@ -119,9 +119,9 @@ namespace IndicatorKDEConnect {
                                            string path) {
             var return_value = false;
             try {
-                var return_variant = conn.call_sync ("org.kde.kdeconnect",
+                var return_variant = conn.call_sync (Constants.KDECONNECT_DEAMON,
                                                      path+"/sftp",
-                                                     "org.kde.kdeconnect.device.sftp",
+                                                     Constants.KDECONNECT_DEAMON_SFTP,
                                                      "isMounted",
                                                      null,
                                                      null,
@@ -133,18 +133,18 @@ namespace IndicatorKDEConnect {
             } catch (Error e) {
                 message (e.message);
             }
-            debug ("Device %s, mount point %s", path, return_value.to_string ());
+            debug (@"Device $path, mount point %s", return_value.to_string ());
             return return_value;
         }
 
         protected virtual Variant get_directories (ref DBusConnection conn,
-                                                                      string path) {
-            //var directories = new SList<Pair<string,string>>();
+                                                   string path) {
+            debug ("Getting Directories");
             Variant return_value = null;
             try {
-                var return_variant = conn.call_sync ("org.kde.kdeconnect",
+                var return_variant = conn.call_sync (Constants.KDECONNECT_DEAMON,
                                                      path+"/sftp",
-                                                     "org.kde.kdeconnect.device.sftp",
+                                                     Constants.KDECONNECT_DEAMON_SFTP,
                                                      "getDirectories",
                                                      null,
                                                      null,
@@ -155,11 +155,10 @@ namespace IndicatorKDEConnect {
                 Variant variant = return_variant.get_child_value (0);
                 
                 return_value = variant;
-                                
-                //message ("Founded Directories %d", (int)directories.length ());                        
             } catch (Error e) {
             	message (e.message);
             }        
+
             return return_value;
         }
 

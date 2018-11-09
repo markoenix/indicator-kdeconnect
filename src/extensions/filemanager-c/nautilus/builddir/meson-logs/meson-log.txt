@@ -1,0 +1,10 @@
+Build started at 2018-06-09T19:51:44.766451
+Main binary: /usr/bin/python
+Python system: Linux
+The Meson build system
+Version: 0.46.1
+Source dir: /home/bajoja/Projects/indicator-kdeconnect/src/extensions/filemanager-c/nautilus
+Build dir: /home/bajoja/Projects/indicator-kdeconnect/src/extensions/filemanager-c/nautilus/builddir
+Build type: native build
+
+ERROR: First statement must be a call to project

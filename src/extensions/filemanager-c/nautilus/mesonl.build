@@ -1,0 +1,30 @@
+project('sendvia-kdeconnect', 'c',
+        version : '0.9.4',
+        license : 'GPL-2.1+')
+
+includedir = get_option('includedir')
+extensiondir = join_paths(get_option('libdir'), 'nautilus/extensions-3.0')
+#extensiondir = '/usr/lib/nautilus/extensions-3.0'
+
+
+i18n = import('i18n')
+glib_dep = dependency('glib-2.0')
+config_dep = dependency('libconfig')
+nautiluslib_dep = dependency('libnautilus-extension')
+
+
+sendvia_kdeconnect_sources = [
+  'sendvia-kdeconnect.c',
+  'sendvia-kdeconnect.h',
+  'sendvia-kdeconnect-module.c'
+]
+
+libsendvia_kdeconnect = shared_module(
+  'sendvia_kdeconnect',
+  sendvia_kdeconnect_sources,
+  dependencies : config_dep,
+  dependencies : glib_dep,  
+  dependencies : nautiluslib_dep,
+  install: true,
+  install_dir: extensiondir
+)

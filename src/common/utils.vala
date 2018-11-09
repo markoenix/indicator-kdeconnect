@@ -89,7 +89,7 @@ namespace IndicatorKDEConnect {
         public static void run_sms_python (string device_id) {
             try{
                 Process.spawn_async (null,
-                                     new string[]{Config.PACKAGE_DATADIR+
+                                     new string[]{GLib.Environment. get_user_data_dir()+
                                                   "/"+
                                                   Config.PACKAGE_NAME+
                                                   "/sms.py",
@@ -108,7 +108,7 @@ namespace IndicatorKDEConnect {
         public static void run_settings () {
             try{
                 Process.spawn_async (null,
-                                     new string[]{"settings-ind-kdec"},
+                                     new string[]{Config.PACKAGE_SETTINGS},
                                      null,
                                      SpawnFlags.SEARCH_PATH,
                                      null,
@@ -140,10 +140,7 @@ namespace IndicatorKDEConnect {
             var return_value = 0;				    
             try {
                 var file = File.new_for_path (GLib.Environment. get_user_data_dir()+
-                                              "/indicator-kdeconnect/"+                                              
-                                              "folders_"+
-                                              id+
-                                              ".json");
+                                              "/"+Config.PACKAGE_NAME+"/folders_"+id+".json");
 	
                 if (file.query_exists ()) {
                     debug ("File '%s' exists exist.\n", file.get_path ());

@@ -12,27 +12,27 @@ namespace IndicatorKDEConnect {
                                             string signal_name, 
                                             Variant parameter) {
             
-            debug ("Signal: %s, Value: None", signal_name);                                                
+            debug (@"Signal: $signal_name, Value: None");
         }
 
         public virtual void boolean_signal_cb (DBusConnection con, 
-                                       string sender, 
-                                       string object,
-                                       string interface, 
-                                       string signal_name, 
-                                       Variant parameter) {
+                                               string sender,
+                                               string object,
+                                               string interface,
+                                               string signal_name,
+                                               Variant parameter) {
             bool param = parameter.get_child_value (0).get_boolean ();
-            debug ("Signal: %s, Value: %b", signal_name, param);
+            debug (@"Signal: $signal_name, Value: $param");
         }
 
         public virtual void string_signal_cb (DBusConnection con, 
-                                       string sender, 
-                                       string object,
-                                       string interface, 
-                                       string signal_name, 
-                                       Variant parameter) {
+                                              string sender,
+                                              string object,
+                                              string interface,
+                                              string signal_name,
+                                              Variant parameter) {
             string param = parameter.get_child_value (0).get_string ();
-            debug ("Signal: %s, Value: %s", signal_name, param);
+            debug (@"Signal: $signal_name, Value: $param");
         }                               
         
         public virtual void int32_signal_cb (DBusConnection con, 
@@ -42,7 +42,7 @@ namespace IndicatorKDEConnect {
                                              string signal_name, 
                                              Variant parameter) {
             int param = parameter.get_child_value (0).get_int32 ();
-            debug ("Signal: %s, Value: %d", signal_name, param);
+            debug (@"Signal: $signal_name, Value: $param");
         }
     }
 }

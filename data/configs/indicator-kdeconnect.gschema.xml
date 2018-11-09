@@ -1,5 +1,5 @@
 <schemalist>
-  <schema id="com.indicator-kdeconnect" path="/com/indicator_kdeconnect/" gettext-domain="indicator-kdeconnect">
+  <schema id="com.indicator-kdeconnect.daemon" path="/com/indicator_kdeconnect/" gettext-domain="indicator-kdeconnect">
 
     <key name="only-paired-devices" type="b">
       <default>false</default>
@@ -46,6 +46,14 @@
       <summary>Show find my device menu</summary>
       <description>
         Show find my device menu
+      </description>
+    </key>
+
+    <key name="ping-items" type="b">
+      <default>false</default>
+      <summary>Show Ping menu</summary>
+      <description>
+        Show Ping, and Ping Message menu
       </description>
     </key>
 

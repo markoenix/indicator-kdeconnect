@@ -5,21 +5,12 @@
  */
 using Gtk;
 using Gee;
-using IndicatorKDEConnect;
 
-namespace SendViaKDEConnect{
+namespace IndicatorKDEConnect{
 	private SList<File> files;
 
-	class SendDialog : Gtk.Application, IDaemon {
-		private static bool version;
-        private static bool kdeconnect_api_version;
-        private static bool debug = false;
-        private const OptionEntry[] options = {
-            { "version", 0, 0, OptionArg.NONE, ref version, "Display version number", null },
-            { "api-version", 0, 0, OptionArg.NONE, ref kdeconnect_api_version, "Display KDEConnect API version number", null },
-            { "debug", 'd', 0, OptionArg.NONE, ref debug, "Show debug information", null},
-            { null }
-        };
+	public class SendViaDialog : Gtk.Application,
+	                   IDaemon {		
 		private ApplicationWindow window;
 		private HeaderBar headerBar;
 		private Button cancel_button;
@@ -41,8 +32,8 @@ namespace SendViaKDEConnect{
 		private HashSet<uint> subs_identifier;
 		private enum Columns {TEXT, TOGGLE,	N_COLUMNS}
 
-		public SendDialog () {
-			Object (application_id: "com.indicator-kdeconnect.sendvia",
+		public SendViaDialog () {
+			Object (application_id: Config.SV_APPLICATION_ID,
 				    flags: ApplicationFlags.HANDLES_OPEN);
 
 			try {
@@ -65,7 +56,7 @@ namespace SendViaKDEConnect{
 			}						
 		}
 
-		~SendDialog() {			
+		~SendViaDialog() {			
 			subs_identifier.@foreach ( (item) =>  {
                 conn.signal_unsubscribe (item); 
 			});
@@ -92,7 +83,7 @@ namespace SendViaKDEConnect{
 			foreach (File file in _files) {
 				message ("%s".printf(file.get_uri ()));
 				if (file.get_path() != null && // null path means its remote file
-		    	    file.query_exists ())		
+		    	    file.query_exists ())
 					files.append (file);
 			}
 
@@ -107,7 +98,7 @@ namespace SendViaKDEConnect{
 			this.window.border_width = 10;
 
 			this.headerBar = new Gtk.HeaderBar ();
-			this.headerBar.set_title ("SendVia");
+			this.headerBar.set_title ("SendViaDialog");
 			this.headerBar.set_subtitle ("KDEConnect");
 
 			this.cancel_button = new Gtk.Button.with_label (_("Cancel"));
@@ -265,9 +256,9 @@ namespace SendViaKDEConnect{
 										  1, 
 										  out val2);
 
-					message ("Entry: %s\t%s\n", (string) val1, 
-												((bool) val2).to_string());
-												
+					message ("Entry: %s\t%s\n", (string) val1,
+											  ((bool) val2).to_string());
+
 					if ((bool) val2)
 						selected_devices.append_val  (i);	
 
@@ -287,14 +278,14 @@ namespace SendViaKDEConnect{
 			this.device_list.clear ();											
 
 			foreach (string id in id_list) {
-			    var d = new DeviceManager ("/modules/kdeconnect/devices/"+id);
+			    var d = new DeviceManager (Constants.DEVICE_PATH + id);
 			    if (d.is_reachable && d.is_trusted) {
 					device_list.add (d);
 					message (d.name);
 				    this.list_store.append (out iter);           			
-					this.list_store.set (iter, 
+					this.list_store.set (iter,
 										 0, 
-										 d.name, 
+										 d.name,
 										 1, 
 										 false);
 			    }
@@ -329,41 +320,6 @@ namespace SendViaKDEConnect{
 			}		
 
 		    this.window.close ();
-		}	
-
-		static int main (string[] args) {
-			GLib.Intl.setlocale(GLib.LocaleCategory.ALL, "");
-			GLib.Intl.textdomain (Config.GETTEXT_PACKAGE);
-			GLib.Intl.bindtextdomain (Config.GETTEXT_PACKAGE, Config.PACKAGE_LOCALEDIR);
-			GLib.Intl.bind_textdomain_codeset (Config.GETTEXT_PACKAGE, "UTF-8");			
-
-			try {
-				var opt_context = new OptionContext ("- sendvia-kdeconnect");
-				opt_context.set_help_enabled (true);
-				opt_context.add_main_entries (options, null);
-				opt_context.parse (ref args);
-			} 
-			catch (OptionError e) {
-				message ("%s\n", e.message);
-				message ("Run '%s --help' to see a full list of available command line options.\n", args[0]);
-				return 1;
-			}
-
-			if (version) {
-				message ("%s %s\n", Config.PACKAGE_NAME, Config.PACKAGE_VERSION);
-				return 0;
-			} 
-			else if (kdeconnect_api_version) {
-				message ("%s\n", Config.PACKAGE_API_VERSION);
-				return 0;
-			}
-
-			if (debug) {
-				Environment.set_variable("G_MESSAGES_DEBUG", "all", false);
-				message("send-kdeconnect started in debug mode.");
-			}
-
-			return new SendDialog ().run (args);
-		}
+		}			
 	}	
 }

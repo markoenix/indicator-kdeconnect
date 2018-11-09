@@ -4,19 +4,9 @@
  * (version 2.1 or later).  See the COPYING file in this distribution.
  */
 using Gtk;
-using IndicatorKDEConnect;
 
-namespace IndicatorKDEConnectSettings {
-	class SettingsDialog : Gtk.Application {
-		private static bool version;
-        private static bool kdeconnect_api_version;
-        private static bool debug = false;
-        private const OptionEntry[] options = {
-            { "version", 0, 0, OptionArg.NONE, ref version, "Display version number", null },
-            { "api-version", 0, 0, OptionArg.NONE, ref kdeconnect_api_version, "Display KDEConnect API version number", null },
-            { "debug", 'd', 0, OptionArg.NONE, ref debug, "Show debug information", null},
-            { null }
-        };
+namespace IndicatorKDEConnect {
+	public class SettingsDialog : Gtk.Application {		
 		private GLib.Settings settings;
 		private ApplicationWindow window;
 		private HeaderBar headerBar;
@@ -25,10 +15,9 @@ namespace IndicatorKDEConnectSettings {
 		private StyleContext style_context;
 		private Stack stack;
 		private StackSwitcher stack_switcher;
-		//private bool need_restart;		
-		
+
 		public SettingsDialog () {
-			Object (application_id: "com.indicator-kdeconnect.settings",
+			Object (application_id: Config.IKCS_APPLICATION_ID,
 				    flags: ApplicationFlags.FLAGS_NONE);
 		}
 
@@ -71,8 +60,8 @@ namespace IndicatorKDEConnectSettings {
 
 			Box title = new Box (Gtk.Orientation.VERTICAL, 
 								 0);
-								 
-			title.pack_start (stack_switcher, 
+
+			title.pack_start (stack_switcher,
 							  false, 
 							  false, 
 							  0);
@@ -98,25 +87,19 @@ namespace IndicatorKDEConnectSettings {
 		}	
 
 		private Box create_visibility_setts () {
-			Label label1 = new Label (_("Show only paired devices: "));
+			var checkBtn1 = new Gtk.CheckButton.with_label (_("Show only paired devices"));
 
-			Switch switch1 = new Switch ();
+			checkBtn1.set_active (settings.get_boolean (Constants.SETTINGS_PAIRED_DEVICES));
 
-			switch1.set_active (settings.get_boolean ("only-paired-devices"));
-
-			switch1.notify["active"].connect (() => {				
-				settings.set_boolean ("only-paired-devices", 
-				                      switch1.active);								
+			checkBtn1.notify["active"].connect (() => { 
+				message ("Setting only-paired-devices %s", checkBtn1.active.to_string ());
+				settings.set_boolean (Constants.SETTINGS_PAIRED_DEVICES,
+									  checkBtn1.active);
 			});
 			
 			Box hbox1 = new Box (Gtk.Orientation.HORIZONTAL, 50);
 
-			hbox1.pack_start (label1, 
-							  true, 
-							  true, 
-							  0);
-
-			hbox1.pack_start (switch1, 
+			hbox1.pack_start (checkBtn1,
 							  true,
 							  true, 
 							  0);
@@ -126,26 +109,19 @@ namespace IndicatorKDEConnectSettings {
 			boxrow1.add (hbox1);
 
 			//----------------------------------------------------//
+			var checkBtn2 = new Gtk.CheckButton.with_label (_("Show Menu Directories"));
 
-			Label label2 = new Label (_("Show Menu Directories: "));
+			checkBtn2.set_active (settings.get_boolean (Constants.SETTINGS_BRROWSE_ITEMS));
 
-			Switch switch2 = new Switch ();
-
-			switch2.set_active (settings.get_boolean ("browse-items"));
-
-			switch2.notify["active"].connect (() => {
-				settings.set_boolean ("browse-items", 
-				                      switch2.active);
-			});	
+			checkBtn2.notify["active"].connect (() => {
+				message ("Setting browse-items %s", checkBtn2.active.to_string ());
+				settings.set_boolean (Constants.SETTINGS_BRROWSE_ITEMS, 
+									  checkBtn2.active);
+			});
 
 			Box hbox2 = new Box (Gtk.Orientation.HORIZONTAL, 50);
 
-			hbox2.pack_start (label2, 
-							  true, 
-							  true, 
-							  0);
-
-			hbox2.pack_start (switch2, 
+			hbox2.pack_start (checkBtn2,
 							  true, 
 							  true, 
 							  0);
@@ -155,27 +131,20 @@ namespace IndicatorKDEConnectSettings {
 			boxrow2.add (hbox2);
 
 			//----------------------------------------------------//
+			var checkBtn3 = new Gtk.CheckButton.with_label (_("Show Menu Send URL"));
 
-			Label label3 = new Label (_("Show Menu Send URL: "));
+			checkBtn3.set_active (settings.get_boolean (Constants.SETTINGS_SEND_URL));
 
-			Switch switch3 = new Switch ();
-		
-    		switch3.set_active (settings.get_boolean ("send-url"));
-
-			switch3.notify["active"].connect (() => {
-				settings.set_boolean ("send-url", 
-									  switch3.active);
-			});	
+			checkBtn3.notify["active"].connect (() => {
+				message ("Setting send-url %s", checkBtn3.active.to_string ());
+				settings.set_boolean (Constants.SETTINGS_SEND_URL, 
+									  checkBtn3.active);
+			});
 
 			Box hbox3 = new Box (Gtk.Orientation.HORIZONTAL, 50);
 
-			hbox3.pack_start (label3, 
-							  true, 
-							  true, 
-							  0);
-
-			hbox3.pack_start (switch3,			  
-							  true, 
+			hbox3.pack_start (checkBtn3,
+							  true,
 							  true, 
 							  0);
 
@@ -184,27 +153,19 @@ namespace IndicatorKDEConnectSettings {
 			boxrow3.add (hbox3);
 
 			//---------------------------------------------------//
+			var checkBtn4 = new Gtk.CheckButton.with_label (_("Show Menu Find Phone"));
 
+			checkBtn4.set_active (settings.get_boolean (Constants.SETTINGS_FIND_PHONE));
 
-			Label label4 = new Label (_("Show Menu Find Phone: "));
-
-			Switch switch4 = new Switch ();
-		
-    		switch4.set_active (settings.get_boolean ("find-my-device"));
-
-			switch4.notify["active"].connect (() => {
-				settings.set_boolean ("find-my-device", 
-				                      switch4.active);
-			});	
+			checkBtn4.notify["active"].connect (() => {
+				message ("Setting find-my-device %s", checkBtn4.active.to_string ());
+				settings.set_boolean (Constants.SETTINGS_FIND_PHONE, 
+									  checkBtn4.active);
+			});
 
 			Box hbox4 = new Box (Gtk.Orientation.HORIZONTAL, 50);
 
-			hbox4.pack_start (label4, 
-							  true, 
-							  true, 
-							  0);
-
-			hbox4.pack_start (switch4, 
+			hbox4.pack_start (checkBtn4,
 							  true, 
 							  true, 
 							  0);
@@ -214,26 +175,19 @@ namespace IndicatorKDEConnectSettings {
 			boxrow4.add (hbox4);
 
 			//---------------------------------------------------//
+			var checkBtn5 = new Gtk.CheckButton.with_label (_("Show Menu Send SMS"));
 
-			Label label5 = new Label (_("Show Menu Send SMS: "));
+			checkBtn5.set_active (settings.get_boolean (Constants.SETTINGS_SEND_SMS));
 
-			Switch switch5 = new Switch ();
-		
-    		switch5.set_active (settings.get_boolean ("send-sms"));
-
-			switch5.notify["active"].connect (() => {
-				settings.set_boolean ("send-sms", 
-									  switch5.active);
-			});	
+			checkBtn5.notify["active"].connect (() => {
+				message ("Setting send-sms %s", checkBtn5.active.to_string ());
+				settings.set_boolean (Constants.SETTINGS_SEND_SMS, 
+									  checkBtn5.active);
+			});
 
 			Box hbox5 = new Box (Gtk.Orientation.HORIZONTAL, 50);
 
-			hbox5.pack_start (label5, 
-							  true, 
-							  true, 
-							  0);
-
-			hbox5.pack_start (switch5, 
+			hbox5.pack_start (checkBtn5,
 							  true, 
 							  true, 
 							  0);
@@ -243,26 +197,19 @@ namespace IndicatorKDEConnectSettings {
 			boxrow5.add (hbox5);
 
 			//---------------------------------------------------//
+			var checkBtn6 = new Gtk.CheckButton.with_label (_("Show Menu Info"));
 
-			Label label6 = new Label (_("Show Menu Info: "));
+			checkBtn6.set_active (settings.get_boolean (Constants.SETTINGS_INFO_ITEM));
 
-			Switch switch6 = new Switch ();
-		
-    		switch6.set_active (settings.get_boolean ("info-item"));
-
-			switch6.notify["active"].connect (() => {
-				settings.set_boolean ("info-item", 
-									  switch6.active);
-			});	
+			checkBtn6.notify["active"].connect (() => {
+				message ("Setting info-item %s", checkBtn6.active.to_string ());
+				settings.set_boolean (Constants.SETTINGS_INFO_ITEM,
+									  checkBtn6.active);
+			});
 
 			Box hbox6 = new Box (Gtk.Orientation.HORIZONTAL, 50);
 
-			hbox6.pack_start (label6, 
-							  true, 
-							  true, 
-							  0);
-
-			hbox6.pack_start (switch6, 
+			hbox6.pack_start (checkBtn6,
 							  true, 
 							  true, 
 							  0);
@@ -273,6 +220,29 @@ namespace IndicatorKDEConnectSettings {
 
 			//---------------------------------------------------//
 
+			var checkBtn7 = new Gtk.CheckButton.with_label (_("Show Ping Menus"));
+
+			checkBtn7.set_active (settings.get_boolean (Constants.SETTINGS_PING_ITEMS));
+
+			checkBtn7.notify["active"].connect (() => {
+				message ("Setting ping-items %s", checkBtn7.active.to_string ());
+				settings.set_boolean (Constants.SETTINGS_PING_ITEMS,
+									  checkBtn7.active);
+			});
+
+			Box hbox7 = new Box (Gtk.Orientation.HORIZONTAL, 50);
+
+			hbox7.pack_start (checkBtn7,
+							  true, 
+							  true, 
+							  0);
+
+			ListBoxRow boxrow7 = new ListBoxRow ();
+
+			boxrow7.add (hbox7);
+
+			//---------------------------------------------------//
+
 			ListBox list_box = new ListBox ();
 			list_box.set_selection_mode (Gtk.SelectionMode.NONE);
 			
@@ -280,14 +250,15 @@ namespace IndicatorKDEConnectSettings {
 			list_box.add (boxrow6);
 			list_box.add (boxrow2);
 			list_box.add (boxrow3);	
+			list_box.add (boxrow7);
 			list_box.add (boxrow5);
 			list_box.add (boxrow4);
 
 			//----------------------------------------------------//
 
-			Box vbox = new Box (Gtk.Orientation.HORIZONTAL, 
+			Box vbox = new Box (Gtk.Orientation.HORIZONTAL,
 			                    0);
-			vbox.pack_start (list_box, 
+			vbox.pack_start (list_box,
 							 true, 
 							 true, 
 							 0);
@@ -303,10 +274,10 @@ namespace IndicatorKDEConnectSettings {
 			button1.sensitive = false;
 
 			string _contacts = GLib.Environment. get_user_data_dir()+
-				               "/indicator-kdeconnect/sms/contacts.json";
+				               Config.TELEPHONY_CONTACTS;
 
 			string _token = GLib.Environment. get_user_data_dir()+
-			                "/indicator-kdeconnect/sms/token.json";
+			                Config.TELEPHONY_SMS_TOKEN;
 
 			File contacts = File.new_for_path (_contacts);
 			File token = File.new_for_path (_token);
@@ -371,41 +342,6 @@ namespace IndicatorKDEConnectSettings {
 							 0);
 
         	return vbox;
-        }
-
-        static int main (string[] args) {
-			GLib.Intl.setlocale (GLib.LocaleCategory.ALL, "");
-			GLib.Intl.textdomain (Config.GETTEXT_PACKAGE);
-			GLib.Intl.bindtextdomain (Config.GETTEXT_PACKAGE, Config.PACKAGE_LOCALEDIR);
-			GLib.Intl.bind_textdomain_codeset (Config.GETTEXT_PACKAGE, "UTF-8");
-
-			try {
-				var opt_context = new OptionContext ("- settings-ind-kdec");
-				opt_context.set_help_enabled (true);
-				opt_context.add_main_entries (options, null);
-				opt_context.parse (ref args);
-			} 
-			catch (OptionError e) {
-				message ("%s\n", e.message);
-				message ("Run '%s --help' to see a full list of available command line options.\n", args[0]);
-				return 1;
-			}
-
-			if (version) {
-				message ("%s %s\n", Config.PACKAGE_NAME, Config.PACKAGE_VERSION);
-				return 0;
-			} 
-			else if (kdeconnect_api_version) {
-				message ("%s\n", Config.PACKAGE_API_VERSION);
-				return 0;
-			}
-
-			if (debug) {
-				Environment.set_variable("G_MESSAGES_DEBUG", "all", false);
-				message("settings-ind-kdec started in debug mode.");
-			}
-
-            return new SettingsDialog ().run (args);
-        }
+        }        
 	}
 }

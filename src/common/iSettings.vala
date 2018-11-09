@@ -10,16 +10,15 @@ namespace IndicatorKDEConnect {
             settings.changed[property].connect (() => {
                 
                 setting_changed (property);
-                message ("Settings %s, Change", property);
+                debug (@"Settings $property, Change");
             });
         }
 
         public virtual bool get_property_bool (ref Settings settings, 
                                                string property) {
+            debug (@"Getting Settings $property");
             return settings.get_boolean (property);                         
         }
-
-
 
         public signal void setting_changed (string property);
     }

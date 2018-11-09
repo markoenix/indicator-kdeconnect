@@ -5,14 +5,15 @@
  */
 namespace IndicatorKDEConnect {
     public interface ITelephony : Object {
-        protected void send_sms (ref DBusConnection conn, 
-                                 string path,
-                                 string phone_number,
-                                 string message) {                                        
+        protected virtual void send_sms (ref DBusConnection conn,
+                                         string path,
+                                         string phone_number,
+                                         string message) {
             try {
-                conn.call_sync ("org.kde.kdeconnect",
+                debug (@"Sending SMS: $phone_number, $message");
+                conn.call_sync (Constants.KDECONNECT_DEAMON,
                                 path+"/telephony",
-                                "org.kde.kdeconnect.device.telephony",
+                                Constants.KDECONNECT_DEAMON_TELEPHONY,
                                 "sendSms",
                                 new Variant ("(ss)",
                                              phone_number,
