@@ -1,0 +1,3 @@
+option('documentation', type : 'boolean', value : false)
+option('extensions', type : 'string', value : 'python')
+option('config_folder', type : 'string', value : '.local/share/')

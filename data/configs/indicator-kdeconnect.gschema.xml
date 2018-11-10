@@ -1,0 +1,69 @@
+<schemalist>
+  <schema id="com.indicator-kdeconnect.daemon" path="/com/indicator_kdeconnect/" gettext-domain="indicator-kdeconnect">
+
+    <key name="only-paired-devices" type="b">
+      <default>false</default>
+      <summary>Show only paired devices</summary>
+      <description>
+        Show only paired devie on the indicator
+      </description>
+    </key>
+
+    <key name="info-item" type="b">
+      <default>true</default>
+      <summary>Show info menu</summary>
+      <description>
+        Show info menu
+      </description>
+    </key>
+
+    <key name="browse-items" type="b">
+      <default>false</default>
+      <summary>Show browse items</summary>
+      <description>
+        Show browse items
+      </description>
+    </key>
+
+    <key name="send-url" type="b">
+      <default>true</default>
+      <summary>Show send URL</summary>
+      <description>
+        Show option to send URL
+      </description>
+    </key>
+
+    <key name="send-sms" type="b">
+      <default>true</default>
+      <summary>Show send SMS</summary>
+      <description>
+        Show send SMS item
+      </description>
+    </key>
+
+    <key name="find-my-device" type="b">
+      <default>true</default>
+      <summary>Show find my device menu</summary>
+      <description>
+        Show find my device menu
+      </description>
+    </key>
+
+    <key name="ping-items" type="b">
+      <default>false</default>
+      <summary>Show Ping menu</summary>
+      <description>
+        Show Ping, and Ping Message menu
+      </description>
+    </key>
+
+    <key name="remote-keyboard" type="b">
+      <default>false</default>
+      <summary>Show Remote Keybord menu</summary>
+      <description>
+        Show Remote Keybord menu
+      </description>
+    </key>
+
+  </schema>
+</schemalist>

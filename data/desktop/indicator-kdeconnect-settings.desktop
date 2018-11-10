@@ -1,9 +1,0 @@
-[Desktop Entry]
-Name=KDE Connect Indicator Settings
-Comment=Settings panel for KDE Connect Indicator
-Exec=indicator-kdeconnect-settings
-Terminal=false
-Type=Application
-StartupNotify=true
-Icon=kdeconnect
-Categories=Network;System;

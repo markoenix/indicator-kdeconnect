@@ -1,0 +1,23 @@
+/* Copyright 2018 KDE Connect Indicator Developers
+ *
+ * This software is licensed under the GNU Lesser General Public License
+ * (version 2.1 or later).  See the COPYING file in this distribution.
+ */
+
+namespace IndicatorKDEConnect.Config {
+    public const string GETTEXT_PACKAGE = @GETTEXT_PACKAGE@;
+    public const string PACKAGE_NAME = @PACKAGE_NAME@;
+    public const string PACKAGE_VERSION = @PACKAGE_VERSION@;
+    public const string PACKAGE_API_VERSION = @PACKAGE_API_VERSION@;
+    public const string VERSION = @VERSION@;
+    public const string PACKAGE_DATADIR = @PACKAGE_DATADIR@;
+    public const string PACKAGE_LOCALEDIR = @PACKAGE_LOCALEDIR@;    
+    public const string SETTINGS_PATH = @SETTINGS_PATH@;
+    public const string SETTINGS_NAME = @SETTINGS_NAME@;
+    public const string IKC_APPLICATION_ID = @IKC_APPLICATION_ID@;
+    public const string SV_APPLICATION_ID = @SV_APPLICATION_ID@;
+    public const string IKCS_APPLICATION_ID = @IKCS_APPLICATION_ID@;
+    public const string TELEPHONY_CONTACTS = @TELEPHONY_CONTACTS@;
+    public const string TELEPHONY_SMS_TOKEN = @TELEPHONY_SMS_TOKEN@;
+    public const string PACKAGE_SETTINGS = @PACKAGE_SETTINGS@;
+}

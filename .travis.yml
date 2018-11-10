@@ -7,11 +7,11 @@ cache:
 before_install:
   - sudo add-apt-repository ppa:vala-team -y
   - sudo apt -qq update
-  - sudo apt install -y cmake valac libgtk-3-dev libappindicator3-dev gettext kdeconnect python3-requests-oauthlib
+  - sudo apt install -y ninja meson valac libgtk-3-dev libappindicator3-dev libgee-0.8-dev gettext  kdeconnect python3-requests-oauthlib
 before_script:
   - sleep 3
 script:
   - mkdir build
   - cd build  
-  - cmake .. -DCMAKE_INSTALL_PREFIX=/usr
-  - make
+  - meson .. --prefix=/usr/  --libdir=/usr/lib/
+  - ninja

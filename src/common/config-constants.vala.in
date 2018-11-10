@@ -1,0 +1,36 @@
+/* Copyright 2018 KDE Connect Indicator Developers
+ *
+ * This software is licensed under the GNU Lesser General Public License
+ * (version 2.1 or later).  See the COPYING file in this distribution.
+ */
+
+namespace IndicatorKDEConnect.Constants {
+    public const string KDECONNECT_DEBUS_PROP = @KDECONNECT_DEBUS_PROP@;
+    public const string KDECONNECT_DEAMON = @KDECONNECT_DEAMON@;
+    public const string KDECONNECT_DEAMON_DEVICE = @KDECONNECT_DEAMON_DEVICE@;
+    public const string KDECONNECT_DEAMON_BATTERY = @KDECONNECT_DEAMON_BATTERY@;
+    public const string KDECONNECT_DEAMON_FINDPHONE = @KDECONNECT_DEAMON_FINDPHONE@;
+    public const string KDECONNECT_DEAMON_PING = @KDECONNECT_DEAMON_PING@;
+    public const string KDECONNECT_DEAMON_SFTP = @KDECONNECT_DEAMON_SFTP@;
+    public const string KDECONNECT_DEAMON_SHARE = @KDECONNECT_DEAMON_SHARE@;
+    public const string KDECONNECT_DEAMON_TELEPHONY = @KDECONNECT_DEAMON_TELEPHONY@;
+    public const string KDECONNECT_DEAMON_DEAMON = @KDECONNECT_DEAMON_DEAMON@;
+    public const string KDECONNECT_DEAMON_KEYBOARD = @KDECONNECT_DEAMON_KEYBOARD@;
+    public const string DEVICE_PATH = @DEVICE_PATH@;
+    public const string PLUGIN_SFTP = @PLUGIN_SFTP@;
+    public const string PLUGIN_BATTERY = @PLUGIN_BATTERY@;
+    public const string PLUGIN_SHARE = @PLUGIN_SHARE@;
+    public const string PLUGIN_TELEPHONY = @PLUGIN_TELEPHONY@;
+    public const string PLUGIN_FINDMYPHONE = @PLUGIN_FINDMYPHONE@;
+    public const string PLUGIN_PING = @PLUGIN_PING@;
+    public const string PLUGIN_REMOTE_KEYBOARD = @PLUGIN_REMOTE_KEYBOARD@;
+    public const string SETTINGS_PAIRED_DEVICES = @SETTINGS_PAIRED_DEVICES@;
+    public const string SETTINGS_INFO_ITEM = @SETTINGS_INFO_ITEM@;
+    public const string SETTINGS_BRROWSE_ITEMS = @SETTINGS_BRROWSE_ITEMS@;
+    public const string SETTINGS_SEND_URL = @SETTINGS_SEND_URL@;
+    public const string SETTINGS_SEND_SMS = @SETTINGS_SEND_SMS@;
+    public const string SETTINGS_FIND_PHONE = @SETTINGS_FIND_PHONE@;
+    public const string SETTINGS_REMOTE_KEYBOARD = @SETTINGS_REMOTE_KEYBOARD@;
+    public const string SETTINGS_PING_ITEMS = @SETTINGS_PING_ITEMS@;
+    public const string MODULE_PATH = @MODULE_PATH@;
+}
