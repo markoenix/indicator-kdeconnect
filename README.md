@@ -38,8 +38,7 @@ Installation
 - Arch Linux
  There is a package available in the [AUR](https://aur.archlinux.org/packages/indicator-kdeconnect-git)
 
-- Fedora and openSUSE
- Visit https://software.opensuse.org//download.html?project=home%3ABajoja&package=indicator-kdeconnect and select your operating system.
+- Fedora and OpenSUSE [Visit](https://software.opensuse.org//download.html?project=home%3ABajoja&package=indicator-kdeconnect) and select your operating system.
 
 - Ubuntu and Linux Mint
  Ubuntu 16.04, 16.10, 17.04 and Linux Mint 18.1 users can use this PPA:

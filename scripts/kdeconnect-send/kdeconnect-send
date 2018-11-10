@@ -1,4 +1,4 @@
 #!/bin/bash
 
-kdeconnect-send "$@"
+indicator-kdeconnect -c "$@"
 
