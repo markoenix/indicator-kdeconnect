@@ -13,6 +13,6 @@ before_script:
 script:
   - mkdir build
   - cd build  
-  - meson .. --prefix=/usr/  --libdir=/usr/lib/
+  - meson ..
   - meson configure -Dextensions=python
   - ninja
