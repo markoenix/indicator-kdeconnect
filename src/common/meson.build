@@ -1,42 +1,42 @@
 # Lib type
 indicator_kdeconnect_conf = configuration_data()
 
-indicator_kdeconnect_conf.set_quoted('GETTEXT_PACKAGE', meson.project_name(),
-                  description: 'Gettext Package')
-indicator_kdeconnect_conf.set_quoted('PACKAGE_NAME', meson.project_name(),
-                  description: 'Define to the name of this package.')
-indicator_kdeconnect_conf.set_quoted('PACKAGE_DESCRIPTION', short_description,
-                  description: 'Define to a short description of this package.')
-indicator_kdeconnect_conf.set_quoted('PACKAGE_URL', project_web,
-                  description: 'Define to the home page for this package.')
-indicator_kdeconnect_conf.set_quoted('PACKAGE_BUGREPORT', project_bugs,
-                  description: 'Define to the address where bug reports for this package should be sent.')
-indicator_kdeconnect_conf.set_quoted('PACKAGE_API_VERSION', api_version,
-                  description: 'Define to the API version of this package.')
-indicator_kdeconnect_conf.set_quoted('PACKAGE_VERSION', meson.project_version(),
-                  description: 'Define to the version of this package.')
-indicator_kdeconnect_conf.set_quoted('VERSION', meson.project_version(),
-                  description: 'Version number of package')
-indicator_kdeconnect_conf.set_quoted('PACKAGE_DATADIR', join_paths(get_option('prefix'), get_option('datadir')),
-                  description: 'Define to datadir of this package.')
-indicator_kdeconnect_conf.set_quoted('PACKAGE_LOCALEDIR', join_paths(get_option('prefix'), get_option('datadir'), 'locale'),
-                  description: 'Define to locale dir of this package.')
-indicator_kdeconnect_conf.set_quoted('SETTINGS_PATH', '/apps/indicator-kdeconnect/',
-                  description: 'Define to root path of gsettings for this package.')
-indicator_kdeconnect_conf.set_quoted('SETTINGS_NAME', 'com.indicator-kdeconnect.gschema',
-                  description: 'Define to root bus name for this package.')
-indicator_kdeconnect_conf.set_quoted('IKC_APPLICATION_ID', 'com.indicator-kdeconnect.deamon',
-                  description: 'Define to root bus name for this package.')
-indicator_kdeconnect_conf.set_quoted('SV_APPLICATION_ID', 'com.indicator-kdeconnect.sendvia',
-                  description: 'Define to root bus name for this package.')
-indicator_kdeconnect_conf.set_quoted('IKCS_APPLICATION_ID', 'com.indicator-kdeconnect.settings',
-                  description: 'Define to root bus name for this package.')
-indicator_kdeconnect_conf.set_quoted('TELEPHONY_CONTACTS', '/indicator-kdeconnect/sms/contacts.json',
-                  description: 'Define to root bus name for this package.')
-indicator_kdeconnect_conf.set_quoted('TELEPHONY_SMS_TOKEN', '/indicator-kdeconnect/sms/token.json',
-                  description: 'Define to root bus name for this package.')
-indicator_kdeconnect_conf.set_quoted('PACKAGE_SETTINGS', meson.project_name() + ' -s',
-                  description: 'Define to root bus name for this package.')
+indicator_kdeconnect_conf.set_quoted('GETTEXT_PACKAGE', meson.project_name())
+ 
+indicator_kdeconnect_conf.set_quoted('PACKAGE_NAME', meson.project_name())
+ 
+indicator_kdeconnect_conf.set_quoted('PACKAGE_DESCRIPTION', short_description)
+ 
+indicator_kdeconnect_conf.set_quoted('PACKAGE_URL', project_web)
+ 
+indicator_kdeconnect_conf.set_quoted('PACKAGE_BUGREPORT', project_bugs)
+ 
+indicator_kdeconnect_conf.set_quoted('PACKAGE_API_VERSION', api_version)
+ 
+indicator_kdeconnect_conf.set_quoted('PACKAGE_VERSION', meson.project_version())
+ 
+indicator_kdeconnect_conf.set_quoted('VERSION', meson.project_version())
+ 
+indicator_kdeconnect_conf.set_quoted('PACKAGE_DATADIR', join_paths(get_option('prefix'), get_option('datadir')))
+ 
+indicator_kdeconnect_conf.set_quoted('PACKAGE_LOCALEDIR', join_paths(get_option('prefix'), get_option('datadir'), 'locale'))
+ 
+indicator_kdeconnect_conf.set_quoted('SETTINGS_PATH', '/apps/indicator-kdeconnect/')
+ 
+indicator_kdeconnect_conf.set_quoted('SETTINGS_NAME', 'com.indicator-kdeconnect.gschema')
+ 
+indicator_kdeconnect_conf.set_quoted('IKC_APPLICATION_ID', 'com.indicator-kdeconnect.deamon')
+ 
+indicator_kdeconnect_conf.set_quoted('SV_APPLICATION_ID', 'com.indicator-kdeconnect.sendvia')
+ 
+indicator_kdeconnect_conf.set_quoted('IKCS_APPLICATION_ID', 'com.indicator-kdeconnect.settings')
+ 
+indicator_kdeconnect_conf.set_quoted('TELEPHONY_CONTACTS', '/indicator-kdeconnect/sms/contacts.json')
+ 
+indicator_kdeconnect_conf.set_quoted('TELEPHONY_SMS_TOKEN', '/indicator-kdeconnect/sms/token.json')
+ 
+indicator_kdeconnect_conf.set_quoted('PACKAGE_SETTINGS', meson.project_name() + ' -s')
+ 
 
 
 configure_file(output: 'config-header.vala',
@@ -72,6 +72,7 @@ indicator_kdeconnect_constants.set_quoted('KDECONNECT_DEAMON_TELEPHONY', 'org.kd
 indicator_kdeconnect_constants.set_quoted('KDECONNECT_DEAMON_KEYBOARD', 'org.kde.kdeconnect.device.remotekeyboard')
 indicator_kdeconnect_constants.set_quoted('DEVICE_PATH', '/modules/kdeconnect/devices/')
 indicator_kdeconnect_constants.set_quoted('MODULE_PATH', '/modules/kdeconnect') 
+indicator_kdeconnect_constants.set_quoted('ICON_ATTENTION', 'phone-symbolic.symbolic') 
 
 configure_file(output: 'config-constants.vala',
                input: 'config-constants.vala.in',

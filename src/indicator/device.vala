@@ -291,9 +291,11 @@ namespace IndicatorKDEConnect {
 
         }
 
-        private void update_icon_item () {
+        private void update_icon_item (string? icon = null) {
             debug ("Set icon to the device");
-            indicator.set_icon_full (deviceManager.icon, 
+            indicator.set_icon_full (icon == null ? 
+                                     deviceManager.icon : 
+                                     icon, 
                                      "indicator-kdeconnect");
         }
 
@@ -328,12 +330,12 @@ namespace IndicatorKDEConnect {
                                           bool? charging = null) {
             debug (@"Device $path, update_battery_item");
             if (!deviceManager._has_plugin (Constants.PLUGIN_BATTERY)) {
-                debug (@"Device $path, has plugin battery");
+                debug (@"Device $path, has no plugin battery");
                 battery_item.visible = false;
                 return;
             }
             else {
-                debug (@"Device $path, has no plugin battery");
+                debug (@"Device $path, has plugin battery");
                 battery_item.visible = true;
             }
 
@@ -441,7 +443,8 @@ namespace IndicatorKDEConnect {
 
         private void set_pairing_request_mode (bool has_pairing) {
             if (has_pairing) {
-                indicator.set_status (AppIndicator.IndicatorStatus.ATTENTION);                
+                indicator.set_status (AppIndicator.IndicatorStatus.ATTENTION);   
+                update_icon_item (Constants.ICON_ATTENTION);             
             }
             else {
                 update_indicator_status ();    

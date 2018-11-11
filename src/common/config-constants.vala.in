@@ -33,4 +33,5 @@ namespace IndicatorKDEConnect.Constants {
     public const string SETTINGS_REMOTE_KEYBOARD = @SETTINGS_REMOTE_KEYBOARD@;
     public const string SETTINGS_PING_ITEMS = @SETTINGS_PING_ITEMS@;
     public const string MODULE_PATH = @MODULE_PATH@;
+    public const string ICON_ATTENTION = @ICON_ATTENTION@;
 }
