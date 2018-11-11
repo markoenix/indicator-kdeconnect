@@ -1,3 +1,2 @@
 option('documentation', type : 'boolean', value : false)
 option('extensions', type : 'string', value : 'NULL')
-option('config_folder', type : 'string', value : '.local/share/')

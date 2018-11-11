@@ -70,7 +70,7 @@ namespace IndicatorKDEConnect {
             
             battery_item = new Gtk.MenuItem ();
 
-            battery_item.activate.connect ( () => {
+            battery_item.activate.connect (() => {
                 Utils.run_kdeconnect_settings ();
             });
 
@@ -82,14 +82,14 @@ namespace IndicatorKDEConnect {
 
             broswe_item = new Gtk.MenuItem.with_label (_("Browse"));
 
-            broswe_item.activate.connect (() => {
+            broswe_item.activate.connect ( () => {
                 deviceManager.browse ();
             });
 
             indicator_menu.append (broswe_item);
 
             /* */
-            broswe_items = new Gtk.MenuItem.with_label (_("Browse"));
+            broswe_items = new Gtk.MenuItem.with_label (_("Browse by Folders"));
 
             broswe_items_sub_menu = new Gtk.Menu ();
 
@@ -98,6 +98,7 @@ namespace IndicatorKDEConnect {
             indicator_menu.append (broswe_items);
 
             build_browse_sub_paths ();
+            
             /* */
 
             share_files_item = new Gtk.MenuItem.with_label (_("Send File(s)"));
@@ -110,7 +111,7 @@ namespace IndicatorKDEConnect {
             
             share_url_item = new Gtk.MenuItem.with_label (_("Send URL"));
 
-            share_url_item.activate.connect ( () => {
+            share_url_item.activate.connect (() => {
                 var send_text_dialog = new SendGenericText (_("Send URL"), _("URL: "));
 
                 send_text_dialog.send_callback.connect ( (url) => {
@@ -181,7 +182,7 @@ namespace IndicatorKDEConnect {
 
             remotekeyboard_item = new  Gtk.MenuItem.with_label (_("Remote Keyboard"));
 
-            remotekeyboard_item.activate.connect ( () => {
+            remotekeyboard_item.activate.connect (() => {
                 var remote_keyboard_window = new RemoteKeyboardWindow();
                 remote_keyboard_window.send_callback.connect ( (key, specialKey, shift, ctrl, alt) => {
                     deviceManager._remote_keyboard (key, specialKey, shift, ctrl, alt);
@@ -275,20 +276,20 @@ namespace IndicatorKDEConnect {
 
             /*Role updates */
             indicator_menu.show_all ();  
-
-            update_items_based_on_settings ();
+            
+            update_all_pluggin_items (); 
+            update_items_based_on_settings ();            
             update_info_item ();
             update_indicator_status ();
             update_battery_item ();
             update_pairing_reject_group ();
             update_unpair_request_group ();                           
-            update_all_pluggin_items ();            
-
+                       
             debug ("Device Indicator Created");
         }   
 
         ~Device () {
-
+            debug ("Device Indicator Destroyed");
         }
 
         private void update_icon_item (string? icon = null) {
@@ -363,21 +364,25 @@ namespace IndicatorKDEConnect {
             if (visible == null)
                 visible = deviceManager.is_reachable;                
             
-            debug (@"Device $path, status $visible");                 
-
-            if (visible && 
-                deviceManager.is_trusted) {                
-                indicator.set_status (AppIndicator.IndicatorStatus.ACTIVE);                                                                                                        
-            }                
-            else {
-                if (deviceManager._get_property_bool (Constants.SETTINGS_PAIRED_DEVICES)) {
-                    indicator.set_status (AppIndicator.IndicatorStatus.ACTIVE);                                
+            debug (@"Device $path, status $visible");      
+            
+            if (visible) { 
+                if (deviceManager.is_trusted) {                          
+                    indicator.set_status (AppIndicator.IndicatorStatus.ACTIVE);                                                                                                        
                 }
                 else {
-                    indicator.set_status (AppIndicator.IndicatorStatus.PASSIVE);                                
-                }                
+                    if (deviceManager._get_property_bool (Constants.SETTINGS_PAIRED_DEVICES)) {
+                        indicator.set_status (AppIndicator.IndicatorStatus.ACTIVE);                                
+                    }
+                    else {
+                        indicator.set_status (AppIndicator.IndicatorStatus.PASSIVE);                                
+                    } 
+                }                                             
+            }                
+            else {
+                indicator.set_status (AppIndicator.IndicatorStatus.PASSIVE);                    
             }
-
+            
             update_icon_item ();
             update_info_item ();
         }
@@ -398,16 +403,16 @@ namespace IndicatorKDEConnect {
             share_separator.visible = (_share || _sftp) && _trusted; 
 
             share_files_item.visible = 
-            share_url_item.visible = _share && _trusted;  
+            share_url_item.visible = (_share && _trusted);  
                                              
-            broswe_item.visible =   
+            broswe_item.visible =  
             broswe_items.visible = (_sftp && _trusted);
             
             /* Telephony */
             var _telephony = deviceManager._has_plugin (Constants.PLUGIN_TELEPHONY);
 
             telephony_separator.visible = 
-            send_sms_item.visible = _telephony && _trusted;
+            send_sms_item.visible = (_telephony && _trusted);
 
             /* Utils */
             var _findmyphone = deviceManager._has_plugin (Constants.PLUGIN_FINDMYPHONE);
@@ -524,9 +529,8 @@ namespace IndicatorKDEConnect {
                     break;
                 }
             }
-            else {
-                if (deviceManager._get_property_bool (Constants.SETTINGS_PAIRED_DEVICES))
-                    update_indicator_status ();
+            else {                
+                update_indicator_status ();
 
                 if (deviceManager._get_property_bool (Constants.SETTINGS_INFO_ITEM))
                     info_item.show ();         
@@ -576,7 +580,7 @@ namespace IndicatorKDEConnect {
 
                 //TODO: Por isto numa tread
                 // Thread.usleep (500);
-                Timeout.add (1000, ()=> { 
+                Timeout.add (1000, ()=> {                             
                     return false;
                 });
             }
@@ -596,7 +600,7 @@ namespace IndicatorKDEConnect {
                     
                     broswe_items_sub_menu.append (tmpMenuItem);
                 });
-            }            
+            }       
         }
 
         private void dialog_file_selector () {

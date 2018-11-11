@@ -20,4 +20,5 @@ namespace IndicatorKDEConnect.Config {
     public const string TELEPHONY_CONTACTS = @TELEPHONY_CONTACTS@;
     public const string TELEPHONY_SMS_TOKEN = @TELEPHONY_SMS_TOKEN@;
     public const string PACKAGE_SETTINGS = @PACKAGE_SETTINGS@;
+    public const string SMS_APPLICATION_ID = @SMS_APPLICATION_ID@;
 }

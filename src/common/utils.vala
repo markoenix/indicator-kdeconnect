@@ -103,8 +103,7 @@ namespace IndicatorKDEConnect {
         public static void run_sms_python (string device_id) {
             try{
                 Process.spawn_async (null,
-                                     new string[]{GLib.Environment. get_user_data_dir()+
-                                                  "/"+Config.PACKAGE_NAME+"/sms/sms.py",
+                                     new string[]{"/"+Config.SMS_APPLICATION_ID,
                                                   "-d",
                                                   device_id},
                                      null,

@@ -62,6 +62,8 @@ namespace IndicatorKDEConnect {
         }
 
         ~KDEConnectManager () {
+            debug ("Device Indicator Destroyed");
+            
             subs_identifier.@foreach ( (item) => { 
                 conn.signal_unsubscribe (item);
             });

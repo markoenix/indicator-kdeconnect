@@ -38,7 +38,7 @@ compile:
 	mkdir build
 	cd build
 	meson .. --prefix=/usr/  --libdir=/usr/lib/
-	meson configure -Dconfig_folder=$HOME/.local/share/ -Dextensions=python
+	meson configure -Dextensions=python
 	ninja 
 	ninja install
 
