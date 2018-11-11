@@ -9,13 +9,11 @@ modules_deps = [
 module_template = files('module.in')
 
 module_list = [  
+  'extensions',
   'common',
-  'indicator',    
-  'extensions'
+  'indicator'  
 ]
 
 foreach module : module_list
   subdir(module)
 endforeach
-
-#install_data(['helper.py', '__init__.py'], install_dir: plugin_subdir)

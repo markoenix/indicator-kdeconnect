@@ -170,14 +170,17 @@ namespace IndicatorKDEConnect {
                           ref val);
 
                 _name = (string)val;
+
+                debug (@"Device $path, name $_name");
                 return _name;
             }
         }
 
         public string id {
         	get {
-            	 _id = this.path.replace(Constants.DEVICE_PATH, "");
-
+                 _id = this.path.replace(Constants.DEVICE_PATH, "");
+                 
+                 debug (@"Device $path, id $_id");
             	 return _id;
             }
         }
@@ -189,8 +192,9 @@ namespace IndicatorKDEConnect {
                           path, 
                           "statusIconName",
                           ref val);
-
+                          
                 _icon = (string)val;
+                debug (@"Device $path, icon $_icon");
                 return _icon;
             }
         }
@@ -203,6 +207,7 @@ namespace IndicatorKDEConnect {
                           "isReachable",
                           ref val);
 
+                debug (@"Device $path, is_reachable");
                 return (bool)val;                
             }
         }
@@ -215,6 +220,7 @@ namespace IndicatorKDEConnect {
                           "hasPairingRequests",
                           ref val);
 
+                debug (@"Device $path, has_pairing_requests");
                 return (bool)val;                
             }
         }
@@ -227,6 +233,7 @@ namespace IndicatorKDEConnect {
                           "isTrusted",
                           ref val);
 
+                debug (@"Device $path, is_trusted");                          
                 return (bool)val;                
             }
         }
@@ -252,31 +259,37 @@ namespace IndicatorKDEConnect {
         }        
 
         public void _accept_pairing () {
+            debug (@"Device $path, _accept_pairing");
             accept_pairing (ref conn, 
                             path);
         }
 
         public void _reject_pairing () {
+            debug (@"Device $path, _reject_pairing");
             reject_pairing (ref conn, 
                             path);
         }
 
         public void _unpair () {
+            debug (@"Device $path, _unpair");
             unpair (ref conn,
                     path);
         }
 
         public void _request_pair () {
+            debug (@"Device $path, _request_pair");
             request_pair (ref conn,
                           path);
         }
 
         public void _ring () {
+            debug (@"Device $path, _ring");
             ring(ref conn,
                  path);
         }
 
         public bool _battery_charging () {
+            debug (@"Device $path, _battery_charging");
             if (!_has_plugin (Constants.PLUGIN_BATTERY))
                 return false;
             else
@@ -284,12 +297,14 @@ namespace IndicatorKDEConnect {
         }
 
         public void _share_url (string url) {
+            debug (@"Device $path, _share_url");
             share (ref conn,
                    path,
                    url);
         }
 
         public void _share_uris (SList<File> files) {
+            debug (@"Device $path, _share_uris");
             files.@foreach ((item)=> {
                 share (ref conn,
                        path,
@@ -298,6 +313,7 @@ namespace IndicatorKDEConnect {
         }
 
         public SList<Pair<string,string>> _get_directories (bool cached_version = true) {
+            debug (@"Device $path, _get_directories");
             var return_variant = get_directories (ref conn,
                                                   path);
 
@@ -334,6 +350,7 @@ namespace IndicatorKDEConnect {
         }
 
         public void mount_sftp () {
+            debug (@"Device $path, mount_sftp");
             if (!_has_plugin (Constants.PLUGIN_SFTP))
                 return;
 
@@ -342,6 +359,7 @@ namespace IndicatorKDEConnect {
         }
 
         public void browse (string path_to_open="") {
+            debug (@"Device $path, browse");
             if (!_has_plugin (Constants.PLUGIN_SFTP))
                 return;
 
@@ -368,24 +386,28 @@ namespace IndicatorKDEConnect {
         }
 
         public bool _has_plugin (string plugin) {
+            debug (@"Device $path, _has_plugin");
             return has_plugin (ref conn,
                                path,
                                plugin);
         }
 
         public bool _get_property_bool(string property) {
+            debug (@"Device $path, _get_property_bool");
             return get_property_bool (ref settings,
                                       property);
         }
         
         public void _send_ping(string? message = null) {
+            debug (@"Device $path, _send_ping");
             send_ping (ref conn,
-                              path,
-                              message);
+                       path,
+                       message);
         }
         
         public void _remote_keyboard (string key, int specialKey, bool shift, bool ctrl, bool alt)
         {
+            debug (@"Device $path, _remote_keyboard");
             remote_keyboard(ref conn,
             path,
                                     key,

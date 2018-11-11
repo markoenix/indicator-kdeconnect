@@ -40,12 +40,14 @@ Source1:        kdeconnect.png
 # Package names only verified with Fedora.
 # Should the packages in your distro be named differently,
 # see http://en.opensuse.org/openSUSE:Build_Service_cross_distribution_howto
-BuildRequires:  cmake
+BuildRequires:  meson
+BuildRequires:  ninja
 BuildRequires:  gcc-c++
 BuildRequires:  gtk3-devel
 BuildRequires:  vala
 BuildRequires:  vala-devel
 BuildRequires:  pkgconfig(gtk+-3.0)
+BuildRequires:  libgee-0.8-dev
 Requires:       python3-requests-oauthlib
 
 %if 0%{?fedora} || 0%{?rhel_version} || 0%{?centos_version}
@@ -69,17 +71,14 @@ A small program, kdeconnect-send, to help sending files from PC to Android is in
 %build
 %__mkdir build
 cd build
-cmake .. \
-        -DCMAKE_INSTALL_PREFIX="%_prefix" \
-        -DCMAKE_INSTALL_LIBEXEC="%_libexecdir" \
-        -DCMAKE_C_FLAGS="%optflags" \
-        -DCMAKE_CXX_FLAGS="%optflags"
+meson .. --prefix=/usr/  --libdir=/usr/lib/
+meson configure -Dconfig_folder=$HOME/.local/share/ -Dextensions=python
 
-make %{?_smp_mflags}
+ninja
 
 %install
 cd build
-%make_install
+ninja install
 
 %if 0%{?suse_version}
 %suse_update_desktop_file -r -i %name 'Network;Telephony;'
@@ -105,13 +104,12 @@ rm -rf ${RPM_BUILD_ROOT}%{_datadir}/locale/zh_Hant
 %dir %{_datadir}/nemo-python
 %dir %{_datadir}/Thunar
 %{_bindir}/indicator-kdeconnect*
-%{_bindir}/kdeconnect-send
 %{_datadir}/locale/*/LC_MESSAGES/indicator-kdeconnect.mo
 %{_datadir}/applications/*.desktop
 %{_datadir}/indicator-kdeconnect/*
 %{_datadir}/contractor/kdeconnect.contract
-%{_datadir}/glib-2.0/schemas/com.bajoja.indicator-kdeconnect.gschema.xml
-%{_datadir}/metainfo/com.bajoja.indicator-kdeconnect.appdata.xml
+%{_datadir}/glib-2.0/schemas/com.indicator-kdeconnect.gschema.xml
+%{_datadir}/metainfo/com.indicator-kdeconnect.appdata.xml
 %{_datadir}/nautilus-python/extensions/
 %{_datadir}/nemo-python/extensions/
 %{_datadir}/caja-python/extensions/
@@ -221,4 +219,3 @@ rm -rf ${RPM_BUILD_ROOT}%{_datadir}/locale/zh_Hant
 
 * Mon Aug 20 2012 0323 Bajoja <steevenlopes@outlook.com> 0.1
 - Initial Release.
-

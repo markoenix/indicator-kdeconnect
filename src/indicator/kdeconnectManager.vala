@@ -49,7 +49,7 @@ namespace IndicatorKDEConnect {
 
                     fill_devices ();   
             
-                    discovery_mode (ref conn, true);                     
+                    discovery_mode (ref conn);                     
                 }
                 else {
                     new ErrorMessage.show_message(_("Cannot connect to KDEConnect DBus Service"));

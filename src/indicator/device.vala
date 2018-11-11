@@ -69,6 +69,11 @@ namespace IndicatorKDEConnect {
             indicator_menu.append (info_item); 
             
             battery_item = new Gtk.MenuItem ();
+
+            battery_item.activate.connect ( () => {
+                Utils.run_kdeconnect_settings ();
+            });
+
             indicator_menu.append (battery_item);
             
             /*File Group */
@@ -106,7 +111,7 @@ namespace IndicatorKDEConnect {
             share_url_item = new Gtk.MenuItem.with_label (_("Send URL"));
 
             share_url_item.activate.connect ( () => {
-                var send_text_dialog = new SendGenericText (_("Send URL"), _("URL"));
+                var send_text_dialog = new SendGenericText (_("Send URL"), _("URL: "));
 
                 send_text_dialog.send_callback.connect ( (url) => {
                     deviceManager._share_url (url);
@@ -163,7 +168,7 @@ namespace IndicatorKDEConnect {
             var ping2 = new Gtk.MenuItem.with_label (_("Ping Message"));
 
             ping2.activate.connect (() => {
-                var send_text_dialog = new SendGenericText (_("Ping Message"), _("Message"));
+                var send_text_dialog = new SendGenericText (_("Ping Message"), _("Message: "));
 
                 send_text_dialog.send_callback.connect ( (text) => {
                     deviceManager._send_ping (text);
@@ -271,13 +276,15 @@ namespace IndicatorKDEConnect {
             /*Role updates */
             indicator_menu.show_all ();  
 
+            update_items_based_on_settings ();
             update_info_item ();
             update_indicator_status ();
             update_battery_item ();
             update_pairing_reject_group ();
             update_unpair_request_group ();                           
-            update_all_pluggin_items ();
-            update_items_based_on_settings ();
+            update_all_pluggin_items ();            
+
+            debug ("Device Indicator Created");
         }   
 
         ~Device () {
@@ -285,25 +292,33 @@ namespace IndicatorKDEConnect {
         }
 
         private void update_icon_item () {
+            debug ("Set icon to the device");
             indicator.set_icon_full (deviceManager.icon, 
                                      "indicator-kdeconnect");
         }
 
         private void update_name_item (string name) {
+            debug ("Set icon to the device");
             name_item.label = deviceManager.name;
         }
 
-        private void update_info_item () {            
+        private void update_info_item () {   
+            debug ("Update Info Item");         
             if (deviceManager.is_reachable) {
+                debug (@"Device $path is reachable");         
                 if (deviceManager.is_trusted) {
+                    debug (@"Device $path is reachable");         
                     info_item.label = _("Device Reachable and Trusted");                   
                 }
                 else {
+                    debug (@"Device $path is not trusted");
                     info_item.label = _("Device Reachable but Not Trusted");     
                 }
             } 
             else {
+                debug (@"Device $path is not reachable");         
                 if (deviceManager.is_trusted) {
+                    debug (@"Device $path is trusted");
                     info_item.label = _("Device Trusted but not Reachable");    
                 }
             }            
@@ -311,11 +326,14 @@ namespace IndicatorKDEConnect {
 
         private void update_battery_item (int? charge = null, 
                                           bool? charging = null) {
+            debug (@"Device $path, update_battery_item");
             if (!deviceManager._has_plugin (Constants.PLUGIN_BATTERY)) {
+                debug (@"Device $path, has plugin battery");
                 battery_item.visible = false;
                 return;
             }
             else {
+                debug (@"Device $path, has no plugin battery");
                 battery_item.visible = true;
             }
 
@@ -339,21 +357,32 @@ namespace IndicatorKDEConnect {
                 battery_item.label += _(" (charging)");                             
         }
 
-        private void update_indicator_status (bool? visible = null) {
+        private void update_indicator_status (bool? visible = null) {            
             if (visible == null)
-                visible = deviceManager.is_reachable && 
-                          !deviceManager._get_property_bool (Constants.SETTINGS_PAIRED_DEVICES);
-
-            if (visible)
-                indicator.set_status (AppIndicator.IndicatorStatus.ACTIVE);
-            else
-                indicator.set_status (AppIndicator.IndicatorStatus.PASSIVE);
+                visible = deviceManager.is_reachable;                
             
+            debug (@"Device $path, status $visible");                 
+
+            if (visible && 
+                deviceManager.is_trusted) {                
+                indicator.set_status (AppIndicator.IndicatorStatus.ACTIVE);                                                                                                        
+            }                
+            else {
+                if (deviceManager._get_property_bool (Constants.SETTINGS_PAIRED_DEVICES)) {
+                    indicator.set_status (AppIndicator.IndicatorStatus.ACTIVE);                                
+                }
+                else {
+                    indicator.set_status (AppIndicator.IndicatorStatus.PASSIVE);                                
+                }                
+            }
+
             update_icon_item ();
             update_info_item ();
         }
 
         private void update_all_pluggin_items () {
+            debug (@"Device $path, update_all_pluggin_items");
+
             var _trusted = deviceManager.is_trusted;
             //var _reachable = deviceManager.is_reachable;
 
@@ -393,8 +422,11 @@ namespace IndicatorKDEConnect {
             if (mode == null)
                 mode = deviceManager.has_pairing_requests;
 
-            request_pair_item.visible = !((bool)mode); 
-            accept_pair_item.visible =             
+            request_pair_item.visible = !(bool)mode; 
+            
+            accept_pair_item.visible = 
+            reject_pair_item.visible = mode; 
+
             accept_reject_separator.visible = mode;
         }
 
@@ -414,6 +446,7 @@ namespace IndicatorKDEConnect {
             else {
                 update_indicator_status ();    
             }
+
             update_pairing_reject_group (has_pairing);
         }
 
@@ -489,7 +522,7 @@ namespace IndicatorKDEConnect {
                 }
             }
             else {
-                if (deviceManager._get_property_bool (Constants.SETTINGS_INFO_ITEM))
+                if (deviceManager._get_property_bool (Constants.SETTINGS_PAIRED_DEVICES))
                     update_indicator_status ();
 
                 if (deviceManager._get_property_bool (Constants.SETTINGS_INFO_ITEM))

@@ -1,5 +1,3 @@
-#
-#
 # Extension Target
 extension_list = [  
   'sms',
@@ -8,12 +6,10 @@ extension_list = [
 
 if get_option('extensions') == 'c'
   extension_list += ['filemanager-c']
-else
+elif get_option('extensions') == 'python'
   extension_list += ['filemanager-python']
 endif
 
 foreach module : extension_list
   subdir(module)
 endforeach
-
-#install_data(['helper.py', '__init__.py'], install_dir: plugin_subdir)

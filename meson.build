@@ -45,6 +45,15 @@ meson_dir = meson.current_source_dir()
 # Name of the GObject Introspection repository for the library.
 gir_name = 'indicator-kdeconnect-' + api_version
 
+subdir('src')
+
+subdir('data')
+
+xgettext = find_program('xgettext', required : false)
+if xgettext.found()
+  subdir('po')
+endif
+
 doc_subdir = join_paths(get_option('datadir'), 
                         'doc', 
                         meson.project_name())
@@ -59,24 +68,3 @@ licenses_subdir = join_paths(get_option('datadir'),
 
 install_data('COPYING',
              install_dir: licenses_subdir)
-
-subdir('src')
-
-xgettext = find_program('xgettext', required : false)
-if xgettext.found()
-  subdir('po')
-endif
-
-subdir('data')
-
-#if get_option('documentation')
-#  valadoc = find_program('valadoc', required: false)
-#  if valadoc.found()
-#     subdir('doc')
-#  endif
-#endif
-
-#if get_option('test')
-#  check_dep = dependency('check')
-#   subdir('tests')
-#endif

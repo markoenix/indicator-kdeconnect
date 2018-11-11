@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Copyright 2018 Bajoja <steevenlopes@outlook.com> -->
 <component type="desktop">
-  <id>com.bajoja.indicator-kdeconnect.desktop</id>
+  <id>com.indicator-kdeconnect.desktop</id>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-2.1+</project_license>
   <name>Indicator-KDEConnect</name>

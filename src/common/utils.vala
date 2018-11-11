@@ -86,6 +86,20 @@ namespace IndicatorKDEConnect {
             return false;
         }
 
+        public static void run_kdeconnect_settings () {
+            try{
+                Process.spawn_async (null,
+                                     new string[]{"kcmshell5", "kcm_kdeconnect"},
+                                     null,
+                                     SpawnFlags.SEARCH_PATH,
+                                     null,
+                                     null);
+            } 
+            catch (Error e) {
+                debug (e.message);
+            }
+        }
+
         public static void run_sms_python (string device_id) {
             try{
                 Process.spawn_async (null,

@@ -35,9 +35,9 @@ namespace IndicatorKDEConnect {
             try {
                 debug ("Getting device list");
                 var return_variant = conn.call_sync (Constants.KDECONNECT_DEAMON,
-                Constants.MODULE_PATH,
-                Constants.KDECONNECT_DEAMON_DEAMON,
-                "devices",
+                                                     Constants.MODULE_PATH,
+                                                     Constants.KDECONNECT_DEAMON_DEAMON,
+                                                     "devices",
                                                      new Variant ("(bb)", 
                                                                   only_reachable,
                                                                   only_paired),

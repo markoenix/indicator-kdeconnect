@@ -23,7 +23,7 @@ indicator_kdeconnect_conf.set_quoted('PACKAGE_LOCALEDIR', join_paths(get_option(
                   description: 'Define to locale dir of this package.')
 indicator_kdeconnect_conf.set_quoted('SETTINGS_PATH', '/apps/indicator-kdeconnect/',
                   description: 'Define to root path of gsettings for this package.')
-indicator_kdeconnect_conf.set_quoted('SETTINGS_NAME', 'com.indicator-kdeconnect.daemon',
+indicator_kdeconnect_conf.set_quoted('SETTINGS_NAME', 'com.indicator-kdeconnect.gschema',
                   description: 'Define to root bus name for this package.')
 indicator_kdeconnect_conf.set_quoted('IKC_APPLICATION_ID', 'com.indicator-kdeconnect.deamon',
                   description: 'Define to root bus name for this package.')
@@ -71,7 +71,7 @@ indicator_kdeconnect_constants.set_quoted('KDECONNECT_DEAMON_SHARE', 'org.kde.kd
 indicator_kdeconnect_constants.set_quoted('KDECONNECT_DEAMON_TELEPHONY', 'org.kde.kdeconnect.device.telephony')
 indicator_kdeconnect_constants.set_quoted('KDECONNECT_DEAMON_KEYBOARD', 'org.kde.kdeconnect.device.remotekeyboard')
 indicator_kdeconnect_constants.set_quoted('DEVICE_PATH', '/modules/kdeconnect/devices/')
-indicator_kdeconnect_constants.set_quoted('MODULE_PATH', '/modules/kdeconnect')
+indicator_kdeconnect_constants.set_quoted('MODULE_PATH', '/modules/kdeconnect') 
 
 configure_file(output: 'config-constants.vala',
                input: 'config-constants.vala.in',

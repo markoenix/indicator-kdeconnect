@@ -1,8 +1,8 @@
-data_list = [  
+data_list = [
+  'configs',  
   'desktop',
   'icons',
-  'images',
-  'configs'
+  'images' 
 ]
 foreach data : data_list
   subdir(data)
