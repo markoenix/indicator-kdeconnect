@@ -15,6 +15,7 @@ on Ubuntu:
 -> sudo apt install libgee-0.8-dev
 -> sudo apt install python3-requests-oauthlib
 -> sudo apt install kde-cli-tools
+-> sudo apt install libjson-glib-dev
 -> sudo apt install python-nautilus (if you use Nautilus) 
                     python-nemo (if you use Nemo)
  		            python-caja (if you use Caja)  
@@ -27,6 +28,7 @@ on Fedora:
 -> sudo dnf install libgee-0.8-dev
 -> sudo dnf install python3-requests-oauthlib
 -> sudo dnf install kde-cli-tools
+-> sudo dnf install json-glib-devel
 -> sudo dnf install nautilus-python (if you use Nautilus)
 		            nemo-python (if you use Nemo)
 		            caja-python (if you use Caja)
