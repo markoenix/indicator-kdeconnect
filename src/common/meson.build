@@ -54,7 +54,7 @@ indicator_kdeconnect_constants.set_quoted('KDECONNECT_DEAMON_TELEPHONY', 'org.kd
 indicator_kdeconnect_constants.set_quoted('KDECONNECT_DEAMON_KEYBOARD', 'org.kde.kdeconnect.device.remotekeyboard')
 indicator_kdeconnect_constants.set_quoted('DEVICE_PATH', '/modules/kdeconnect/devices/')
 indicator_kdeconnect_constants.set_quoted('MODULE_PATH', '/modules/kdeconnect') 
-indicator_kdeconnect_constants.set_quoted('ICON_ATTENTION', 'face-smirk') 
+indicator_kdeconnect_constants.set_quoted('ICON_ATTENTION', 'smartphoneattention') 
 
 configure_file(output: 'config-constants.vala',
                input: 'config-constants.vala.in',
