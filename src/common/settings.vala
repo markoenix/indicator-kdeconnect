@@ -243,7 +243,7 @@ namespace IndicatorKDEConnect {
 
 			//---------------------------------------------------//
 
-			var checkBtn8 = new Gtk.CheckButton.with_label (_("Show Remote Keybord"));
+			var checkBtn8 = new Gtk.CheckButton.with_label (_("Show Remote Keyboard"));
 
 			checkBtn8.set_active (settings.get_boolean (Constants.SETTINGS_REMOTE_KEYBOARD));
 
