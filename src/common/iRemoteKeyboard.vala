@@ -14,7 +14,7 @@ namespace IndicatorKDEConnect {
                                             bool alt) {
             try{
                  // TODO try async call
-                debug (@"Remote Keybord: $key, $specialKey, $shift, $ctrl, $alt");
+                debug (@"Remote Keyboard: $key, $specialKey, $shift, $ctrl, $alt");
                 conn.call_sync (Constants.KDECONNECT_DEAMON,
                                 path+"/remotekeyboard",
                                 Constants.KDECONNECT_DEAMON_KEYBOARD,
