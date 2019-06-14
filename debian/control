@@ -26,3 +26,9 @@ Description: Indicator for KDE Connect
  KDE Connect is a tool to integrate the KDE Plasma Workspace with your
  smartphone and similar devices.  This indicator brings this integration
  to any system using libappindicator.
+
+Package: libindicator-kdeconnect
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends}, kdeconnect (>=1.3.0)
+Description: Shared libraries for the Indicator for KDE Connect
+ This package contains the Indicator for KDE Connect's shared libraries
