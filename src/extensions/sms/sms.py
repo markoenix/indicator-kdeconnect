@@ -33,7 +33,7 @@ gettext.textdomain('indicator-kdeconnect')
 parser = argparse.ArgumentParser(
 	description='Send sms via KDE Connect with Google Contacts sync and '
 	+ 'autocomplete')
-parser.add_argument('-d', '--device', help='connected device id')
+parser.add_argument('-d', '--device', help='connected device id', required=True)
 args = parser.parse_args()
 
 data_dir = os.path.expanduser('~/.local/share/indicator-kdeconnect/sms')
