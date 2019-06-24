@@ -18,7 +18,7 @@ indicator_kdeconnect_conf.set_quoted('IKCS_APPLICATION_ID', 'com.indicator-kdeco
 indicator_kdeconnect_conf.set_quoted('TELEPHONY_CONTACTS', '/indicator-kdeconnect/sms/contacts.json')
 indicator_kdeconnect_conf.set_quoted('TELEPHONY_SMS_TOKEN', '/indicator-kdeconnect/sms/token.json')
 indicator_kdeconnect_conf.set_quoted('PACKAGE_SETTINGS', meson.project_name() + ' -s')
-indicator_kdeconnect_conf.set_quoted('SMS_APPLICATION_ID', join_paths(get_option('bindir'), 'sms.py'))
+indicator_kdeconnect_conf.set_quoted('SMS_APPLICATION_ID', join_paths(get_option('bindir'), 'sms'))
 
 
 configure_file(output: 'config-header.vala',
