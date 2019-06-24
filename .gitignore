@@ -1,8 +1,7 @@
 build
-obj-i686-linux-gnu
+obj-*/
 .vscode
-debian/files
-debian/indicator-kdeconnect*
+debian/
 *.swp
 *~
 .buildconfig
