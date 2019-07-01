@@ -1,5 +1,5 @@
 [Desktop Entry]
-Name=KDE Connect Indicator
+Name=KDE Connect Indicator Settings
 Comment=An awesome system for Desktop-Phone continuity.
 Exec=indicator-kdeconnect -s
 Terminal=false
