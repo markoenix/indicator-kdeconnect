@@ -1,3 +1,7 @@
+Note
+-----
+I am no longer maintaining this project, since I am no longer an Android user, I hope that someone else will be able to continue this, now a big thank you to everyone who somehow helped to develop this project, either with code, images, translations, bug reporting, packaging and distribution.
+
 KDE Connect Indicator
 =====================
 [![Translation Status](https://hosted.weblate.org/widgets/indicator-kde-connect/-/svg-badge.svg)](https://hosted.weblate.org/engage/indicator-kde-connect/?utm_source=widget)
